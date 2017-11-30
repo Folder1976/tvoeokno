@@ -16,20 +16,6 @@ class ControllerCommonHome extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->load->model('blog/blog');
-		$this->load->model('blog/blog_category');
-		
-		$res = $this->model_blog_blog_category->getBlogCategories();
-		
-		foreach($res as $index => $row){
-			$data['blogs'][$row['keyword']] = $row;
-			$data['blogs'][$row['keyword']]['blogs'] = $this->model_blog_blog->getBlogsByBlogCategoryId($row['blog_category_id']);
-		}
-		
-		$this->load->model('catalog/manufacturer');
-		$data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
-			
-		
 		$this->response->setOutput($this->load->view('common/home', $data));
 	}
 }
