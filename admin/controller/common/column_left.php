@@ -261,6 +261,42 @@ class ControllerCommonColumnLeft extends Controller {
 				);	
 			}
 			
+		
+			//=======================================	
+			$this->load->language('blog/blog');
+			$blog = array();
+				$blog[] = array(
+					'name'	   => $this->language->get('text_blog_setting'),
+					'href'     => $this->url->link('blog/blog_setting', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			$blog[] = array(
+					'name'	   => $this->language->get('text_blog_category'),
+					'href'     => $this->url->link('blog/blog_category', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			$blog[] = array(
+					'name'	   => $this->language->get('text_blog_post'),
+					'href'     => $this->url->link('blog/blog', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+
+			$blog[] = array(
+					'name'	   => $this->language->get('text_blog_comment'),
+					'href'     => $this->url->link('blog/blog_comment', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+
+		
+			$data['menus'][] = array(
+					'id'       => 'menu-blog',
+					'icon'	   => 'fa-television', 
+					'name'	   => 'Статьи',
+					'href'     => '',
+					'children' => $blog
+			);	
+
+			
 			// Sales
 			$sale = array();
 			
