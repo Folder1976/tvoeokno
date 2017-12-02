@@ -1,4 +1,7 @@
-<?php echo $header; ?><?php echo $column_left; ?>
+<?php echo $header; ?>
+<script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="view/javascript/ckeditor/ckeditor_init.js"></script>
+<?php echo $column_left; ?>
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
@@ -230,6 +233,9 @@
   </div>
   <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
+
+ckeditorInit('description<?php echo $language['language_id']; ?>', getURLVar('token'));
+/*
 $('#description<?php echo $language['language_id']; ?>').summernote({
 	height: 250,
 	  toolbar: [
@@ -244,7 +250,7 @@ $('#description<?php echo $language['language_id']; ?>').summernote({
     ['insert', ['picture', 'link', 'video', 'hr']], // no insert buttons
 	['codeview', ['fullscreen', 'codeview']] //no help button
   ]
-});
+});*/
 <?php } ?>
 //--></script> 
   <script type="text/javascript"><!--

@@ -2,7 +2,7 @@
 <?php echo $module; ?>
 <?php } ?>
 
-
+xczvxczvxzcvzxcvxczv
 <?php
 //header("Content-Type: text/html; charset=UTF-8");
 //echo '<pre>'; print_r(var_dump( $manufacturers  ));
