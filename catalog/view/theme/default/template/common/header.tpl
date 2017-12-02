@@ -106,17 +106,18 @@
                 <span class="img compare"></span>
                 <p>В сравнении</p>
               </a>
-              <a href="#" class="header-callback-single">
+              <a href="<?php echo $wishlist; ?>" class="header-callback-single" title="<?php echo $text_wishlist; ?>">
                 <span class="img star"></span>
-                <p>Избранное</p>
+                <p><?php echo $text_wishlist; ?></p>
               </a>
-              <a href="#" class="header-callback-single">
+              <a href="<?php echo $checkout; ?>" class="header-callback-single" title="<?php echo $text_checkout; ?>">
                 <span class="img busket"></span>
-                <p>Корзина</p>
+                <p><?php echo $text_checkout; ?></p>
               </a>
             </div>
           </div>
         </div>
+           
       </div>
       <div class="mobile-menu">
         <p>Меню</p>

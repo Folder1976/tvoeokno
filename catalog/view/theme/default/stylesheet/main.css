@@ -1,43 +1,43 @@
 @charset "UTF-8";
 @font-face {
   font-family: 'pfdintextpro-regular';
-  src: url("../fonts/pfdintextpro-regular.ttf");
+  src: url("/catalog/view/theme/default/fonts/pfdintextpro-regular.ttf");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'pfdintextpro-bold';
-  src: url("../fonts/pfdintextpro-bold.ttf");
+  src: url("/catalog/view/theme/default/fonts/pfdintextpro-bold.ttf");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'pfdintextpro-medium';
-  src: url("../fonts/pfdintextpro-medium.ttf");
+  src: url("/catalog/view/theme/default/fonts/pfdintextpro-medium.ttf");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'FiraSans-Regular';
-  src: url("../fonts/FiraSans-Regular.ttf");
+  src: url("/catalog/view/theme/default/fonts/FiraSans-Regular.ttf");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'FiraSans-Medium';
-  src: url("../fonts/FiraSans-Medium.ttf");
+  src: url("/catalog/view/theme/default/fonts/FiraSans-Medium.ttf");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'FiraSans-Bold';
-  src: url("../fonts/FiraSans-Bold.ttf");
+  src: url("/catalog/view/theme/default/fonts/FiraSans-Bold.ttf");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'FiraSans-Italic';
-  src: url("../fonts/FiraSans-Italic.ttf");
+  src: url("/catalog/view/theme/default/fonts/FiraSans-Italic.ttf");
   font-weight: normal;
   font-style: normal; }
 
@@ -151,7 +151,7 @@ button {
     padding: 10px 0;
     margin-right: 32px;
     padding-left: 34px;
-    background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/user.svg) no-repeat left center; }
+    background: url(/catalog/view/theme/default/image/user.svg) no-repeat left center; }
     .header-account a {
       color: #fff;
       font-size: 12px;
@@ -179,7 +179,7 @@ button {
       text-decoration: none; }
   .header-center {
     padding-bottom: 26px;
-    background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/header.png) no-repeat center;
+    background: url(/catalog/view/theme/default/image/header.png) no-repeat center;
     background-size: cover; }
   .header-logo {
     padding-top: 15px;
@@ -191,7 +191,7 @@ button {
       padding: 3px 0;
       line-height: 1;
       padding-left: 17px;
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/clock.svg) no-repeat left 1px;
+      background: url(/catalog/view/theme/default/image/clock.svg) no-repeat left 1px;
       width: 196px;
       margin: -20px auto 0;
       margin-top: 12px; }
@@ -239,7 +239,7 @@ button {
           -ms-transform: translateY(-50%);
               transform: translateY(-50%);
           left: 0;
-          background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/viber.svg) no-repeat center;
+          background: url(/catalog/view/theme/default/image/viber.svg) no-repeat center;
           width: 20px;
           height: 20px; }
   .header-info-center {
@@ -288,7 +288,7 @@ button {
     .header-info-form .search {
       width: 18px;
       height: 19px;
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/search.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/search.svg) no-repeat center;
       display: block; }
   .header-callback {
     padding-top: 12px;
@@ -326,11 +326,11 @@ button {
       margin: 0 24px;
       text-align: center; }
       .header-callback-single:hover .compare {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/compare1.png) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/compare1.png) no-repeat center; }
       .header-callback-single:hover .star {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/star1.png) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/star1.png) no-repeat center; }
       .header-callback-single:hover .busket {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/busket1.png) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/busket1.png) no-repeat center; }
       .header-callback-single p {
         font-size: 12px;
         letter-spacing: 0.6px;
@@ -343,14 +343,14 @@ button {
         display: block;
         transition: 0.3s ease-in-out; }
       .header-callback-single .compare {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/compare.png) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/compare.png) no-repeat center; }
       .header-callback-single .star {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/star.png) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/star.png) no-repeat center; }
       .header-callback-single .busket {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/busket.png) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/busket.png) no-repeat center; }
   .header-bottom {
     height: 101px;
-    background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/3.png) repeat-x bottom; }
+    background: url(/catalog/view/theme/default/image/3.png) repeat-x bottom; }
 
 .main-nav-list {
   text-align: center;
@@ -466,7 +466,7 @@ button {
       content: '';
       width: 378px;
       height: 97px;
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/arows.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/arows.svg) no-repeat center;
       bottom: -20px;
       left: -340px; }
     .main-slider .timer-main {
@@ -487,7 +487,7 @@ button {
           content: '';
           width: 6px;
           height: 5px;
-          background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/elipse.svg) no-repeat center;
+          background: url(/catalog/view/theme/default/image/elipse.svg) no-repeat center;
           top: 20px;
           left: -10px; }
         .main-slider .timer-main-single:after {
@@ -495,7 +495,7 @@ button {
           content: '';
           width: 6px;
           height: 5px;
-          background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/elipse.svg) no-repeat center;
+          background: url(/catalog/view/theme/default/image/elipse.svg) no-repeat center;
           top: 30px;
           left: -10px; }
         .main-slider .timer-main-single .count {
@@ -561,7 +561,7 @@ button {
         width: 76px;
         height: 79px;
         position: absolute;
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/banch.svg) no-repeat center;
+        background: url(/catalog/view/theme/default/image/banch.svg) no-repeat center;
         top: -6px;
         left: 20px; }
 
@@ -583,10 +583,10 @@ button {
         transform: translateX(-50%);
     width: 100px;
     height: 3px;
-    background: url(http://tvoeokno.alegar.com.ua/http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/dashed.png) no-repeat center; }
+    background: url(/catalog/view/theme/default/image/dashed.png) no-repeat center; }
 
 .brands {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/brands.png) no-repeat center top;
+  background: url(/catalog/view/theme/default/image/brands.png) no-repeat center top;
   background-size: cover;
   margin-top: 17px;
   padding-top: 90px; }
@@ -675,7 +675,7 @@ button {
         top: 50%;
         -ms-transform: translateY(-50%);
             transform: translateY(-50%);
-        background: url(catalog/view/theme/default/check.svg) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/check.svg) no-repeat center; }
   .prices-single-right .price {
     padding: 10px;
     border-bottom: 1px solid #D5D5D5; }
@@ -709,13 +709,13 @@ button {
       .prices-single-right .buy .favorite:before {
         height: 19px;
         width: 19.2px;
-        background: url(catalog/view/theme/default/favorite.svg) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/favorite.svg) no-repeat center; }
     .prices-single-right .buy .comparison {
       float: right; }
       .prices-single-right .buy .comparison:before {
         width: 23px;
         height: 19px;
-        background: url(catalog/view/theme/default/comparison.svg) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/comparison.svg) no-repeat center; }
     .prices-single-right .buy-btn {
       width: 100%;
       text-align: center;
@@ -745,7 +745,7 @@ button {
 
 .advantages {
   padding-top: 100px;
-  background: url(catalog/view/theme/default/bg2.jpg);
+  background: url(/catalog/view/theme/default/image/bg2.jpg);
   position: relative;
   padding-bottom: 30px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); }
@@ -756,7 +756,7 @@ button {
     height: 121px;
     top: -45px;
     left: 0;
-    background: url(catalog/view/theme/default/ruletka.png) no-repeat center;
+    background: url(/catalog/view/theme/default/image/ruletka.png) no-repeat center;
     background-size: contain; }
   .advantages-single {
     margin-bottom: 60px; }
@@ -777,7 +777,7 @@ button {
       overflow: hidden; }
 
 .news {
-  background: url(catalog/view/theme/default/bg3.jpg);
+  background: url(/catalog/view/theme/default/bg3.jpg);
   padding-top: 69px;
   padding-bottom: 80px;
   box-shadow: inset 0px 0px 24px rgba(0, 0, 0, 0.25); }
@@ -910,7 +910,7 @@ button {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
   padding-top: 90px;
   padding-bottom: 60px;
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg4.png);
+  background: url(/catalog/view/theme/default/image/bg4.png);
   position: relative;
   font-size: 0;
   text-align: center; }
@@ -939,7 +939,7 @@ button {
       content: '';
       width: 64px;
       height: 80px;
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/31.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/31.svg) no-repeat center;
       bottom: 0;
       left: -80px; }
   .work .bottom {
@@ -949,7 +949,7 @@ button {
       content: '';
       width: 64px;
       height: 80px;
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/32.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/32.svg) no-repeat center;
       top: 0;
       left: -80px; }
 
@@ -1103,7 +1103,7 @@ button {
 
 .feedback-sect {
   padding-top: 120px;
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg6.png) no-repeat center;
+  background: url(/catalog/view/theme/default/image/bg6.png) no-repeat center;
   background-size: cover;
   box-shadow: inset 0px 0px 17px rgba(0, 0, 0, 0.25); }
   .feedback-sect img {
@@ -1208,7 +1208,7 @@ button {
           display: inline-block; }
 
 .calc {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg7.jpg) no-repeat center;
+  background: url(/catalog/view/theme/default/image/bg7.jpg) no-repeat center;
   background-size: cover;
   box-shadow: inset 0px 0px 24px rgba(0, 0, 0, 0.25);
   padding-bottom: 70px;
@@ -1298,7 +1298,7 @@ button {
 
 .company-info {
   padding-top: 30px;
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/clouds.png) no-repeat center;
+  background: url(/catalog/view/theme/default/image/clouds.png) no-repeat center;
   background-size: cover;
   position: relative;
   padding-bottom: 150px; }
@@ -1368,7 +1368,7 @@ button {
       background: #114A6D; }
   .footer-top {
     height: 330px;
-    background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/footer_bg.png) no-repeat center top;
+    background: url(/catalog/view/theme/default/image/footer_bg.png) no-repeat center top;
     background-size: cover;
     padding-top: 185px;
     border-bottom: 2px solid #82C2CF; }
@@ -1528,7 +1528,7 @@ textarea {
   border: 2px solid #fff; }
 
 .main-feedback {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg_texure.jpg) no-repeat center;
+  background: url(/catalog/view/theme/default/image/bg_texure.jpg) no-repeat center;
   background-size: cover;
   padding-bottom: 90px;
   margin-top: -25px;
@@ -1585,7 +1585,7 @@ textarea {
       font-family: "FiraSans-Medium", sans-serif; }
 
 .service {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg2.jpg);
+  background: url(/catalog/view/theme/default/image/bg2.jpg);
   padding-top: 95px;
   padding-bottom: 90px; }
   .service .main-title {
@@ -1663,7 +1663,7 @@ textarea {
 .order {
   padding-top: 70px;
   padding-bottom: 206px;
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/clouds2.png) no-repeat center;
+  background: url(/catalog/view/theme/default/image/clouds2.png) no-repeat center;
   background-size: cover; }
   .order-btns {
     background: #F2F9FF;
@@ -1696,18 +1696,18 @@ textarea {
   .order-btn.red {
     background: linear-gradient(180deg, #EF4424 -38.05%, rgba(255, 255, 255, 0.6) -6.02%, rgba(239, 68, 36, 0.37) 61.1%), #EF4424; }
     .order-btn.red:before {
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/banch1.png) no-repeat center;
+      background: url(/catalog/view/theme/default/image/banch1.png) no-repeat center;
       height: 88px; }
   .order-btn.blue {
     background: linear-gradient(180deg, #82C2CF -38.05%, rgba(255, 255, 255, 0.6) -6.02%, #82C2CF 55%), #82C2CF; }
     .order-btn.blue:before {
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/banch2.png) no-repeat center;
+      background: url(/catalog/view/theme/default/image/banch2.png) no-repeat center;
       height: 79px; }
   .order-btn.yellow {
     background: linear-gradient(180deg, #F6AB01 -49.6%, rgba(255, 255, 255, 0.4) 1.11%, #F6AB01 33.92%), #F6AB01;
     margin-right: 0; }
     .order-btn.yellow:before {
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/banch3.png) no-repeat center;
+      background: url(/catalog/view/theme/default/image/banch3.png) no-repeat center;
       height: 88px; }
 
 .repair-form {
@@ -1721,7 +1721,7 @@ textarea {
       width: 100%; }
 
 .reviews-page {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg_review.jpg);
+  background: url(/catalog/view/theme/default/image/bg_review.jpg);
   margin-top: -25px;
   padding-top: 10px;
   padding-bottom: 18px; }
@@ -1830,7 +1830,7 @@ textarea {
       font-family: "FiraSans-Medium", sans-serif; }
 
 .works {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg8.png) no-repeat center;
+  background: url(/catalog/view/theme/default/image/bg8.png) no-repeat center;
   background-size: cover;
   margin-top: -20px;
   padding-top: 5px;
@@ -1992,7 +1992,7 @@ textarea {
   .window-size .height-slider {
     width: 24px;
     border: none;
-    background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/slider.png) repeat-y;
+    background: url(/catalog/view/theme/default/image/slider.png) repeat-y;
     border-radius: 0; }
     .window-size .height-slider .noUi-tooltip {
       display: none; }
@@ -2013,7 +2013,7 @@ textarea {
   .window-size .width-slider {
     height: 25px;
     border: none;
-    background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/0.png) repeat-x;
+    background: url(/catalog/view/theme/default/image/0.png) repeat-x;
     float: right;
     margin-top: 30px;
     border-radius: 0; }
@@ -2284,7 +2284,7 @@ textarea {
       padding: 12px 0; }
 
 .about {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/about-bg.jpg) no-repeat center top;
+  background: url(/catalog/view/theme/default/image/about-bg.jpg) no-repeat center top;
   background-size: cover;
   margin-top: -20px;
   padding-bottom: 20px; }
@@ -2441,7 +2441,7 @@ textarea {
       content: counter(list) ". "; }
 
 .cart {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg9.jpg) no-repeat center top;
+  background: url(/catalog/view/theme/default/image/bg9.jpg) no-repeat center top;
   background-size: cover;
   margin-top: -20px;
   padding-top: 5px;
@@ -2516,7 +2516,7 @@ textarea {
         left: 0;
         width: 17px;
         height: 17px;
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/add.svg) no-repeat center; }
+        background: url(/catalog/view/theme/default/image/add.svg) no-repeat center; }
     .cart-info .checkbox {
       width: 45%;
       margin-right: 2.5%;
@@ -2823,7 +2823,7 @@ textarea {
           content: '';
           width: 17px;
           height: 17px;
-          background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/check.svg) no-repeat center;
+          background: url(/catalog/view/theme/default/image/check.svg) no-repeat center;
           top: 0;
           left: 0; }
     .brand-info .charact {
@@ -2835,7 +2835,7 @@ textarea {
         left: 0;
         width: 17px;
         height: 18px;
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/vec.svg) no-repeat center;
+        background: url(/catalog/view/theme/default/image/vec.svg) no-repeat center;
         content: ''; }
     .brand-info .star {
       position: relative;
@@ -2848,7 +2848,7 @@ textarea {
         left: 0;
         width: 20px;
         height: 20px;
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/star.svg) no-repeat center;
+        background: url(/catalog/view/theme/default/image/star.svg) no-repeat center;
         content: ''; }
     .brand-info .add {
       position: relative;
@@ -2861,7 +2861,7 @@ textarea {
         left: 0;
         width: 17px;
         height: 17px;
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/add.svg) no-repeat center;
+        background: url(/catalog/view/theme/default/image/add.svg) no-repeat center;
         content: ''; }
     .brand-info-table {
       width: 100%; }
@@ -2874,7 +2874,7 @@ textarea {
           text-align: right; }
 
 .brand-prices {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg2.jpg);
+  background: url(/catalog/view/theme/default/image/bg2.jpg);
   padding-top: 30px; }
 
 .plastic-window-company {
@@ -2894,7 +2894,7 @@ textarea {
   .plastic-window-single {
     width: 210px;
     height: 254px;
-    background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/pw.png) no-repeat center;
+    background: url(/catalog/view/theme/default/image/pw.png) no-repeat center;
     background-size: cover;
     margin: 0 auto;
     padding: 63px 0;
@@ -2929,7 +2929,7 @@ textarea {
         .plastic-window-single .info .red .comparison-ico {
           width: 24px;
           height: 24px;
-          background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/comparison3.svg) no-repeat center;
+          background: url(/catalog/view/theme/default/image/comparison3.svg) no-repeat center;
           display: inline-block;
           vertical-align: middle;
           margin-right: 5px; }
@@ -3033,28 +3033,28 @@ textarea {
         z-index: 1;
         display: none; }
       .plastic-window-elements .img .img1 {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/plastic-window1.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/plastic-window1.png) no-repeat center;
         background-size: cover; }
       .plastic-window-elements .img .img2 {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/plastic-window2.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/plastic-window2.png) no-repeat center;
         background-size: cover; }
       .plastic-window-elements .img .img3 {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/plastic-window3.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/plastic-window3.png) no-repeat center;
         background-size: cover; }
       .plastic-window-elements .img .img4 {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/plastic-window4.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/plastic-window4.png) no-repeat center;
         background-size: cover; }
       .plastic-window-elements .img .img5 {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/plastic-window5.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/plastic-window5.png) no-repeat center;
         background-size: cover; }
       .plastic-window-elements .img .img6 {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/plastic-window6.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/plastic-window6.png) no-repeat center;
         background-size: cover; }
       .plastic-window-elements .img .img7 {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/plastic-window7.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/plastic-window7.png) no-repeat center;
         background-size: cover; }
       .plastic-window-elements .img .img8 {
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/plastic-window8.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/plastic-window8.png) no-repeat center;
         background-size: cover; }
       .plastic-window-elements .img .link2 {
         top: 180px; }
@@ -3316,15 +3316,15 @@ textarea {
       position: absolute;
       width: 22px;
       height: 21px;
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/favorite.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/favorite.svg) no-repeat center;
       top: 0;
       left: 0;
       content: '';
       transition: 0.3s ease-in-out; }
     .favorites-single .favorite-link:hover:before {
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/full-star.svg) no-repeat center; }
+      background: url(/catalog/view/theme/default/image/full-star.svg) no-repeat center; }
     .favorites-single .favorite-link .favorite-link.active:before {
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/full-star.svg) no-repeat center; }
+      background: url(/catalog/view/theme/default/image/full-star.svg) no-repeat center; }
   .favorites-single .more {
     max-width: 268px;
     display: block;
@@ -3459,7 +3459,7 @@ textarea {
         content: '';
         width: 17px;
         height: 17px;
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/add.svg) no-repeat center;
+        background: url(/catalog/view/theme/default/image/add.svg) no-repeat center;
         top: 5px;
         left: 0; }
 
@@ -3480,7 +3480,7 @@ textarea {
     .product-card-data .product-card-title:before {
       position: absolute;
       content: '';
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/calc.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/calc.svg) no-repeat center;
       width: 15px;
       height: 17px;
       top: 5px;
@@ -3545,7 +3545,7 @@ textarea {
     .add-order .product-card-title:before {
       position: absolute;
       content: '';
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/add.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/add.svg) no-repeat center;
       width: 17px;
       height: 17px;
       top: 5px;
@@ -3752,7 +3752,7 @@ textarea {
       .add-order-fav .favorite-link:before {
         position: absolute;
         content: '';
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/favorite.svg) no-repeat center;
+        background: url(/catalog/view/theme/default/image/favorite.svg) no-repeat center;
         width: 21px;
         height: 21px;
         top: -2px;
@@ -3763,7 +3763,7 @@ textarea {
       .add-order-fav .brand-link:before {
         position: absolute;
         content: '';
-        background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/comparison.svg) no-repeat center;
+        background: url(/catalog/view/theme/default/image/comparison.svg) no-repeat center;
         width: 23px;
         height: 21px;
         top: -2px;
@@ -3790,7 +3790,7 @@ textarea {
     .tech .char .product-card-title:before {
       position: absolute;
       content: '';
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/vec.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/vec.svg) no-repeat center;
       width: 17px;
       height: 18px;
       top: 4px;
@@ -3804,7 +3804,7 @@ textarea {
     .tech .desc .product-card-title:before {
       position: absolute;
       content: '';
-      background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/desc.svg) no-repeat center;
+      background: url(/catalog/view/theme/default/image/desc.svg) no-repeat center;
       width: 18px;
       height: 16px;
       top: 5px;
@@ -4187,7 +4187,7 @@ textarea {
   text-align: left; }
 
 .wrap {
-  background: url(http://tvoeokno.alegar.com.ua/catalog/view/theme/default/image/bg10.png) no-repeat center;
+  background: url(/catalog/view/theme/default/image/bg10.png) no-repeat center;
   background-size: cover; }
 
 .window-sill-info .sizes,

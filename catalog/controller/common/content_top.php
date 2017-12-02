@@ -68,7 +68,7 @@ class ControllerCommonContentTop extends Controller {
 				}
 			}
 		}
-		
+		/*
 		$this->load->model('blog/blog');
  		$this->load->model('blog/blog_category');
  		
@@ -81,7 +81,7 @@ class ControllerCommonContentTop extends Controller {
  		
  		$this->load->model('catalog/manufacturer');
  		$data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
-
+		*/
 		return $this->load->view('common/content_top', $data);
 	}
 }
