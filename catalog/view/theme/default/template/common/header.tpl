@@ -41,7 +41,7 @@
           </ul>
           <nav class="header-nav">
             <ul class="header-nav-list">
-              <li><a href="#">О компании</a></li>
+              <li><a href="/about_us">О компании</a></li>
               <li><a href="#">Акции и новости</a></li>
               <li><a href="#">Статьи и обзоры</a></li>
               <li><a href="#">Доставка</a></li>
