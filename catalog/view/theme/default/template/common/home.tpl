@@ -85,106 +85,14 @@
     <div class="container">
       <h2 class="main-title">Проверенные бренды</h2>
       <div class="row">
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/veka.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/wds.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/salamander.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/kbe.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/windom.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/rehau.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/openteck.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/Winkhaus.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/decco.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/Clima.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/Glas.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/crystalit.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/axor.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/Danke.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/hoppe.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/kraft.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/maco.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/reze.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/vorne.png" alt="">
-          </a>
-        </div>
-        <div class="col-md-3 col-sm-4">
-          <a href="#" class="brands-single">
-            <img src="/catalog/view/theme/default/image/siegenia.png" alt="">
-          </a>
-        </div>
+
+        <?php foreach($manufacturers as $manufacture){ ?>
+          <div class="col-md-3 col-sm-4">
+            <a href="/<?php echo $manufacture['keyword'];?>" class="brands-single">
+              <img src="/image/<?php echo $manufacture['image'];?>" alt="Бренд <?php echo $manufacture['title'];?>">
+            </a>
+          </div>
+        <?php } ?>
       </div>
     </div>
   </section>
@@ -349,7 +257,7 @@
   </section>
   <section class="certificates">
     <div class="container-fluid">
-      <h2 class="main-title">СЕРТИФИКАТЫ И гаРАНТИИ</h2>
+      <h2 class="main-title"><?php echo $blogs['garanty']['name'];?></h2>
       <div class="row">
         <div class="col-md-4 col-md-offset-1">
           <div class="certificates-info">
@@ -462,124 +370,128 @@
   </section>
   <section class="offers">
     <div class="container">
-      <h2 class="main-title">Наши услуги</h2>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
+      <h2 class="main-title"><?php echo $blogs['our_services']['name'];?></h2>
+      <?php foreach($blogs['our_services']['blogs'] as $blog){ ?>
+        <div class="offers-single">
+          <div class="offers-single-head">
+            <p class="name"><?php echo $blog['title'];?></p>
+            <a href="#" class="more">Больше</a>
+          </div>
+          <div class="offers-single-content">
+            <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
+            <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
+            <div class="offers-single-content-btn">
+              <a href="#" class="red-btn">подробнее</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="offers-single">
-        <div class="offers-single-head">
-          <p class="name">Пластиковые окна на выбор</p>
-          <a href="#" class="more">Больше</a>
-        </div>
-        <div class="offers-single-content">
-          <img src="/catalog/view/theme/default/image/offer.jpg" alt="">
-          <p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>
-          <div class="offers-single-content-btn">
-            <a href="#" class="red-btn">подробнее</a>
-          </div>
-        </div>
-      </div>
+      <?php } ?>
+
+
+      {*<div class="offers-single">*}
+        {*<div class="offers-single-head">*}
+          {*<p class="name">Пластиковые окна на выбор</p>*}
+          {*<a href="#" class="more">Больше</a>*}
+        {*</div>*}
+        {*<div class="offers-single-content">*}
+          {*<img src="/catalog/view/theme/default/image/offer.jpg" alt="">*}
+          {*<p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>*}
+          {*<div class="offers-single-content-btn">*}
+            {*<a href="#" class="red-btn">подробнее</a>*}
+          {*</div>*}
+        {*</div>*}
+      {*</div>*}
+      {*<div class="offers-single">*}
+        {*<div class="offers-single-head">*}
+          {*<p class="name">Пластиковые окна на выбор</p>*}
+          {*<a href="#" class="more">Больше</a>*}
+        {*</div>*}
+        {*<div class="offers-single-content">*}
+          {*<img src="/catalog/view/theme/default/image/offer.jpg" alt="">*}
+          {*<p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>*}
+          {*<div class="offers-single-content-btn">*}
+            {*<a href="#" class="red-btn">подробнее</a>*}
+          {*</div>*}
+        {*</div>*}
+      {*</div>*}
+      {*<div class="offers-single">*}
+        {*<div class="offers-single-head">*}
+          {*<p class="name">Пластиковые окна на выбор</p>*}
+          {*<a href="#" class="more">Больше</a>*}
+        {*</div>*}
+        {*<div class="offers-single-content">*}
+          {*<img src="/catalog/view/theme/default/image/offer.jpg" alt="">*}
+          {*<p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>*}
+          {*<div class="offers-single-content-btn">*}
+            {*<a href="#" class="red-btn">подробнее</a>*}
+          {*</div>*}
+        {*</div>*}
+      {*</div>*}
+      {*<div class="offers-single">*}
+        {*<div class="offers-single-head">*}
+          {*<p class="name">Пластиковые окна на выбор</p>*}
+          {*<a href="#" class="more">Больше</a>*}
+        {*</div>*}
+        {*<div class="offers-single-content">*}
+          {*<img src="/catalog/view/theme/default/image/offer.jpg" alt="">*}
+          {*<p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>*}
+          {*<div class="offers-single-content-btn">*}
+            {*<a href="#" class="red-btn">подробнее</a>*}
+          {*</div>*}
+        {*</div>*}
+      {*</div>*}
+      {*<div class="offers-single">*}
+        {*<div class="offers-single-head">*}
+          {*<p class="name">Пластиковые окна на выбор</p>*}
+          {*<a href="#" class="more">Больше</a>*}
+        {*</div>*}
+        {*<div class="offers-single-content">*}
+          {*<img src="/catalog/view/theme/default/image/offer.jpg" alt="">*}
+          {*<p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>*}
+          {*<div class="offers-single-content-btn">*}
+            {*<a href="#" class="red-btn">подробнее</a>*}
+          {*</div>*}
+        {*</div>*}
+      {*</div>*}
+      {*<div class="offers-single">*}
+        {*<div class="offers-single-head">*}
+          {*<p class="name">Пластиковые окна на выбор</p>*}
+          {*<a href="#" class="more">Больше</a>*}
+        {*</div>*}
+        {*<div class="offers-single-content">*}
+          {*<img src="/catalog/view/theme/default/image/offer.jpg" alt="">*}
+          {*<p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>*}
+          {*<div class="offers-single-content-btn">*}
+            {*<a href="#" class="red-btn">подробнее</a>*}
+          {*</div>*}
+        {*</div>*}
+      {*</div>*}
+      {*<div class="offers-single">*}
+        {*<div class="offers-single-head">*}
+          {*<p class="name">Пластиковые окна на выбор</p>*}
+          {*<a href="#" class="more">Больше</a>*}
+        {*</div>*}
+        {*<div class="offers-single-content">*}
+          {*<img src="/catalog/view/theme/default/image/offer.jpg" alt="">*}
+          {*<p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>*}
+          {*<div class="offers-single-content-btn">*}
+            {*<a href="#" class="red-btn">подробнее</a>*}
+          {*</div>*}
+        {*</div>*}
+      {*</div>*}
+      {*<div class="offers-single">*}
+        {*<div class="offers-single-head">*}
+          {*<p class="name">Пластиковые окна на выбор</p>*}
+          {*<a href="#" class="more">Больше</a>*}
+        {*</div>*}
+        {*<div class="offers-single-content">*}
+          {*<img src="/catalog/view/theme/default/image/offer.jpg" alt="">*}
+          {*<p>Для жителей малометражных квартир старого образца всегда актуален вопрос расширения полезной площади своего дома. Удачно с такой проблемой справляется «вынос балконов». Это означает, что при остеклении балкона или лоджии, мы сварим специальный металлический каркас снаружи парапета балкона. Таким образом Вы получите широкий подоконник и увеличите пространство балкона. Есть варианты остекления балконов с выносом по максимуму, при которых можно расширять не только подоконник, но и пол. Такая услуга называется вынос балкона по полу.</p>*}
+          {*<div class="offers-single-content-btn">*}
+            {*<a href="#" class="red-btn">подробнее</a>*}
+          {*</div>*}
+        {*</div>*}
+      {*</div>*}
     </div>
   </section>
   <section class="calc">
@@ -610,4 +522,14 @@
     </div>
   </section>
 
+
+
+
+
+
+
 <?php echo $footer; ?>
+
+
+
+
