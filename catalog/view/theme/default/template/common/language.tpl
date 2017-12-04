@@ -1,22 +1,25 @@
-<?php if (count($languages) > 1) { ?>
-<div class="pull-left">
 <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-language">
-  <div class="btn-group">
-    <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+<ul class="header-lang">
     <?php foreach ($languages as $language) { ?>
-    <?php if ($language['code'] == $code) { ?>
-    <img src="catalog/language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" alt="<?php echo $language['name']; ?>" title="<?php echo $language['name']; ?>">
-    <?php } ?>
-    <?php } ?>
-    <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_language; ?></span> <i class="fa fa-caret-down"></i></button>
-    <ul class="dropdown-menu">
-      <?php foreach ($languages as $language) { ?>
-      <li><button class="btn btn-link btn-block language-select" type="button" name="<?php echo $language['code']; ?>"><img src="catalog/language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" alt="<?php echo $language['name']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></button></li>
+      <?php if ($language['code'] == $code) { ?>
+        <li><a href="javascript:;" class="active"><?php echo str_replace(array('ru-ru','ua-uk'),array('RU','UA'),$language['code']); ?></a></li>
+      <?php }else{ ?>
+        <li><button class="btn btn-link btn-block language-select" onClick="this.form.submit();" type="button" name="<?php echo $language['code']; ?>"><?php echo str_replace(array('ru-ru','ua-uk'),array('RU','UA'),$language['code']); ?></button>
+            <input type="hidden" name="code" value="<?php echo $language['code']; ?>" />
+        </li>
       <?php } ?>
-    </ul>
-  </div>
-  <input type="hidden" name="code" value="" />
-  <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
+    <?php } ?>  
+    <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
 </form>
-</div>
-<?php } ?>
+</ul><!--
+--><style>
+  .language-select{
+    padding: 0;
+    border: none;
+    margin: 0;
+    font-size: 10px;
+    letter-spacing: 0.6px;
+    color: #3D799F;
+    text-decoration: underline;
+  }
+</style>

@@ -59,7 +59,6 @@ class ControllerCommonHome extends Controller {
  		
  		$this->load->model('catalog/manufacturer');
  		$data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
-
 		
 		$this->response->setOutput($this->load->view('common/home', $data));
 	}
