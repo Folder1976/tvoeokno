@@ -139,7 +139,6 @@
       <div class="header-bottom">
         <div class="main-nav">
           <ul class="main-nav-list">
-            <div class="container">
             <li>
               <a href="/">
                 <img src="/catalog/view/theme/default/image/i.svg" alt="">
@@ -237,7 +236,6 @@
                 <li class="main-nav-dropdown-item"><a href="#">Подоконник DANKE</a></li>
               </ul>
             </li>
-            </div>
           </ul>
         </div>
       </div>
