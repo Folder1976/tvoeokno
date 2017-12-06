@@ -117,7 +117,7 @@ button {
   overflow: hidden; }
   .header-top {
     background: #82C2CF;
-    height: 36px; }
+    height: 41px; }
   .header-social {
     font-size: 0;
     padding: 5px 0;
@@ -219,7 +219,10 @@ button {
       font-family: "FiraSans-Medium", sans-serif; }
     .header-info-top-list {
       display: inline-block;
-      font-size: 0; }
+      font-size: 0;
+      display: inline-flex;
+      justify-content: space-around;
+      flex-wrap: wrap; }
       .header-info-top-list li {
         display: inline-block;
         margin-left: 23px; }
@@ -307,7 +310,8 @@ button {
         background: #FAFAFA;
         box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
         border-radius: 50px;
-        border: none; }
+        border: none;
+        height: 42px; }
       .header-callback-form button {
         background: linear-gradient(180deg, #EF4424 -38.05%, rgba(255, 255, 255, 0.6) -6.02%, rgba(239, 68, 36, 0.37) 61.1%), #EF4424;
         box-shadow: inset 0px -5px 4px rgba(0, 0, 0, 0.3);
@@ -315,8 +319,8 @@ button {
         outline: none;
         padding: 11px 25px;
         position: absolute;
-        top: 4px;
-        right: 4px;
+        top: 0;
+        right: 0;
         color: #fff;
         text-transform: uppercase;
         font-size: 12px;
@@ -1331,7 +1335,7 @@ button {
     background: #c4c4c4; }
 
 .footer {
-  margin-top: -143px;
+  /* margin-top: -143px; */
   position: relative; }
   .footer h2 {
     font-size: 18px;
