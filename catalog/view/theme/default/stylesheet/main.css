@@ -365,7 +365,7 @@ button {
   text-align: center;
   font-size: 0;
   padding: 16px 0; }
-  .main-nav-list li {
+  .main-nav-list > li {
     display: inline-block;
     margin: -12px 38px 0;
     padding-bottom: 10px;
@@ -382,7 +382,6 @@ button {
 .main-nav-list > li > a {
   padding: 8px 12px;
   border-radius: 5px;
-
 }
 
   .main-nav-dropdown {
@@ -402,13 +401,48 @@ button {
   .main-nav-list > li:hover .main-nav-dropdown {
     display: block;
     transition: all .3s;
-
   }
 .main-nav-list > li:hover > a {
   background: #EF4424;
   transition: all .3s;
-
 }
+
+.main-nav-dropdown > li {
+  display: inline-block;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.main-nav-dropdown:after {
+  content: '';
+  width: 100%;
+  display: inline-block;
+  height: 0;
+}
+
+.main-nav-dropdown-submenu {
+  display: none;
+  position: absolute;
+  background: #c03421;
+  left: 0;
+  text-align: left;
+  border-radius: 5px;
+  width: 150%;
+}
+.main-nav-dropdown-submenu li {
+  display: block;
+  margin: 5px;
+}
+
+.main-nav-dropdown > li:hover .main-nav-dropdown-submenu {
+  display: block;
+  transition: all .3s;
+}
+.main-nav-dropdown > li:last-child > .main-nav-dropdown-submenu {
+  right: 0;
+  left: auto;
+}
+
 .side-nav {
   position: fixed;
   top: 50%;
@@ -606,7 +640,7 @@ button {
         top: -6px;
         left: 20px; }
 
-.main-title {
+.main-title, h1 {
   font-size: 28px;
   color: #EF4424;
   letter-spacing: 2.8px;
@@ -615,7 +649,7 @@ button {
   margin-bottom: 35px;
   font-family: "pfdintextpro-bold", sans-serif;
   position: relative; }
-  .main-title:before {
+  .main-title:before, h1:before {
     position: absolute;
     content: '';
     bottom: -10px;
@@ -2745,7 +2779,9 @@ textarea {
       border-bottom: 1px dashed rgba(0, 0, 0, 0.2); }
       .aside ul a:hover {
         color: #D53D20;
-        border-color: #D53D20; }
+        border-color: #D53D20;
+        text-decoration: none;
+      }
     .aside ul a.active {
       color: #D53D20;
       border-color: #D53D20; }
@@ -4380,6 +4416,7 @@ textarea {
     cursor: pointer; }
 
 .contacts-form .captcha {
+  display: none;
   width: 180px;
   vertical-align: middle;
   display: inline-block; }
