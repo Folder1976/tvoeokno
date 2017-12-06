@@ -1,0 +1,23 @@
+<svg width="26" height="26" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>32px_Info Circle</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-711 268)">
+<g id="32px_Info Circle">
+<g id="Info Circle">
+<g id="Vector">
+<use xlink:href="#path0_stroke" transform="translate(712 -267)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_stroke" transform="matrix(6.12323e-17 -1 1 6.12323e-17 724 -251.667)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_stroke" transform="matrix(1 2.67189e-24 -2.67189e-24 1 720.667 -255)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 23.5 12C 23.5 18.3513 18.3513 23.5 12 23.5L 12 24.5C 18.9036 24.5 24.5 18.9036 24.5 12L 23.5 12ZM 12 23.5C 5.64873 23.5 0.5 18.3513 0.5 12L -0.5 12C -0.5 18.9036 5.09644 24.5 12 24.5L 12 23.5ZM 0.5 12C 0.5 5.64873 5.64873 0.5 12 0.5L 12 -0.5C 5.09644 -0.5 -0.5 5.09644 -0.5 12L 0.5 12ZM 12 0.5C 18.3513 0.5 23.5 5.64873 23.5 12L 24.5 12C 24.5 5.09644 18.9036 -0.5 12 -0.5L 12 0.5Z"/>
+<path id="path1_stroke" d="M 0 -0.5C -0.276142 -0.5 -0.5 -0.276142 -0.5 0C -0.5 0.276142 -0.276142 0.5 0 0.5L 0 -0.5ZM 6.66667 0.5C 6.94281 0.5 7.16667 0.276142 7.16667 0C 7.16667 -0.276142 6.94281 -0.5 6.66667 -0.5L 6.66667 0.5ZM 0 0.5L 6.66667 0.5L 6.66667 -0.5L 0 -0.5L 0 0.5Z"/>
+</defs>
+</svg>

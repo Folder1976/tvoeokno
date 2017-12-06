@@ -7,7 +7,8 @@
     }
     .header-info-top-list li {
         font-size: 10px;
-        margin-left: 7px
+        margin-left: 7px;
+        margin-right: 7px
     }
     .header-info-center .block p {
         font-size: 10px
@@ -32,8 +33,11 @@
     }
 }
 @media (max-width: 1199px) {
+    .header-social {
+        display: none
+    }
     .header-lang {
-        padding-left: 10px
+        padding-left: 0
     }
     .header-account {
         margin-right: 10px
@@ -54,7 +58,7 @@
         margin-left: 0
     }
     .header-info-top-list .viber:before {
-        top: -6px;
+        top: -2px;
         -ms-transform: inherit;
         transform: inherit
     }
@@ -413,9 +417,6 @@
     }
 }
 @media (max-width: 991px) {
-    .header-social {
-        display: none
-    }
     .header-nav {
         padding-left: 0
     }
@@ -840,7 +841,7 @@
         top: 36px;
         left: 0;
         background: #82C2CF;
-        z-index: 1;
+        z-index: 3;
         width: 100%;
         padding: 0;
         padding-left: 10px
@@ -1558,6 +1559,9 @@
     }
 }
 @media (max-width: 445px) {
+    .header-top {
+        height: auto;
+    }
     .brand-link {
         float: none
     }

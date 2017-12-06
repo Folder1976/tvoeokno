@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Project</title>
+    <title><?php echo $title; ?></title>
+    <?php if ($description) { ?>
+    <meta name="description" content="<?php echo $description; ?>" />
+    <?php } ?>
+
     <script src="/catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/vendor.css">
     <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
@@ -26,7 +30,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="<?php echo $class; ?>">
     <header class="header">
       <div class="header-top">
         <div class="container-fluid">
@@ -82,6 +86,7 @@
               <div class="header-info-top">
                 <p>Свяжитесь с нами</p>
                 <ul class="header-info-top-list">
+                  <!-- <li><a href="tel:<?php echo preg_replace('~[^0-9]+~','',$telephone); ?>"><?php echo $telephone;?></a></li> -->
                   <li><a href="tel:0442271225">0 (44) 227 12 25</a></li>
                   <li><a href="tel:0936613030">0 (93) 661 30 30</a></li>
                   <li><a href="tel:0506613030">0 (50) 661 30 30</a></li>
@@ -92,7 +97,7 @@
               <div class="header-info-center">
                 <div class="block email">
                   <p>Наша почта:</p>
-                  <a href="#">okna@tvoeokno.com.ua</a>
+                  <a href="mailto:okna@tvoeokno.com.ua">okna@tvoeokno.com.ua</a>
                 </div>
                 <div class="block address">
                   <p>Наш адрес:</p>
@@ -108,7 +113,7 @@
                 <input type="text" placeholder="Телефон">
                 <button class="red-btn">Перезвонить мне</button>
               </form>
-              <a href="#" class="header-callback-single">
+              <a href="/index.php?route=product/compare" class="header-callback-single">
                 <span class="img compare"></span>
                 <p>В сравнении</p>
               </a>
@@ -240,39 +245,21 @@
   <section class="main-sect">
     <ul class="side-nav">
       <li>
-        <a href="#">
-          <span>Отправить чертеж на почту</span>
-          <img src="/catalog/view/theme/default/image/51.png" alt="">
-        </a>
+        <a href="#"><span>Отправить чертеж на почту</span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
       </li>
       <li>
-        <a href="#">
-          <span>Расчет окон</span>
-          <img src="/catalog/view/theme/default/image/52.png" alt="">
-        </a>
+        <a href="#"><span>Расчет окон</span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
       </li>
       <li>
-        <a href="#">
-          <span>Отзывы</span>
-          <img src="/catalog/view/theme/default/image/53.png" alt="">
-        </a>
+        <a href="#"><span>Отзывы</span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
       </li>
       <li>
-        <a href="#">
-          <span>Запись на замер</span>
-          <img src="/catalog/view/theme/default/image/54.png" alt="">
-        </a>
+        <a href="#"><span>Запись на замер</span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
       </li>
       <li>
-        <a href="#">
-          <span>Ремонт окон</span>
-          <img src="/catalog/view/theme/default/image/55.png" alt="">
-        </a>
+        <a href="#"><span>Ремонт окон</span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
       </li>
       <li>
-        <a href="#">
-          <span>Фото работ</span>
-          <img src="/catalog/view/theme/default/image/56.png" alt="">
-        </a>
+        <a href="#"><span>Фото работ</span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
       </li>
     </ul>
