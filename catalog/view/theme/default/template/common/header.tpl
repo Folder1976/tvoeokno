@@ -42,11 +42,11 @@
           <nav class="header-nav">
             <ul class="header-nav-list">
               <li><a href="/about_us">О компании</a></li>
-              <li><a href="#">Акции и новости</a></li>
+              <li><a href="/news_and_shares">Акции и новости</a></li>
               <li><a href="#">Статьи и обзоры</a></li>
-              <li><a href="#">Доставка</a></li>
-              <li><a href="#">Оплата</a></li>
-              <li><a href="#">Контакты</a></li>
+              <li><a href="/delivery">Доставка</a></li>
+              <li><a href="/payment">Оплата</a></li>
+              <li><a href="/contacts">Контакты</a></li>
             </ul>
           </nav>
           
@@ -134,42 +134,105 @@
       <div class="header-bottom">
         <div class="main-nav">
           <ul class="main-nav-list">
+            <div class="container">
             <li>
-              <a href="#">
+              <a href="/">
                 <img src="/catalog/view/theme/default/image/i.svg" alt="">
                 <span>Главная</span>
               </a>
+              <ul class="main-nav-dropdown">
+                <li class="main-nav-dropdown-item"><a href="#">Кредит "Тепла оселя"</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Выезд в пригород Киева</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Доставка</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Гарантия</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Статьи</a></li>
+              </ul>
             </li>
             <li>
               <a href="#">
                 <img src="/catalog/view/theme/default/image/m1.svg" alt="">
                 <span>Пластиковые окна</span>
               </a>
+              <ul class="main-nav-dropdown">
+                <li class="main-nav-dropdown-item"><a href="#">Окна REHAU</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна SALAMANDER</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна WDS</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна DECCO</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна OPEN TECK</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна KBE</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна WINDOM</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна VEKA</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна ALMPLAST</a></li>
+              </ul>
+
             </li>
             <li>
               <a href="#">
                 <img src="/catalog/view/theme/default/image/m2.svg" alt="">
                 <span>Окна цены</span>
               </a>
+              <ul class="main-nav-dropdown">
+                <li class="main-nav-dropdown-item"><a href="#">Цены на типовые окна</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Балконный блок</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Калькулятор окон ONLINE</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Окна недорого</a></li>
+              </ul>
             </li>
             <li>
               <a href="#">
                 <img src="/catalog/view/theme/default/image/m3.svg" alt="">
                 <span>Балконы и лоджии</span>
               </a>
+              <ul class="main-nav-dropdown">
+                <li class="main-nav-dropdown-item"><a href="#">Остекление лоджий</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Остекление балконов</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Французский балкон</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Балкон под ключ</a>
+                  <ul class="main-nav-dropdown-submenu">
+                    <li class="dropdown-submenu"><a href="#">Сайдинг на балконе</a></li>
+                    <li class="dropdown-submenu"><a href="#">Профнастил на балконе</a></li>
+                    <li class="dropdown-submenu"><a href="#">Крыша на балкон</a></li>
+                  </ul>
+                </li>
+                <li class="main-nav-dropdown-item"><a href="#">Балкон с выносом</a>
+                  <ul class="main-nav-dropdown-submenu">
+                    <li class="dropdown-submenu"><a href="#">Вынос балкона по типу "косынка"</a></li>
+                    <li class="dropdown-submenu"><a href="#">Балкон с выносом по типу "каркас"</a></li>
+                    <li class="dropdown-submenu"><a href="#">Расширение пола балкона</a></li>
+                  </ul>
+                </li>
+              </ul>
             </li>
             <li>
               <a href="#">
                 <img src="/catalog/view/theme/default/image/m4.svg" alt="">
                 <span>Нестандарты</span>
               </a>
+              <ul class="main-nav-dropdown">
+                <li class="main-nav-dropdown-item"><a href="#">Остекление коттеджей</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Арочные окна</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Цветные окна</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Пластиковые двери</a></li>
+              </ul>
             </li>
             <li>
               <a href="#">
                 <img src="/catalog/view/theme/default/image/m5.svg" alt="">
                 <span>Аксессуары</span>
               </a>
+              <ul class="main-nav-dropdown">
+                <li class="main-nav-dropdown-item"><a href="#">Подоконники</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Стеклопакеты</a>
+                  <ul class="main-nav-dropdown-submenu">
+                    <li class="dropdown-submenu"><a href="#">Марки стеклопакетов</a></li>
+                  </ul>
+                </li>
+                <li class="main-nav-dropdown-item"><a href="#">Фурнитура MACO</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Откосы</a></li>
+                <li class="main-nav-dropdown-item"><a href="#">Подоконник DANKE</a></li>
+              </ul>
             </li>
+            </div>
           </ul>
         </div>
       </div>
