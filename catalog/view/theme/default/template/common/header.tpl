@@ -47,7 +47,7 @@
             <ul class="header-nav-list">
               <li><a href="/about_us">О компании</a></li>
               <li><a href="/news_and_shares">Акции и новости</a></li>
-              <li><a href="#">Статьи и обзоры</a></li>
+              <li><a href="/blogs">Статьи и обзоры</a></li>
               <li><a href="/delivery">Доставка</a></li>
               <li><a href="/payment">Оплата</a></li>
               <li><a href="/contacts">Контакты</a></li>
