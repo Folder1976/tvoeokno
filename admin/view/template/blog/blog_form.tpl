@@ -3,7 +3,6 @@
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor_init.js"></script>
 <link type="text/css" href="view/javascript/summernote/summernote.css" rel="stylesheet" media="screen" />
-<script src="view/javascript/common.js" type="text/javascript"></script>
 <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
 <script type="text/javascript" src="view/javascript/summernote/lang/summernote-ru-RU.js"></script>
 <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
