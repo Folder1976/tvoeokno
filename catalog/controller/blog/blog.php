@@ -481,7 +481,7 @@ class ControllerBlogBlog extends Controller {
 			}
 			
 			if (empty($this->session->data['captcha_comment']) || ($this->session->data['captcha_comment'] != $this->request->post['captcha_comment'])) {
-				$json['error'] = $this->language->get('error_captcha');
+				//$json['error'] = $this->language->get('error_captcha');
 			}
 
 			unset($this->session->data['captcha_comment']);

@@ -299,6 +299,9 @@
       <li class="layer" data-depth="0.8"><img src="/catalog/view/theme/default/image/201.png" alt=""></li>
     </ul>
     <div class="container clients-review">
+     
+     <?php echo $coment; ?>
+     
       <h2 class="main-title">Кленты о НАС</h2>
       <div class="row">
         <div class="col-md-6 col-md-offset-1">

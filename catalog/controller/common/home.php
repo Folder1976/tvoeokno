@@ -15,7 +15,22 @@ class ControllerCommonHome extends Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+		
+		$this->language->load('blog/blog');
+		$this->load->model('blog/blog');
+		$_GET['blog_id'] = 80;
+		$data['comment_blog'] = $this->model_blog_blog->getBlog(80);
+		
+		$results = $this->model_blog_blog->getCommentsByBlogId(80, 0, 10);
 
+		foreach ($results as $result) {
+        		$data['comments'][] = array(
+        			'name'     => $result['name'],
+					'email'     => $result['email'],
+					'comment'       => strip_tags($result['comment']),
+        			'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+        		);
+      		}
 		
 		$this->load->model('extension/module');
 

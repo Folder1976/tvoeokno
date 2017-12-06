@@ -2,6 +2,11 @@
 
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor_init.js"></script>
+<link type="text/css" href="view/javascript/summernote/summernote.css" rel="stylesheet" media="screen" />
+<script src="view/javascript/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
+<script type="text/javascript" src="view/javascript/summernote/lang/summernote-ru-RU.js"></script>
+<script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
 
 <?php echo $column_left; ?>
 
@@ -323,8 +328,8 @@
 <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
 
-ckeditorInit('description<?php echo $language['language_id']; ?>', getURLVar('token'));
-/*
+//ckeditorInit('description<?php echo $language['language_id']; ?>', getURLVar('token'));
+
 $('#description<?php echo $language['language_id']; ?>').summernote({
 	height: 250,
 	toolbar: [
@@ -339,7 +344,7 @@ $('#description<?php echo $language['language_id']; ?>').summernote({
     ['insert', ['picture', 'link', 'video', 'hr']], // no insert buttons
 	['codeview', ['fullscreen', 'codeview']] //no help button
   ]
-});*/
+});
 <?php } ?>
 //--></script> 
 <script type="text/javascript"><!--

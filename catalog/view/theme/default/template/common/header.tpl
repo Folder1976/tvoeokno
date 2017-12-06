@@ -75,8 +75,8 @@
         <div class="row">
           <div class="col-md-3 col-sm-4">
             <div class="header-logo">
-              <a href="#">
-                <img src="/catalog/view/theme/default/image/logo.svg" alt="">
+              <a href="/">
+                <img src="/catalog/view/theme/default/image/logo.svg" alt="лого Твое окно">
                 <p>9:00 - 18:00 пн - пн<span>10:00 - 15:00 сб</span></p>
               </a>
             </div>
