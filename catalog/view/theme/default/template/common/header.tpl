@@ -154,7 +154,7 @@
               </ul>
             </li>
             <li>
-              <a href="#">
+              <a href="/plastic_windows">
                 <img src="/catalog/view/theme/default/image/m1.svg" alt="">
                 <span>Пластиковые окна</span>
               </a>
@@ -172,7 +172,7 @@
 
             </li>
             <li>
-              <a href="#">
+              <a href="/window_prices">
                 <img src="/catalog/view/theme/default/image/m2.svg" alt="">
                 <span>Окна цены</span>
               </a>
