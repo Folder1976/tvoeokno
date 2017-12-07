@@ -4545,3 +4545,11 @@ textarea {
   display: block;
 }
 
+/*.blog-blog .main-sect .blog .blog_post .main_thumb img {*/
+  /*float: left;*/
+/*}*/
+
+.blog-blog .main_thumb img {
+  float: left;
+}
+
