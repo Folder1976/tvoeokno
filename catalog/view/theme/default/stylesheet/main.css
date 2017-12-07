@@ -4511,3 +4511,37 @@ textarea {
 
 .add-order2 .window-sill-info-right {
   width: 250px; }
+
+
+
+
+/*CASTOM BLOG POST STYLES*/
+
+
+.blog_post .blog_stats {
+  display: none;
+}
+.blog_post .share {
+  display: none;
+}
+.blog_post #comment_form {
+  display: none;
+}
+.blog_post h3 {
+  display: none;
+}
+.blog_post .main_description p {
+  font-size: 14px;
+  letter-spacing: 0.42px;
+  color: #262626;
+  padding: 0 0 20px 0;
+  line-height: 1.6;
+  font-family: "FiraSans-Regular", sans-serif;
+  text-align: left;
+  margin: 0;
+}
+
+.blog_post h3.blue {
+  display: block;
+}
+
