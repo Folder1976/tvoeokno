@@ -213,40 +213,80 @@
   <section class="news">
     <div class="container">
       <div class="news-nav">
-        <a href="#" class="active left">Акции</a>
-        <a href="#" class="right">новости</a>
+        <a href="#tab-actions" class="active left" data-toggle="tab"><?php echo $blogs['action']['name']; ?></a>
+        <a href="#tab-news" class="right" data-toggle="tab">новости</a>
       </div>
-      <div class="row">
+      <div class="row news-tab active" id="tab-actions">
         <div class="col-md-7">
           <div class="news-single">
-            <img src="/catalog/view/theme/default/image/banner1.jpg" alt="">
+            <img src="/image/<?php echo $blogs['action']['blogs'][0]['image']; ?>" alt="">
             <div class="news-single-content">
-              <h2>Очень большой заголовок <br> в две строки</h2>
-              <p>At arcu accumsan morbi vestibulum molestie. Ac id vel urna urna pharetra, in eu, pellentesque eros quam donec in.</p>
-              <p>Lacinia at risus vulputate lorem, mattis integer eu fermentum magnis, ut placerat viverra imperdiet lectus per. Dolor nec nunc, occaecat sodales dui at tincidunt. Nunc vel interdum libero mus turpis mi, quam egestas nunc. Cras condimentum integer etiam nostra dui ultrices laoreet ut ante.</p>
-              <span class="time">21.09.2017</span>
+              <h2><?php
+                if ( empty($blogs['action']['blogs'][0]['description']) ) {
+                  echo $blogs['action']['blogs'][0]['title'];
+                } else {
+                  echo '<a href="/'.$blogs['action']['blogs'][0]['keyword'].'">'.$blogs['action']['blogs'][0]['title'].'</a>';
+                } ?></h2>
+              <p><?php echo $blogs['action']['blogs'][0]['short_description']; ?></p>
+              <span class="time"><?php echo $blogs['action']['blogs'][0]['date_added']; ?></span>
             </div>
           </div>
         </div>
         <div class="col-md-5">
+          <?php $blogs_action = array_slice($blogs['action']['blogs'], 1, 3); ?>
+          <?php foreach ($blogs_action as $key => $post) { ?>
           <div class="news-single">
             <div class="news-single-content">
-              <h2>Очень большой заголовок <br> в две строки</h2>
-              <p>At arcu accumsan morbi vestibulum molestie. Ac id vel urna urna pharetra, in eu, pellentesque eros quam donec in.</p>
-              <p>Lacinia at risus vulputate lorem, mattis integer eu fermentum magnis, ut placerat viverra imperdiet lectus per. Dolor nec nunc, occaecat sodales dui at tincidunt. Nunc vel interdum libero mus.</p>
-              <span class="time">21.09.2017</span>
+              <h2><?php
+                if ( empty($post['description']) ) {
+                  echo $post['title'];
+                } else {
+                  echo '<a href="/'.$post['keyword'].'">'.$post['title'].'</a>';
+                } ?></h2>
+              <p><?php echo $post['short_description']; ?></p>
+              <span class="time"><?php echo $post['date_added']; ?></span>
             </div>
           </div>
-          <div class="news-single">
-            <div class="news-single-content">
-              <h2>Очень большой заголовок</h2>
-              <p>At arcu accumsan morbi vestibulum molestie. Ac id vel urna urna pharetra, in eu, pellentesque eros quam donec in.</p>
-              <p>Lacinia at risus vulputate lorem, mattis integer eu fermentum magnis, ut placerat viverra imperdiet lectus per. Dolor nec nunc, occaecat sodales dui at tincidunt. Nunc vel interdum libero mus turpis mi, quam egestas nunc. Cras condimentum integer etiam nostra dui.</p>
-              <span class="time">21.09.2017</span>
-            </div>
-          </div>
+          <?php } ?>
           <div class="news-btn">
-            <a href="#" class="red-btn">все акции</a>
+            <a href="/<?php echo $blogs['action']['keyword']; ?>" class="red-btn">все акции</a>
+          </div>
+        </div>
+      </div>
+      <div class="row news-tab" id="tab-news">
+        <div class="col-md-7">
+          <div class="news-single">
+            <img src="/image/<?php echo $blogs['news']['blogs'][0]['image']; ?>" alt="">
+            <div class="news-single-content">
+              <h2><?php
+                if ( empty($blogs['news']['blogs'][0]['description']) ) {
+                  echo $blogs['news']['blogs'][0]['title'];
+                } else {
+                  echo '<a href="/'.$blogs['news']['blogs'][0]['keyword'].'">'.$blogs['news']['blogs'][0]['title'].'</a>';
+                } ?></h2>
+              <p><?php echo $blogs['news']['blogs'][0]['short_description']; ?></p>
+              <span class="time"><?php echo $blogs['news']['blogs'][0]['date_added']; ?></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <?php $blogs_action = array_slice($blogs['news']['blogs'], 1, 3); ?>
+          <?php foreach ($blogs_action as $key => $post) { ?>
+          <div class="news-single">
+            <div class="news-single-content">
+              <h2><?php
+                if ( empty($post['description']) ) {
+                  echo $post['title'];
+                } else {
+                  echo '<a href="/'.$post['keyword'].'">'.$post['title'].'</a>';
+                } ?></h2>
+              <p><?php echo $post['short_description']; ?></p>
+              <span class="time"><?php echo $post['date_added']; ?></span>
+            </div>
+          </div>
+          <?php } ?>
+          <div class="news-btn">
+            <a href="/<?php echo $blogs['news']['keyword']; ?>" class="red-btn">все новости</a>
           </div>
         </div>
       </div>
@@ -443,6 +483,11 @@ $('#button-comment').on('click', function(e) {
     }
   });
   return false;
+});
+
+$('.news-nav').on('click', 'a', function(){
+  $('.news-nav a').removeClass('active');
+  $(this).addClass('active');
 });
 </script>
 

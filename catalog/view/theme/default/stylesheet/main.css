@@ -980,6 +980,10 @@ button {
       font-family: "FiraSans-Medium", sans-serif;
       display: inline-block;
       padding: 14px 0; }
+  .news-tab {
+    display: none;}
+    .news-tab.active {
+      display: block; }
 
 .work {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
