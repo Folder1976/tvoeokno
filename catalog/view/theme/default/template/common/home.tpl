@@ -305,30 +305,23 @@
         <div class="col-md-6 col-md-offset-1">
           <div class="review">
             <div class="review-slider owl-carousel">
+              <?php foreach ($comments as $comment) { ?>
               <div class="item">
                 <div class="review-single">
-                  <p>Заказывал на дачу 4 окна. Размеры все разные. Менеджер, молодая и очень позитивная девушка! Помогла правильно выполнить заказ, передалав несколько (N!)-раз спецификацию. После 50% предоплаты на счет банковской карты был подтвержден мой заказ. Установленные сроки доставки и цена по правде говоря меня даже удивили. Водитель машины, которыйкоторый осуществлял доставку, позвонил и поинтересовался можно ли выполнить её на</p>
+                  <p><?php echo $comment['comment']; ?></p>
                   <div class="bottom">
-                    <p class="date">21.08.17</p>
-                    <p class="name">Прытков Илья</p>
+                    <p class="date"><?php echo $comment['date_added']; ?></p>
+                    <p class="name"><?php echo $comment['name']; ?></p>
                   </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="review-single">
-                  <p>Заказывал на дачу 4 окна. Размеры все разные. Менеджер, молодая и очень позитивная девушка! Помогла правильно выполнить заказ, передалав несколько (N!)-раз спецификацию. После 50% предоплаты на счет банковской карты был подтвержден мой заказ. Установленные сроки доставки и цена по правде говоря меня даже удивили. Водитель машины, которыйкоторый осуществлял доставку, позвонил и поинтересовался можно ли выполнить её на</p>
-                  <div class="bottom">
-                    <p class="date">21.08.17</p>
-                    <p class="name">Прытков Илья</p>
-                  </div>
-                </div>
-              </div>
+              <?php } ?>
             </div>
             <div class="review-btn">
               <div class="owl-nav navs">
                 <a href="#" class="owl-prev2 prev"><span></span></a>
               </div>
-              <a href="#" class="review-btn-main purple-btn">все отзывы</a>
+              <a href="/comments" class="review-btn-main purple-btn">все отзывы</a>
               <div class="owl-nav navs">
                 <a href="#" class="owl-next2 next"><span></span></a>
               </div>
@@ -336,12 +329,15 @@
           </div>
         </div>
         <div class="col-md-4">
-          <form action="/" class="review-form">
+          <form action="/" class="review-form" id="comment_form">
             <h3>Оставить отзыв</h3>
-            <input type="text" placeholder="Имя">
-            <input type="text" placeholder="Номер договора">
-            <textarea placeholder="Ваш отзыв"></textarea>
-            <button class="blue-btn">Отправить</button>
+            <input type="text" placeholder="Имя" name="name" required>
+            <input type="text" placeholder="Номер договора" name="contract_number">
+            <textarea placeholder="Ваш отзыв" name="comment" required></textarea>
+
+            <input type="hidden" name="email" value="test@test.com">
+            <input type="hidden" name="captcha_comment">
+            <button id="button-comment" class="blue-btn">Отправить</button>
           </form>
         </div>
       </div>
@@ -422,7 +418,33 @@
 
 
 
-
+<script>
+$('#button-comment').on('click', function(e) {
+  e.preventDefault();
+  $.ajax({
+    url: 'index.php?route=blog/blog/write&blog_id=80',
+    type: 'post',
+    dataType: 'json',
+    data: $("#comment_form").serialize(),
+    success: function(json) {
+      $('.alert-success, .alert-danger').remove();
+      
+      if (json['error']) {
+        $('#comment_form').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+      }
+      
+      if (json['success']) {
+        $('#comment_form').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+        
+        $('input[name=\'name\']').val('');
+        $('input[name=\'contract_number\']').val('');
+        $('textarea[name=\'comment\']').val('');
+      }
+    }
+  });
+  return false;
+});
+</script>
 
 
 <?php echo $footer; ?>
