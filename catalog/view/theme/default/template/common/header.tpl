@@ -243,7 +243,64 @@
       </div>
     </header>
 
-    <div id="fb-modal"></div>
+    <div id="fb-modal" class="fb-modal" style="display: none;"></div>
+    <div id="modal-measure" class="fb-modal modal-measure" style="display: none;">
+        <h2>Вызвать замерщика</h2>
+        <div class="image"><img src="/catalog/view/theme/default/image/modal/measure.png" alt=""></div>
+        <form action="" class="js-form-call-me">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" placeholder="Ваше имя" name="name" required>
+                    <input type="text" placeholder="Адрес" name="address" required>
+                    <input type="tel" placeholder="Ваш телефон" name="phone" required>
+                    <input type="text" placeholder="Удобное время звонка" name="address" required>
+                </div>
+                <div class="col-md-4">
+                    <textarea name="comments" name="comments" placeholder="Ваши пожелания" cols="30" rows="8"></textarea>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row" style="margin: 30px 0 0;">
+                <div class="col-md-12">
+                    <button class="green-btn">Отправить заявку</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="modal-call" class="fb-modal modal-call" style="display: none;">
+        <h2>Заказать звонок</h2>
+        <div class="image"><img src="/catalog/view/theme/default/image/modal/call.png" alt=""></div>
+        <form action="" class="js-form-call-me">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <input type="text" placeholder="Ваше имя" name="name" required>
+                    <input type="text" placeholder="Удобное время звонка" name="address" required>
+                </div>
+                <div class="col-md-5">
+                    <input type="tel" placeholder="Ваш телефон" name="phone" required>
+                    <button class="green-btn">Перезвоните мне</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="modal-discount" class="fb-modal modal-discount" style="display: none;">
+        <h2>Получить скидки</h2>
+        <div class="image"><img src="/catalog/view/theme/default/image/modal/discount.png" alt=""></div>
+        <form action="" class="js-form-call-me">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <input type="text" placeholder="Ваше имя" name="name" required>
+                    <input type="text" placeholder="Количество окон" name="window" required>
+                </div>
+                <div class="col-md-5">
+                    <input type="tel" placeholder="Ваш телефон" name="phone" required>
+                    <button class="green-btn">Перезвоните мне</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
     <section class="main-sect">
         <ul class="side-nav">

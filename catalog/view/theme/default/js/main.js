@@ -28,6 +28,20 @@ if ($("#map").length) {
 }
 
 jQuery(document).ready(function($) {
+  // fancybox 
+  function fb_open (c) {
+    $.fancybox.open({
+      content: c,
+      type: 'html',
+      padding: 0,
+      margin: 0,
+      autoSize: false,
+      infobar: true,
+      toolbar: true,
+    });
+  }
+
+
   // форма "перезвонить мне"
   $('.js-form-call-me').submit(function(e){
 
@@ -46,21 +60,33 @@ jQuery(document).ready(function($) {
           c.html('<h2>Ошибка</h2>');
         }
 
-        $.fancybox.open({
-          content: c,
-          type: 'html',
-          padding: 0,
-          margin: 0,
-          autoSize: false,
-          infobar: true,
-          toolbar: true,
-          baseClass: 'fb-modal',
-        });
+        fb_open(c);
       }
     });
 
     return false;
   });
+
+
+
+  // модалка "заказать замер"
+  $('.js-order-measure').on('click', function(){
+    var c = $('#modal-measure');
+    fb_open(c);
+  });
+
+  // модалка "Заказать звонок"
+  $('.js-order-call').on('click', function(){
+    var c = $('#modal-call');
+    fb_open(c);
+  });
+
+  // модалка "Получить скидку"
+  $('.js-order-discount').on('click', function(){
+    var c = $('#modal-discount');
+    fb_open(c);
+  });
+
 });
 
 
