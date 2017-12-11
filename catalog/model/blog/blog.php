@@ -165,7 +165,7 @@ class ModelBlogBlog extends Model {
 
 		$blog_comment_id = $this->db->getLastId();
 
-		$this->event->trigger('post.comment.add', $blog_comment_id);
+		$this->event->trigger('post.comment.add', array($blog_comment_id));
 	}
 	
 	

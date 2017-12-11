@@ -1,11 +1,13 @@
 <?php echo $header; ?>
 
-<script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="view/javascript/ckeditor/ckeditor_init.js"></script>
-<link type="text/css" href="view/javascript/summernote/summernote.css" rel="stylesheet" media="screen" />
-<script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
-<script type="text/javascript" src="view/javascript/summernote/lang/summernote-ru-RU.js"></script>
-<script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+<script type="text/javascript" src="/admin/view/javascript/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/admin/view/javascript/ckeditor/ckeditor_init.js"></script>
+<link type="text/css" href="/admin/view/javascript/summernote/summernote.css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="/admin/view/javascript/summernote/summernote.js"></script>
+<script type="text/javascript" src="/admin/view/javascript/summernote/lang/summernote-ru-RU.js"></script>
+<script type="text/javascript" src="/admin/view/javascript/summernote/opencart.js"></script>
+
+<!--script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script-->
 
 <?php echo $column_left; ?>
 
@@ -327,7 +329,10 @@
 <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
 
+//tinymce.init({ selector:'#description<?php echo $language['language_id']; ?>' });
+
 //ckeditorInit('description<?php echo $language['language_id']; ?>', getURLVar('token'));
+
 
 $('#description<?php echo $language['language_id']; ?>').summernote({
 	height: 250,
@@ -344,6 +349,7 @@ $('#description<?php echo $language['language_id']; ?>').summernote({
 	['codeview', ['fullscreen', 'codeview']] //no help button
   ]
 });
+
 <?php } ?>
 //--></script> 
 <script type="text/javascript"><!--
