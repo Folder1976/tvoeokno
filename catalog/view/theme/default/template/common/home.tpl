@@ -30,9 +30,9 @@
                     <p class="type">секунд</p>
                   </div>
                 </div>
-                <form action="/" class="timer-form">
-                  <input type="text" placeholder="Ваше имя">
-                  <input type="tel" placeholder="Ваш телефон">
+                <form action="/" class="timer-form js-form-call-me">
+                  <input type="text" placeholder="Ваше имя" name="name" required>
+                  <input type="tel" placeholder="Ваш телефон" name="phone" required>
                   <button class="green-btn">получить скидку</button>
                 </form>
               </div>
@@ -69,9 +69,9 @@
                     <p class="type">секунд</p>
                   </div>
                 </div>
-                <form action="/" class="timer-form">
-                  <input type="text" placeholder="Ваше имя">
-                  <input type="tel" placeholder="Ваш телефон">
+                <form action="/" class="timer-form js-form-call-me">
+                  <input type="text" placeholder="Ваше имя" name="name" required>
+                  <input type="tel" placeholder="Ваш телефон" name="phone" required>
                   <button class="green-btn">получить скидку</button>
                 </form>
               </div>
@@ -396,9 +396,9 @@
           </div>
         </div>
         <div class="col-md-4">
-          <form action="/" class="feedback-sect-form">
-            <input type="text" placeholder="Ваше имя">
-            <input type="text" placeholder="Номер телефона">
+          <form action="/" class="feedback-sect-form js-form-call-me">
+            <input type="text" placeholder="Ваше имя" name="name" required>
+            <input type="text" placeholder="Номер телефона" name="phone" required>
             <button class="green-btn">Отправить</button>
           </form>
         </div>
@@ -430,12 +430,12 @@
   <section class="calc">
     <div class="container">
       <h2>экспресс расчет ваших окон</h2>
-      <form action="/" class="calc-form">
-        <input type="text" placeholder="Ваше имя">
-        <input type="text" placeholder="Ваше имя">
+      <form action="/" class="calc-form js-form-call-me">
+        <input type="text" placeholder="Ваше имя" name="name" required>
+        <input type="tel" placeholder="Ваш номер" name="phone" required>
         <div class="file">
           <label for="file">Прикрепить файл</label>
-          <input id="file" type="file" class="file-input">
+          <input id="file" type="file" class="file-input" name="file">
         </div>
         <button type="submit" class="blue-btn">Перезвонить</button>
       </form>

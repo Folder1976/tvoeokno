@@ -131,6 +131,7 @@
 
     <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script-->
     <script src="//maps.googleapis.com/maps/api/js"></script>
+    <script src="/catalog/view/theme/default/libs/fancybox/jquery.fancybox.min.js"></script>
     <script src="/catalog/view/theme/default/libs/owl-carousel/owl.carousel.min.js"></script>
     <script src="/catalog/view/theme/default/libs/scroll/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="/catalog/view/theme/default/libs/nice-select/nice-select.min.js"></script>

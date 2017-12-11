@@ -17,6 +17,7 @@
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css">
+    <link rel="stylesheet" href="/catalog/view/theme/default/libs/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/catalog/view/theme/default/libs/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="/catalog/view/theme/default/libs/owl-carousel/owl.theme.default.min.css">
     <link rel="stylesheet" href="/catalog/view/theme/default/libs/scroll/jquery.mCustomScrollbar.css">
@@ -110,8 +111,8 @@
           </div>
           <div class="col-md-4 col-sm-12">
             <div class="header-callback">
-              <form action="/" class="header-callback-form">
-                <input type="text" placeholder="Телефон">
+              <form action="/" class="header-callback-form js-form-call-me">
+                <input type="tel" placeholder="Телефон" name="phone" required>
                 <button class="red-btn">Перезвонить мне</button>
               </form>
               <a href="/index.php?route=product/compare" class="header-callback-single">
@@ -241,24 +242,28 @@
         </div>
       </div>
     </header>
-  <section class="main-sect">
-    <ul class="side-nav">
-      <li>
-        <a href="#"><span>Отправить чертеж на почту</span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
-      </li>
-      <li>
-        <a href="#"><span>Расчет окон</span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
-      </li>
-      <li>
-        <a href="#"><span>Отзывы</span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
-      </li>
-      <li>
-        <a href="#"><span>Запись на замер</span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
-      </li>
-      <li>
-        <a href="#"><span>Ремонт окон</span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
-      </li>
-      <li>
-        <a href="#"><span>Фото работ</span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
-      </li>
-    </ul>
+
+    <div id="fb-modal"></div>
+
+    <section class="main-sect">
+        <ul class="side-nav">
+          <li>
+            <a href="#"><span>Отправить чертеж на почту</span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
+          </li>
+          <li>
+            <a href="#"><span>Расчет окон</span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
+          </li>
+          <li>
+            <a href="#"><span>Отзывы</span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
+          </li>
+          <li>
+            <a href="#"><span>Запись на замер</span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
+          </li>
+          <li>
+            <a href="#"><span>Ремонт окон</span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
+          </li>
+          <li>
+            <a href="#"><span>Фото работ</span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
+          </li>
+        </ul>
+    </section>

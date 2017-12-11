@@ -28,6 +28,44 @@ if ($("#map").length) {
 }
 
 jQuery(document).ready(function($) {
+  // форма "перезвонить мне"
+  $('.js-form-call-me').submit(function(e){
+
+    $.ajax({
+      url: 'index.php?route=blog/blog/write&blog_id=80',
+      type: 'post',
+      // dataType: 'json',
+      dataType: 'html',
+      data: $(this).serialize(),
+      success: function(json) {
+        var c = $('#fb-modal');
+
+        if (json['success']) {
+          c.html('<h2>Форма отправлена</h2>');
+        } else {
+          c.html('<h2>Ошибка</h2>');
+        }
+
+        $.fancybox.open({
+          content: c,
+          type: 'html',
+          padding: 0,
+          margin: 0,
+          autoSize: false,
+          infobar: true,
+          toolbar: true,
+          baseClass: 'fb-modal',
+        });
+      }
+    });
+
+    return false;
+  });
+});
+
+
+
+jQuery(document).ready(function($) {
 
   $('.header-top .header-burger').click(function() {
     $(this).toggleClass("close");
