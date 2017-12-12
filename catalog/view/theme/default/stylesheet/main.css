@@ -1559,7 +1559,7 @@ button {
       .breadcrumbs-list li:before {
         position: absolute;
         content: '';
-        top: 18px;
+        top: 23px;
         right: -2px;
         width: 10px;
         height: 10px;
