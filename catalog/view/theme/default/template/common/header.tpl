@@ -305,16 +305,16 @@
     <section class="main-sect">
         <ul class="side-nav">
           <li>
-            <a href="#"><span>Отправить чертеж на почту</span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
+            <a href="/chertog"><span>Отправить чертеж на почту</span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
           </li>
           <li>
-            <a href="#"><span>Расчет окон</span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
+            <a href="/online_windows_calculator"><span>Расчет окон</span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
           </li>
           <li>
-            <a href="#"><span>Отзывы</span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
+            <a href="/comments"><span>Отзывы</span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
           </li>
           <li>
-            <a href="#"><span>Запись на замер</span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
+            <a href="/zamer"><span>Запись на замер</span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
           </li>
           <li>
             <a href="#"><span>Ремонт окон</span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
