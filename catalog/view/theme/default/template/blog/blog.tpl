@@ -1,5 +1,24 @@
 <?php echo $header; ?>
-<section class="reviews-page">
+
+<?php
+$page_href = array_pop($breadcrumbs)['href'];
+
+switch ($page_href) {
+  case 'comments':
+    $section_class = 'reviews-page';
+    break;
+
+  case 'online_windows_calculator':
+    $section_class = 'calc-page';
+    break;
+
+  default:
+    $section_class = 'main-feedback';
+    break;
+}
+?>
+
+<section class="<?php echo $section_class; ?>">
   <div class="breadcrumbs">
     <div class="container">
       <ul class="breadcrumbs-list">
