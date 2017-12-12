@@ -3,6 +3,7 @@
 <?php
 $page_href = array_pop($breadcrumbs)['href'];
 
+// Класс для section в зависимости от страницы
 switch ($page_href) {
   case 'comments':
     $section_class = 'reviews-page';
@@ -16,6 +17,39 @@ switch ($page_href) {
     $section_class = 'main-feedback';
     break;
 }
+
+// секцию "Сервисное обслуживание пластиковых окон и дверей"
+// выводим только на определенных страницах
+switch ($page_href) {
+  case 'chertog':
+  case 'zamer':
+  case 'service-master':
+    $show_modul_37 = true;
+    break;
+
+  default:
+    $show_modul_37 = false;
+    break;
+}
+
+// секцию с кнопками "Заказать замер" и т.д.
+// выводим только на определенных страницах
+switch ($page_href) {
+  case 'chertog':
+  case 'online_windows_calculator':
+  case 'comments':
+  case 'zamer':
+  case 'service-master':
+  case 'works':
+    $show_modul_38 = true;
+    break;
+
+  default:
+    $show_modul_38 = false;
+    break;
+}
+
+
 ?>
 
 <section class="<?php echo $section_class; ?>">
@@ -40,22 +74,27 @@ switch ($page_href) {
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
     <div class="blog blog_post">
     
-    <?php if($main_thumb && $blogsetting_post_thumb && strpos($blogsetting_post_thumb, 'no_image') === false){ ?>
-    <div class="main_thumb"><img src="<?php echo $blogsetting_post_thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" /></div>
-    <?php } ?>
-    
-	<h1 class="main-title"><?php echo $heading_title; ?></h1>
-	<div class="blog_stats">
-	<?php if($post_author_status){ ?><span><i class="fa fa-user"></i><b class="text"><?php echo $text_posted_by; ?></b> <b class="hl"><?php echo $author; ?></b></span><?php } ?>
-	<?php if($post_date_added_status){ ?><span><i class="fa fa-clock-o"></i><b class="text"><?php echo $text_posted_on; ?></b> <b class="hl"><?php echo $date_added_full; ?></b></span><?php } ?>
-	<?php if($post_page_view_status){ ?><span><i class="fa fa-eye"></i><b class="text"><?php echo $text_read; ?></b> <b class="hl"><?php echo $new_read_counter_value; ?></b></span><?php } ?>
-	<?php if($post_comments_count_status){ ?><span><i class="fa fa-comments"></i><b class="text"><?php echo $text_comments; ?>:</b> <b class="hl"><?php echo $comment_total; ?></b></span><?php } ?>
-	</div>
-    
-    <div class="main_description">
-	<?php echo $description; ?>
+      <?php if($main_thumb && $blogsetting_post_thumb && strpos($blogsetting_post_thumb, 'no_image') === false){ ?>
+      <div class="main_thumb"><img src="<?php echo $blogsetting_post_thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" /></div>
+      <?php } ?>
+      
+    	<h1 class="main-title"><?php echo $heading_title; ?></h1>
+    	<div class="blog_stats">
+    	<?php if($post_author_status){ ?><span><i class="fa fa-user"></i><b class="text"><?php echo $text_posted_by; ?></b> <b class="hl"><?php echo $author; ?></b></span><?php } ?>
+    	<?php if($post_date_added_status){ ?><span><i class="fa fa-clock-o"></i><b class="text"><?php echo $text_posted_on; ?></b> <b class="hl"><?php echo $date_added_full; ?></b></span><?php } ?>
+    	<?php if($post_page_view_status){ ?><span><i class="fa fa-eye"></i><b class="text"><?php echo $text_read; ?></b> <b class="hl"><?php echo $new_read_counter_value; ?></b></span><?php } ?>
+    	<?php if($post_comments_count_status){ ?><span><i class="fa fa-comments"></i><b class="text"><?php echo $text_comments; ?>:</b> <b class="hl"><?php echo $comment_total; ?></b></span><?php } ?>
+    	</div>
     </div>
-    
+
+    <div class="main_description">
+    	<?php echo $description; ?>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="container">
     <?php if ($tags) { ?>
 	<p class="tags">
     <?php echo $text_tags; ?>
@@ -80,9 +119,12 @@ switch ($page_href) {
 	<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js"></script>
 	<?php } ?>
     </div>
-	
+  </div>
+
+
     <!-- Related Products -->
     <?php if ($products) { ?>
+    <div class="container">
       <h3 style="display: none;"><i class="fa fa-list"></i><?php echo $text_related_products; ?></h3>
        <div class="blog_grid_holder blog_products column-<?php echo $rel_prod_per_row; ?>">
         <?php foreach ($products as $product) { ?>
@@ -122,12 +164,14 @@ switch ($page_href) {
           </div>
         <?php } ?>
       </div>
-      <?php } ?>
+    </div>
+    <?php } ?>
 	 <!-- Related Products End -->
      
      
      
-     <?php if ($related_blogs) { ?>
+    <?php if ($related_blogs) { ?>
+    <div class="container">
 		<h3><i class="fa fa-list"></i><?php echo $text_related_blog; ?></h3>
 		<div class="blog_grid_holder related column-<?php echo $rel_per_row; ?>">
             <?php foreach ($related_blogs as $blog) { ?>
@@ -151,12 +195,14 @@ switch ($page_href) {
                </div>
 			<?php } ?>            
 		</div>
-	<?php } ?>
+    </div>
+	  <?php } ?>
 	 <!-- Related Blog End -->
 
 
 
      <!-- Comment Area start -->
+     <div class="container">
   		<?php if($allow_comment){ ?>
         <h3 style="display: none;"><i class="fa fa-comments"></i><?php echo $text_comments; ?></h3>
             <div id="comment"></div>
@@ -181,6 +227,20 @@ switch ($page_href) {
     <?php echo $column_right; ?></div>
 </div>
 </section>
+
+<?php if ( isset($modules['html-37']) && $show_modul_37 ) { ?>
+<section class="work">
+  <?php echo $modules['html-37']; ?>
+</section>
+<?php } ?>
+
+<?php if ( isset($modules['html-38']) && $show_modul_38 ) { ?>
+<section class="work">
+  <?php echo $modules['html-38']; ?>
+</section>
+<?php } ?>
+
+
 <script type="text/javascript"><!--
 
 $('#comment').delegate('.pagination a', 'click', function(e) {
