@@ -4553,7 +4553,21 @@ textarea {
   float: left;
 }
 
-
+/* Blog comments */
+.leave-review .form-control {
+    padding: 11px 16px;
+    font-size: 18px;
+    font-family: "FiraSans-Regular", sans-serif;
+    background: #FAFAFA;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    width: 100%;
+    color: #0E5887;
+    outline: none;
+    border: 2px solid #fff;
+    margin-bottom: 5px;
+    height: auto;
+}
 
 /* Fancybox */
 .fb-modal {

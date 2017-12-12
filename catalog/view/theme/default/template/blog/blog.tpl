@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+<section class="reviews-page">
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -45,7 +46,7 @@
 	</p>
 	<?php } ?>
 	
-	<div class="share">
+	<div class="share" style="display: none;">
     <?php if($share_status){ ?>
 	<div class="addthis_toolbox addthis_default_style">
 	<a class="addthis_button_facebook"><i class="fa fa-facebook"></i></a>
@@ -59,7 +60,7 @@
 	
     <!-- Related Products -->
     <?php if ($products) { ?>
-      <h3><i class="fa fa-list"></i><?php echo $text_related_products; ?></h3>
+      <h3 style="display: none;"><i class="fa fa-list"></i><?php echo $text_related_products; ?></h3>
        <div class="blog_grid_holder blog_products column-<?php echo $rel_prod_per_row; ?>">
         <?php foreach ($products as $product) { ?>
           <div class="blog_item blog_product">
@@ -129,57 +130,34 @@
 		</div>
 	<?php } ?>
 	 <!-- Related Blog End -->
-	 
+
+
+
      <!-- Comment Area start -->
   		<?php if($allow_comment){ ?>
-        <h3><i class="fa fa-comments"></i><?php echo $text_comments; ?></h3>
-              <form id="comment_form">
-                <div id="comment"></div>
-                <h3><i class="fa fa-pencil"></i><?php echo $text_write_comment; ?></h3>
-                <div class="row">
-				<div class="form-group col-sm-6 required">
-                <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-                <input type="text" name="name" value="" id="input-name" class="form-control" />
-                </div>
-                <div class="form-group col-sm-6 required">
-                <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
-                <input type="text" name="email" value="" id="input-email" class="form-control" />
-                </div>
-                </div>
-                
-                <div class="row">
-                <div class="form-group col-sm-12 required">
-                <label class="control-label" for="input-review"><?php echo $entry_comment; ?></label>
-                <textarea name="comment" rows="5" id="input-comment" class="form-control"></textarea>
-                </div>
-                </div>
-                
-                
-                <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group required">
-                  <label class="control-label" for="input-captcha_comment"><?php echo $entry_captcha; ?></label>
-                    <div class="input-group">
-                    <span class="input-group-addon captcha_wrap" style="background:#ffffff;padding:0 10px;"><img src="index.php?route=blog/blog/captcha" alt="" id="captcha_comment" /></span>
-                    <input type="text" name="captcha_comment" value="" id="input-captcha_comment" class="form-control" />
-                    </div>
-                  </div>
-                </div>
-                </div>
-                
-                <div class="row">
-                <div class="form-group col-sm-12 text-right">
-                <button type="button" id="button-comment" class="btn btn-primary"><?php echo $button_send; ?></button>
-                </div>
-                </div>
-                
-                </div>
-				</form>
+        <h3 style="display: none;"><i class="fa fa-comments"></i><?php echo $text_comments; ?></h3>
+            <div id="comment"></div>
+        </div>
+      </div>
+      </section>
+      
+        <section class="leave-review">
+          <h2 class="main-title"><?php echo $text_write_comment; ?></h2>
+          <form id="comment_form" class="leave-review-form">
+            <input type="text" name="name" value="" id="input-name" class="form-control" placeholder="<?php echo $entry_name; ?>" required />
+            <input type="text" name="email" value="" id="input-email" class="form-control" placeholder="<?php echo $entry_email; ?>" required />
+            <textarea name="comment" rows="5" id="input-comment" class="form-control" placeholder="<?php echo $entry_comment; ?>"></textarea>
+            <label class="control-label" for="input-captcha_comment"><span class="input-group-addon captcha_wrap" style="background:#ffffff;padding:0 10px;"><img src="index.php?route=blog/blog/captcha" alt="" id="captcha_comment" /></span></label>
+            <input type="text" name="captcha_comment" value="" id="input-captcha_comment" class="form-control" placeholder="<?php echo $entry_captcha; ?>" />
+            <button type="button" id="button-comment" class="btn btn-primary"><?php echo $button_send; ?></button>
+          </form>
+        </section>
       <?php } ?>
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
+</section>
 <script type="text/javascript"><!--
 
 $('#comment').delegate('.pagination a', 'click', function(e) {

@@ -468,18 +468,29 @@ $('#button-comment').on('click', function(e) {
     data: $("#comment_form").serialize(),
     success: function(json) {
       $('.alert-success, .alert-danger').remove();
-      
+
       if (json['error']) {
-        $('#comment_form').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+        $('#comment_form').after('<div class="alert alert-danger fb-modal" style="display: none;"><h2><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</h2></div>');
       }
       
       if (json['success']) {
-        $('#comment_form').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+        $('#comment_form').after('<div class="alert alert-success fb-modal" style="display: none;"><h2><i class="fa fa-check-circle"></i> ' + json['success'] + '</h2></div>');
         
         $('input[name=\'name\']').val('');
         $('input[name=\'contract_number\']').val('');
         $('textarea[name=\'comment\']').val('');
       }
+
+      var c = $('#comment_form + .alert');
+      $.fancybox.open({
+        content: c,
+        type: 'html',
+        padding: 0,
+        margin: 0,
+        autoSize: false,
+        infobar: true,
+        toolbar: true,
+      });
     }
   });
   return false;
