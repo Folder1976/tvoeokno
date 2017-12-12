@@ -4553,6 +4553,13 @@ textarea {
   float: left;
 }
 
+/* Informations */
+[class*="information-information-"] .main-title,
+[class*="blog-"] .main-title,
+[class*="error-"] .main-title {
+  margin-top: 40px;
+}
+
 /* Blog comments */
 .leave-review .form-control {
     padding: 11px 16px;

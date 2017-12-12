@@ -15,3 +15,7 @@ $_['text_order'] = 'Історія замовлень';
 $_['text_wishlist'] = 'Закладки';
 $_['text_newsletter'] = 'Розсилка';
 $_['text_powered']      = '<a rel="nofollow" href="https://alius.com.ua/ua/" target="_blank">Розробка магазинів на Опенкарт</a> %s &copy; %s';
+$_['text_account']      = 'Особистий кабінет';
+$_['text_register']     = 'Реєстрація';
+$_['text_login']        = 'Авторизація';
+$_['text_logout']       = 'Вихід';

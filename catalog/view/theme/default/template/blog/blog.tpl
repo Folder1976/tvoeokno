@@ -13,43 +13,14 @@ switch ($page_href) {
     $section_class = 'calc-page';
     break;
 
+  case 'works':
+    $section_class = 'works';
+    break;
+
   default:
     $section_class = 'main-feedback';
     break;
 }
-
-// секцию "Сервисное обслуживание пластиковых окон и дверей"
-// выводим только на определенных страницах
-switch ($page_href) {
-  case 'chertog':
-  case 'zamer':
-  case 'service-master':
-    $show_modul_37 = true;
-    break;
-
-  default:
-    $show_modul_37 = false;
-    break;
-}
-
-// секцию с кнопками "Заказать замер" и т.д.
-// выводим только на определенных страницах
-switch ($page_href) {
-  case 'chertog':
-  case 'online_windows_calculator':
-  case 'comments':
-  case 'zamer':
-  case 'service-master':
-  case 'works':
-    $show_modul_38 = true;
-    break;
-
-  default:
-    $show_modul_38 = false;
-    break;
-}
-
-
 ?>
 
 <section class="<?php echo $section_class; ?>">
@@ -223,23 +194,12 @@ switch ($page_href) {
         </section>
       <?php } ?>
       </div>
-      <?php echo $content_bottom; ?></div>
+      </div>
     <?php echo $column_right; ?></div>
 </div>
 </section>
 
-<?php if ( isset($modules['html-37']) && $show_modul_37 ) { ?>
-<section class="work">
-  <?php echo $modules['html-37']; ?>
-</section>
-<?php } ?>
-
-<?php if ( isset($modules['html-38']) && $show_modul_38 ) { ?>
-<section class="work">
-  <?php echo $modules['html-38']; ?>
-</section>
-<?php } ?>
-
+<?php echo $content_bottom; ?>
 
 <script type="text/javascript"><!--
 

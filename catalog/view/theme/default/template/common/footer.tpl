@@ -31,19 +31,26 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3">
-              <a href="#" class="top-link">О компании</a>
-              <a href="#" class="top-link">Акции и новости</a>
-              <a href="#" class="top-link">Статьи и обзоры</a>
-              <a href="#" class="top-link">Доставка</a>
-              <a href="#" class="top-link">Оплата</a>
-              <a href="#" class="top-link">Контакты</a>
-              <a href="#" class="top-link">Личный кабинет</a>
-              <a href="#" class="top-link">отправить чертеж на почту</a>
-              <a href="#" class="top-link">калькулятор</a>
-              <a href="#" class="top-link">отзывы</a>
-              <a href="#" class="top-link">Вызвать замерщика</a>
-              <a href="#" class="top-link">Ремонт окон</a>
-              <a href="#" class="top-link">фото работ</a>
+              <a href="/about_us" class="top-link">О компании</a>
+              <a href="/shares" class="top-link">Акции и новости</a>
+              <a href="/blogs" class="top-link">Статьи и обзоры</a>
+              <a href="/delivery" class="top-link">Доставка</a>
+              <a href="/payment" class="top-link">Оплата</a>
+              <a href="/contacts" class="top-link">Контакты</a>
+              <!-- <a href="#" class="top-link">Личный кабинет</a> -->
+              <?php if ( isset($logged) && $logged ) { ?>
+                <a href="<?php echo $account; ?>" class="top-link"><?php echo $text_account; ?></a>
+                <!-- <a href="<?php echo $logout; ?>" class="top-link"><?php echo $text_logout; ?></a> -->
+              <?php } else { ?>
+                <a href="<?php echo $register; ?>" class="top-link"><?php echo $text_register; ?></a>
+                <!-- <a href="<?php echo $login; ?>" class="top-link"><?php echo $text_login; ?></a> -->
+              <?php } ?>
+              <a href="/chertog" class="top-link">отправить чертеж на почту</a>
+              <a href="/online_windows_calculator" class="top-link">калькулятор</a>
+              <a href="/comments" class="top-link">отзывы</a>
+              <a href="/zamer" class="top-link">Вызвать замерщика</a>
+              <a href="/service-master" class="top-link">Ремонт окон</a>
+              <a href="/works" class="top-link">фото работ</a>
             </div>
             <div class="col-md-9">
               <div class="row">
@@ -51,9 +58,9 @@
                   <h2>Главная</h2>
                   <a href="#" class="footer-link">Кредит “тепла оселя”</a>
                   <a href="#" class="footer-link">Выезд в пригород Киева</a>
-                  <a href="#" class="footer-link">Доставка</a>
+                  <a href="/delivery" class="footer-link">Доставка</a>
                   <a href="#" class="footer-link">Гарантии</a>
-                  <a href="#" class="footer-link">Статьи</a>
+                  <a href="/blogs" class="footer-link">Статьи</a>
                 </div>
                 <div class="col-md-4 single">
                   <h2>Пластиковые окна</h2>
