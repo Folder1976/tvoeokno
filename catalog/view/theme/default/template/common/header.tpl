@@ -317,10 +317,10 @@
             <a href="/zamer"><span>Запись на замер</span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
           </li>
           <li>
-            <a href="#"><span>Ремонт окон</span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
+            <a href="/service-master"><span>Ремонт окон</span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
           </li>
           <li>
-            <a href="#"><span>Фото работ</span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
+            <a href="/works"><span>Фото работ</span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
           </li>
         </ul>
     </section>
