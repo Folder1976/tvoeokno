@@ -112,6 +112,7 @@
           <div class="col-md-4 col-sm-12">
             <div class="header-callback">
               <form action="/" class="header-callback-form js-form-call-me">
+                <input type="hidden" name="formname" value="call_me__header">
                 <input type="tel" placeholder="Телефон" name="phone" required>
                 <button class="red-btn">Перезвонить мне</button>
               </form>
@@ -248,6 +249,7 @@
         <h2>Вызвать замерщика</h2>
         <div class="image"><img src="/catalog/view/theme/default/image/modal/measure.png" alt=""></div>
         <form action="" class="js-form-call-me">
+            <input type="hidden" name="formname" value="call_me__modal_measure">
             <div class="row">
                 <div class="col-md-4">
                     <input type="text" placeholder="Ваше имя" name="name" required>
@@ -271,6 +273,7 @@
         <h2>Заказать звонок</h2>
         <div class="image"><img src="/catalog/view/theme/default/image/modal/call.png" alt=""></div>
         <form action="" class="js-form-call-me">
+            <input type="hidden" name="formname" value="call_me__modal_call">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-4">
@@ -288,6 +291,7 @@
         <h2>Получить скидки</h2>
         <div class="image"><img src="/catalog/view/theme/default/image/modal/discount.png" alt=""></div>
         <form action="" class="js-form-call-me">
+            <input type="hidden" name="formname" value="call_me__modal_discount">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-4">

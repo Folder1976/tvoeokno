@@ -31,6 +31,7 @@
                   </div>
                 </div>
                 <form action="/" class="timer-form js-form-call-me">
+                  <input type="hidden" name="formname" value="call_me__home_slider_discount">
                   <input type="text" placeholder="Ваше имя" name="name" required>
                   <input type="tel" placeholder="Ваш телефон" name="phone" required>
                   <button class="green-btn">получить скидку</button>
@@ -70,6 +71,7 @@
                   </div>
                 </div>
                 <form action="/" class="timer-form js-form-call-me">
+                  <input type="hidden" name="formname" value="call_me__home_slider_discount">
                   <input type="text" placeholder="Ваше имя" name="name" required>
                   <input type="tel" placeholder="Ваш телефон" name="phone" required>
                   <button class="green-btn">получить скидку</button>
@@ -397,6 +399,7 @@
         </div>
         <div class="col-md-4">
           <form action="/" class="feedback-sect-form js-form-call-me">
+            <input type="hidden" name="formname" value="call_me__home">
             <input type="text" placeholder="Ваше имя" name="name" required>
             <input type="text" placeholder="Номер телефона" name="phone" required>
             <button class="green-btn">Отправить</button>
@@ -431,6 +434,7 @@
     <div class="container">
       <h2>экспресс расчет ваших окон</h2>
       <form action="/" class="calc-form js-form-call-me">
+        <input type="hidden" name="formname" value="call_me__home_calc_windows">
         <input type="text" placeholder="Ваше имя" name="name" required>
         <input type="tel" placeholder="Ваш номер" name="phone" required>
         <div class="file">

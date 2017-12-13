@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
   $('.js-form-call-me').submit(function(e){
 
     $.ajax({
-      url: 'index.php?route=blog/blog/write&blog_id=80',
+      url: '/index.php?route=account/universalform',
       type: 'post',
       // dataType: 'json',
       dataType: 'html',
