@@ -1,4 +1,19 @@
 <?php echo $header; ?>
+
+<?php
+// Класс для section в зависимости от страницы
+switch ($_GET['_route_']) {
+  case 'about_us':
+    $section_class = 'about';
+    break;
+
+  default:
+    $section_class = '';
+    break;
+}
+?>
+
+<section class="<?php echo $section_class; ?>">
 <div class="breadcrumbs">
   <div class="container">
     <ul class="breadcrumbs-list">
@@ -19,7 +34,10 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <h1 class="main-title"><?php echo $heading_title; ?></h1>
-      <?php echo $description; ?><?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+      <?php echo $description; ?></div>
+    </div>
 </div>
+</section>
+<?php echo $content_bottom; ?>
+<?php echo $column_right; ?>
 <?php echo $footer; ?>

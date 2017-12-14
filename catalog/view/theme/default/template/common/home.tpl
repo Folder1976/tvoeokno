@@ -294,9 +294,9 @@
       </div>
     </div>
   </section>
-  <section class="work">
-        <?php echo $modules['html-33']; ?>
-  </section>
+
+  <?php echo $modules['html-33']; ?>
+
   <section class="certificates">
     <div class="container-fluid">
       <h2 class="main-title"><?php echo $blogs['garanty']['name'];?></h2>

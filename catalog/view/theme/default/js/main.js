@@ -73,18 +73,21 @@ jQuery(document).ready(function($) {
   $('.js-order-measure').on('click', function(){
     var c = $('#modal-measure');
     fb_open(c);
+    return false;
   });
 
   // модалка "Заказать звонок"
   $('.js-order-call').on('click', function(){
     var c = $('#modal-call');
     fb_open(c);
+    return false;
   });
 
   // модалка "Получить скидку"
   $('.js-order-discount').on('click', function(){
     var c = $('#modal-discount');
     fb_open(c);
+    return false;
   });
 
 });
