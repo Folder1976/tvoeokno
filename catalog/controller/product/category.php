@@ -165,6 +165,7 @@ class ControllerProductCategory extends Controller {
 			}
 
 			$data['products'] = array();
+			$data['categorys'] = array();
 
 			$filter_data = array(
 				'filter_category_id' => $category_id,
@@ -179,6 +180,7 @@ class ControllerProductCategory extends Controller {
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
+			
 			foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
@@ -210,7 +212,9 @@ class ControllerProductCategory extends Controller {
 					$rating = false;
 				}
 
-				$data['products'][] = array(
+				$data['categorys'][$result['category_id']]['products'][] = $result['product_id'];
+				
+				$data['products'][$result['product_id']] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
@@ -225,6 +229,13 @@ class ControllerProductCategory extends Controller {
 				);
 			}
 
+			foreach($data['category'] as $_category_id => $row){
+				
+				$data['categorys'][$_category_id] = $this->model_catalog_category->getCategory($_category_id);
+				$data['categorys'][$_category_id]['products'] = $row['products'];
+				
+			}
+			
 			$url = '';
 
 			if (isset($this->request->get['filter'])) {
@@ -375,7 +386,9 @@ class ControllerProductCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			$data['fastorder'] = $this->load->controller('product/fastorder', $product_info = $this->model_catalog_product->getProduct($result['product_id'])); // FastOrder
+			if(isset($result['product_id'])){
+				$data['fastorder'] = $this->load->controller('product/fastorder', $product_info = $this->model_catalog_product->getProduct($result['product_id'])); // FastOrder
+			}
 			
 			$this->response->setOutput($this->load->view('product/category', $data));
 		} else {

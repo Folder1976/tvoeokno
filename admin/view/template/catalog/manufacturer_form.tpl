@@ -43,6 +43,12 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-short_description<?php echo $language['language_id']; ?>">Короткое описание</label>
+                <div class="col-sm-10">
+                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][short_description]" placeholder="<?php echo $entry_description; ?>" id="input-short_description<?php echo $language['language_id']; ?>" data-lang="<?php echo $lang; ?>" class="form-control summernote"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['short_description'] : ''; ?></textarea>
+                </div>
+              </div>
+             <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
                 <div class="col-sm-10">
                   <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" data-lang="<?php echo $lang; ?>" class="form-control summernote"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['description'] : ''; ?></textarea>

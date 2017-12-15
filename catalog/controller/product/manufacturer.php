@@ -47,6 +47,7 @@ class ControllerProductManufacturer extends Controller {
 
 			$data['categories'][$key]['manufacturer'][] = array(
 				'name' => $name,
+				'short_description' => $result['short_description'],
 				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id'])
 			);
 		}
@@ -187,6 +188,7 @@ class ControllerProductManufacturer extends Controller {
 			$data['compare'] = $this->url->link('product/compare');
 
 			$data['products'] = array();
+			$data['categorys'] = array();
 
 			$filter_data = array(
 				'filter_manufacturer_id' => $manufacturer_id,
@@ -231,7 +233,9 @@ class ControllerProductManufacturer extends Controller {
 					$rating = false;
 				}
 
-				$data['products'][] = array(
+				$data['categorys'][$result['category_id']]['products'][] = $result['product_id'];
+				
+				$data['products'][$result['product_id']] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
@@ -245,6 +249,26 @@ class ControllerProductManufacturer extends Controller {
 				);
 			}
 
+			foreach($data['category'] as $_category_id => $row){
+				
+				$data['categorys'][$_category_id] = $this->model_catalog_category->getCategory($_category_id);
+				$data['categorys'][$_category_id]['products'] = $row['products'];
+				
+			}
+	
+	/* Пример вывода
+			foreach($categorys as $category_id => $category_info){
+				
+				//$category_info - Информация категории
+				foreach($category_info['products'] as $product_id){
+					
+					//$products[$product_id] - Информация по продукту
+					
+				}
+				
+			}
+	*/
+			
 			$url = '';
 
 			if (isset($this->request->get['limit'])) {
