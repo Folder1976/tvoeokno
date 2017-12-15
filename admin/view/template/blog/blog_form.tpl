@@ -333,7 +333,7 @@
 
 //ckeditorInit('description<?php echo $language['language_id']; ?>', getURLVar('token'));
 
-
+/*
 $('#description<?php echo $language['language_id']; ?>').summernote({
 	height: 250,
 	toolbar: [
@@ -349,7 +349,7 @@ $('#description<?php echo $language['language_id']; ?>').summernote({
 	['codeview', ['fullscreen', 'codeview']] //no help button
   ]
 });
-
+*/
 <?php } ?>
 //--></script> 
 <script type="text/javascript"><!--

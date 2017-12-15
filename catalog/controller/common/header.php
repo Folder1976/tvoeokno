@@ -42,6 +42,9 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$data['logo'] = '';
 		}
+		
+		$this->load->model('catalog/manufacturer');
+		$data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
 
 		$this->load->language('common/header');
 		$data['og_url'] = (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_SERVER : HTTP_SERVER) . substr($this->request->server['REQUEST_URI'], 1, (strlen($this->request->server['REQUEST_URI'])-1));
