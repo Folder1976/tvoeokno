@@ -166,6 +166,7 @@ class ControllerProductManufacturer extends Controller {
 			}
 
 			$data['description'] = html_entity_decode($manufacturer_info['description'], ENT_QUOTES, 'UTF-8');
+			$data['short_description'] = html_entity_decode($manufacturer_info['short_description'], ENT_QUOTES, 'UTF-8');
 
 			$data['text_empty'] = $this->language->get('text_empty');
 			$data['text_quantity'] = $this->language->get('text_quantity');
@@ -249,7 +250,7 @@ class ControllerProductManufacturer extends Controller {
 				);
 			}
 
-			foreach($data['category'] as $_category_id => $row){
+			foreach($data['categorys'] as $_category_id => $row){
 				
 				$data['categorys'][$_category_id] = $this->model_catalog_category->getCategory($_category_id);
 				$data['categorys'][$_category_id]['products'] = $row['products'];

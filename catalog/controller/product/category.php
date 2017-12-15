@@ -214,9 +214,45 @@ class ControllerProductCategory extends Controller {
 
 				$data['categorys'][$result['category_id']]['products'][] = $result['product_id'];
 				
+				$options = array();
+
+				foreach ($this->model_catalog_product->getProductOptions($result['product_id']) as $option) {
+					$product_option_value_data = array();
+	
+					foreach ($option['product_option_value'] as $option_value) {
+						if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+							if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
+								$price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
+							} else {
+								$price = false;
+							}
+	
+							$product_option_value_data[] = array(
+								'product_option_value_id' => $option_value['product_option_value_id'],
+								'option_value_id'         => $option_value['option_value_id'],
+								'name'                    => $option_value['name'],
+								'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
+								'price'                   => $price,
+								'price_prefix'            => $option_value['price_prefix']
+							);
+						}
+					}
+	
+					$options[] = array(
+						'product_option_id'    => $option['product_option_id'],
+						'product_option_value' => $product_option_value_data,
+						'option_id'            => $option['option_id'],
+						'name'                 => $option['name'],
+						'type'                 => $option['type'],
+						'value'                => $option['value'],
+						'required'             => $option['required']
+					);
+				}
+				
 				$data['products'][$result['product_id']] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
+					'option'		=> $options,
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
@@ -229,7 +265,7 @@ class ControllerProductCategory extends Controller {
 				);
 			}
 
-			foreach($data['category'] as $_category_id => $row){
+			foreach($data['categorys'] as $_category_id => $row){
 				
 				$data['categorys'][$_category_id] = $this->model_catalog_category->getCategory($_category_id);
 				$data['categorys'][$_category_id]['products'] = $row['products'];
