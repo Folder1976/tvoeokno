@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+<pre><?php // var_dump($categories['D']['manufacturer']); ?></pre>
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
