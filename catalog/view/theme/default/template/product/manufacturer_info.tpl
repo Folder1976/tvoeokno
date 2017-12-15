@@ -49,8 +49,6 @@
     </div>
   </div>
 
-<pre><?php //var_dump(get_defined_vars()); ?></pre>
-
   <div class="brand-info">
     <div class="container">
       <div class="news-nav">
@@ -63,7 +61,7 @@
       </div>
       <div class="col-md-7">
         <div class="brand-info-img">
-          <img src="img/veka-euroline-58.jpg" alt="">
+          <img src="/catalog/view/theme/default/image/veka-euroline-58.jpg" alt="">
         </div>
       </div>
       <div class="col-md-5">
@@ -141,11 +139,25 @@
   </div>
 </section>
 
+<pre><?php
+// var_dump(get_defined_vars());
+// foreach($categorys as $category_id => $category_info){
+    
+    //$category_info - Информация категории
+    // foreach($category_info['products'] as $product_id){
+     
+     //$products[$product_id] - Информация по продукту
+     
+    // }
+?></pre>
+
 <section class="prices brand-prices">
   <div class="container">
     <div class="prices-type">
       <p class="bold">ЦЕНЫ:</p>
       <ul>
+        <?php //foreach ($variable as $key => $value) { ?>
+        <?php //} ?>
         <li><a href="#" class="active">Двухстворчатое окно</a></li>
         <li><a href="#">Трехстворчатое окно</a></li>
         <li><a href="#">Балконный блок</a></li>
