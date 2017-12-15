@@ -156,90 +156,47 @@
                 <li class="main-nav-dropdown-item"><a href="#">Статьи</a></li>
               </ul>
             </li>
-            <li>
-              <a href="/plastic_windows">
-                <img src="/catalog/view/theme/default/image/m1.svg" alt="">
-                <span>Пластиковые окна</span>
-              </a>
-              <ul class="main-nav-dropdown">
-                <li class="main-nav-dropdown-item"><a href="#">Окна REHAU</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна SALAMANDER</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна WDS</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна DECCO</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна OPEN TECK</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна KBE</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна WINDOM</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна VEKA</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна ALMPLAST</a></li>
-              </ul>
 
-            </li>
-            <li>
-              <a href="/window_prices">
-                <img src="/catalog/view/theme/default/image/m2.svg" alt="">
-                <span>Окна цены</span>
-              </a>
-              <ul class="main-nav-dropdown">
-                <li class="main-nav-dropdown-item"><a href="#">Цены на типовые окна</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Балконный блок</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Калькулятор окон ONLINE</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Окна недорого</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">
-                <img src="/catalog/view/theme/default/image/m3.svg" alt="">
-                <span>Балконы и лоджии</span>
-              </a>
-              <ul class="main-nav-dropdown">
-                <li class="main-nav-dropdown-item"><a href="#">Остекление лоджий</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Остекление балконов</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Французский балкон</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Балкон под ключ</a>
-                  <ul class="main-nav-dropdown-submenu">
-                    <li class="dropdown-submenu"><a href="#">Сайдинг на балконе</a></li>
-                    <li class="dropdown-submenu"><a href="#">Профнастил на балконе</a></li>
-                    <li class="dropdown-submenu"><a href="#">Крыша на балкон</a></li>
-                  </ul>
-                </li>
-                <li class="main-nav-dropdown-item"><a href="#">Балкон с выносом</a>
-                  <ul class="main-nav-dropdown-submenu">
-                    <li class="dropdown-submenu"><a href="#">Вынос балкона по типу "косынка"</a></li>
-                    <li class="dropdown-submenu"><a href="#">Балкон с выносом по типу "каркас"</a></li>
-                    <li class="dropdown-submenu"><a href="#">Расширение пола балкона</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">
-                <img src="/catalog/view/theme/default/image/m4.svg" alt="">
-                <span>Нестандарты</span>
-              </a>
-              <ul class="main-nav-dropdown">
-                <li class="main-nav-dropdown-item"><a href="#">Остекление коттеджей</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Арочные окна</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Цветные окна</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Пластиковые двери</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">
-                <img src="/catalog/view/theme/default/image/m5.svg" alt="">
-                <span>Аксессуары</span>
-              </a>
-              <ul class="main-nav-dropdown">
-                <li class="main-nav-dropdown-item"><a href="#">Подоконники</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Стеклопакеты</a>
-                  <ul class="main-nav-dropdown-submenu">
-                    <li class="dropdown-submenu"><a href="#">Марки стеклопакетов</a></li>
-                  </ul>
-                </li>
-                <li class="main-nav-dropdown-item"><a href="#">Фурнитура MACO</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Откосы</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Подоконник DANKE</a></li>
-              </ul>
-            </li>
+            <?php
+            foreach ($categories as $key => $category) {
+              if ( $key == 0 ) {
+                // если категория = "Пластиковые окна"
+                // вместо подкатегорий выводим "Производителей"
+            ?>
+              <li>
+                <a href="<?php echo $category['href']; ?>">
+                  <img src="/catalog/view/theme/default/image/m1.svg" alt="">
+                  <span><?php echo $category['name']; ?></span>
+                </a>
+                <ul class="main-nav-dropdown">
+                  <?php
+                  foreach ($manufacturers as $key => $manuf) {
+                    echo '<li class="main-nav-dropdown-item"><a href="'.$manuf['keyword'].'">Окна '.$manuf['name'].'</a></li>';
+                  }
+                  ?>
+                </ul>
+              </li>
+            <?php
+              } else {
+                // для всех остальных категорий - выводим подкатегории
+            ?>
+              <li>
+                <a href="<?php echo $category['href']; ?>">
+                  <img src="/catalog/view/theme/default/image/m<?php echo $key+1;?>.svg" alt="">
+                  <span><?php echo $category['name']; ?></span>
+                </a>
+                <?php if ( count($category['children']) > 0 ) { ?>
+                <ul class="main-nav-dropdown">
+                  <?php foreach ($category['children'] as $k => $child) { ?>
+                    <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                  <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php
+              }
+            }
+            ?>
           </ul>
         </div>
       </div>
