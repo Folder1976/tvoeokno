@@ -139,117 +139,85 @@
   </div>
 </section>
 
-<pre><?php
-// var_dump(get_defined_vars());
-// foreach($categorys as $category_id => $category_info){
-    
-    //$category_info - Информация категории
-    // foreach($category_info['products'] as $product_id){
-     
-     //$products[$product_id] - Информация по продукту
-     
-    // }
-?></pre>
-
+<?php if ( count($categorys) > 0 ) { ?> 
 <section class="prices brand-prices">
   <div class="container">
     <div class="prices-type">
       <p class="bold">ЦЕНЫ:</p>
       <ul>
-        <?php //foreach ($variable as $key => $value) { ?>
-        <?php //} ?>
-        <li><a href="#" class="active">Двухстворчатое окно</a></li>
-        <li><a href="#">Трехстворчатое окно</a></li>
-        <li><a href="#">Балконный блок</a></li>
-        <li><a href="#">Остекление лоджии</a></li>
+        <?php foreach($categorys as $category_id => $category_info){ ?>
+        <li><a href="#tab_<?php echo $category_info['category_id']; ?>" data-toggle="tab"><?php echo $category_info['name']; ?></a></li>
+        <?php } ?>
       </ul>
       <p>*Цены без установки</p>
     </div>
-    <div class="prices-single">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="prices-single-img">
-            <img src="img/window.png" alt="">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <table class="prices-single-table">
-            <thead>
-              <tr>
-                <th>Система</th>
-                <th>1-камерый</th>
-                <th>2-камерный</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Open teck</td>
-                <td>1688</td>
-                <td>1688</td>
-              </tr>
-              <tr>
-                <td>WDS Olimpia</td>
-                <td>1688</td>
-                <td>1688</td>
-              </tr>
-              <tr>
-                <td>Rehau Ecosol 60</td>
-                <td>1688</td>
-                <td>1688</td>
-              </tr>
-              <tr>
-                <td>Rehau Ecosol 70</td>
-                <td>1688</td>
-                <td>1688</td>
-              </tr>
-              <tr>
-                <td>Salamander 2D</td>
-                <td>1688</td>
-                <td>1688</td>
-              </tr>
-              <tr>
-                <td>Salamander Streamline</td>
-                <td>1688</td>
-                <td>1688</td>
-              </tr>
-              <tr>
-                <td>Windom Eco</td>
-                <td>1688</td>
-                <td>1688</td>
-              </tr>
-              <tr>
-                <td>Decco 71</td>
-                <td>1688</td>
-                <td>1688</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-md-3">
-          <div class="prices-single-right">
-            <div class="complectation">
-              <h3>Комплектация к окну</h3>
-              <p>Подоконник 26 см - 106 грн</p>
-              <p>Отлив 15 см - 70 грн</p>
-              <p>Москитная сетка - 120 грн</p>
-              <p>Установка окна 486 грн</p>
+    <div class="tab-content">
+      <?php foreach($categorys as $category_id => $category_info){ ?>
+      <div class="tab-pane" id="tab_<?php echo $category_info['category_id']; ?>">
+        <div class="prices-single">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="prices-single-img">
+                <img src="/image/<?php echo $category_info['image']; ?>" alt="">
+              </div>
             </div>
-            <div class="price">
-              <p>Цена от: 2957 грн</p>
-              <span>* При заказе с установкой</span>
+            <div class="col-md-6">
+              <table class="prices-single-table">
+                <thead>
+                  <tr>
+                    <th>Система</th>
+                    <th>1-камерый</th>
+                    <th>2-камерный</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($category_info['products'] as $product_id){ ?>
+                  <tr>
+                    <td><?php echo $products[$product_id]['name']; ?></td>
+                    <td><?php
+                      $opt = $products[$product_id]['option'][0]['product_option_value'][0];
+                      // var_dump($products[$product_id], $opt);
+                      if ( $opt['price'] ) {
+                        if ( $opt['price_prefix'] == '+' ) {
+                          echo $products[$product_id]['price'] + str_replace(' грн.', '', $opt['price']);
+                        } else {
+                          echo $products[$product_id]['price'] - str_replace(' грн.', '', $opt['price']);
+                        }
+                      } else {
+                        echo $products[$product_id]['price'];
+                      }?></td>
+                    <td><?php
+                      $opt = $products[$product_id]['option'][0]['product_option_value'][1];
+                      // var_dump($products[$product_id], $opt);
+                      if ( $opt['price'] ) {
+                        if ( $opt['price_prefix'] == '+' ) {
+                          echo $products[$product_id]['price'] + str_replace(' грн.', '', $opt['price']);
+                        } else {
+                          echo $products[$product_id]['price'] - str_replace(' грн.', '', $opt['price']);
+                        }
+                      } else {
+                        echo $products[$product_id]['price'];
+                      }?></td>
+
+                  </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
             </div>
-            <div class="buy">
-              <a href="#" class="favorite opt">В избранное</a>
-              <a href="#" class="comparison opt">В сравнение</a>
-              <a href="#" class="buy-btn green-btn">рассчитать стоимость</a>
-              <a href="#" class="buy-link">КУпить в рассрочку по 0%</a>
+            <div class="col-md-3">
+              <div class="prices-single-right">
+                <?php echo $category_info['description']; ?>
+                <?php // echo $categorys[$category_id]['description']; ?>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <?php } ?>
     </div>
   </div>
 </section>
+<?php } ?>
 
 
           <?php if (false) { //($products) { ?>
@@ -352,5 +320,9 @@
 
 <?php echo $column_right; ?>
 <?php echo $content_bottom; ?>
+
+<script>
+$('.prices-type li:first a').tab('show');
+</script>
 
 <?php echo $footer; ?>

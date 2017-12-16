@@ -702,7 +702,7 @@ button {
       background: #D5D5D5; }
       .prices-type a:hover {
         background: rgba(239, 68, 36, 0.7); }
-    .prices-type a.active {
+    .prices-type a.active, .prices-type li.active a {
       background: radial-gradient(65.39px at 104.61% -63.33%, rgba(255, 255, 255, 0.4) 0%, rgba(239, 68, 36, 0.4) 100%), #EF4424; }
   .prices-single img {
     width: 100%; }
