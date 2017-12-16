@@ -8,6 +8,12 @@ class ControllerStartupSeoUrl extends Controller {
 
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
+			
+			if ($this->request->get['_route_'] == 'online_windows_calculator') {	
+				$this->request->get['route'] = 'product/calculator';
+				return true;
+			}
+			
 			$parts = explode('/', $this->request->get['_route_']);
 
 			// remove any empty arrays from trailing
