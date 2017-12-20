@@ -236,6 +236,7 @@ class ControllerProductManufacturer extends Controller {
 					$rating = false;
 				}
 
+
 				$data['categorys'][$result['category_id']]['products'][] = $result['product_id'];
 				
 				foreach ($this->model_catalog_product->getProductOptions($result['product_id']) as $option) {
@@ -289,6 +290,7 @@ class ControllerProductManufacturer extends Controller {
 			foreach($data['categorys'] as $_category_id => $row){
 				
 				$data['categorys'][$_category_id] = $this->model_catalog_category->getCategory($_category_id);
+				
 				$data['categorys'][$_category_id]['products'] = $row['products'];
 				
 			}
