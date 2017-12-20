@@ -264,6 +264,7 @@
         </form>
     </div>
 
+    <?php if ( $_GET['route'] != 'product/category' ) { ?>
     <section class="main-sect">
         <ul class="side-nav">
           <li>
@@ -286,3 +287,4 @@
           </li>
         </ul>
     </section>
+    <?php } ?>

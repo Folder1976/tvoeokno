@@ -35,13 +35,17 @@
         <?php } ?>
 
 
+        <?php if ( $_GET['filter'] ) { ?>
+        <?php $filter_arr = explode(',', $_GET['filter']); ?>
         <div class="filter">
           <p>Фильтр:</p>
           <ul class="filter-list">
-            <li><a href="#">Окна<span>×</span></a></li>
-            <li><a href="#">2 - створчатое<span>×</span></a></li>
+            <?php foreach ($filter_arr as $value) { ?>
+              <li><a href="javascript:void(0)" class="js-filter-remove" data-id="<?php echo $value; ?>"><?php echo $value; ?><span>×</span></a></li>
+            <?php } ?>
           </ul>
         </div>
+        <?php } ?>
 
 
         <?php if ($categories) { ?>
@@ -201,6 +205,15 @@
       </div>
   </div>
 </section>
+
+<script>
+$('.js-filter-remove').on('click', function(){
+  var id_filter = $(this).data('id');
+  $(':checkbox[name*=filter][value='+id_filter+']').removeAttr('checked');
+  $(this).remove();
+  $('#button-filter').click();
+});
+</script>
 
 <?php echo $content_bottom; ?>
 <?php echo $column_right; ?>
