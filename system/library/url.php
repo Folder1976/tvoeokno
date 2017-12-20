@@ -14,6 +14,10 @@ class Url {
 	}
 
 	public function link($route, $args = '', $secure = false) {
+		
+		
+		
+		
 		if ($this->ssl && $secure) {
 			$url = $this->ssl . 'index.php?route=' . $route;
 		} else {
@@ -31,7 +35,7 @@ class Url {
 		foreach ($this->rewrite as $rewrite) {
 			$url = $rewrite->rewrite($url);
 		}
-		
+
 		return $url; 
 	}
 }

@@ -426,13 +426,7 @@ class ControllerProductCategory extends Controller {
 				$data['fastorder'] = $this->load->controller('product/fastorder', $product_info = $this->model_catalog_product->getProduct($result['product_id'])); // FastOrder
 			}
 			
-			if(isset($this->request->get['all'])){
-				$this->response->setOutput($this->load->view('product/category2', $data));	
-			}else{
-				$this->response->setOutput($this->load->view('product/category', $data));	
-			}
-			
-			
+			$this->response->setOutput($this->load->view('product/category', $data));
 		} else {
 			$url = '';
 

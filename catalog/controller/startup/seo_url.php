@@ -14,6 +14,11 @@ class ControllerStartupSeoUrl extends Controller {
 				return true;
 			}
 			
+			if (strpos($this->request->get['_route_'], 'all/') !== false) {	
+				$this->request->get['all'] = true;
+				$this->request->get['_route_'] = str_replace('all/', '', $this->request->get['_route_']);
+			}
+			
 			$parts = explode('/', $this->request->get['_route_']);
 
 			// remove any empty arrays from trailing
