@@ -1,25 +1,25 @@
-<div class="panel panel-default">
-  <div class="panel-heading"><?php echo $heading_title; ?></div>
-  <div class="list-group">
+<div class="">
+  <div class="panel-heading"><?php // echo $heading_title; ?></div>
+  <div class="list-group sidebar">
     <?php foreach ($filter_groups as $filter_group) { ?>
-    <a class="list-group-item"><?php echo $filter_group['name']; ?></a>
-    <div class="list-group-item">
-      <div id="filter-group<?php echo $filter_group['filter_group_id']; ?>">
-        <?php foreach ($filter_group['filter'] as $filter) { ?>
-        <div class="checkbox">
-          <label>
-            <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
-            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" checked="checked" />
-            <?php echo $filter['name']; ?>
-            <?php } else { ?>
-            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" />
-            <?php echo $filter['name']; ?>
-            <?php } ?>
-          </label>
-        </div>
-        <?php } ?>
+    <h3><?php echo $filter_group['name']; ?></h3>
+    <ul class="sidebar-list" id="filter-group<?php echo $filter_group['filter_group_id']; ?>">
+      <?php foreach ($filter_group['filter'] as $filter) { ?>
+      <li>
+      <div class="checkbox">
+        <label>
+          <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
+          <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" checked="checked" />
+          <?php echo $filter['name']; ?>
+          <?php } else { ?>
+          <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" />
+          <?php echo $filter['name']; ?>
+          <?php } ?>
+        </label>
       </div>
-    </div>
+      </li>
+      <?php } ?>
+    </ul>
     <?php } ?>
   </div>
   <div class="panel-footer text-right">

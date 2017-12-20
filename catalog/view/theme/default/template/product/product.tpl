@@ -1,10 +1,337 @@
 <?php echo $header; ?>
-<div class="container">
-  <ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
+<div class="wrap">
+    <section class="product-card">
+      <div class="breadcrumbs">
+        <div class="container">
+          <ul class="breadcrumbs-list">
+            <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+            <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+            <?php } ?>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+            <div id="content"></div>
+        </div>
+      </div>
+
+      <h2 class="main-title"><?php echo $heading_title; ?></h2>
+
+      <div class="container-fluid">
+        <div class="prices-single">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="prices-single-img">
+                <img src="img/window.png" alt="">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="product-card-info">
+                <div class="sizes">
+                  <p>Ширина: <span>1800 см</span></p>
+                  <p>Высота: <span>1400 см</span></p>
+                </div>
+                <p class="product-card-price">Цена от: <span><?php 
+                if ($price) {
+                  $price_and_currency = explode(' ', $price);
+                  echo round($price_and_currency[0], 2).' '.$price_and_currency[1];
+                } 
+                ?></span></p>
+                <p class="dop">* При заказе с установкой</p>
+                <p class="product-card-id"><?php echo $text_model; ?> <?php echo $model; ?></p>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <table class="prices-single-table">
+                <thead>
+                  <tr>
+                    <th>Бренды</th>
+                    <th>1-камерый</th>
+                    <th>2-камерный</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Open teck</td>
+                    <td>1688 грн</td>
+                    <td>1688 грн</td>
+                  </tr>
+                  <tr>
+                    <td>WDS Olimpia</td>
+                    <td>1688 грн</td>
+                    <td>1688 грн</td>
+                  </tr>
+                  <tr>
+                    <td>Rehau Ecosol 60</td>
+                    <td>1688 грн</td>
+                    <td>1688 грн</td>
+                  </tr>
+                  <tr>
+                    <td>Rehau Ecosol 70</td>
+                    <td>1688 грн</td>
+                    <td>1688 грн</td>
+                  </tr>
+                  <tr>
+                    <td>Salamander 2D</td>
+                    <td>1688 грн</td>
+                    <td>1688 грн</td>
+                  </tr>
+                  <tr>
+                    <td>Salamander Streamline</td>
+                    <td>1688 грн</td>
+                    <td>1688 грн</td>
+                  </tr>
+                  <tr>
+                    <td>Windom Eco</td>
+                    <td>1688 грн</td>
+                    <td>1688 грн</td>
+                  </tr>
+                  <tr>
+                    <td>Decco 71</td>
+                    <td>1688 грн</td>
+                    <td>1688 грн</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-3">
+              <div class="prices-single-right">
+                <div class="complectation">
+                  <h3>Дополнительно</h3>
+                  <p>Подоконник 26 см - 106 грн</p>
+                  <p>Отлив 15 см - 70 грн</p>
+                  <p>Москитная сетка - 120 грн</p>
+                  <p>Установка окна 486 грн</p>
+                  <p>Установка окна 486 грн</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <form action="/" class="product-card-form">
+        <section class="product-card-data">
+          <div class="container">
+            <h3 class="product-card-title">Внести свои данные для расчета</h3>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="sizes">
+                  <p>Размер окна</p>
+                  <div class="sizes-group">
+                    <label for="height">Высота, см</label>
+                    <input id="height" type="text" class="form-controll" value="0">
+                  </div>
+                  <div class="sizes-group">
+                    <label for="width">Ширина, см</label>
+                    <input id="width" type="text" class="form-controll" value="0">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-9 col-md-8 col-sm-6">
+                <div class="info">
+                  <div class="info-select">
+                    <select class="select">
+                      <option value="VEKA EUROLINE">VEKA EUROLINE</option>
+                      <option value="VEKA EUROLINE">VEKA EUROLINE</option>
+                      <option value="VEKA EUROLINE">VEKA EUROLINE</option>
+                    </select>
+                  </div>
+                  <div class="info-select">
+                    <select class="select">
+                      <option value="Стеклопакет">Стеклопакет</option>
+                      <option value="Стеклопакет">Стеклопакет</option>
+                      <option value="Стеклопакет">Стеклопакет</option>
+                    </select>
+                    <a href="#">характеристики стеклопакетов</a>
+                  </div>
+                  <div class="info-select">
+                    <select class="select">
+                      <option value="Фурнитура">Фурнитура</option>
+                      <option value="Фурнитура">Фурнитура</option>
+                      <option value="Фурнитура">Фурнитура</option>
+                    </select>
+                    <a href="#">характеристики фурнитуры</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="add-order">
+          <div class="container">
+            <h3 class="product-card-title">Добавить к заказу</h3>
+            <div class="info-select">
+              <select class="select">
+                <option value="Подоконник">Подоконник</option>
+                <option value="Подоконник">Подоконник</option>
+                <option value="Подоконник">Подоконник</option>
+              </select>
+              <a href="#">посмотреть цвета подоконников</a>
+            </div>
+            <div class="counts">
+              <div class="first-count">
+                <p>Размер подоконника</p>
+                <div class="sizes-group">
+                  <label for="height2">Высота, см</label>
+                  <input id="height2" type="text" class="form-controll" value="0">
+                </div>
+                <div class="sizes-group">
+                  <label for="width2">Ширина, см</label>
+                  <input id="width2" type="text" class="form-controll" value="0">
+                </div>
+              </div>
+              <div class="second-count">
+                <p>Количество окон</p>
+                <div class="second-count-input">
+                  <a href="#" class="second-count-btn btn-prev">-</a>
+                  <input type="number" value="1">
+                  <a href="#" class="second-count-btn btn-next">+</a>
+                </div>
+              </div>
+            </div>
+            <div class="add-order-dop">
+              <div class="checkbox">
+                <input id="c1" type="checkbox" checked>
+                <label for="c1">Отлив</label>
+              </div>
+              <div class="checkbox">
+                <input id="c2" type="checkbox" checked>
+                <label for="c2">Монтаж</label>
+              </div>
+              <div class="checkbox">
+                <input id="c3" type="checkbox" checked>
+                <label for="c3">Москитная сетка</label>
+              </div>
+              <div class="checkbox">
+                <input id="c4" type="checkbox" checked>
+                <label for="c4">Откосы</label>
+              </div>
+            </div>
+            <div class="add-order-fav">
+              <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
+              <a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a>
+              <a href="#" class="link-price green-btn">Узнать стоимость</a>
+            </div>
+          </div>
+        </section>
+        <section class="tech">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="char">
+                  <h3 class="product-card-title">Технические характеристики</h3>
+                  <table class="tech-table">
+                    <tbody>
+                      <tr>
+                        <td>Вид</td>
+                        <td>2279</td>
+                      </tr>
+                      <tr>
+                        <td>Стеклопакет</td>
+                        <td>2279</td>
+                      </tr>
+                      <tr>
+                        <td>Монтажная глубина</td>
+                        <td>2279</td>
+                      </tr>
+                      <tr>
+                        <td>Профильная система</td>
+                        <td>2279</td>
+                      </tr>
+                      <tr>
+                        <td>Цвет</td>
+                        <td>2279</td>
+                      </tr>
+                      <tr>
+                        <td>Камерность профиля</td>
+                        <td>2279</td>
+                      </tr>
+                      <tr>
+                        <td>Толщина стеклопакета</td>
+                        <td>2279</td>
+                      </tr>
+                      <tr>
+                        <td>Фуртитура</td>
+                        <td>2279</td>
+                      </tr>
+                      <tr>
+                        <td>Коэффициент теплопередачи</td>
+                        <td>2279</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="desc">
+                  <h3 class="product-card-title">Описание</h3>
+                  <p>Металлопластиковые системы Veka Euroline представляют собой трехкамерный профиль с оптимальными характеристиками. Он лучшим образом подойдет для качественного и одновременно экономного остекления любых помещений и балконов. При глубине монтажа 58 мм рамы способны вмещать стеклоблоки до 32 мм.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+      <section class="similar-product">
+        <div class="container">
+          <h2 class="main-title">Похожие товары</h2>
+          <div class="slider">
+            <div class="owl-nav navs">
+              <a href="#" class="owl-prev similar-next prev"><span></span></a>
+              <a href="#" class="owl-next similar-prev next"><span></span></a>
+            </div>
+            <div class="similar-product-slider owl-carousel">
+              <div class="item">
+                <div class="favorites-single">
+                  <div class="img">
+                    <img src="img/f1.jpg" alt="">
+                  </div>
+                  <p class="name">Окно арочное из ПВХ,1800х1400</p>
+                  <a href="#" class="favorite-link">В избранное</a>
+                  <a href="#" class="more green-btn">пОДРОБНЕЕ</a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="favorites-single">
+                  <div class="img">
+                    <img src="img/f1.jpg" alt="">
+                  </div>
+                  <p class="name">Окно арочное из ПВХ,1800х1400</p>
+                  <a href="#" class="favorite-link">В избранное</a>
+                  <a href="#" class="more green-btn">пОДРОБНЕЕ</a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="favorites-single">
+                  <div class="img">
+                    <img src="img/f1.jpg" alt="">
+                  </div>
+                  <p class="name">Окно арочное из ПВХ,1800х1400</p>
+                  <a href="#" class="favorite-link">В избранное</a>
+                  <a href="#" class="more green-btn">пОДРОБНЕЕ</a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="favorites-single">
+                  <div class="img">
+                    <img src="img/f1.jpg" alt="">
+                  </div>
+                  <p class="name">Окно арочное из ПВХ,1800х1400</p>
+                  <a href="#" class="favorite-link">В избранное</a>
+                  <a href="#" class="more green-btn">пОДРОБНЕЕ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+<div class="container" style="display: none;">
+
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
     <?php $class = 'col-sm-6'; ?>
@@ -396,6 +723,11 @@
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
+
+
+<?php echo $content_bottom; ?>
+<?php echo $column_right; ?>
+
 <script type="text/javascript"><!--
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 	$.ajax({

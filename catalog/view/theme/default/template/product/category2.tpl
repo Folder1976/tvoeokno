@@ -12,7 +12,6 @@
 
   <h2 class="main-title"><?php echo $heading_title; ?> <b>ШАБЛОН номер 2</b></h2>
 
-
   <div class="container-fluid">
     <div class="row"><?php echo $column_left; ?>
       <?php if ($column_left && $column_right) { ?>

@@ -12,7 +12,6 @@
 
   <h2 class="main-title"><?php echo $heading_title; ?></h2>
 
-
   <div class="container-fluid">
     <div class="row"><?php echo $column_left; ?>
       <?php if ($column_left && $column_right) { ?>
@@ -30,7 +29,7 @@
           <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
           <?php } ?>
           <?php if ($description) { ?>
-          <div class="col-sm-10"><?php echo $description; ?></div>
+          <div class="col-sm-10"><?php // echo $description; ?></div>
           <?php } ?>
         </div>
         <?php } ?>

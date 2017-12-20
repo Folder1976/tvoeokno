@@ -144,6 +144,8 @@
     <script src="/catalog/view/theme/default/libs/nice-select/nice-select.min.js"></script>
     <script src="/catalog/view/theme/default/libs/slider/nouislider.min.js"></script>
     <script src="/catalog/view/theme/default/libs/parallax/parallax.min.js"></script>
+    <script src="catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js" type="text/javascript"></script>
     <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
     <script src="/catalog/view/theme/default/js/main.js"></script>
     <script>
