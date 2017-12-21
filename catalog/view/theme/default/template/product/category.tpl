@@ -35,7 +35,7 @@
         <?php } ?>
 
 
-        <?php if ( $_GET['filter'] ) { ?>
+        <?php if ( isset($_GET['filter']) ) { ?>
         <?php $filter_arr = explode(',', $_GET['filter']); ?>
         <div class="filter">
           <p>Фильтр:</p>

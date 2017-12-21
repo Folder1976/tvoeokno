@@ -177,6 +177,24 @@
                 </ul>
               </li>
             <?php
+              } else if ( $key == 1 ) {
+                // для категории "Окна Цены"
+                // выпадающее меню линкуется на /all/..
+            ?>
+              <li>
+                <a href="<?php echo $category['href']; ?>">
+                  <img src="/catalog/view/theme/default/image/m<?php echo $key+1;?>.svg" alt="">
+                  <span><?php echo $category['name']; ?></span>
+                </a>
+                <?php if ( count($category['children']) > 0 ) { ?>
+                <ul class="main-nav-dropdown">
+                  <?php foreach ($category['children'] as $k => $child) { ?>
+                    <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                  <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php
               } else {
                 // для всех остальных категорий - выводим подкатегории
             ?>
@@ -264,7 +282,9 @@
         </form>
     </div>
 
-    <?php if ( $_GET['route'] != 'product/category' ) { ?>
+    <?php if ( isset($_GET['route']) && $_GET['route'] == 'product/category' ) { ?>
+    <?php echo ''; ?>
+    <?php } else { ?>
     <section class="main-sect">
         <ul class="side-nav">
           <li>
