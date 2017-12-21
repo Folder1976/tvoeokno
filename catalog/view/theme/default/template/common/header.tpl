@@ -148,13 +148,15 @@
                 <img src="/catalog/view/theme/default/image/i.svg" alt="">
                 <span>Главная</span>
               </a>
-              <ul class="main-nav-dropdown">
-                <li class="main-nav-dropdown-item"><a href="#">Кредит "Тепла оселя"</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Выезд в пригород Киева</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Доставка</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Гарантия</a></li>
-                <li class="main-nav-dropdown-item"><a href="#">Статьи</a></li>
-              </ul>
+              <div class="main-nav-dropdown">
+                <ul>
+                  <li class="main-nav-dropdown-item"><a href="#">Кредит "Тепла оселя"</a></li>
+                  <li class="main-nav-dropdown-item"><a href="#">Выезд в пригород Киева</a></li>
+                  <li class="main-nav-dropdown-item"><a href="#">Доставка</a></li>
+                  <li class="main-nav-dropdown-item"><a href="#">Гарантия</a></li>
+                  <li class="main-nav-dropdown-item"><a href="#">Статьи</a></li>
+                </ul>
+              </div>
             </li>
 
             <?php
@@ -168,13 +170,15 @@
                   <img src="/catalog/view/theme/default/image/m1.svg" alt="">
                   <span><?php echo $category['name']; ?></span>
                 </a>
-                <ul class="main-nav-dropdown">
-                  <?php
-                  foreach ($manufacturers as $key => $manuf) {
-                    echo '<li class="main-nav-dropdown-item"><a href="'.$manuf['keyword'].'">Окна '.$manuf['name'].'</a></li>';
-                  }
-                  ?>
-                </ul>
+                <div class="main-nav-dropdown">
+                  <ul>
+                    <?php
+                    foreach ($manufacturers as $key => $manuf) {
+                      echo '<li class="main-nav-dropdown-item"><a href="'.$manuf['keyword'].'">Окна '.$manuf['name'].'</a></li>';
+                    }
+                    ?>
+                  </ul>
+                </div>
               </li>
             <?php
               } else if ( $key == 1 ) {
@@ -187,11 +191,13 @@
                   <span><?php echo $category['name']; ?></span>
                 </a>
                 <?php if ( count($category['children']) > 0 ) { ?>
-                <ul class="main-nav-dropdown">
-                  <?php foreach ($category['children'] as $k => $child) { ?>
-                    <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                  <?php } ?>
-                </ul>
+                <div class="main-nav-dropdown">
+                  <ul>
+                    <?php foreach ($category['children'] as $k => $child) { ?>
+                      <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                    <?php } ?>
+                  </ul>
+                </div>
                 <?php } ?>
               </li>
             <?php
@@ -204,11 +210,13 @@
                   <span><?php echo $category['name']; ?></span>
                 </a>
                 <?php if ( count($category['children']) > 0 ) { ?>
-                <ul class="main-nav-dropdown">
-                  <?php foreach ($category['children'] as $k => $child) { ?>
-                    <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                  <?php } ?>
-                </ul>
+                <div class="main-nav-dropdown">
+                  <ul>
+                    <?php foreach ($category['children'] as $k => $child) { ?>
+                      <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                    <?php } ?>
+                  </ul>
+                </div>
                 <?php } ?>
               </li>
             <?php
