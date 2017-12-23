@@ -290,9 +290,6 @@
         </form>
     </div>
 
-    <?php if ( isset($_GET['route']) && $_GET['route'] == 'product/category' ) { ?>
-    <?php echo ''; ?>
-    <?php } else { ?>
     <section class="main-sect">
         <ul class="side-nav">
           <li>
@@ -315,4 +312,3 @@
           </li>
         </ul>
     </section>
-    <?php } ?>

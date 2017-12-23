@@ -1,4 +1,8 @@
 <?php echo $header; ?>
+<style>
+.main-sect { display: none; }
+</style>
+
 <section class="calc-page">
   <div class="breadcrumbs">
     <div class="container">
@@ -52,31 +56,20 @@
         <div class="col-md-5 col-sm-12">
           <div class="window-offers">
             <form action="/" class="window-offers-form">
-              <select class="select">
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-              </select>
-              <select class="select">
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-              </select>
-              <select class="select">
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-              </select>
-              <select class="select">
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-              </select>
-              <select class="select">
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-                <option value="Оконные системы">Оконные системы</option>
-              </select>
+
+              <?php foreach ($group_list as $key => $group) { ?>
+              <?php if ( $group['enable'] == 1 ) { ?>
+                <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
+                  <option disabled selected><?php echo $group['name']; ?></option>
+                  <?php foreach ($group['list'] as $k => $attribute) { ?>
+                  <?php if ( $attribute['enable'] == 1 ) { ?>
+                    <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
+                  <?php } ?>
+                  <?php } ?>
+                </select>
+              <?php } ?>
+              <?php } ?>
+
               <div class="checkbox">
                 <input id="label1" type="checkbox" checked>
                 <label for="label1">Монтаж/демонтаж</label>

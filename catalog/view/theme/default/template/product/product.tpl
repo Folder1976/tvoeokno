@@ -1,4 +1,8 @@
 <?php echo $header; ?>
+<style>
+.main-sect { display: none; }
+</style>
+
 <div class="wrap">
     <section class="product-card">
       <div class="breadcrumbs">
@@ -16,6 +20,8 @@
             <div id="content"></div>
         </div>
       </div>
+
+<pre><?php //var_dump($group_list); ?></pre>
 
       <h2 class="main-title"><?php echo $heading_title; ?></h2>
 
@@ -133,29 +139,51 @@
               </div>
               <div class="col-lg-9 col-md-8 col-sm-6">
                 <div class="info">
+
+                  <?php $group = $group_list[7]; // Оконная система ?>
+                  <?php if ( $group['enable'] == 1 ) { ?>
                   <div class="info-select">
-                    <select class="select">
-                      <option value="VEKA EUROLINE">VEKA EUROLINE</option>
-                      <option value="VEKA EUROLINE">VEKA EUROLINE</option>
-                      <option value="VEKA EUROLINE">VEKA EUROLINE</option>
+                    <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
+                      <option disabled selected><?php echo $group['name']; ?></option>
+                      <?php foreach ($group['list'] as $k => $attribute) { ?>
+                      <?php if ( $attribute['enable'] == 1 ) { ?>
+                        <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
+                      <?php } ?>
+                      <?php } ?>
                     </select>
                   </div>
+                  <?php } ?>
+
+                  <?php $group = $group_list[8]; // Стеклопакет ?>
+                  <?php if ( $group['enable'] == 1 ) { ?>
                   <div class="info-select">
-                    <select class="select">
-                      <option value="Стеклопакет">Стеклопакет</option>
-                      <option value="Стеклопакет">Стеклопакет</option>
-                      <option value="Стеклопакет">Стеклопакет</option>
+                    <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
+                      <option disabled selected><?php echo $group['name']; ?></option>
+                      <?php foreach ($group['list'] as $k => $attribute) { ?>
+                      <?php if ( $attribute['enable'] == 1 ) { ?>
+                        <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
+                      <?php } ?>
+                      <?php } ?>
                     </select>
                     <a href="#">характеристики стеклопакетов</a>
                   </div>
+                  <?php } ?>
+
+                  <?php $group = $group_list[9]; // Фурнитура ?>
+                  <?php if ( $group['enable'] == 1 ) { ?>
                   <div class="info-select">
-                    <select class="select">
-                      <option value="Фурнитура">Фурнитура</option>
-                      <option value="Фурнитура">Фурнитура</option>
-                      <option value="Фурнитура">Фурнитура</option>
+                    <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
+                      <option disabled selected><?php echo $group['name']; ?></option>
+                      <?php foreach ($group['list'] as $k => $attribute) { ?>
+                      <?php if ( $attribute['enable'] == 1 ) { ?>
+                        <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
+                      <?php } ?>
+                      <?php } ?>
                     </select>
                     <a href="#">характеристики фурнитуры</a>
                   </div>
+                  <?php } ?>
+
                 </div>
               </div>
             </div>
@@ -164,14 +192,23 @@
         <section class="add-order">
           <div class="container">
             <h3 class="product-card-title">Добавить к заказу</h3>
+
+            <form action="">
+            <?php $group = $group_list[10]; // Подоконник ?>
+            <?php if ( $group['enable'] == 1 ) { ?>
             <div class="info-select">
-              <select class="select">
-                <option value="Подоконник">Подоконник</option>
-                <option value="Подоконник">Подоконник</option>
-                <option value="Подоконник">Подоконник</option>
+              <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
+                <option disabled selected><?php echo $group['name']; ?></option>
+                <?php foreach ($group['list'] as $k => $attribute) { ?>
+                <?php if ( $attribute['enable'] == 1 ) { ?>
+                  <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
+                <?php } ?>
+                <?php } ?>
               </select>
               <a href="#">посмотреть цвета подоконников</a>
             </div>
+            <?php } ?>
+
             <div class="counts">
               <div class="first-count">
                 <p>Размер подоконника</p>
@@ -214,8 +251,9 @@
             <div class="add-order-fav">
               <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
               <a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a>
-              <a href="#" class="link-price green-btn">Узнать стоимость</a>
+              <button type="submit" class="link-price green-btn">Узнать стоимость</button>
             </div>
+            </form>
           </div>
         </section>
         <section class="tech">

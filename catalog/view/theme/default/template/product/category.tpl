@@ -1,4 +1,8 @@
 <?php echo $header; ?>
+<style>
+.main-sect { display: none; }
+</style>
+
 <section class="compared window-price">
   <div class="breadcrumbs">
     <div class="container">
