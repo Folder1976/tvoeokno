@@ -4,7 +4,22 @@ class ControllerProductProduct extends Controller {
 
 	public function index() {
 		$this->load->language('product/product');
-
+		
+		$this->load->model('catalog/attribute2');
+		$this->load->model('catalog/attribute_group2');
+		$lists = $this->model_catalog_attribute2->getAttributes();
+		$groups = $this->model_catalog_attribute_group2->getAttributeGroups();
+		
+		$group_list = array();
+		foreach($lists as $index => $list){
+			if(!isset($group_list[$list['attribute_group_id']]['name'])){
+				$group_list[$list['attribute_group_id']] = $groups[$list['attribute_group_id']];
+			}
+			$group_list[$list['attribute_group_id']]['list'][$list['attribute_id']] = $list;
+		}
+		
+		$data['group_list'] = $group_list;
+		
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(

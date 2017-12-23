@@ -103,6 +103,33 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 			
+			// Attributes
+			$attribute2 = array();
+			
+			if ($this->user->hasPermission('access', 'catalog/attribute2')) {
+				$attribute2[] = array(
+					'name'     => $this->language->get('text_attribute2'),
+					'href'     => $this->url->link('catalog/attribute2', 'token=' . $this->session->data['token'], true),
+					'children' => array()	
+				);
+			}
+			
+			if ($this->user->hasPermission('access', 'catalog/attribute_group2')) {
+				$attribute2[] = array(
+					'name'	   => $this->language->get('text_attribute_group2'),
+					'href'     => $this->url->link('catalog/attribute_group2', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			}
+			
+			if ($attribute2) {
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_attribute2'),
+					'href'     => '',
+					'children' => $attribute2
+				);
+			}
+			
 			if ($this->user->hasPermission('access', 'catalog/option')) {
 				$catalog[] = array(
 					'name'	   => $this->language->get('text_option'),
