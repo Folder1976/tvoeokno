@@ -130,6 +130,35 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 			
+		// Footer
+			$attribute3 = array();
+			
+			if ($this->user->hasPermission('access', 'catalog/attribute3')) {
+				$attribute3[] = array(
+					'name'     => $this->language->get('text_attribute3'),
+					'href'     => $this->url->link('catalog/attribute3', 'token=' . $this->session->data['token'], true),
+					'children' => array()	
+				);
+			}
+			
+			if ($this->user->hasPermission('access', 'catalog/attribute_group3')) {
+				$attribute3[] = array(
+					'name'	   => $this->language->get('text_attribute_group3'),
+					'href'     => $this->url->link('catalog/attribute_group3', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			}
+			
+			if ($attribute3) {
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_attribute3'),
+					'href'     => '',
+					'children' => $attribute3
+				);
+			}
+			
+	
+	
 			if ($this->user->hasPermission('access', 'catalog/option')) {
 				$catalog[] = array(
 					'name'	   => $this->language->get('text_option'),

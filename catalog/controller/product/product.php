@@ -5,6 +5,7 @@ class ControllerProductProduct extends Controller {
 	public function index() {
 		$this->load->language('product/product');
 		
+		//==============================================
 		$this->load->model('catalog/attribute2');
 		$this->load->model('catalog/attribute_group2');
 		$lists = $this->model_catalog_attribute2->getAttributes();
@@ -19,6 +20,8 @@ class ControllerProductProduct extends Controller {
 		}
 		
 		$data['group_list'] = $group_list;
+		//==============================================
+		
 		
 		$data['breadcrumbs'] = array();
 

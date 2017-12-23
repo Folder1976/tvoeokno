@@ -20,9 +20,9 @@
               <p>м. Левобережная, <br> ул. Комбинатная <br> 25</p>
             </div>
             <div class="col-md-3">
-              <a href="#" class="top-link">Оконный словарь</a>
-              <a href="#" class="top-link">Условия покупки</a>
-              <a href="#" class="top-link">Установка окон</a>
+              <a href="<?php echo $group_list[12]['href']; ?>" class="top-link"><?php echo $group_list[12]['name']; ?></a>
+              <a href="<?php echo $group_list[7]['href']; ?>" class="top-link"><?php echo $group_list[7]['name']; ?></a>
+              <a href="<?php echo $group_list[11]['href']; ?>" class="top-link"><?php echo $group_list[11]['name']; ?></a>
             </div>
           </div>
         </div>
@@ -54,57 +54,50 @@
             </div>
             <div class="col-md-9">
               <div class="row">
-                <div class="col-md-4 single">
-                  <h2>Главная</h2>
-                  <a href="#" class="footer-link">Кредит “тепла оселя”</a>
-                  <a href="#" class="footer-link">Выезд в пригород Киева</a>
-                  <a href="/delivery" class="footer-link">Доставка</a>
-                  <a href="#" class="footer-link">Гарантии</a>
-                  <a href="/blogs" class="footer-link">Статьи</a>
-                </div>
-                <div class="col-md-4 single">
-                  <h2>Пластиковые окна</h2>
-                  <a href="#" class="footer-link">Rehau</a>
-                  <a href="#" class="footer-link">Salamander</a>
-                  <a href="#" class="footer-link">Decco</a>
-                  <a href="#" class="footer-link">Open teck</a>
-                  <a href="#" class="footer-link">WDS</a>
-                  <a href="#" class="footer-link">Windom</a>
-                  <a href="#" class="footer-link">KBE</a>
-                  <a href="#" class="footer-link">Veka</a>
-                </div>
-                <div class="col-md-4 single">
-                  <h2>Цены на окна</h2>
-                  <a href="#" class="footer-link">Типовые окна</a>
-                  <a href="#" class="footer-link">Балконный блок</a>
-                  <a href="#" class="footer-link">Калькулятор окон</a>
-                  <a href="#" class="footer-link">Окна Економ</a>
-                </div>
+                    <div class="col-md-4 single">
+                         <h2><?php echo $group_list[10]['name']; ?></h2>
+                         <?php foreach($group_list[10]['list'] as $row){ ?>
+                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                         <?php } ?>
+                    </div>
+                    
+                    <div class="col-md-4 single">
+                         <h2><?php echo $group_list[8]['name']; ?></h2>
+                         <?php foreach($group_list[8]['list'] as $row){ ?>
+                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                         <?php } ?>
+                    </div>
+                    
+                    <div class="col-md-4 single">
+                         <h2><?php echo $group_list[9]['name']; ?></h2>
+                         <?php foreach($group_list[9]['list'] as $row){ ?>
+                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                         <?php } ?>
+                    </div>
+
               </div>
+              
               <div class="row">
-                <div class="col-md-4 single">
-                  <h2>Аксессуары</h2>
-                  <a href="#" class="footer-link">Подоконники</a>
-                  <a href="#" class="footer-link">Стеклопакеты</a>
-                  <a href="#" class="footer-link">Фурнитура МАСО</a>
-                  <a href="#" class="footer-link">Откосы</a>
-                  <a href="#" class="footer-link">Подоконник DANKE</a>
-                </div>
-                <div class="col-md-4 single">
-                  <h2>Нестандарты</h2>
-                  <a href="#" class="footer-link">Остекление коттеджей</a>
-                  <a href="#" class="footer-link">Арочные окна</a>
-                  <a href="#" class="footer-link">Цветные окна</a>
-                  <a href="#" class="footer-link">Пластиковые двери</a>
-                </div>
-                <div class="col-md-4 single">
-                  <h2>Балконы и лоджии</h2>
-                  <a href="#" class="footer-link">Остекление лоджий</a>
-                  <a href="#" class="footer-link">Остекление балконов</a>
-                  <a href="#" class="footer-link">Французский балкон</a>
-                  <a href="#" class="footer-link">Балкон под ключ</a>
-                  <a href="#" class="footer-link">Балкон с выносом</a>
-                </div>
+                    <div class="col-md-4 single">
+                         <h2><?php echo $group_list[13]['name']; ?></h2>
+                         <?php foreach($group_list[13]['list'] as $row){ ?>
+                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                         <?php } ?>
+                    </div>
+                    
+                    <div class="col-md-4 single">
+                         <h2><?php echo $group_list[14]['name']; ?></h2>
+                         <?php foreach($group_list[14]['list'] as $row){ ?>
+                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                         <?php } ?>
+                    </div>
+                    
+                    <div class="col-md-4 single">
+                         <h2><?php echo $group_list[15]['name']; ?></h2>
+                         <?php foreach($group_list[15]['list'] as $row){ ?>
+                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                         <?php } ?>
+                    </div>
               </div>
             </div>
           </div>
