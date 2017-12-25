@@ -128,11 +128,11 @@
                   <p>Размер окна</p>
                   <div class="sizes-group">
                     <label for="height">Высота, см</label>
-                    <input id="height" type="text" class="form-controll" value="0">
+                    <input id="height" name="w_height" type="text" class="form-controll" value="0">
                   </div>
                   <div class="sizes-group">
                     <label for="width">Ширина, см</label>
-                    <input id="width" type="text" class="form-controll" value="0">
+                    <input id="width" name="w_width" type="text" class="form-controll" value="0">
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@
                       <?php } ?>
                       <?php } ?>
                     </select>
-                    <a href="#">характеристики стеклопакетов</a>
+                    <a href="/характеристики_стеклопакетов">характеристики стеклопакетов</a>
                   </div>
                   <?php } ?>
 
@@ -179,7 +179,7 @@
                       <?php } ?>
                       <?php } ?>
                     </select>
-                    <a href="#">характеристики фурнитуры</a>
+                    <a href="/характеристики_фурнитуры">характеристики фурнитуры</a>
                   </div>
                   <?php } ?>
 
@@ -203,7 +203,7 @@
                 <?php } ?>
                 <?php } ?>
               </select>
-              <a href="#">посмотреть цвета подоконников</a>
+              <a href="/посмотреть_цвета_подоконников">посмотреть цвета подоконников</a>
             </div>
             <?php } ?>
 
@@ -212,37 +212,37 @@
                 <p>Размер подоконника</p>
                 <div class="sizes-group">
                   <label for="height2">Высота, см</label>
-                  <input id="height2" type="text" class="form-controll" value="0">
+                  <input id="height2" name="p_height" type="text" class="form-controll" value="0">
                 </div>
                 <div class="sizes-group">
                   <label for="width2">Ширина, см</label>
-                  <input id="width2" type="text" class="form-controll" value="0">
+                  <input id="width2" name="p_width" type="text" class="form-controll" value="0">
                 </div>
               </div>
               <div class="second-count">
                 <p>Количество окон</p>
                 <div class="second-count-input">
                   <a href="#" class="second-count-btn btn-prev">-</a>
-                  <input type="number" value="1">
+                  <input type="number" name="w_items" value="1">
                   <a href="#" class="second-count-btn btn-next">+</a>
                 </div>
               </div>
             </div>
             <div class="add-order-dop">
               <div class="checkbox">
-                <input id="c1" type="checkbox" checked>
+                <input id="c1" type="checkbox" name="otliv" checked>
                 <label for="c1">Отлив</label>
               </div>
               <div class="checkbox">
-                <input id="c2" type="checkbox" checked>
+                <input id="c2" type="checkbox" name="montage" checked>
                 <label for="c2">Монтаж</label>
               </div>
               <div class="checkbox">
-                <input id="c3" type="checkbox" checked>
+                <input id="c3" type="checkbox" name="moskito" checked>
                 <label for="c3">Москитная сетка</label>
               </div>
               <div class="checkbox">
-                <input id="c4" type="checkbox" checked>
+                <input id="c4" type="checkbox" name="otkos" checked>
                 <label for="c4">Откосы</label>
               </div>
             </div>

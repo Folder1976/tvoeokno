@@ -48,12 +48,13 @@ jQuery(document).ready(function($) {
     $.ajax({
       url: '/index.php?route=account/universalform',
       type: 'post',
-      // dataType: 'json',
-      dataType: 'html',
+      dataType: 'text',
+      //dataType: 'html',
       data: $(this).serialize(),
       success: function(json) {
         var c = $('#fb-modal');
 
+         
         console.log(json);
 
         if (json['success']) {
