@@ -23,9 +23,9 @@ function initMap() {
   });
 }
 
-if ($("#map").length) {
-  initMap();
-}
+// if ($("#map").length) {
+//   initMap();
+// }
 
 jQuery(document).ready(function($) {
   // fancybox 
@@ -53,6 +53,8 @@ jQuery(document).ready(function($) {
       data: $(this).serialize(),
       success: function(json) {
         var c = $('#fb-modal');
+
+        console.log(json);
 
         if (json['success']) {
           c.html('<h2>Форма отправлена</h2>');
@@ -281,32 +283,32 @@ jQuery(document).ready(function($) {
     $('.imgs').fadeOut();
   });
 
-  var heightSlider = document.getElementById('height-slider');
-  heightSlider.style.height = '400px';
-  var heightValues = [
-    document.getElementById('price-lower'),
-    document.getElementById('price-upper')
-  ];
-  noUiSlider.create(heightSlider, {
-    start: [0],
-    connect: true,
-    tooltips: true,
-    step: 1,
-    orientation: 'vertical',
-    direction: 'rtl',
-    range: {
-      'min': 0,
-      'max': 2400,
-    },
-    format: {
-      to: function ( value ) {
-      return value + ' млн.р.';
-      },
-      from: function ( value ) {
-      return value.replace(',-', '');
-      }
-    }
-  });
+  // var heightSlider = document.getElementById('height-slider');
+  // heightSlider.style.height = '400px';
+  // var heightValues = [
+  //   document.getElementById('price-lower'),
+  //   document.getElementById('price-upper')
+  // ];
+  // noUiSlider.create(heightSlider, {
+  //   start: [0],
+  //   connect: true,
+  //   tooltips: true,
+  //   step: 1,
+  //   orientation: 'vertical',
+  //   direction: 'rtl',
+  //   range: {
+  //     'min': 0,
+  //     'max': 2400,
+  //   },
+  //   format: {
+  //     to: function ( value ) {
+  //     return value + ' млн.р.';
+  //     },
+  //     from: function ( value ) {
+  //     return value.replace(',-', '');
+  //     }
+  //   }
+  // });
   // heightSlider.noUiSlider.on('update', function( values, handle ) {
   //   var value = values[handle];
 
@@ -317,30 +319,30 @@ jQuery(document).ready(function($) {
   //   }
   // });
 
-  var widthSlider = document.getElementById('width-slider');
-  widthSlider.style.width = '400px';
-  var heightValues = [
-    document.getElementById('price-lower'),
-    document.getElementById('price-upper')
-  ];
-  noUiSlider.create(widthSlider, {
-    start: [0],
-    connect: true,
-    tooltips: true,
-    step: 1,
-    range: {
-      'min': 0,
-      'max': 2400,
-    },
-    format: {
-      to: function ( value ) {
-      return value + ' млн.р.';
-      },
-      from: function ( value ) {
-      return value.replace(',-', '');
-      }
-    }
-  });
+  // var widthSlider = document.getElementById('width-slider');
+  // widthSlider.style.width = '400px';
+  // var heightValues = [
+  //   document.getElementById('price-lower'),
+  //   document.getElementById('price-upper')
+  // ];
+  // noUiSlider.create(widthSlider, {
+  //   start: [0],
+  //   connect: true,
+  //   tooltips: true,
+  //   step: 1,
+  //   range: {
+  //     'min': 0,
+  //     'max': 2400,
+  //   },
+  //   format: {
+  //     to: function ( value ) {
+  //     return value + ' млн.р.';
+  //     },
+  //     from: function ( value ) {
+  //     return value.replace(',-', '');
+  //     }
+  //   }
+  // });
   // widthSlider.noUiSlider.on('update', function( values, handle ) {
   //   var value = values[handle];
 
