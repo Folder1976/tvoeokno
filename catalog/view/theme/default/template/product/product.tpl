@@ -838,18 +838,18 @@ $('#button-cart').on('click', function() {
 });
 //--></script>
 <script type="text/javascript"><!--
-$('.date').datetimepicker({
-	pickTime: false
-});
+// $('.date').datetimepicker({
+// 	pickTime: false
+// });
 
-$('.datetime').datetimepicker({
-	pickDate: true,
-	pickTime: true
-});
+// $('.datetime').datetimepicker({
+// 	pickDate: true,
+// 	pickTime: true
+// });
 
-$('.time').datetimepicker({
-	pickDate: false
-});
+// $('.time').datetimepicker({
+// 	pickDate: false
+// });
 
 $('button[id^=\'button-upload\']').on('click', function() {
 	var node = this;
