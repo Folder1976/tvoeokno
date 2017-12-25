@@ -5,7 +5,7 @@
             <div class="col-md-3">
               <div class="footer-logo">
                 <img src="/catalog/view/theme/default/image/logo2.svg" alt="">
-                <a href="#" class="blue-btn">НАПИСАТЬ директору</a>
+                <a href="#" class="blue-btn js-send-letter-director">НАПИСАТЬ директору</a>
               </div>
             </div>
             <div class="col-md-3">

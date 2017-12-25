@@ -239,7 +239,7 @@
                     <input type="text" placeholder="Ваше имя" name="name" required>
                     <input type="text" placeholder="Адрес" name="address" required>
                     <input type="tel" placeholder="Ваш телефон" name="phone" required>
-                    <input type="text" placeholder="Удобное время звонка" name="address" required>
+                    <input type="text" placeholder="Удобное время звонка" name="time">
                 </div>
                 <div class="col-md-4">
                     <textarea name="comments" name="comments" placeholder="Ваши пожелания" cols="30" rows="8"></textarea>
@@ -262,7 +262,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-4">
                     <input type="text" placeholder="Ваше имя" name="name" required>
-                    <input type="text" placeholder="Удобное время звонка" name="address" required>
+                    <input type="text" placeholder="Удобное время звонка" name="time">
                 </div>
                 <div class="col-md-5">
                     <input type="tel" placeholder="Ваш телефон" name="phone" required>
@@ -285,6 +285,28 @@
                 <div class="col-md-5">
                     <input type="tel" placeholder="Ваш телефон" name="phone" required>
                     <button class="green-btn">Перезвоните мне</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="modal-send-letter-director" class="fb-modal modal-send-letter-director" style="display: none;">
+        <h2>Написать директору</h2>
+        <form action="" class="js-form-call-me">
+            <input type="hidden" name="formname" value="call_me__modal_measure">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" placeholder="Ваше имя" name="name" required>
+                    <input type="text" placeholder="Адрес" name="address" required>
+                    <input type="tel" placeholder="Ваш телефон" name="phone" required>
+                    <input type="text" placeholder="Удобное время звонка" name="time">
+                </div>
+                <div class="col-md-8">
+                    <textarea name="comments" name="comments" placeholder="Ваши пожелания" cols="30" rows="8"></textarea>
+                </div>
+            </div>
+            <div class="row" style="margin: 30px 0 0;">
+                <div class="col-md-12">
+                    <button class="green-btn">Отправить</button>
                 </div>
             </div>
         </form>

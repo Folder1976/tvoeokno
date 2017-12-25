@@ -93,6 +93,13 @@ jQuery(document).ready(function($) {
     return false;
   });
 
+  // модалка "Получить скидку"
+  $('.js-send-letter-director').on('click', function(){
+    var c = $('#modal-send-letter-director');
+    fb_open(c);
+    return false;
+  });
+
 });
 
 
