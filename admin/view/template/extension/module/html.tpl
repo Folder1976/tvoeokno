@@ -80,7 +80,7 @@
   <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
 <?php if ($ckeditor) { ?>
-ckeditorInit('input-description<?php echo $language['language_id']; ?>', getURLVar('token'));
+//ckeditorInit('input-description<?php echo $language['language_id']; ?>', getURLVar('token'));
 <?php } ?>
 <?php } ?>
 //--></script> 
