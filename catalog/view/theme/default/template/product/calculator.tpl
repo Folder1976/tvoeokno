@@ -72,11 +72,11 @@
               <?php } ?>
 
               <div class="checkbox">
-                <input id="label1" type="checkbox" name="montage">
+                <input id="label1" type="checkbox" name="montage" checked>
                 <label for="label1">Монтаж/демонтаж</label>
               </div>
               <div class="checkbox">
-                <input id="label2" type="checkbox" name="moskito">
+                <input id="label2" type="checkbox" name="moskito" checked>
                 <label for="label2">Москитная сетка</label>
               </div>
               <p class="price" style="display: none">Стоимость: <span>2957 грн</span></p>

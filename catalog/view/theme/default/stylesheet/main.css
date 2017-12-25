@@ -2611,7 +2611,7 @@ textarea {
       cursor: pointer; }
     .cart-info .checkbox input + label::before {
       position: absolute;
-      content: '+';
+      content: '-';
       width: 26px;
       height: 26px;
       border: 1px solid #7B7B7B;
@@ -2624,7 +2624,7 @@ textarea {
       font-size: 22px;
       line-height: 23px; }
     .cart-info .checkbox input:checked + label::before {
-      content: '-';
+      content: '+';
       border: 1px solid #114A6D;
       background: #114A6D;
       color: #fff; }
@@ -3782,7 +3782,7 @@ textarea {
       cursor: pointer; }
     .add-order-dop .checkbox input + label::before {
       position: absolute;
-      content: '+';
+      content: '-';
       width: 26px;
       height: 26px;
       border: 1px solid #7B7B7B;
@@ -3795,7 +3795,7 @@ textarea {
       font-size: 22px;
       line-height: 23px; }
     .add-order-dop .checkbox input:checked + label::before {
-      content: '-';
+      content: '+';
       border: 1px solid #114A6D;
       background: #114A6D;
       color: #fff; }
