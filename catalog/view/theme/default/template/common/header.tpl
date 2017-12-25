@@ -292,7 +292,7 @@
     <div id="modal-send-letter-director" class="fb-modal modal-send-letter-director" style="display: none;">
         <h2>Написать директору</h2>
         <form action="" class="js-form-call-me">
-            <input type="hidden" name="formname" value="call_me__modal_measure">
+            <input type="hidden" name="formname" value="call_me__modal_send_letter_director">
             <div class="row">
                 <div class="col-md-4">
                     <input type="text" placeholder="Ваше имя" name="name" required>
