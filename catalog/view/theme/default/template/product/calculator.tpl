@@ -55,7 +55,8 @@
         </div>
         <div class="col-md-5 col-sm-12">
           <div class="window-offers">
-            <form action="/" class="window-offers-form">
+            <form action="/" class="window-offers-form js-form-call-me">
+              <input name="formname" value="calculator" type="hidden">
 
               <?php foreach ($group_list as $key => $group) { ?>
               <?php if ( $group['enable'] == 1 ) { ?>

@@ -175,28 +175,32 @@
                   <tr>
                     <td><?php echo $products[$product_id]['name']; ?></td>
                     <td><?php
-                      $opt = $products[$product_id]['option'][0]['product_option_value'][0];
-                      // var_dump($products[$product_id], $opt);
-                      if ( $opt['price'] ) {
-                        if ( $opt['price_prefix'] == '+' ) {
-                          echo $products[$product_id]['price'] + str_replace(' грн.', '', $opt['price']);
+                      if ( isset($products[$product_id]['option'][0]['product_option_value'][0]) ) {
+                        $opt = $products[$product_id]['option'][0]['product_option_value'][0];
+                        // var_dump($products[$product_id], $opt);
+                        if ( $opt['price'] ) {
+                          if ( $opt['price_prefix'] == '+' ) {
+                            echo str_replace(' грн.', '', $products[$product_id]['price']) + str_replace(' грн.', '', $opt['price']).' грн';
+                          } else {
+                            echo str_replace(' грн.', '', $products[$product_id]['price']) - str_replace(' грн.', '', $opt['price']).' грн';
+                          }
                         } else {
-                          echo $products[$product_id]['price'] - str_replace(' грн.', '', $opt['price']);
+                          echo $products[$product_id]['price'];
                         }
-                      } else {
-                        echo $products[$product_id]['price'];
                       }?></td>
                     <td><?php
-                      $opt = $products[$product_id]['option'][0]['product_option_value'][1];
-                      // var_dump($products[$product_id], $opt);
-                      if ( $opt['price'] ) {
-                        if ( $opt['price_prefix'] == '+' ) {
-                          echo $products[$product_id]['price'] + str_replace(' грн.', '', $opt['price']);
+                      if ( isset($products[$product_id]['option'][0]['product_option_value'][1]) ) {
+                        $opt = $products[$product_id]['option'][0]['product_option_value'][1];
+                        // var_dump($products[$product_id], $opt);
+                        if ( $opt['price'] ) {
+                          if ( $opt['price_prefix'] == '+' ) {
+                            echo str_replace(' грн.', '', $products[$product_id]['price']) + str_replace(' грн.', '', $opt['price']).' грн';
+                          } else {
+                            echo str_replace(' грн.', '', $products[$product_id]['price']) - str_replace(' грн.', '', $opt['price']).' грн';
+                          }
                         } else {
-                          echo $products[$product_id]['price'] - str_replace(' грн.', '', $opt['price']);
+                          echo $products[$product_id]['price'];
                         }
-                      } else {
-                        echo $products[$product_id]['price'];
                       }?></td>
 
                   </tr>
@@ -207,7 +211,6 @@
             <div class="col-md-3">
               <div class="prices-single-right">
                 <?php echo $category_info['description']; ?>
-                <?php // echo $categorys[$category_id]['description']; ?>
               </div>
             </div>
           </div>

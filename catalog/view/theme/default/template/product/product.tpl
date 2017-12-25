@@ -21,8 +21,6 @@
         </div>
       </div>
 
-<pre><?php //var_dump($group_list); ?></pre>
-
       <h2 class="main-title"><?php echo $heading_title; ?></h2>
 
       <div class="container-fluid">
@@ -119,7 +117,8 @@
       </div>
     </section>
 
-      <form action="/" class="product-card-form">
+      <form action="/" class="product-card-form js-form-call-me">
+        <input name="formname" value="product" type="hidden">
         <section class="product-card-data">
           <div class="container">
             <h3 class="product-card-title">Внести свои данные для расчета</h3>
@@ -193,7 +192,6 @@
           <div class="container">
             <h3 class="product-card-title">Добавить к заказу</h3>
 
-            <form action="">
             <?php $group = $group_list[10]; // Подоконник ?>
             <?php if ( $group['enable'] == 1 ) { ?>
             <div class="info-select">
@@ -253,7 +251,6 @@
               <a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a>
               <button type="submit" class="link-price green-btn">Узнать стоимость</button>
             </div>
-            </form>
           </div>
         </section>
         <section class="tech">

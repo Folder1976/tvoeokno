@@ -404,6 +404,13 @@ button {
   padding: 60px 0;
   transition: all .3s;
   text-align: left; }
+  .main-nav-dropdown::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -2;
+    top: 0; bottom: 100px; left: 0; right: 0;
+    background: #f2f9ff; }
   .main-nav-dropdown::after {
     content: "";
     display: block;
@@ -622,6 +629,7 @@ button {
         width: 76px;
         height: 79px;
         position: absolute;
+        background-color: #f2f9ff;
         background: url(/catalog/view/theme/default/image/banch.svg) no-repeat center;
         top: -6px;
         left: 20px; }
