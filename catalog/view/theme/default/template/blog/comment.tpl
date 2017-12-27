@@ -7,7 +7,7 @@
 <div class="blog_comment client-reviews-single">
     <p><?php echo $comment['comment']; ?></p>
     <div class="client-reviews-single-bottom">
-        <p class="date"><?php echo $comment['date_added']; ?></p>
+        <p class="date"><?php //echo $comment['date_added']; ?></p>
         <p class="name"><?php echo $comment['name']; ?></p>
     </div>
 </div>

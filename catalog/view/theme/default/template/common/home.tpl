@@ -436,11 +436,8 @@
     <div class="container">
       <div class="col-md-8 col-md-offset-2">
         <div class="company-info-block">
-          <p>Приветствуем Вас на официальном сайте компании Твое окно. Итак, Вы видимо в поиске, где купить окна в Киеве или области отличного качества и низким ценам на окна. Любой потребитель при поиске товара, будь то пластиковые окна или что-нибудь другое, — опирается на ряд критериев.</p>
-          <p>Что же для нас всех важно? Во-первых цена. Да-да, чтобы мы не говорили, но в наше время цена все таки на первом месте. И, даже если мы мониторим какой либо товар определенной марки, выбираем из предложений самое доступное.</p>
-          <p>Поэтому, учитывая Ваш первый и самый главный критерий, мы можем смело о себе заявить,</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ipsa eaque perferendis accusamus aut velit est iure consequatur sunt ex reiciendis, veritatis, voluptatum architecto dolores assumenda quam consectetur adipisci, nam?</p>
-        </div>
+          <?php echo htmlspecialchars_decode($footer_hi_text['description'], ENT_QUOTES);?>
+          </div>
         <div class="border"></div>
       </div>
     </div>

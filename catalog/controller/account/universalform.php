@@ -20,9 +20,9 @@ class Controlleraccountuniversalform extends Controller {
 					  'call_me__modal_measure' => 'Вызвать замерщика',
 					  'call_me__modal_call' => 'Заказать звонок',
 					  'call_me__modal_discount' => 'Получить скидки',
-					  '' => '',
-					  '' => '',
-					  '' => '',
+					  'page_chertog' => 'ОТПРАВИТЬ ЧЕРТЕЖ НА ПОЧТУ',
+					  'page_zamer' => 'ВЫЗВАТЬ ЗАМЕРЩИКА',
+					  'page_service_master' => 'РЕМОНТ ОКОН',
 					  
 					  
 					  'phone' => 'Номер телефона',
@@ -40,11 +40,13 @@ class Controlleraccountuniversalform extends Controller {
 					  'address' => 'Адрес',
 					  'comments' => 'Коментарий',
 					  'window' => 'Окна',
-					  '' => '',
-					  '' => '',
-					  '' => '',
-					  '' => '',
-					  '' => '',
+					  'city' => 'Город',
+					  'address_detail' => 'Адрес',
+					  'date' => 'Дата',
+					  'time' => 'Время',
+					  'amount' => 'Количество',
+					  'order' => 'Номер заказа',
+					  'flor' => 'Этаж',
 					  '' => '',
 					  
 					  );
@@ -56,16 +58,16 @@ class Controlleraccountuniversalform extends Controller {
 			if(($this->request->post['formname'] == 'calculator' OR
 				$this->request->post['formname'] == 'product') AND is_numeric($index)){
 			
-				$mail_message .= "\n\r".$groups[$index]['name'].': '.$lists[$row]['name'];
+				$mail_message .= "<br><b>".$groups[$index]['name'].'</b>: '.$lists[$row]['name'].'<br>';
 			
 			}else{
 				if(is_numeric($row)){
-					$mail_message .= "\n\r".$text[$index].': '.$row;
+					$mail_message .= "<br><b>".$text[$index].'</b>: '.$row;
 				}else{
 					if(!isset($text[$row])){
-						$mail_message .= "\n\r".$text[$index].': '.$row;	
+						$mail_message .= "<br><b>".$text[$index].'</b>: '.$row;	
 					}else{
-						$mail_message .= "\n\r".$text[$index].': '.$text[$row];	
+						$mail_message .= "<br><b>".$text[$index].'</b>: '.$text[$row];	
 					}
 				}
 				
@@ -73,18 +75,6 @@ class Controlleraccountuniversalform extends Controller {
 		}
 		
 		
-		
-		
-			
-		header("Content-Type: text/html; charset=UTF-8");
-		echo $mail_message."\n\r";
-		echo '<pre>'; print_r(var_dump( $this->request->post  ));
-		die();
-	
-			
-		
-		
-	
         $email_to = $this->config->get('config_email');
 
         $mail = new Mail();
@@ -122,7 +112,7 @@ class Controlleraccountuniversalform extends Controller {
         } else {
             $mail->timeout = $this->config->get('config_smtp_timeout');
         }
-		$email_to = 'folder.list@gmail.com';
+		//$email_to = 'folder.list@gmail.com';
 		
         $mail->setTo($email_to);
         $mail->setFrom(explode(',', $this->config->get('config_email'))[0]);
@@ -152,6 +142,7 @@ class Controlleraccountuniversalform extends Controller {
             $mail->send();
         }
 
+		$json['success'] = true;
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
     

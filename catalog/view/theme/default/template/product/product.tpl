@@ -28,15 +28,24 @@
           <div class="row">
             <div class="col-md-2">
               <div class="prices-single-img">
-                <img src="img/window.png" alt="">
+                <img src="<?php echo $popup; ?>" alt="">
               </div>
             </div>
+            
             <div class="col-md-2">
               <div class="product-card-info">
-                <div class="sizes">
-                  <p>Ширина: <span>1800 см</span></p>
-                  <p>Высота: <span>1400 см</span></p>
-                </div>
+                <?php if ($attribute_groups) { ?>
+                    <div class="sizes">
+                        <?php foreach ($attribute_groups as $attribute_group) { ?>
+                            <?php //echo $attribute_group['name']; ?>
+                            <?php if($attribute_group['attribute_group_id'] == 7){ ?>
+                                <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+                                  <p><?php echo $attribute['name']; ?>: <span><?php echo $attribute['text']; ?></span></p>
+                                <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
                 <p class="product-card-price">Цена от: <span><?php 
                 if ($price) {
                   $price_and_currency = explode(' ', $price);
@@ -211,7 +220,7 @@
               <div class="first-count">
                 <p>Размер подоконника</p>
                 <div class="sizes-group">
-                  <label for="height2">Высота, см</label>
+                  <label for="height2">Глубина, см</label>
                   <input id="height2" name="p_height" type="text" class="form-controll" value="0">
                 </div>
                 <div class="sizes-group">
@@ -258,30 +267,25 @@
             <div class="row">
               <div class="col-md-8">
                 <div class="char">
-                  <h3 class="product-card-title">Технические характеристики</h3>
+                  <h3 class="product-card-title"><?php echo $tab_attribute; ?></h3>
                   <table class="tech-table">
                     <tbody>
-                      <tr>
-                        <td>Вид</td>
-                        <td>2279</td>
-                      </tr>
-                      <tr>
-                        <td>Стеклопакет</td>
-                        <td>2279</td>
-                      </tr>
-                      <tr>
-                        <td>Монтажная глубина</td>
-                        <td>2279</td>
-                      </tr>
-                      <tr>
-                        <td>Профильная система</td>
-                        <td>2279</td>
-                      </tr>
-                      <tr>
-                        <td>Цвет</td>
-                        <td>2279</td>
-                      </tr>
-                      <tr>
+                <?php if ($attribute_groups) { ?>
+                        <?php foreach ($attribute_groups as $attribute_group) { ?>
+                            <?php if($attribute_group['attribute_group_id'] != 7){ ?>
+                                <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+                                     <tr>
+                                        <td><?php echo $attribute['name']; ?></td>
+                                        <td><?php echo $attribute['text']; ?></td>
+                                    </tr>
+                                 <?php } ?>
+                            <?php } ?>
+                        <?php } ?>
+            
+                <?php } ?>
+                        
+            
+                      <!--tr>
                         <td>Камерность профиля</td>
                         <td>2279</td>
                       </tr>
@@ -296,73 +300,51 @@
                       <tr>
                         <td>Коэффициент теплопередачи</td>
                         <td>2279</td>
-                      </tr>
+                      </tr-->
                     </tbody>
                   </table>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="desc">
-                  <h3 class="product-card-title">Описание</h3>
-                  <p>Металлопластиковые системы Veka Euroline представляют собой трехкамерный профиль с оптимальными характеристиками. Он лучшим образом подойдет для качественного и одновременно экономного остекления любых помещений и балконов. При глубине монтажа 58 мм рамы способны вмещать стеклоблоки до 32 мм.</p>
+                  <h3 class="product-card-title"><?php echo $tab_description; ?></h3>
+                  <?php echo $description; ?>
                 </div>
               </div>
             </div>
           </div>
         </section>
       </form>
+      
+      
+          
       <section class="similar-product">
+        <?php if ($products) { ?>
         <div class="container">
-          <h2 class="main-title">Похожие товары</h2>
+          <h2 class="main-title"><?php echo $text_related; ?></h2>
           <div class="slider">
             <div class="owl-nav navs">
               <a href="#" class="owl-prev similar-next prev"><span></span></a>
               <a href="#" class="owl-next similar-prev next"><span></span></a>
             </div>
             <div class="similar-product-slider owl-carousel">
-              <div class="item">
-                <div class="favorites-single">
-                  <div class="img">
-                    <img src="img/f1.jpg" alt="">
-                  </div>
-                  <p class="name">Окно арочное из ПВХ,1800х1400</p>
-                  <a href="#" class="favorite-link">В избранное</a>
-                  <a href="#" class="more green-btn">пОДРОБНЕЕ</a>
-                </div>
-              </div>
-              <div class="item">
-                <div class="favorites-single">
-                  <div class="img">
-                    <img src="img/f1.jpg" alt="">
-                  </div>
-                  <p class="name">Окно арочное из ПВХ,1800х1400</p>
-                  <a href="#" class="favorite-link">В избранное</a>
-                  <a href="#" class="more green-btn">пОДРОБНЕЕ</a>
-                </div>
-              </div>
-              <div class="item">
-                <div class="favorites-single">
-                  <div class="img">
-                    <img src="img/f1.jpg" alt="">
-                  </div>
-                  <p class="name">Окно арочное из ПВХ,1800х1400</p>
-                  <a href="#" class="favorite-link">В избранное</a>
-                  <a href="#" class="more green-btn">пОДРОБНЕЕ</a>
-                </div>
-              </div>
-              <div class="item">
-                <div class="favorites-single">
-                  <div class="img">
-                    <img src="img/f1.jpg" alt="">
-                  </div>
-                  <p class="name">Окно арочное из ПВХ,1800х1400</p>
-                  <a href="#" class="favorite-link">В избранное</a>
-                  <a href="#" class="more green-btn">пОДРОБНЕЕ</a>
-                </div>
-              </div>
+                <?php $i = 0; ?>
+                <?php foreach ($products as $product) { ?>
+                    <div class="item">
+                      <div class="favorites-single">
+                        <div class="img">
+                          <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>">
+                        </div>
+                        <p class="name"><?php echo $product['name']; ?></p>
+                        <a href="javascript:;" onclick="wishlist.add('<?php echo $product['product_id']; ?>');" class="favorite-link"><?php echo $button_wishlist; ?></a>
+                        <a href="<?php echo $product['href']; ?>" class="more green-btn"><?php echo $text_detail; ?></a>
+                      </div>
+                    </div>
+                <?php } ?>
             </div>
           </div>
         </div>
+        <?php } ?>
 
 
 <div class="container" style="display: none;">

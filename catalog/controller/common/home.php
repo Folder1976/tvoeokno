@@ -20,6 +20,7 @@ class ControllerCommonHome extends Controller {
 		$this->load->model('blog/blog');
 		$_GET['blog_id'] = 80;
 		$data['comment_blog'] = $this->model_blog_blog->getBlog(80);
+		$data['footer_hi_text'] = $this->model_blog_blog->getBlog(91);
 		
 		$results = $this->model_blog_blog->getCommentsByBlogId(80, 0, 10);
 

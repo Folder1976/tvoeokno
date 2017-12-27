@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
     $.ajax({
       url: '/index.php?route=account/universalform',
       type: 'post',
-      dataType: 'text',
+      dataType: 'json',
       //dataType: 'html',
       data: $(this).serialize(),
       success: function(json) {

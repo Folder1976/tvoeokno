@@ -1,5 +1,6 @@
 <?php
 // Text
+$_['text_detail']                             = 'Детальнiше';
 $_['text_search'] = 'Пошук';
 $_['text_brand'] = 'Виробник';
 $_['text_manufacturer'] = 'Виробник:';
