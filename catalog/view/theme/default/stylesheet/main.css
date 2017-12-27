@@ -2059,7 +2059,7 @@ textarea {
     background: #AACDEC; }
 
 .window-size {
-  text-align: right; }
+  text-align: center; }
   .window-size img {
     height: 400px; }
   .window-size .height-slider {
@@ -4646,3 +4646,42 @@ textarea {
 .main-sect .side-nav a:hover{
   text-decoration: none;
 }
+
+
+/* Calculator */
+.window-type-single { position: relative; }
+.window-type-single ul {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  width: 270px;
+  left: 186px;
+  padding: 10px 15px;
+  background: #aacdec;
+  margin: 0;
+  border-radius: 0px 5px 5px 0px;
+  z-index: 100;
+  box-shadow: 0.4em 0.4em 5px rgba(14, 13, 13, 0.22);
+}
+.window-type-single.open ul {
+  display: block;
+}
+.window-type-single ul::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 34px 23px 34px 0;
+    border-color: transparent #aacdec transparent transparent;
+    position: absolute;
+    left: -23px;
+    top: 0px;
+    z-index: 10;
+}
+.window-type-single ul li {
+  display: inline-block;
+  padding: 0 5px;
+  vertical-align: middle;
+}
+

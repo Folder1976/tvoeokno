@@ -15,35 +15,60 @@
   </div>
 
   <h1 class="main-title">Калькулятор окон ONLINE</h1>
+  <form action="/" class="js-form-call-me">
   <div class="window">
     <div class="container">
       <div class="row">
         <div class="col-md-2 col-sm-3">
+          <input type="hidden" name="window-type" id="window-type" value="scheme-1">
           <div class="window-type">
-            <a href="#" class="window-type-single active">
-              <img src="/design/img/w1.png" alt="">
+            <a href="javascript:void(0)" class="window-type-single active js-window-type-single">
+              <img src="/catalog/view/theme/default/image/calc/scheme-1.gif" alt="scheme-1">
+              <ul>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-1.gif" alt="scheme-1" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme1.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-2.gif" alt="scheme-2" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme2.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-3.gif" alt="scheme-3" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme3.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-14.gif" alt="scheme-14" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme14.jpg"></li>
+              </ul>
             </a>
-            <a href="#" class="window-type-single">
-              <img src="/design/img/w1.png" alt="">
+            <a href="javascript:void(0)" class="window-type-single js-window-type-single">
+              <img src="/catalog/view/theme/default/image/calc/scheme-6.gif" alt="scheme-6">
+              <ul>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-4.gif" alt="scheme-4" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme4.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-5.gif" alt="scheme-5" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme5.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-6.gif" alt="scheme-6" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme6.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-7.gif" alt="scheme-7" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme7.jpg"></li>
+              </ul>
             </a>
-            <a href="#" class="window-type-single">
-              <img src="/design/img/w1.png" alt="">
+            <a href="javascript:void(0)" class="window-type-single js-window-type-single">
+              <img src="/catalog/view/theme/default/image/calc/scheme-9.gif" alt="scheme-9">
+              <ul>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-8.gif" alt="scheme-8" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme8.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-9.gif" alt="scheme-9" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme9.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-10.gif" alt="scheme-10" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme10.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-11.gif" alt="scheme-11" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme11.jpg"></li>
+              </ul>
             </a>
-            <a href="#" class="window-type-single">
-              <img src="/design/img/w1.png" alt="">
+            <a href="javascript:void(0)" class="window-type-single js-window-type-single">
+              <img src="/catalog/view/theme/default/image/calc/scheme-12.gif" alt="scheme-12">
+              <ul>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-12.gif" alt="scheme-12" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme12.jpg"></li>
+                <li><img src="/catalog/view/theme/default/image/calc/scheme-13.gif" alt="scheme-13" data-main-img="/catalog/view/theme/default/image/calc/main/window-scheme13.jpg"></li>
+              </ul>
             </a>
           </div>
         </div>
         <div class="col-md-5 col-md-offset-0 col-sm-offset-1 col-sm-8">
           <div class="window-size">
             <div id="height-slider" class="height-slider"></div>
-            <img src="/design/img/window.png" alt="">
+            <img src="/catalog/view/theme/default/image/calc/main/window-scheme1.jpg" alt="" id="main-type-img">
             <div class="window-size-bottom">
               <div id="width-slider" class="width-slider"></div>
               <div class="counts">
                 <div class="count">
                   <p class="first">Высота, см</p>
                   <p class="second">2400</p>
+                  <input type="text" id="height-slider" value="555">
                 </div>
                 <div class="count">
                   <p class="first">Ширина, см</p>
@@ -55,7 +80,7 @@
         </div>
         <div class="col-md-5 col-sm-12">
           <div class="window-offers">
-            <form action="/" class="window-offers-form js-form-call-me">
+            <div class="window-offers-form">
               <input name="formname" value="calculator" type="hidden">
 
               <?php foreach ($group_list as $key => $group) { ?>
@@ -81,12 +106,13 @@
               </div>
               <p class="price" style="display: none">Стоимость: <span>2957 грн</span></p>
               <button type="submit" class="red-btn">выслать на рассчет</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </form>
 </section>
 
 <section class="how-to-count">
@@ -115,7 +141,37 @@
   </div>
 </section>
 
+<script>
+$('.js-window-type-single').on('click', function(){
+  if ( $(this).hasClass('open') ) {
+    $(this).removeClass('open');
+  } else {
+    $('.js-window-type-single').removeClass('open');
+    $(this).addClass('open');
+  }
+});
 
+$('.js-window-type-single').on('click', 'img', function(){
+  var img_main_src = $(this).data('main-img');
+  var img_tmbl_src = $(this).attr('src');
+  var img_tmbl = $(this).closest('.js-window-type-single').children('img');
+  var val = $(this).attr('alt');
+
+  if ( img_main_src ) {
+    $('.js-window-type-single').removeClass('active');
+    $(this).closest('.js-window-type-single').addClass('active');
+    $('#main-type-img').attr('src', img_main_src);
+    img_tmbl.attr('src', img_tmbl_src);
+    $('#window-type').val(val);
+  }
+});
+
+$(document).mouseup(function (e){
+    if ( $(e.target).closest('.js-window-type-single').length === 0 ) {
+        $('.js-window-type-single').removeClass('open');
+    }
+});
+</script>
 
 <?php echo $column_right; ?>
 <?php echo $content_bottom; ?>
