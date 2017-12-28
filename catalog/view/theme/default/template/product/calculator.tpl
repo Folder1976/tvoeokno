@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <h1 class="main-title">Калькулятор окон ONLINE</h1>
+  <h1 class="main-title">Сделать расчет окон</h1>
   <form action="/" class="js-form-call-me">
   <div class="window">
     <div class="container">
@@ -67,12 +67,11 @@
               <div class="counts">
                 <div class="count">
                   <p class="first">Высота, см</p>
-                  <p class="second">2400</p>
-                  <input type="text" id="height-slider" value="555">
+                  <input type="number" name="height_window" step="1" id="height_window_input">
                 </div>
                 <div class="count">
                   <p class="first">Ширина, см</p>
-                  <p class="second">0</p>
+                  <input type="number" name="width_window" step="1" id="width_window_input">
                 </div>
               </div>
             </div>
@@ -104,8 +103,17 @@
                 <input id="label2" type="checkbox" name="moskito" checked>
                 <label for="label2">Москитная сетка</label>
               </div>
+              <div class="text-input">
+                <input placeholder="Ваше имя" name="name" type="text">
+              </div>
+              <div class="text-input">
+                <input placeholder="Номер телефона" name="phone" required="" type="text">
+              </div>
+              <div class="text-input">
+                <input placeholder="E-mail" name="email" type="text">
+              </div>
               <p class="price" style="display: none">Стоимость: <span>2957 грн</span></p>
-              <button type="submit" class="red-btn">выслать на рассчет</button>
+              <button type="submit" class="red-btn">выслать на расчет</button>
             </div>
           </div>
         </div>
@@ -136,7 +144,7 @@
     </div>
     <div class="how-to-count-single">
       <span>5</span>
-      <p>Стоимость окна готова!</p>
+      <p>мы с вами свяжемся как можно быстрее!</p>
     </div>
   </div>
 </section>

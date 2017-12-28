@@ -4684,4 +4684,32 @@ textarea {
   padding: 0 5px;
   vertical-align: middle;
 }
+.text-input input {
+  width: 100%;
+  display: block;
+  color: #7B7B7B;
+  padding: 8px 27px;
+  border-radius: 30px;
+  background: linear-gradient(360deg, rgba(255, 255, 255, 0.24) -26.78%, rgba(255, 255, 255, 0.12) 102.5%), #FAFAFA;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1), inset 2px 2px 5px rgba(0, 0, 0, 0.4);
+  border: 2px solid #fff;
+  position: relative;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
 
+.window-size-bottom .count input {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 72px;
+  text-align: center;
+  color: #0E5887;
+  font-size: 18px;
+  font-family: "FiraSans-Regular", sans-serif;
+  padding: 9.5px 2px 9.5px 12px;
+  background: #FAFAFA;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  margin-bottom: 5px;
+  border: 0;
+}

@@ -298,7 +298,7 @@ jQuery(document).ready(function($) {
     document.getElementById('price-upper')
   ];
   noUiSlider.create(heightSlider, {
-    start: [0],
+    start: [1000],
     connect: true,
     tooltips: true,
     step: 1,
@@ -308,23 +308,21 @@ jQuery(document).ready(function($) {
       'min': 0,
       'max': 2400,
     },
-    format: {
-      to: function ( value ) {
-      return value + ' млн.р.';
-      },
-      from: function ( value ) {
-      return value.replace(',-', '');
-      }
-    }
+    // format: {
+    //   to: function ( value ) {
+    //   return value + ' млн.р.';
+    //   },
+    //   from: function ( value ) {
+    //   return value.replace(',-', '');
+    //   }
+    // }
   });
   heightSlider.noUiSlider.on('update', function( values, handle ) {
     var value = values[handle];
-
-    if ( handle ) {
-      $('#price-upper').val(value);
-    } else {
-      $('#price-lower').val(value);
-    }
+    $('#height_window_input').val(value);
+  });
+  $('#height_window_input').on('change', function(){
+    heightSlider.noUiSlider.set(this.value);
   });
 
   var widthSlider = document.getElementById('width-slider');
@@ -334,7 +332,7 @@ jQuery(document).ready(function($) {
     document.getElementById('price-upper')
   ];
   noUiSlider.create(widthSlider, {
-    start: [0],
+    start: [500],
     connect: true,
     tooltips: true,
     step: 1,
@@ -342,22 +340,20 @@ jQuery(document).ready(function($) {
       'min': 0,
       'max': 2400,
     },
-    format: {
-      to: function ( value ) {
-      return value + ' млн.р.';
-      },
-      from: function ( value ) {
-      return value.replace(',-', '');
-      }
-    }
+    // format: {
+    //   to: function ( value ) {
+    //   return value + ' млн.р.';
+    //   },
+    //   from: function ( value ) {
+    //   return value.replace(',-', '');
+    //   }
+    // }
   });
   widthSlider.noUiSlider.on('update', function( values, handle ) {
     var value = values[handle];
-
-    if ( handle ) {
-      $('#price-upper').val(value);
-    } else {
-      $('#price-lower').val(value);
-    }
+    $('#width_window_input').val(value);
+  });
+  $('#width_window_input').on('change', function(){
+    widthSlider.noUiSlider.set(this.value);
   });
 });
