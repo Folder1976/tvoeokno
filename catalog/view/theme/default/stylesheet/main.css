@@ -438,7 +438,7 @@ button {
 
 .side-nav {
   position: fixed;
-  top: 50%;
+  top: 20%;
   -ms-transform: translateY(-50%);
       transform: translateY(-50%);
   left: 0;
@@ -447,31 +447,38 @@ button {
     display: block;
     margin-bottom: 10px; }
     .side-nav li:nth-child(1) a {
-      width: 343.13px;
-      margin-left: -273.13px; }
+      top: 0; }
     .side-nav li:nth-child(2) a {
-      width: 198.31px;
-      margin-left: -128.31px; }
+      top: 70px; }
     .side-nav li:nth-child(3) a {
-      width: 159.34px;
-      margin-left: -89.34px; }
+      top: 140px; }
     .side-nav li:nth-child(4) a {
-      width: 240px;
-      margin-left: -170px; }
+      top: 210px; }
     .side-nav li:nth-child(5) a {
-      width: 204.11px;
-      margin-left: -134.11px; }
+      top: 280px; }
     .side-nav li:nth-child(6) a {
-      width: 193.33px;
-      margin-left: -123.33px; }
+      top: 350px; }
+    .side-nav li:nth-child(7) a {
+      top: 420px; }
+    .side-nav li:nth-child(8) a {
+      top: 490px; }
+    .side-nav li:nth-child(9) a {
+      top: 560px; }
   .side-nav a {
     display: inline-block;
     background: #EE5034;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    overflow: hidden; }
-    .side-nav a:hover {
-      margin-left: 0px !important; }
+    overflow: hidden;
+    position: absolute;
+    right: -63px;
+    text-align: right;
+    white-space: nowrap;
+    transition: all .9s; }
+    .side-nav li a:hover {
+      left: 0;
+      right: auto;
+      transition: all .9s; }
     .side-nav a img {
       vertical-align: middle; }
     .side-nav a span {
