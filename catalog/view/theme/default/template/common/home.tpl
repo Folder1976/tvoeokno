@@ -1,21 +1,33 @@
 <?php
   $lands = array(
-                'Русская фраза' => 'Українська фраза',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
+                'Проверенные бренды' => 'Відомі бренди',
+                'Получить скидку' => 'Отримати знижку',
+                'цены на окна' => 'ціни на вікна',
+                'ЦЕНЫ' => 'ЦІНИ',
+                '*Цены без установки' => '* Ціни без установки',
+                'Система' => 'Система',
+                '1-камерый' => '1-коморний',
+                '2-камерый' => '2-коморний',
+                'новости' => 'новини',
+                'все акции' => 'всі акції',
+                'Клиенты о НАС' => 'Клієнти про нас',
+                'все отзывы' => 'всі відгуки',
+                'Оставить отзыв' => 'Залишити відгук',
+                'Имя' => 'Ім\'я',
+                'Номер договору' => 'Номер договору',
+                'Ваш отзыв' => 'Ваш відгук',
+                'Отправить' => 'Відправити',
+                'Остались вопросы?' => 'Залишилися питання?',
+                '— Задайте их нам :)' => '— Задайте їх нам :)',
+                'Ваше имя' => 'Ваше Ім\'я',
+                'Номер телефона' => 'Номер телефону',
+                'Отправить' => 'Відправити',
+                'Больше' => 'Більше',
+                'подробнее' => 'детальніше',
+                'экспресс расчет ваших окон' => 'експрес розрахунок ваших вікон',
+                'Ваш номер' => 'Ваш номер',
+                'Прикрепить файл' => 'Прикріпити файл',
+                'Перезвонить' => 'Передзвонити',
                 '' => '',
                 );
  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
@@ -57,7 +69,7 @@ echo $header; ?>
                   <input type="hidden" name="formname" value="call_me__home_slider_discount">
                   <input type="text" placeholder="Ваше имя" name="name" required>
                   <input type="tel" placeholder="Ваш телефон" name="phone" required>
-                  <button class="green-btn">получить скидку</button>
+                  <button class="green-btn"><?php echo $lib['Получить скидку']; ?></button>
                 </form>
               </div>
             </div>
@@ -97,7 +109,7 @@ echo $header; ?>
                   <input type="hidden" name="formname" value="call_me__home_slider_discount">
                   <input type="text" placeholder="Ваше имя" name="name" required>
                   <input type="tel" placeholder="Ваш телефон" name="phone" required>
-                  <button class="green-btn">получить скидку</button>
+                  <button class="green-btn"><?php echo $lib['Получить скидку']; ?></button>
                 </form>
               </div>
             </div>
@@ -108,7 +120,7 @@ echo $header; ?>
   </section>
   <section class="brands">
     <div class="container">
-      <h2 class="main-title">Проверенные бренды</h2>
+      <h2 class="main-title"><?php echo $lib['Проверенные бренды']; ?></h2>
       <div class="row">
 
         <?php foreach($manufacturers as $manufacture){ ?>
@@ -124,9 +136,9 @@ echo $header; ?>
   <pre><?php //var_dump(get_defined_vars()); ?></pre>
   <section class="prices">
     <div class="container">
-      <h2 class="main-title">цены на окна</h2>
+      <h2 class="main-title"><?php echo $lib['цены на окна']; ?></h2>
       <div class="prices-type">
-        <p class="bold">ЦЕНЫ:</p>
+        <p class="bold"><?php echo $lib['ЦЕНЫ']; ?>:</p>
         <ul>
           <?php foreach($categorys as $category_id => $category_info){ ?>
           <?php if ( is_numeric($category_id) ) { ?>
@@ -134,7 +146,7 @@ echo $header; ?>
           <?php } ?>
           <?php } ?>
         </ul>
-        <p>*Цены без установки</p>
+        <p><?php echo $lib['*Цены без установки']; ?></p>
       </div>
       <div class="tab-content">
         <?php foreach($categorys as $category_id => $category_info){ ?>
@@ -150,9 +162,9 @@ echo $header; ?>
                 <table class="prices-single-table">
                   <thead>
                     <tr>
-                      <th>Система</th>
-                      <th>1-камерый</th>
-                      <th>2-камерный</th>
+                      <th><?php echo $lib['Система']; ?></th>
+                      <th><?php echo $lib['1-камерый']; ?></th>
+                      <th><?php echo $lib['2-камерый']; ?></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -226,7 +238,7 @@ echo $header; ?>
     <div class="container">
       <div class="news-nav">
         <a href="#tab-actions" class="active left" data-toggle="tab"><?php echo $blogs['action']['name']; ?></a>
-        <a href="#tab-news" class="right" data-toggle="tab">новости</a>
+        <a href="#tab-news" class="right" data-toggle="tab"><?php echo $lib['новости']; ?></a>
       </div>
       <div class="row news-tab active" id="tab-actions">
         <div class="col-md-7">
@@ -261,7 +273,7 @@ echo $header; ?>
           </div>
           <?php } ?>
           <div class="news-btn">
-            <a href="/<?php echo $blogs['action']['keyword']; ?>" class="red-btn">все акции</a>
+            <a href="/<?php echo $blogs['action']['keyword']; ?>" class="red-btn"><?php echo $lib['все акции']; ?></a>
           </div>
         </div>
       </div>
@@ -298,7 +310,7 @@ echo $header; ?>
           </div>
           <?php } ?>
           <div class="news-btn">
-            <a href="/<?php echo $blogs['news']['keyword']; ?>" class="red-btn">все новости</a>
+            <a href="/<?php echo $blogs['news']['keyword']; ?>" class="red-btn"><?php echo $lib['все акции']; ?></a>
           </div>
         </div>
       </div>
@@ -352,7 +364,7 @@ echo $header; ?>
     </ul>
     <div class="container clients-review">
       
-      <h2 class="main-title">Кленты о НАС</h2>
+      <h2 class="main-title"><?php echo $lib['Клиенты о НАС'];?></h2>
       <div class="row">
         <div class="col-md-6 col-md-offset-1">
           <div class="review">
@@ -373,7 +385,7 @@ echo $header; ?>
               <div class="owl-nav navs">
                 <a href="#" class="owl-prev2 prev"><span></span></a>
               </div>
-              <a href="/comments" class="review-btn-main purple-btn">все отзывы</a>
+              <a href="/comments" class="review-btn-main purple-btn"><?php echo $lib['все отзывы'];?></a>
               <div class="owl-nav navs">post
                 <a href="#" class="owl-next2 next"><span></span></a>
               </div>
@@ -382,14 +394,14 @@ echo $header; ?>
         </div>
         <div class="col-md-4">
           <form action="/" class="review-form" id="comment_form">
-            <h3>Оставить отзыв</h3>
-            <input type="text" placeholder="Имя" name="name" required>
-            <input type="text" placeholder="Номер договора" name="email">
-            <textarea placeholder="Ваш отзыв" name="comment" required></textarea>
+            <h3><?php echo $lib['Оставить отзыв'];?></h3>
+            <input type="text" placeholder="<?php echo $lib['Имя'];?>" name="name" required>
+            <input type="text" placeholder="<?php echo $lib['Номер договора'];?>" name="email">
+            <textarea placeholder="<?php echo $lib['Ваш отзыв'];?>" name="comment" required></textarea>
 
             <!--input type="hidden" name="email" value="test@test.com"-->
             <input type="hidden" name="captcha_comment">
-            <button id="button-comment" class="blue-btn">Отправить</button>
+            <button id="button-comment" class="blue-btn"><?php echo $lib['Отправить'];?></button>
           </form>
         </div>
       </div>
@@ -403,16 +415,16 @@ echo $header; ?>
         </div>
         <div class="col-md-5">
           <div class="feedback-sect-head">
-            <h2>Остались вопросы?</h2>
-            <p>— Задайте их нам :)</p>
+            <h2><?php echo $lib['Остались вопросы?'];?></h2>
+            <p><?php echo $lib['— Задайте их нам :)'];?></p>
           </div>
         </div>
         <div class="col-md-4">
           <form action="/" class="feedback-sect-form js-form-call-me">
             <input type="hidden" name="formname" value="call_me__home">
-            <input type="text" placeholder="Ваше имя" name="name" required>
-            <input type="text" placeholder="Номер телефона" name="phone" required>
-            <button class="green-btn">Отправить</button>
+            <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
+            <input type="text" placeholder="<?php echo $lib['Номер телефона'];?>" name="phone" required>
+            <button class="green-btn"><?php echo $lib['Отправить'];?></button>
           </form>
         </div>
       </div>
@@ -426,13 +438,13 @@ echo $header; ?>
         <div class="offers-single">
           <div class="offers-single-head">
             <p class="name"><?php echo $blog['title'];?></p>
-            <a href="/<?php echo $blog['keyword'];?>" class="more">Больше</a>
+            <a href="/<?php echo $blog['keyword'];?>" class="more"><?php echo $lib['Больше'];?></a>
           </div>
           <div class="offers-single-content">
             <img src="/image/<?php echo $blog['image'];?>" alt="">
             <?php echo $blog['short_description'];?>
             <div class="offers-single-content-btn">
-              <a href="/<?php echo $blog['keyword'];?>" class="red-btn">подробнее</a>
+              <a href="/<?php echo $blog['keyword'];?>" class="red-btn"><?php echo $lib['подробнее'];?></a>
             </div>
           </div>
         </div>
@@ -442,16 +454,16 @@ echo $header; ?>
   </section>
   <section class="calc">
     <div class="container">
-      <h2>экспресс расчет ваших окон</h2>
+      <h2><?php echo $lib['экспресс расчет ваших окон'];?></h2>
       <form action="/" class="calc-form js-form-call-me">
         <input type="hidden" name="formname" value="call_me__home_calc_windows">
-        <input type="text" placeholder="Ваше имя" name="name" required>
-        <input type="tel" placeholder="Ваш номер" name="phone" required>
+        <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
+        <input type="tel" placeholder="<?php echo $lib['Ваш номер'];?>" name="phone" required>
         <div class="file">
-          <label for="file">Прикрепить файл</label>
+          <label for="file"><?php echo $lib['Прикрепить файл'];?></label>
           <input id="file" type="file" class="file-input" name="file">
         </div>
-        <button type="submit" class="blue-btn">Перезвонить</button>
+        <button type="submit" class="blue-btn"><?php echo $lib['Перезвонить'];?></button>
       </form>
     </div>
   </section>
