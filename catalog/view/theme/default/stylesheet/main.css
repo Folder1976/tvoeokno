@@ -326,6 +326,11 @@ button {
         text-transform: uppercase;
         font-size: 12px;
         font-family: "FiraSans-Medium", sans-serif; }
+    .wrap-header-button {
+      display: flex;
+      justify-content: space-between;
+      padding-right: 15px;
+    }
     .header-callback-single {
       display: inline-block;
       margin: 0 24px;
