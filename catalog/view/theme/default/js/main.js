@@ -23,9 +23,9 @@ function initMap() {
   });
 }
 
-// if ($("#map").length) {
-//   initMap();
-// }
+if ($("#map").length) {
+  initMap();
+}
 
 jQuery(document).ready(function($) {
   // fancybox 
