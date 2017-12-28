@@ -19,24 +19,21 @@
                 'Получить скидки' => 'Отримати знижки',
                 'Количество окон' => 'Кількість вікон',
                 'Перезвоните мне' => 'Передзвоніть мені',
+                'Написать директору' => 'Написати директору',
+                'Ваши пожелания' => 'Ваші побажання',
+                'Отправить' => 'Відправити',
+                'Отправить чертеж на почту' => 'Надіслати креслення на пошту',
+                'Расчет окон' => 'Розрахунок вікон',
+                'Отзывы' => 'Відгуки',
+                'Запись на замер' => 'Запис на завміри',
+                'Ремонт окон' => 'Ремонт вікон',
+                'Фото работ' => 'Фото робіт',
                 '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
+
                 );
-  $session = array_shift($_SESSION);$key = 'ru-ru';if(isset($session['language'])){$key = $session['language'];}$lib = array();foreach($lands as $ru => $ua){if($key == 'ru-ru'){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+   $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+   //Пример
+  //<?php echo $lib['русская фраза']; ? >
   ?><!DOCTYPE html>
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
   <head>
@@ -324,23 +321,23 @@
         </form>
     </div>
     <div id="modal-send-letter-director" class="fb-modal modal-send-letter-director" style="display: none;">
-        <h2>Написать директору</h2>
+        <h2><?php echo $lib['Написать директору'];?></h2>
         <form action="" class="js-form-call-me">
             <input type="hidden" name="formname" value="call_me__modal_send_letter_director">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" placeholder="Ваше имя" name="name" required>
-                    <input type="text" placeholder="Адрес" name="address" required>
-                    <input type="tel" placeholder="Ваш телефон" name="phone" required>
-                    <input type="text" placeholder="Удобное время звонка" name="time">
+                    <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
+                    <input type="text" placeholder="<?php echo $lib['Адрес'];?>" name="address" required>
+                    <input type="tel" placeholder="<?php echo $lib['Ваш телефон'];?>" name="phone" required>
+                    <input type="text" placeholder="<?php echo $lib['Удобное время звонка'];?>" name="time">
                 </div>
                 <div class="col-md-8">
-                    <textarea name="comments" name="comments" placeholder="Ваши пожелания" cols="30" rows="8"></textarea>
+                    <textarea name="comments" name="comments" placeholder="<?php echo $lib['Ваши пожелания'];?>" cols="30" rows="8"></textarea>
                 </div>
             </div>
             <div class="row" style="margin: 30px 0 0;">
                 <div class="col-md-12">
-                    <button class="green-btn">Отправить</button>
+                    <button class="green-btn"><?php echo $lib['Отправить'];?></button>
                 </div>
             </div>
         </form>
@@ -349,22 +346,22 @@
     <section class="main-sect">
         <ul class="side-nav">
           <li>
-            <a href="/chertog"><span>Отправить чертеж на почту</span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
+            <a href="/chertog"><span><?php echo $lib['Отправить чертеж на почту'];?></span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
           </li>
           <li>
-            <a href="/online_windows_calculator"><span>Расчет окон</span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
+            <a href="/online_windows_calculator"><span><?php echo $lib['Расчет окон'];?></span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
           </li>
           <li>
-            <a href="/comments"><span>Отзывы</span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
+            <a href="/comments"><span><?php echo $lib['Отзывы'];?></span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
           </li>
           <li>
-            <a href="/zamer"><span>Запись на замер</span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
+            <a href="/zamer"><span><?php echo $lib['Запись на замер'];?></span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
           </li>
           <li>
-            <a href="/service-master"><span>Ремонт окон</span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
+            <a href="/service-master"><span><?php echo $lib['Ремонт окон'];?></span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
           </li>
           <li>
-            <a href="/works"><span>Фото работ</span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
+            <a href="/works"><span><?php echo $lib['Фото работ'];?></span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
           </li>
         </ul>
     </section>

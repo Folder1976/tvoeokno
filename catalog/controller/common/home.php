@@ -21,7 +21,7 @@ class ControllerCommonHome extends Controller {
 		$_GET['blog_id'] = 80;
 		$data['comment_blog'] = $this->model_blog_blog->getBlog(80);
 		$data['footer_hi_text'] = $this->model_blog_blog->getBlog(91);
-		
+		$data['language_id'] = (int)$this->config->get('config_language_id');
 		$results = $this->model_blog_blog->getCommentsByBlogId(80, 0, 10);
 
 		foreach ($results as $result) {

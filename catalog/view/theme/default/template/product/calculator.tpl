@@ -18,8 +18,7 @@
                 '' => '',
                 '' => '',
                 );
-  $session = array_shift($_SESSION);$key = 'ru-ru';if(isset($session['language'])){$key = $session['language'];}$lib = array();foreach($lands as $ru => $ua){if($key == 'ru-ru'){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
-
+ $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
     //Пример
     //<?php echo $lib['русская фраза']; ? >
 echo $header; ?>

@@ -95,7 +95,7 @@ class ControllerProductCategory extends Controller {
 			$this->document->setKeywords($category_info['meta_keyword']);
 
 			$data['heading_title'] = $category_info['name'];
-
+$data['language_id'] = (int)$this->config->get('config_language_id');
 			$data['text_refine'] = $this->language->get('text_refine');
 			$data['text_empty'] = $this->language->get('text_empty');
 			$data['text_quantity'] = $this->language->get('text_quantity');

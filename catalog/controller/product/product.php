@@ -243,7 +243,7 @@ class ControllerProductProduct extends Controller {
 			$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 			$data['heading_title'] = $product_info['name'];
-
+$data['language_id'] = (int)$this->config->get('config_language_id');
 			$data['text_select'] = $this->language->get('text_select');
 			$data['text_manufacturer'] = $this->language->get('text_manufacturer');
 			$data['text_model'] = $this->language->get('text_model');

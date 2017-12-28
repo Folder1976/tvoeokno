@@ -28,7 +28,7 @@ class ControllerProductCalculator extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+$data['language_id'] = (int)$this->config->get('config_language_id');
 		$data['text_index'] = $this->language->get('text_index');
 		$data['text_empty'] = $this->language->get('text_empty');
 
