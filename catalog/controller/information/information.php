@@ -20,6 +20,11 @@ class ControllerInformationInformation extends Controller {
 
 		$information_info = $this->model_catalog_information->getInformation($information_id);
 
+		$this->load->language('information/contact');
+		$data['geocode'] = $this->config->get('config_geocode');
+		$data['geocode_hl'] = $this->config->get('config_language');
+		$data['button_map'] = $this->language->get('button_map');
+		
 		if ($information_info) {
 
 			if ($information_info['meta_title']) {
