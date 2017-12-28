@@ -150,18 +150,20 @@
                 <input type="tel" placeholder="Телефон" name="phone" required>
                 <button class="red-btn"><?php echo $lib['Перезвонить мне']; ?></button>
               </form>
-              <a href="/index.php?route=product/compare" class="header-callback-single">
-                <span class="img compare"></span>
-                <p><?php echo $lib['В сравнении']; ?></p>
-              </a>
-              <a href="<?php echo $wishlist; ?>" class="header-callback-single" title="<?php echo $text_wishlist; ?>">
-                <span class="img star"></span>
-                <p><?php echo $text_wishlist; ?></p>
-              </a>
-              <a href="<?php echo $checkout; ?>" class="header-callback-single" title="<?php echo $text_checkout; ?>">
-                <span class="img busket"></span>
-                <p><?php echo $text_checkout; ?></p>
-              </a>
+              <div class="wrap-header-button">
+                <a href="/index.php?route=product/compare" class="header-callback-single">
+                  <span class="img compare"></span>
+                  <p><?php echo $lib['В сравнении']; ?></p>
+                </a>
+                <a href="<?php echo $wishlist; ?>" class="header-callback-single" title="<?php echo $text_wishlist; ?>">
+                  <span class="img star"></span>
+                  <p><?php echo $text_wishlist; ?></p>
+                </a>
+                <a href="<?php echo $checkout; ?>" class="header-callback-single" title="<?php echo $text_checkout; ?>">
+                  <span class="img busket"></span>
+                  <p><?php echo $text_checkout; ?></p>
+                </a>
+              </div>
             </div>
           </div>
         </div>
