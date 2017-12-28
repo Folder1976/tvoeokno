@@ -1,20 +1,20 @@
 <?php
   $lands = array(
-                'Русская фраза' => 'Українська фраза',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
+                'Сделать расчет окон' => 'Зробити розрахунок вікон',
+                'Высота' => 'Висота',
+                'Ширина' => 'Ширина',
+                'Монтаж/демонтаж' => 'Монтаж/Демонтаж',
+                'Москитная сетка' => 'Москітна сітка',
+                'Стоимость' => 'Вартість',
+                'выслать на расчет' => 'вислати на розрахунок',
+                'как посчитать цену своего окна' => 'як порахувати ціну свого вікна',
+                'Выберите нужную конструкцию' => 'Виберіть потрібну конструкцію',
+                'Введите ее ширину и высоту' => 'Введіть її ширину і висоту',
+                'Также при необходимости выберите подоконник' => 'Також при необхідності виберіть підвіконня',
+                'отлив, москитную сетку и монтаж' => 'відлив, москітну сітку і монтаж',
+                'В списке опций справа от окна выберите систему' => 'У списку опцій праворуч від вікна виберіть систему',
+                'окон, фурнитуру, стеклопакет' => 'вікон, фурнітуру, склопакет',
+                'мы с вами свяжемся как можно быстрее!' => 'ми з вами зв\'яжемося якомога швидше!',
                 '' => '',
                 '' => '',
                 );
@@ -37,7 +37,7 @@ echo $header; ?>
     </div>
   </div>
 
-  <h1 class="main-title">Сделать расчет окон</h1>
+  <h1 class="main-title"><?php echo $lib['Сделать расчет окон']; ?></h1>
   <form action="/" class="js-form-call-me">
   <div class="window">
     <div class="container">
@@ -89,11 +89,11 @@ echo $header; ?>
               <div id="width-slider" class="width-slider"></div>
               <div class="counts">
                 <div class="count">
-                  <p class="first">Высота, см</p>
+                  <p class="first"><?php echo $lib['Высота']; ?>, см</p>
                   <input type="number" name="height_window" step="1" id="height_window_input">
                 </div>
                 <div class="count">
-                  <p class="first">Ширина, см</p>
+                  <p class="first"><?php echo $lib['Ширина']; ?>, см</p>
                   <input type="number" name="width_window" step="1" id="width_window_input">
                 </div>
               </div>
@@ -120,11 +120,11 @@ echo $header; ?>
 
               <div class="checkbox">
                 <input id="label1" type="checkbox" name="montage" checked>
-                <label for="label1">Монтаж/демонтаж</label>
+                <label for="label1"><?php echo $lib['Монтаж/демонтаж']; ?></label>
               </div>
               <div class="checkbox">
                 <input id="label2" type="checkbox" name="moskito" checked>
-                <label for="label2">Москитная сетка</label>
+                <label for="label2"><?php echo $lib['Москитная сетка']; ?></label>
               </div>
               <div class="text-input">
                 <input placeholder="Ваше имя" name="name" type="text">
@@ -135,8 +135,8 @@ echo $header; ?>
               <div class="text-input">
                 <input placeholder="E-mail" name="email" type="text">
               </div>
-              <p class="price" style="display: none">Стоимость: <span>2957 грн</span></p>
-              <button type="submit" class="red-btn">выслать на расчет</button>
+              <p class="price" style="display: none"><?php echo $lib['Стоимость']; ?>: <span>2957 грн</span></p>
+              <button type="submit" class="red-btn"><?php echo $lib['выслать на расчет']; ?></button>
             </div>
           </div>
         </div>
@@ -148,26 +148,26 @@ echo $header; ?>
 
 <section class="how-to-count">
   <div class="container">
-    <h2 class="main-title">как посчитать цену своего окна</h2>
+    <h2 class="main-title"><?php echo $lib['как посчитать цену своего окна']; ?></h2>
     <div class="how-to-count-single">
       <span>1</span>
-      <p>Выберите нужную конструкцию</p>
+      <p><?php echo $lib['Выберите нужную конструкцию']; ?></p>
     </div>
     <div class="how-to-count-single">
       <span>2</span>
-      <p>Введите ее ширину и высоту</p>
+      <p><?php echo $lib['Введите ее ширину и высоту']; ?></p>
     </div>
     <div class="how-to-count-single">
       <span>3</span>
-      <p>Также при необходимости выберите подоконник, <br> отлив, москитную сетку и монтаж.</p>
+      <p><?php echo $lib['Также при необходимости выберите подоконник']; ?>, <br> <?php echo $lib['отлив, москитную сетку и монтаж']; ?>.</p>
     </div>
     <div class="how-to-count-single">
       <span>4</span>
-      <p>В списке опций справа от окна выберите систему <br> окон, фурнитуру, стеклопакет</p>
+      <p><?php echo $lib['В списке опций справа от окна выберите систему']; ?> <br> <?php echo $lib['окон, фурнитуру, стеклопакет']; ?></p>
     </div>
     <div class="how-to-count-single">
       <span>5</span>
-      <p>мы с вами свяжемся как можно быстрее!</p>
+      <p><?php echo $lib['мы с вами свяжемся как можно быстрее!']; ?></p>
     </div>
   </div>
 </section>

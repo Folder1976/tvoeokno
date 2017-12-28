@@ -1,9 +1,23 @@
 <?php
   $lands = array(
-                'Русская фраза' => 'Українська фраза',
-                '' => '',
-                '' => '',
-                '' => '',
+                'Цена от' => 'Ціна від',
+                'При заказе с установкой' => 'При замовленні з установкою',
+                'Внести свои данные для расчета' => 'Внести свої дані для розрахунку',
+                'Размер окна' => 'Розмір вікна',
+                'Высота' => 'Висота',
+                'Ширина' => 'Ширина',
+                'характеристики стеклопакетов' => 'характеристики склопакетів',
+                'характеристики фурнитуры' => 'характеристики фурнітури',
+                'Добавить к заказу' => 'Додати до замовлення',
+                'посмотреть цвета подоконников' => 'подивитися кольору підвіконь',
+                'Размер подоконника' => 'Розмір підвіконня',
+                'Глубина' => 'Глибина',
+                'Количество окон' => 'Кількість вікон',
+                'Отлив' => 'Відплив',
+                'Монтаж' => 'Монтаж',
+                'Москитная сетка' => 'Москітна сітка',
+                'Откосы' => 'Відкоси',
+                'Узнать стоимость' => 'Дізнатися вартість',
                 '' => '',
                 '' => '',
                 '' => '',
@@ -70,13 +84,13 @@ echo $header; ?>
                         <?php } ?>
                     </div>
                 <?php } ?>
-                <p class="product-card-price">Цена от: <span><?php 
+                <p class="product-card-price"><?php echo $lib['Цена от']; ?>: <span><?php 
                 if ($price) {
                   $price_and_currency = explode(' ', $price);
                   echo round($price_and_currency[0], 2).' '.$price_and_currency[1];
                 } 
                 ?></span></p>
-                <p class="dop">* При заказе с установкой</p>
+                <p class="dop"><?php echo $lib['При заказе с установкой']; ?>* </p>
                 <p class="product-card-id"><?php echo $text_model; ?> <?php echo $model; ?></p>
               </div>
             </div>
@@ -154,17 +168,17 @@ echo $header; ?>
         <input name="formname" value="product" type="hidden">
         <section class="product-card-data">
           <div class="container">
-            <h3 class="product-card-title">Внести свои данные для расчета</h3>
+            <h3 class="product-card-title"><?php echo $lib['Внести свои данные для расчета']; ?></h3>
             <div class="row">
               <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="sizes">
-                  <p>Размер окна</p>
+                  <p><?php echo $lib['Размер окна']; ?></p>
                   <div class="sizes-group">
-                    <label for="height">Высота, см</label>
+                    <label for="height"><?php echo $lib['Высота']; ?>, см</label>
                     <input id="height" name="w_height" type="text" class="form-controll" value="0">
                   </div>
                   <div class="sizes-group">
-                    <label for="width">Ширина, см</label>
+                    <label for="width"><?php echo $lib['Ширина']; ?>, см</label>
                     <input id="width" name="w_width" type="text" class="form-controll" value="0">
                   </div>
                 </div>
@@ -197,7 +211,7 @@ echo $header; ?>
                       <?php } ?>
                       <?php } ?>
                     </select>
-                    <a href="/характеристики_стеклопакетов">характеристики стеклопакетов</a>
+                    <a href="/характеристики_стеклопакетов"><?php echo $lib['характеристики стеклопакетов']; ?></a>
                   </div>
                   <?php } ?>
 
@@ -212,7 +226,7 @@ echo $header; ?>
                       <?php } ?>
                       <?php } ?>
                     </select>
-                    <a href="/характеристики_фурнитуры">характеристики фурнитуры</a>
+                    <a href="/характеристики_фурнитуры"><?php echo $lib['характеристики фурнитуры']; ?></a>
                   </div>
                   <?php } ?>
 
@@ -223,7 +237,7 @@ echo $header; ?>
         </section>
         <section class="add-order">
           <div class="container">
-            <h3 class="product-card-title">Добавить к заказу</h3>
+            <h3 class="product-card-title"><?php echo $lib['Добавить к заказу']; ?></h3>
 
             <?php $group = $group_list[10]; // Подоконник ?>
             <?php if ( $group['enable'] == 1 ) { ?>
@@ -236,24 +250,24 @@ echo $header; ?>
                 <?php } ?>
                 <?php } ?>
               </select>
-              <a href="/посмотреть_цвета_подоконников">посмотреть цвета подоконников</a>
+              <a href="/посмотреть_цвета_подоконников"><?php echo $lib['посмотреть цвета подоконников']; ?></a>
             </div>
             <?php } ?>
 
             <div class="counts">
               <div class="first-count">
-                <p>Размер подоконника</p>
+                <p><?php echo $lib['Размер подоконника']; ?></p>
                 <div class="sizes-group">
-                  <label for="height2">Глубина, см</label>
+                  <label for="height2"><?php echo $lib['Глубина']; ?>, см</label>
                   <input id="height2" name="p_height" type="text" class="form-controll" value="0">
                 </div>
                 <div class="sizes-group">
-                  <label for="width2">Ширина, см</label>
+                  <label for="width2"><?php echo $lib['Ширина']; ?>, см</label>
                   <input id="width2" name="p_width" type="text" class="form-controll" value="0">
                 </div>
               </div>
               <div class="second-count">
-                <p>Количество окон</p>
+                <p><?php echo $lib['Количество окон']; ?></p>
                 <div class="second-count-input">
                   <a href="#" class="second-count-btn btn-prev">-</a>
                   <input type="number" name="w_items" value="1">
@@ -264,25 +278,25 @@ echo $header; ?>
             <div class="add-order-dop">
               <div class="checkbox">
                 <input id="c1" type="checkbox" name="otliv" checked>
-                <label for="c1">Отлив</label>
+                <label for="c1"><?php echo $lib['Отлив']; ?></label>
               </div>
               <div class="checkbox">
                 <input id="c2" type="checkbox" name="montage" checked>
-                <label for="c2">Монтаж</label>
+                <label for="c2"><?php echo $lib['Монтаж']; ?></label>
               </div>
               <div class="checkbox">
                 <input id="c3" type="checkbox" name="moskito" checked>
-                <label for="c3">Москитная сетка</label>
+                <label for="c3"><?php echo $lib['Москитная сетка']; ?></label>
               </div>
               <div class="checkbox">
                 <input id="c4" type="checkbox" name="otkos" checked>
-                <label for="c4">Откосы</label>
+                <label for="c4"><?php echo $lib['Откосы']; ?></label>
               </div>
             </div>
             <div class="add-order-fav">
               <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
               <a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a>
-              <button type="submit" class="link-price green-btn">Узнать стоимость</button>
+              <button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button>
             </div>
           </div>
         </section>
@@ -308,24 +322,7 @@ echo $header; ?>
             
                 <?php } ?>
                         
-            
-                      <!--tr>
-                        <td>Камерность профиля</td>
-                        <td>2279</td>
-                      </tr>
-                      <tr>
-                        <td>Толщина стеклопакета</td>
-                        <td>2279</td>
-                      </tr>
-                      <tr>
-                        <td>Фуртитура</td>
-                        <td>2279</td>
-                      </tr>
-                      <tr>
-                        <td>Коэффициент теплопередачи</td>
-                        <td>2279</td>
-                      </tr-->
-                    </tbody>
+                         </tbody>
                   </table>
                 </div>
               </div>

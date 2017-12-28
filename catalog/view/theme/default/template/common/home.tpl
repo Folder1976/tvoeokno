@@ -28,7 +28,8 @@
                 'Ваш номер' => 'Ваш номер',
                 'Прикрепить файл' => 'Прикріпити файл',
                 'Перезвонить' => 'Передзвонити',
-                '' => '',
+                'все о гарантии' => 'все про гарантії',
+                'Номер договора' => 'Номер договору'
                 );
  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
     //Пример
@@ -323,31 +324,30 @@ echo $header; ?>
     <div class="container-fluid">
       <h2 class="main-title"><?php echo $blogs['garanty']['name'];?></h2>
       <div class="row">
+        <?php $blogs_action = array_shift($blogs['garanty']['blogs']); ?>
         <div class="col-md-4 col-md-offset-1">
           <div class="certificates-info">
-            <img src="/catalog/view/theme/default/image/guarantee.png" alt="" class="guarantee">
-            <h3>Наши гарантийные обязательства</h3>
-            <p>Мы обеспечиваем бесплатное гарантийное обслуживание Вашего заказа в течение 60 месяцев со дня установки заказа. Для этого у нас создан сервисный отдел. Гарантия распространяется на профиль, стеклопакет, фурнитуру и монтаж.</p>
-            <a href="#" class="green-btn">все о гарантии</a>
+            <?php if($language_id == 1){ ?>
+              <img src="/catalog/view/theme/default/image/guarantee.png" alt="5 лет гарантии" class="guarantee">
+            <?php }else{ ?>
+              <img src="/catalog/view/theme/default/image/guarantee_ua.png" alt="5 років гарантії" class="guarantee">
+            <?php } ?>
+            <h3><?php echo $blogs_action['title']; ?></h3>
+            <p><?php echo $blogs_action['description']; ?></p>
+            <a href="/returns_and_guarantees" class="green-btn"><?php echo $lib['все о гарантии']; ?></a>
           </div>
         </div>
         <div class="col-md-7">
           <div class="certificates-slider owl-carousel">
-            <div class="item">
-              <a href="#">
-                <img src="/catalog/view/theme/default/image/40.png" alt="">
-              </a>
-            </div>
-            <div class="item">
-              <a href="#">
-                <img src="/catalog/view/theme/default/image/40.png" alt="">
-              </a>
-            </div>
-            <div class="item">
-              <a href="#">
-                <img src="/catalog/view/theme/default/image/40.png" alt="">
-              </a>
-            </div>
+
+            <?php foreach($banner_sertificate as $banner){ ?>
+              <div class="item">
+                <a href="javascript:;">
+                  <img src="/image/<?php echo $banner['image']; ?>" alt="">
+                </a>
+              </div>
+            <?php } ?>
+
           </div>
           <div class="owl-nav navs">
             <a href="#" class="owl-prev prev"><span></span></a>

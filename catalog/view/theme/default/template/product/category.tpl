@@ -1,7 +1,7 @@
 <?php
   $lands = array(
-                'Русская фраза' => 'Українська фраза',
-                '' => '',
+                'Фильтр' => 'Фільтр',
+                'ПОДРОБНЕЕ' => 'ДЕТАЛЬНІШЕ',
                 '' => '',
                 '' => '',
                 '' => '',
@@ -65,7 +65,7 @@ echo $header; ?>
         <?php if ( isset($_GET['filter']) ) { ?>
         <?php $filter_arr = explode(',', $_GET['filter']); ?>
         <div class="filter">
-          <p>Фильтр:</p>
+          <p><?php echo $lib['Фильтр']; ?>:</p>
           <ul class="filter-list">
             <?php foreach ($filter_arr as $value) { ?>
               <li><a href="javascript:void(0)" class="js-filter-remove" data-id="<?php echo $value; ?>"><?php echo $value; ?><span>×</span></a></li>
@@ -155,7 +155,7 @@ echo $header; ?>
                 </div>
                 <p class="name"><?php echo $product['name']; ?></p>
                 <a href="#" class="favorite-link" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a>
-                <a href="<?php echo $product['href']; ?>" class="more green-btn">пОДРОБНЕЕ</a>
+                <a href="<?php echo $product['href']; ?>" class="more green-btn"><?php echo $lib['ПОДРОБНЕЕ']; ?></a>
               </div>
 
 

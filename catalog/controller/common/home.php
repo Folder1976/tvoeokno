@@ -63,6 +63,9 @@ class ControllerCommonHome extends Controller {
 			}
 		}
 	
+		$this->load->model('design/banner');
+		$data['banner_sertificate'] = $this->model_design_banner->getBanner(9);
+	
 		$this->load->model('blog/blog');
  		$this->load->model('blog/blog_category');
  		
