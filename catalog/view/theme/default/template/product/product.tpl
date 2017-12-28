@@ -1,4 +1,29 @@
-<?php echo $header; ?>
+<?php
+  $lands = array(
+                'Русская фраза' => 'Українська фраза',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                );
+  $session = array_shift($_SESSION);$key = 'ru-ru';if(isset($session['language'])){$key = $session['language'];}$lib = array();foreach($lands as $ru => $ua){if($key == 'ru-ru'){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+
+    //Пример
+    //<?php echo $lib['русская фраза']; ? >
+echo $header; ?>
+
 <style>
 .main-sect { display: none; }
 </style>

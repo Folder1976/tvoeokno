@@ -25,7 +25,7 @@ $_['email_notification'] = 		'New blog comment from: %s';
 
 // Comment
 $_['entry_name'] = 				'Имя';
-$_['entry_email'] = 			'Email адрес (Будет скрыт)';
+$_['entry_email'] = 			'Номер договора';
 $_['entry_comment'] = 			'Коментарий';
 $_['entry_captcha'] = 			'Ответьте на восрос:';
 $_['button_send'] = 			'Отправить';

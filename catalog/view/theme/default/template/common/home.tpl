@@ -1,4 +1,28 @@
-<?php echo $header; ?>
+<?php
+  $lands = array(
+                'Русская фраза' => 'Українська фраза',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                );
+  $session = array_shift($_SESSION);$key = 'ru-ru';if(isset($session['language'])){$key = $session['language'];}$lib = array();foreach($lands as $ru => $ua){if($key == 'ru-ru'){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+
+    //Пример
+    //<?php echo $lib['русская фраза']; ? >
+echo $header; ?>
 
  <div class="main-slider owl-carousel">
       <div class="item" style="background: url(/catalog/view/theme/default/image/slider1.png) no-repeat center; background-size: cover;">
@@ -339,7 +363,7 @@
                 <div class="review-single">
                   <p><?php echo $comment['comment']; ?></p>
                   <div class="bottom">
-                    <p class="date"><?php echo $comment['date_added']; ?></p>
+                    <p class="date"><?php //echo $comment['date_added']; ?></p>
                     <p class="name"><?php echo $comment['name']; ?></p>
                   </div>
                 </div>
@@ -351,7 +375,7 @@
                 <a href="#" class="owl-prev2 prev"><span></span></a>
               </div>
               <a href="/comments" class="review-btn-main purple-btn">все отзывы</a>
-              <div class="owl-nav navs">
+              <div class="owl-nav navs">post
                 <a href="#" class="owl-next2 next"><span></span></a>
               </div>
             </div>
@@ -361,10 +385,10 @@
           <form action="/" class="review-form" id="comment_form">
             <h3>Оставить отзыв</h3>
             <input type="text" placeholder="Имя" name="name" required>
-            <input type="text" placeholder="Номер договора" name="contract_number">
+            <input type="text" placeholder="Номер договора" name="email">
             <textarea placeholder="Ваш отзыв" name="comment" required></textarea>
 
-            <input type="hidden" name="email" value="test@test.com">
+            <!--input type="hidden" name="email" value="test@test.com"-->
             <input type="hidden" name="captcha_comment">
             <button id="button-comment" class="blue-btn">Отправить</button>
           </form>

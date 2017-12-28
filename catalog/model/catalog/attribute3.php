@@ -19,23 +19,7 @@ class ModelCatalogAttribute3 extends Model {
 			$sql .= " AND a.attribute_group_id = '" . $this->db->escape($data['filter_attribute_group_id']) . "'";
 		}
 
-		$sort_data = array(
-			'ad.name',
-			'attribute_group',
-			'a.sort_order'
-		);
-
-		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY " . $data['sort'];
-		} else {
-			$sql .= " ORDER BY attribute_group, ad.name";
-		}
-
-		if (isset($data['order']) && ($data['order'] == 'DESC')) {
-			$sql .= " DESC";
-		} else {
-			$sql .= " ASC";
-		}
+		$sql .= " ORDER BY attribute_group ASC, a.sort_order ASC, ad.name ASC";
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {

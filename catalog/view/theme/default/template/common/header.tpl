@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<?php
+  $lands = array(
+                'Наша почта:' => 'Наша пошта:',
+                'Наш адрес:' => 'Наша адреса:',
+                'Перезвонить мне' => 'Передзвоніть мені',
+                'В сравнении' => 'До порівняння',
+                'Меню' => 'Меню',
+                'Главная' => 'Головна',
+                'Вызвать замерщика' => 'Викликати замірника',
+                'Ваше имя' => 'Ваше им\'я',
+                'Адрес' => 'Адресa',
+                'Удобное время звонка' => 'Зручний час дзвінка',
+                'Ваш телефон' => 'Ваш телефон',
+                'Отправить заявку' => 'Відправити запит',
+                'Ваши пожелания' => 'Ваші побажання',
+                'Заказать звонок' => 'Замовити дзвінок',
+                'Удобное время звонка' => 'Зручний час дзвінка',
+                'Перезвоните мне' => 'Передзвоніть мені',
+                'Получить скидки' => 'Отримати знижки',
+                'Количество окон' => 'Кількість вікон',
+                'Перезвоните мне' => 'Передзвоніть мені',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                );
+  $session = array_shift($_SESSION);$key = 'ru-ru';if(isset($session['language'])){$key = $session['language'];}$lib = array();foreach($lands as $ru => $ua){if($key == 'ru-ru'){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+  ?><!DOCTYPE html>
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
   <head>
     <meta charset="utf-8">
@@ -47,13 +86,10 @@
           </ul>
           <nav class="header-nav">
             <ul class="header-nav-list">
-              <li><a href="/about_us">О компании</a></li>
-              <li><a href="/shares">Акции</a></li>
-              <li><a href="/news_main">Новости</a></li>
-              <li><a href="/blogs">Статьи и обзоры</a></li>
-              <li><a href="/delivery">Доставка</a></li>
-              <li><a href="/payment">Оплата</a></li>
-              <li><a href="/contacts">Контакты</a></li>
+              <?php foreach($group_list[16]['list'] as $row){ ?>
+                <li><a href="<?php echo $row['href']; ?>"><?php echo $row['name']; ?></a></li>
+              <?php } ?>
+
             </ul>
           </nav>
           
@@ -80,31 +116,31 @@
             <div class="header-logo">
               <a href="/">
                 <img src="/catalog/view/theme/default/image/logo.svg" alt="лого Твое окно">
-                <p>9:00 - 18:00 пн - пн<span>10:00 - 15:00 сб</span></p>
+                <?php echo $open; ?>
               </a>
             </div>
           </div>
           <div class="col-md-5 col-sm-8">
             <div class="header-info">
               <div class="header-info-top">
-                <p>Свяжитесь с нами</p>
+                <p><?php echo $group_list[17]['name']; ?></p>
                 <ul class="header-info-top-list">
                   <!-- <li><a href="tel:<?php echo preg_replace('~[^0-9]+~','',$telephone); ?>"><?php echo $telephone;?></a></li> -->
-                  <li><a href="tel:0442271225">0 (44) 227 12 25</a></li>
-                  <li><a href="tel:0936613030">0 (93) 661 30 30</a></li>
-                  <li><a href="tel:0506613030">0 (50) 661 30 30</a></li>
-                  <li><a href="tel:0671613030">0 (67) 161 30 30</a></li>
-                  <li class="viber"><a href="viber://add?number=0671613030">0 (67) 161 30 30</a></li>
+                  <?php foreach($group_list[17]['list'] as $row){ ?>
+                    <li
+                       <?php if(strpos($row['href'], 'viber') !== false){ ?> class="viber"<?php } ?>
+                       ><a href="<?php echo $row['href']; ?>"><?php echo $row['name']; ?></a></li>
+                  <?php } ?>
                 </ul>
               </div>
               <div class="header-info-center">
                 <div class="block email">
-                  <p>Наша почта:</p>
-                  <a href="mailto:okna@tvoeokno.com.ua">okna@tvoeokno.com.ua</a>
+                  <p><?php echo $lib['Наша почта:']; ?></p>
+                  <a href="mailto:okna@tvoeokno.com.ua"><?php echo $email; ?></a>
                 </div>
                 <div class="block address">
-                  <p>Наш адрес:</p>
-                  <a href="#">м. Левобережная, ул. Комбинатная 25</a>
+                  <p><?php echo $lib['Наш адрес:']; ?></p>
+                  <a href="#"><?php echo $address; ?></a>
                 </div>
               </div>
               <?php echo $search; ?>
@@ -115,11 +151,11 @@
               <form action="/" class="header-callback-form js-form-call-me">
                 <input type="hidden" name="formname" value="call_me__header">
                 <input type="tel" placeholder="Телефон" name="phone" required>
-                <button class="red-btn">Перезвонить мне</button>
+                <button class="red-btn"><?php echo $lib['Перезвонить мне']; ?></button>
               </form>
               <a href="/index.php?route=product/compare" class="header-callback-single">
                 <span class="img compare"></span>
-                <p>В сравнении</p>
+                <p><?php echo $lib['В сравнении']; ?></p>
               </a>
               <a href="<?php echo $wishlist; ?>" class="header-callback-single" title="<?php echo $text_wishlist; ?>">
                 <span class="img star"></span>
@@ -135,7 +171,7 @@
            
       </div>
       <div class="mobile-menu">
-        <p>Меню</p>
+        <p><?php echo $lib['Меню']; ?></p>
         <button type="button" class="header-burger">
           <span></span>
         </button>
@@ -146,15 +182,13 @@
             <li>
               <a href="/">
                 <img src="/catalog/view/theme/default/image/i.svg" alt="">
-                <span>Главная</span>
+                <span><?php echo $group_list[10]['name']; ?></span>
               </a>
               <div class="main-nav-dropdown">
                 <ul>
-                  <li class="main-nav-dropdown-item"><a href="#">Кредит "Тепла оселя"</a></li>
-                  <li class="main-nav-dropdown-item"><a href="#">Выезд в пригород Киева</a></li>
-                  <li class="main-nav-dropdown-item"><a href="#">Доставка</a></li>
-                  <li class="main-nav-dropdown-item"><a href="#">Гарантия</a></li>
-                  <li class="main-nav-dropdown-item"><a href="#">Статьи</a></li>
+                <?php foreach($group_list[10]['list'] as $row){ ?>
+                    <li class="main-nav-dropdown-item"><a href="<?php echo $row['href']; ?>"><?php echo $row['name']; ?></a></li>
+                <?php } ?>
                 </ul>
               </div>
             </li>
@@ -230,61 +264,61 @@
 
     <div id="fb-modal" class="fb-modal" style="display: none;"></div>
     <div id="modal-measure" class="fb-modal modal-measure" style="display: none;">
-        <h2>Вызвать замерщика</h2>
+        <h2><?php echo $lib['Вызвать замерщика'];?></h2>
         <div class="image"><img src="/catalog/view/theme/default/image/modal/measure.png" alt=""></div>
         <form action="" class="js-form-call-me">
             <input type="hidden" name="formname" value="call_me__modal_measure">
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" placeholder="Ваше имя" name="name" required>
-                    <input type="text" placeholder="Адрес" name="address" required>
-                    <input type="tel" placeholder="Ваш телефон" name="phone" required>
-                    <input type="text" placeholder="Удобное время звонка" name="time">
+                    <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
+                    <input type="text" placeholder="<?php echo $lib['Адрес'];?>" name="address" required>
+                    <input type="tel" placeholder="<?php echo $lib['Ваш телефон'];?>" name="phone" required>
+                    <input type="text" placeholder="<?php echo $lib['Удобное время звонка'];?>" name="time">
                 </div>
                 <div class="col-md-4">
-                    <textarea name="comments" name="comments" placeholder="Ваши пожелания" cols="30" rows="8"></textarea>
+                    <textarea name="comments" name="comments" placeholder="<?php echo $lib['Ваши пожелания'];?>" cols="30" rows="8"></textarea>
                 </div>
                 <div class="col-md-4"></div>
             </div>
             <div class="row" style="margin: 30px 0 0;">
                 <div class="col-md-12">
-                    <button class="green-btn">Отправить заявку</button>
+                    <button class="green-btn"><?php echo $lib['Отправить заявку'];?></button>
                 </div>
             </div>
         </form>
     </div>
     <div id="modal-call" class="fb-modal modal-call" style="display: none;">
-        <h2>Заказать звонок</h2>
+        <h2><?php echo $lib['Заказать звонок'];?></h2>
         <div class="image"><img src="/catalog/view/theme/default/image/modal/call.png" alt=""></div>
         <form action="" class="js-form-call-me">
             <input type="hidden" name="formname" value="call_me__modal_call">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-4">
-                    <input type="text" placeholder="Ваше имя" name="name" required>
-                    <input type="text" placeholder="Удобное время звонка" name="time">
+                    <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
+                    <input type="text" placeholder="<?php echo $lib['Удобное время звонка'];?>" name="time">
                 </div>
                 <div class="col-md-5">
-                    <input type="tel" placeholder="Ваш телефон" name="phone" required>
-                    <button class="green-btn">Перезвоните мне</button>
+                    <input type="tel" placeholder="<?php echo $lib['Ваш телефон'];?>" name="phone" required>
+                    <button class="green-btn"><?php echo $lib['Перезвоните мне'];?></button>
                 </div>
             </div>
         </form>
     </div>
     <div id="modal-discount" class="fb-modal modal-discount" style="display: none;">
-        <h2>Получить скидки</h2>
+        <h2><?php echo $lib['Получить скидки'];?></h2>
         <div class="image"><img src="/catalog/view/theme/default/image/modal/discount.png" alt=""></div>
         <form action="" class="js-form-call-me">
             <input type="hidden" name="formname" value="call_me__modal_discount">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-4">
-                    <input type="text" placeholder="Ваше имя" name="name" required>
-                    <input type="text" placeholder="Количество окон" name="window" required>
+                    <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
+                    <input type="text" placeholder="<?php echo $lib['Количество окон'];?>" name="window" required>
                 </div>
                 <div class="col-md-5">
-                    <input type="tel" placeholder="Ваш телефон" name="phone" required>
-                    <button class="green-btn">Перезвоните мне</button>
+                    <input type="tel" placeholder="<?php echo $lib['Ваш телефон'];?>" name="phone" required>
+                    <button class="green-btn"><?php echo $lib['Перезвоните мне'];?></button>
                 </div>
             </div>
         </form>

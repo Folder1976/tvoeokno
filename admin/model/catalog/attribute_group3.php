@@ -6,7 +6,7 @@ class ModelCatalogAttributeGroup3 extends Model {
 		$attribute_group_id = $this->db->getLastId();
 
 		foreach ($data['attribute_group_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_group_description2
+			$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_group_description3
 							 SET attribute_group_id = '" . (int)$attribute_group_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
 		}
 
@@ -19,17 +19,17 @@ class ModelCatalogAttributeGroup3 extends Model {
 						 href = '" . $data['href'] . "'
 						 WHERE attribute_group_id = '" . (int)$attribute_group_id . "'");
 
-		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute_group_description2 WHERE attribute_group_id = '" . (int)$attribute_group_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute_group_description3 WHERE attribute_group_id = '" . (int)$attribute_group_id . "'");
 
 		foreach ($data['attribute_group_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_group_description2 SET attribute_group_id = '" . (int)$attribute_group_id . "',
+			$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_group_description3 SET attribute_group_id = '" . (int)$attribute_group_id . "',
 							 language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
 		}
 	}
 
 	public function deleteAttributeGroup($attribute_group_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute_group3 WHERE attribute_group_id = '" . (int)$attribute_group_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute_group_description2 WHERE attribute_group_id = '" . (int)$attribute_group_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute_group_description3 WHERE attribute_group_id = '" . (int)$attribute_group_id . "'");
 	}
 
 	public function getAttributeGroup($attribute_group_id) {
@@ -39,7 +39,7 @@ class ModelCatalogAttributeGroup3 extends Model {
 	}
 
 	public function getAttributeGroups($data = array()) {
-		$sql = "SELECT * FROM " . DB_PREFIX . "attribute_group3 ag LEFT JOIN " . DB_PREFIX . "attribute_group_description2 agd ON (ag.attribute_group_id = agd.attribute_group_id) WHERE agd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT * FROM " . DB_PREFIX . "attribute_group3 ag LEFT JOIN " . DB_PREFIX . "attribute_group_description3 agd ON (ag.attribute_group_id = agd.attribute_group_id) WHERE agd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
 		$sort_data = array(
 			'agd.name',
@@ -78,7 +78,7 @@ class ModelCatalogAttributeGroup3 extends Model {
 	public function getAttributeGroupDescriptions($attribute_group_id) {
 		$attribute_group_data = array();
 
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "attribute_group_description2 WHERE attribute_group_id = '" . (int)$attribute_group_id . "'");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "attribute_group_description3 WHERE attribute_group_id = '" . (int)$attribute_group_id . "'");
 
 		foreach ($query->rows as $result) {
 			$attribute_group_data[$result['language_id']] = array('name' => $result['name']);
