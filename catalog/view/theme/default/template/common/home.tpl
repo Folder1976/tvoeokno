@@ -455,8 +455,9 @@ echo $header; ?>
   <section class="calc">
     <div class="container">
       <h2><?php echo $lib['экспресс расчет ваших окон'];?></h2>
-      <form action="/" class="calc-form js-form-call-me">
+      <form action="/index.php?route=account/universalform" class="calc-form">
         <input type="hidden" name="formname" value="call_me__home_calc_windows">
+        <input type="hidden" name="redireck" value="/">
         <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
         <input type="tel" placeholder="<?php echo $lib['Ваш номер'];?>" name="phone" required>
         <div class="file">
