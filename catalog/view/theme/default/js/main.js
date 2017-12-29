@@ -9,6 +9,16 @@ jQuery.fn.extend({
   }
 });
 
+
+$('.side-nav').on('mouseover', 'li a', function(){
+  $(this).css('right', '-' + $(this).width() + 'px');
+});
+$('.side-nav').on('mouseout', 'li a', function(){
+  $(this).css('right', '-63px');
+});
+
+
+
 var map;
 
 function initMap() {

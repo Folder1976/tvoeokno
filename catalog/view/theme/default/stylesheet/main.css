@@ -448,6 +448,7 @@ button {
       transform: translateY(-50%);
   left: 0;
   z-index: 3; }
+
   .side-nav li {
     display: block;
     margin-bottom: 10px; }
@@ -479,11 +480,12 @@ button {
     right: -63px;
     text-align: right;
     white-space: nowrap;
-    transition: all .9s; }
+    transition: all .5s; }
     .side-nav li a:hover {
-      left: 0;
-      right: auto;
-      transition: all .9s; }
+      /*left: 0;
+      right: auto;*/
+      transition: all .5s;
+    }
     .side-nav a img {
       vertical-align: middle; }
     .side-nav a span {
