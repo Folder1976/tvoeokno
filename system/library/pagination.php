@@ -7,8 +7,8 @@ class Pagination {
 	public $url = '';
 	public $text_first = '|&lt;';
 	public $text_last = '&gt;|';
-	public $text_next = '&gt;';
-	public $text_prev = '&lt;';
+	public $text_next = '';
+	public $text_prev = '';
 
 	public function render() {
 		$total = $this->total;
@@ -30,16 +30,12 @@ class Pagination {
 
 		$this->url = str_replace('%7Bpage%7D', '{page}', $this->url);
 
-		$output = '<ul class="pagination">';
+		$output = '<ul class="pagination-list">';
 
 		if ($page > 1) {
-            $output .= '<li><a href="' . str_replace(array('&amp;page={page}', '?page={page}', '&page={page}'), '', $this->url) . '">' . $this->text_first . '</a></li>';
-			
-			if ($page - 1 === 1) {
-                $output .= '<li><a href="' . str_replace(array('&amp;page={page}', '?page={page}', '&page={page}'), '', $this->url) . '">' . $this->text_prev . '</a></li>';
-			} else {
-				$output .= '<li><a href="' . str_replace('{page}', $page - 1, $this->url) . '">' . $this->text_prev . '</a></li>';
-			}
+			$output .= '<li><a href="' . str_replace('{page}', $page - 1, $this->url) . '" class="prev">' . $this->text_prev . '</a></li>';
+		} else {
+			$output .= '<li><a href="' . str_replace('{page}', $page, $this->url) . '" class="prev">' . $this->text_prev . '</a></li>';
 		}
 
 		if ($num_pages > 1) {
@@ -75,8 +71,9 @@ class Pagination {
 		}
 
 		if ($page < $num_pages) {
-			$output .= '<li><a href="' . str_replace('{page}', $page + 1, $this->url) . '">' . $this->text_next . '</a></li>';
-			$output .= '<li><a href="' . str_replace('{page}', $num_pages, $this->url) . '">' . $this->text_last . '</a></li>';
+			$output .= '<li><a href="' . str_replace('{page}', $page + 1, $this->url) . '" class="next">' . $this->text_next . '</a></li>';
+		} else {
+			$output .= '<li><a href="' . str_replace('{page}', $page, $this->url) . '" class="next">' . $this->text_next . '</a></li>';
 		}
 
 		$output .= '</ul>';

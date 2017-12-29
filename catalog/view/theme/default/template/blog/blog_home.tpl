@@ -1,4 +1,5 @@
 <?php echo $header; ?>
+<section class="news-page">
 <div class="breadcrumbs">
   <div class="container">
     <ul class="breadcrumbs-list">
@@ -28,33 +29,45 @@
       <?php } ?>
   	
     <?php if($blogs){ ?>
-		<div class="blog_grid_holder column-<?php echo $list_columns; ?>">
-			<?php foreach ($blogs as $blog) { ?>
-				<div class="blog_item">
-                
-                <div class="summary">
-                <h2 class="blog_title"><a href="<?php echo $blog['href']; ?>"><?php echo $blog['title']; ?></a></h2>
-                <div class="blog_stats">
-                <?php if($author_status){ ?><span><i class="fa fa-user"></i><b class="text"><?php echo $text_posted_by; ?></b> <b class="hl"><?php echo $blog['author']; ?></b></span><?php } ?>
-                <?php if($date_added_status){ ?><span><i class="fa fa-clock-o"><b class="text"></i><?php echo $text_posted_on; ?></b> <b class="hl"><?php echo $blog['date_added_full']; ?></b></span><?php } ?>
-				<?php if($page_view_status){ ?><span><i class="fa fa-eye"></i><b class="text"><?php echo $text_read; ?></b> <b class="hl"><?php echo $blog['count_read']; ?></b></span><?php } ?>
-				<?php if($comments_count_status){ ?><span><i class="fa fa-comments"><b class="text"></i><?php echo $text_comments; ?></b> <b class="hl"><?php echo $blog['comment_total']; ?></b></span><?php } ?>
-                </div>
-                <?php if($blog['image'] && strpos($blog['image'], 'no_image') === false){ ?>
-                <div class="image">
-				<a href="<?php echo $blog['href']; ?>"><img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>" /></a>
-                </div>
-				<?php } ?>
-				<p><?php echo $blog['short_description']; ?></p>
-                <p><a href="<?php echo $blog['href']; ?>"><?php echo $text_read_more; ?> <i class="fa fa-long-arrow-right"></i></a></p>
-                </div>
-               </div>
-			<?php } ?>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 col-lg-3">
+          <div class="aside blue-aside">
+            <h3 class="blue">тип информации</h3>
+            <ul class="aside-list">
+              <li><a href="/news">новости</a></li>
+              <li><a href="/action">акции</a></li>
+              <li><a href="/blogs">Статьи</a></li>
+            </ul>
           </div>
-		<div class="row">
-        <div class="col-sm-6 text-left"><?php echo $results; ?></div>
-        <div class="col-sm-6 text-right"><?php echo $pagination; ?></div>
+        </div>
+        <div class="col-md-8">
+          <div class="all-news">
+
+            <?php foreach ($blogs as $blog) { ?>
+            <div class="all-news-single">
+              <img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>">
+              <div class="all-news-content">
+                <h3><a href="<?php echo $blog['href']; ?>"><?php echo $blog['title']; ?></a></h3>
+                <p><?php echo $blog['short_description']; ?></p>
+                <div class="bottom">
+                  <p class="data"><?php if($date_added_status){ echo $blog['date_added_full']; } ?></p>
+                  <a href="<?php echo $blog['href']; ?>" class="more"><?php echo $text_read_more; ?></a>
+                </div>
+              </div>
+            </div>
+            <?php } ?>
+
+            <div style="text-align: center;">
+              <div class="pagination">
+                <?php echo $pagination; ?>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
+    </div>
 	<?php }else{ ?>
 		<div><?php echo $text_no_results; ?></div>
 	<?php } ?>
@@ -62,4 +75,5 @@
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
+</section>
 <?php echo $footer; ?> 

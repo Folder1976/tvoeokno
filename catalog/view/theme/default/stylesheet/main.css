@@ -1992,7 +1992,7 @@ textarea {
       -ms-transform: rotate(130deg);
           transform: rotate(130deg); }
 
-.pagination-list {
+.pagination {
   display: inline-block;
   background: linear-gradient(180deg, rgba(231, 231, 231, 0.5) -2.53%, rgba(164, 164, 164, 0.5) 144.38%);
   border-radius: 30px;
