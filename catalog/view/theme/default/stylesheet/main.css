@@ -869,6 +869,7 @@ button {
     text-align: center;
     position: relative;
     margin-bottom: 34px; }
+    .news-nav ul li { display: inline-block; }
     .news-nav:before {
       position: absolute;
       content: '';
@@ -892,7 +893,8 @@ button {
       text-shadow: -1px -1px 4px rgba(0, 0, 0, 0.3);
       text-transform: uppercase;
       letter-spacing: 2.1px; }
-    .news-nav a.active {
+    .news-nav a.active,
+    .news-nav li.active a {
       background: linear-gradient(180deg, #F6AB01 -49.6%, rgba(255, 255, 255, 0.4) 1.11%, #F6AB01 33.92%), #F6AB01;
       box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.15), inset 0px -5px 4px rgba(0, 0, 0, 0.15); }
     .news-nav a.left {
