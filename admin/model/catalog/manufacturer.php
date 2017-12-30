@@ -20,6 +20,19 @@ class ModelCatalogManufacturer extends Model {
 							 language_id = '" . (int)$language_id . "', 
 							 name = '" . $this->db->escape($value['name']) . "',
 							 description = '" . $this->db->escape($value['description']) . "',
+							
+							 image1 = '" . $this->db->escape($value['image1']) . "',
+							 image2 = '" . $this->db->escape($value['image2']) . "',
+							 image3 = '" . $this->db->escape($value['image3']) . "',
+							
+							 tab1 = '" . $this->db->escape($value['tab1']) . "',
+							 tab2 = '" . $this->db->escape($value['tab2']) . "',
+							 tab3 = '" . $this->db->escape($value['tab3']) . "',
+							
+							 tab_description1 = '" . $this->db->escape($value['tab_description1']) . "',
+							 tab_description2 = '" . $this->db->escape($value['tab_description2']) . "',
+							 tab_description3 = '" . $this->db->escape($value['tab_description3']) . "',
+							
 							 short_description = '" . $this->db->escape($value['short_description']) . "',
 							 meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
@@ -41,6 +54,7 @@ class ModelCatalogManufacturer extends Model {
 
 	public function editManufacturer($manufacturer_id, $data) {
 		
+		
 		$this->load->model('localisation/language');
 		$language_info = $this->model_localisation_language->getLanguageByCode($this->config->get('config_language'));
     $front_language_id = $language_info['language_id'];
@@ -61,6 +75,20 @@ class ModelCatalogManufacturer extends Model {
 							 name = '" . $this->db->escape($value['name']) . "',
 							 short_description = '" . $this->db->escape($value['short_description']) . "',
 							 description = '" . $this->db->escape($value['description']) . "',
+							 
+							image1 = '" . $this->db->escape($value['image1']) . "',
+							 image2 = '" . $this->db->escape($value['image2']) . "',
+							 image3 = '" . $this->db->escape($value['image3']) . "',
+							
+							 tab1 = '" . $this->db->escape($value['tab1']) . "',
+							 tab2 = '" . $this->db->escape($value['tab2']) . "',
+							 tab3 = '" . $this->db->escape($value['tab3']) . "',
+							
+							 tab_description1 = '" . $this->db->escape($value['tab_description1']) . "',
+							 tab_description2 = '" . $this->db->escape($value['tab_description2']) . "',
+							 tab_description3 = '" . $this->db->escape($value['tab_description3']) . "',
+					
+							 
 							 meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
 
@@ -109,9 +137,19 @@ class ModelCatalogManufacturer extends Model {
 				'meta_description' => $result['meta_description'],
 				'meta_keyword'     => $result['meta_keyword'],
 				'short_description'      => $result['short_description'],
-				'description'      => $result['description']
+				'description'      	=> $result['description'],
+				'image1'      		=> $result['image1'],
+				'image2'      		=> $result['image2'],
+				'image3'      		=> $result['image3'],
+				'tab1'      		=> $result['tab1'],
+				'tab2'      		=> $result['tab2'],
+				'tab3'      		=> $result['tab3'],
+				'tab_description1'      => $result['tab_description1'],
+				'tab_description2'      => $result['tab_description2'],
+				'tab_description3'      => $result['tab_description3'],
 			);
 		}
+
 
 		return $manufacturer_description_data;
 	}

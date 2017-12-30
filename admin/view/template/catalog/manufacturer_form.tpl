@@ -78,7 +78,72 @@
                   <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
                 </div>
               </div>
+      
+            <h2>Табы на странице</h2>
+          
+          <h1>Первый таб</h1>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-image1<?php echo $language['language_id']; ?>">Картинка для таб1</label>
+            <div class="col-sm-10"> <a href="" id="thumb-image1<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $manufacturer_description[$language['language_id']]['thumb1']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <input type="hidden" name="manufacturer_description[<?php echo $language['language_id']; ?>][image1]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['image1'] : ''; ?>" id="input-image1" />
             </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-tab1<?php echo $language['language_id']; ?>">Таб 1</label>
+                <div class="col-sm-10">
+                  <input type="text" name="manufacturer_description[<?php echo $language['language_id']; ?>][tab1]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab1'] : ''; ?>" placeholder="Заголовок таб1" id="input-tab1<?php echo $language['language_id']; ?>" class="form-control" />
+                </div>
+          </div>
+          <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-tab_description1<?php echo $language['language_id']; ?>">Описание 1</label>
+                <div class="col-sm-10">
+                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][tab_description1]" rows="5" placeholder="" id="input-tab_description1<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab_description1'] : ''; ?></textarea>
+                </div>
+            </div>
+         
+          
+          <h1>Второй таб</h1>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-image2<?php echo $language['language_id']; ?>">Картинка для таб2</label>
+            <div class="col-sm-10"> <a href="" id="thumb-image2<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $manufacturer_description[$language['language_id']]['thumb2']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <input type="hidden" name="manufacturer_description[<?php echo $language['language_id']; ?>][image2]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['image2'] : ''; ?>" id="input-image2" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-tab2<?php echo $language['language_id']; ?>">Таб 2</label>
+                <div class="col-sm-10">
+                  <input type="text" name="manufacturer_description[<?php echo $language['language_id']; ?>][tab2]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab2'] : ''; ?>" placeholder="Заголовок таб2" id="input-tab2<?php echo $language['language_id']; ?>" class="form-control" />
+                </div>
+          </div>
+          <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-tab_description2<?php echo $language['language_id']; ?>">Описание 2</label>
+                <div class="col-sm-10">
+                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][tab_description2]" rows="5" placeholder="" id="input-tab_description2<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab_description2'] : ''; ?></textarea>
+                </div>
+              </div>
+          
+          
+          <h1>Третий таб</h1>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-image3<?php echo $language['language_id']; ?>">Картинка для таб3</label>
+            <div class="col-sm-10"> <a href="" id="thumb-image3<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $manufacturer_description[$language['language_id']]['thumb3']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <input type="hidden" name="manufacturer_description[<?php echo $language['language_id']; ?>][image3]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['image3'] : ''; ?>" id="input-image3" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-tab3<?php echo $language['language_id']; ?>">Таб 3</label>
+                <div class="col-sm-10">
+                  <input type="text" name="manufacturer_description[<?php echo $language['language_id']; ?>][tab3]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab3'] : ''; ?>" placeholder="Заголовок таб3" id="input-tab1<?php echo $language['language_id']; ?>" class="form-control" />
+                </div>
+          </div>
+          <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-tab_description2<?php echo $language['language_id']; ?>">Описание 3</label>
+                <div class="col-sm-10">
+                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][tab_description3]" rows="5" placeholder="" id="input-tab_description3<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab_description3'] : ''; ?></textarea>
+                </div>
+              </div>
+          </div>
+          
           <?php } ?>
 
           <div class="form-group">
