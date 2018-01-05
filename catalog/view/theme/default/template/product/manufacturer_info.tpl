@@ -90,7 +90,7 @@
             <?php if ( !empty($image2) ) { ?>
             <div class="col-md-7">
               <div class="brand-info-img">
-                <img src="/image/<?php echo $image3; ?>" alt="">
+                <img src="/image/<?php echo $image2; ?>" alt="">
               </div>
             </div>
             <?php } ?>
