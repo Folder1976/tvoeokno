@@ -312,6 +312,11 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 				$data['thumb'] = '';
 			}
 
+			$data['brand_list'] = $this->model_catalog_product->getProductTables($this->request->get['product_id']);
+			$data['addons'] = $this->model_catalog_product->getProductAttribute4s($this->request->get['product_id']);
+
+			
+			
 			$data['images'] = array();
 
 			$results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);

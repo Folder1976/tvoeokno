@@ -18,10 +18,10 @@
                 'Москитная сетка' => 'Москітна сітка',
                 'Откосы' => 'Відкоси',
                 'Узнать стоимость' => 'Дізнатися вартість',
-                '' => '',
-                '' => '',
-                '' => '',
-                '' => '',
+                'Бренды' => 'Бренди',
+                '1-камерный' => '1-камерний',
+                '2-камерный' => '1-камерний',
+                'Дополнительно' => 'Додатково',
                 '' => '',
                 '' => '',
                 '' => '',
@@ -98,65 +98,30 @@ echo $header; ?>
               <table class="prices-single-table">
                 <thead>
                   <tr>
-                    <th>Бренды</th>
-                    <th>1-камерый</th>
-                    <th>2-камерный</th>
+                    <th><?php echo $lands['Бренды'];?></th>
+                    <th><?php echo $lands['1-камерный'];?></th>
+                    <th><?php echo $lands['2-камерный'];?></th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php foreach($brand_list as $row){ ?>
                   <tr>
-                    <td>Open teck</td>
-                    <td>1688 грн</td>
-                    <td>1688 грн</td>
+                    <td><?php echo $row['brand'] ;?></td>
+                    <td><?php echo $row['price1'] ;?> грн</td>
+                    <td><?php echo $row['price2'] ;?> грн</td>
                   </tr>
-                  <tr>
-                    <td>WDS Olimpia</td>
-                    <td>1688 грн</td>
-                    <td>1688 грн</td>
-                  </tr>
-                  <tr>
-                    <td>Rehau Ecosol 60</td>
-                    <td>1688 грн</td>
-                    <td>1688 грн</td>
-                  </tr>
-                  <tr>
-                    <td>Rehau Ecosol 70</td>
-                    <td>1688 грн</td>
-                    <td>1688 грн</td>
-                  </tr>
-                  <tr>
-                    <td>Salamander 2D</td>
-                    <td>1688 грн</td>
-                    <td>1688 грн</td>
-                  </tr>
-                  <tr>
-                    <td>Salamander Streamline</td>
-                    <td>1688 грн</td>
-                    <td>1688 грн</td>
-                  </tr>
-                  <tr>
-                    <td>Windom Eco</td>
-                    <td>1688 грн</td>
-                    <td>1688 грн</td>
-                  </tr>
-                  <tr>
-                    <td>Decco 71</td>
-                    <td>1688 грн</td>
-                    <td>1688 грн</td>
-                  </tr>
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
             <div class="col-md-3">
               <div class="prices-single-right">
                 <div class="complectation">
-                  <h3>Дополнительно</h3>
-                  <p>Подоконник 26 см - 106 грн</p>
-                  <p>Отлив 15 см - 70 грн</p>
-                  <p>Москитная сетка - 120 грн</p>
-                  <p>Установка окна 486 грн</p>
-                  <p>Установка окна 486 грн</p>
-                </div>
+                  <h3><?php echo $lands['Дополнительно'];?></h3>
+                  <?php foreach($addons as $row){ ?>
+                    <p><?php echo $row['text'] ;?> - <?php echo $row['price'] ;?> грн</p>
+                  <?php } ?>
+                  </div>
               </div>
             </div>
           </div>

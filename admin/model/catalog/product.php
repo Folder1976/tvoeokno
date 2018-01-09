@@ -82,6 +82,20 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_table WHERE product_id = '" . (int)$product_id . "'");
+
+		if (isset($data['product_table'])) {
+			foreach ($data['product_table'] as $product_table) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_table SET
+								 product_id = '" . (int)$product_id . "',
+								 sort_order = '" . (int)$product_table['sort_order'] . "',
+								 price1 = '" . (float)$product_table['price1'] . "',
+								 price2 = '" . (float)$product_table['price2'] . "',
+								 brand = '" . $this->db->escape($product_table['brand']) . "'");
+			}
+		}
+
+
 		if(isset($data['main_category_id']) && $data['main_category_id'] > 0) {
 			$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['main_category_id'] . "'");
 			$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$data['main_category_id'] . "', main_category = 1");
@@ -104,6 +118,27 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		if (isset($data['product_attribute4'])) {
+			foreach ($data['product_attribute4'] as $attribute4) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "attribute4 SET
+								 product_id = '" . (int)$product_id . "',
+								 price = '" . (float)$attribute4['price']  . "',
+								 sort_order = '" . (int)$attribute4['sort_order'] . "'");
+				
+					$attribute4_id = $this->db->getLastId();
+				
+					foreach ($attribute4['product_attribute4_description'] as $language_id => $text) {
+						$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_description4 SET
+										 attribute4_id = '" . (int)$attribute4_id . "',
+										language_id = '" . $language_id  . "',
+										 text = '" . $this->db->escape($text['text']) . "'");
+				
+					}
+			}
+		}
+
+		
+		
 		if (isset($data['product_reward'])) {
 			foreach ($data['product_reward'] as $customer_group_id => $product_reward) {
 				if ((int)$product_reward['points'] > 0) {
@@ -198,6 +233,19 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_table WHERE product_id = '" . (int)$product_id . "'");
+
+		if (isset($data['product_table'])) {
+			foreach ($data['product_table'] as $product_table) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_table SET
+								 product_id = '" . (int)$product_id . "',
+								 sort_order = '" . (int)$product_table['sort_order'] . "',
+								 price1 = '" . (float)$product_table['price1'] . "',
+								 price2 = '" . (float)$product_table['price2'] . "',
+								 brand = '" . $this->db->escape($product_table['brand']) . "'");
+			}
+		}
+
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "'");
 
 		if (isset($data['product_special'])) {
@@ -211,6 +259,28 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['product_image'])) {
 			foreach ($data['product_image'] as $product_image) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_image SET product_id = '" . (int)$product_id . "', image = '" . $this->db->escape($product_image['image']) . "', sort_order = '" . (int)$product_image['sort_order'] . "'");
+			}
+		}
+
+		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute_description4 WHERE attribute4_id IN (SELECT attribute4_id FROM " . DB_PREFIX . "attribute4 WHERE product_id = '" . (int)$product_id . "')");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute4 WHERE product_id = '" . (int)$product_id . "'");
+
+		if (isset($data['product_attribute4'])) {
+			foreach ($data['product_attribute4'] as $attribute4) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "attribute4 SET
+								 product_id = '" . (int)$product_id . "',
+								 price = '" . (float)$attribute4['price']  . "',
+								 sort_order = '" . (int)$attribute4['sort_order'] . "'");
+				
+					$attribute4_id = $this->db->getLastId();
+				
+					foreach ($attribute4['product_attribute4_description'] as $language_id => $text) {
+						$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_description4 SET
+										 attribute4_id = '" . (int)$attribute4_id . "',
+										language_id = '" . $language_id  . "',
+										 text = '" . $this->db->escape($text['text']) . "'");
+				
+					}
 			}
 		}
 
@@ -487,6 +557,16 @@ class ModelCatalogProduct extends Model {
 
 		return $product_filter_data;
 	}
+	
+	public function getProductTables($product_id){
+		
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_table WHERE product_id = '" . (int)$product_id . "' GROUP BY sort_order");
+		
+		return $query->rows;
+		
+	}
+
+	
 
 	public function getProductAttributes($product_id) {
 		$product_attribute_data = array();
@@ -505,6 +585,32 @@ class ModelCatalogProduct extends Model {
 			$product_attribute_data[] = array(
 				'attribute_id'                  => $product_attribute['attribute_id'],
 				'product_attribute_description' => $product_attribute_description_data
+			);
+		}
+
+		return $product_attribute_data;
+	}
+
+	public function getProductAttribute4s($product_id) {
+		$product_attribute_data = array();
+
+		$product_attribute_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "attribute4 WHERE product_id = '" . (int)$product_id . "' ORDER BY sort_order");
+
+		foreach ($product_attribute_query->rows as $product_attribute) {
+			$product_attribute_description_data = array();
+
+			$product_attribute_description_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "attribute_description4 WHERE attribute4_id = '" . (int)$product_attribute['attribute4_id'] . "'");
+
+			foreach ($product_attribute_description_query->rows as $product_attribute_description) {
+				$product_attribute_description_data[$product_attribute_description['language_id']] = array('text' => $product_attribute_description['text']);
+			}
+
+			$product_attribute_data[$product_attribute['attribute4_id']] = array(
+				'attribute4_id'                  => $product_attribute['attribute4_id'],
+				'price'                  => $product_attribute['price'],
+				'sort_order'                  => $product_attribute['sort_order'],
+				'enable'                  => $product_attribute['enable'],
+				'product_attribute4_description' => $product_attribute_description_data
 			);
 		}
 

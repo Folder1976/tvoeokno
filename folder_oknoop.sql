@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 30, 2017 at 04:40 AM
+-- Generation Time: Jan 08, 2018 at 11:46 PM
 -- Server version: 5.6.36-cll-lve
 -- PHP Version: 5.6.30
 
@@ -317,6 +317,33 @@ INSERT INTO `oc_attribute3` (`attribute_id`, `attribute_group_id`, `sort_order`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `oc_attribute4`
+--
+
+CREATE TABLE `oc_attribute4` (
+  `attribute4_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `sort_order` int(3) NOT NULL,
+  `enable` int(1) NOT NULL DEFAULT '1',
+  `price` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `oc_attribute4`
+--
+
+INSERT INTO `oc_attribute4` (`attribute4_id`, `product_id`, `sort_order`, `enable`, `price`) VALUES
+(1, 30, 1, 1, 45),
+(2, 30, 2, 1, 71),
+(3, 83, 1, 1, 1500),
+(4, 83, 2, 1, 700),
+(5, 83, 3, 1, 180),
+(6, 83, 4, 1, 300),
+(7, 83, 5, 1, 540);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `oc_attribute_description`
 --
 
@@ -517,6 +544,38 @@ INSERT INTO `oc_attribute_description3` (`attribute_id`, `language_id`, `name`) 
 (74, 1, '0 (67) 161 30 30'),
 (74, 2, '0 (67) 161 30 30'),
 (64, 2, 'Акции и новости');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oc_attribute_description4`
+--
+
+CREATE TABLE `oc_attribute_description4` (
+  `attribute4_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `text` varchar(64) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `oc_attribute_description4`
+--
+
+INSERT INTO `oc_attribute_description4` (`attribute4_id`, `language_id`, `text`) VALUES
+(1, 1, 'Подоконник'),
+(1, 2, 'Подлокодник'),
+(2, 1, 'Отлив'),
+(2, 2, 'Видлив'),
+(3, 1, 'Подоконник'),
+(3, 2, 'Пiдвiконник'),
+(4, 1, 'Отлив'),
+(4, 2, 'Вiдлив'),
+(5, 1, 'Москитная сетка'),
+(5, 2, 'Москитная сiтка'),
+(6, 1, 'Установка окна'),
+(6, 2, 'Установка вiкна'),
+(7, 1, 'Демонтаж старого окна'),
+(7, 2, 'Демонтаж старого вiкна');
 
 -- --------------------------------------------------------
 
@@ -799,7 +858,7 @@ INSERT INTO `oc_blog` (`blog_id`, `allow_comment`, `count_read`, `sort_order`, `
 (36, 0, 12, 3, 1, 'John', '2017-12-03 03:41:03', ''),
 (39, 0, 0, 3, 1, 'John', '2017-12-03 03:52:26', ''),
 (40, 0, 10, 1, 1, 'John', '2017-12-03 03:56:55', 'catalog/demo/information/offer.jpg'),
-(41, 0, 36, 1, 1, 'John', '2017-12-03 04:07:37', ''),
+(41, 0, 37, 1, 1, 'John', '2017-12-03 04:07:37', ''),
 (84, 0, 13, 0, 1, 'John', '2017-12-07 15:23:43', ''),
 (45, 0, 21, 5, 1, 'John', '2017-12-03 04:15:05', ''),
 (46, 0, 18, 6, 1, 'John', '2017-12-03 04:16:04', ''),
@@ -813,9 +872,9 @@ INSERT INTO `oc_blog` (`blog_id`, `allow_comment`, `count_read`, `sort_order`, `
 (90, 1, 3, 0, 1, 'John', '2017-12-25 17:29:04', ''),
 (86, 0, 0, 0, 1, 'John', '2017-12-07 16:13:49', ''),
 (87, 0, 56, 0, 1, 'John', '2017-12-12 14:21:37', ''),
-(92, 0, 2, 0, 1, 'John', '2017-12-28 22:03:39', ''),
+(92, 0, 6, 0, 1, 'John', '2017-12-28 22:03:39', ''),
 (69, 0, 48, 0, 1, 'John', '2017-12-03 13:37:29', ''),
-(70, 0, 58, 0, 1, 'John', '2017-12-03 13:38:52', ''),
+(70, 0, 59, 0, 1, 'John', '2017-12-03 13:38:52', ''),
 (80, 1, 87, 0, 1, 'John', '2017-12-06 16:56:46', ''),
 (72, 0, 0, 0, 1, 'John', '2017-12-03 13:43:12', 'catalog/brands/p2.jpg'),
 (73, 0, 0, 0, 1, 'John', '2017-12-03 13:44:35', ''),
@@ -2775,7 +2834,7 @@ INSERT INTO `oc_manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`)
 (14, 'сlima', 'catalog/brands/Clima.png', 10),
 (15, 'glas', 'catalog/brands/Glas.png', 11),
 (16, 'crystalit', 'catalog/brands/crystalit.png', 12),
-(17, 'axor', 'catalog/brands/axor.png', 13),
+(17, 'Axor', 'catalog/brands/axor.png', 13),
 (18, 'danke', 'catalog/brands/Danke.png', 14),
 (19, 'hoppe', 'catalog/brands/hoppe.png', 15),
 (20, 'kraft', 'catalog/brands/kraft.png', 16),
@@ -2823,8 +2882,6 @@ INSERT INTO `oc_manufacturer_description` (`manufacturer_id`, `language_id`, `na
 (11, 2, 'openteck', '', '', 'openteck', '', '', '', '', '', '', '', '', '', '', '', ''),
 (5, 2, 'kbe', '', '', 'kbe', '', '', '', '', '', '', '', '', '', '', '', ''),
 (6, 2, 'windom', '', '', 'windom', '', '', '', '', '', '', '', '', '', '', '', ''),
-(10, 2, 'rehau', '', '', 'rehau', '', '', '', '', '', '', '', '', '', '', '', ''),
-(10, 1, 'rehau', '', '', 'rehau', '', '', '', '', '', '', '', '', '', '', '', ''),
 (9, 1, 'wds', '', '', 'wds', '', '', '', '', '', '', '', '', '', '', '', ''),
 (9, 2, 'wds', '', '', 'wds', '', '', '', '', '', '', '', '', '', '', '', ''),
 (11, 1, 'openteck', '', '', 'openteck', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -2838,7 +2895,6 @@ INSERT INTO `oc_manufacturer_description` (`manufacturer_id`, `language_id`, `na
 (15, 2, 'glas', '', '', 'glas', '', '', '', '', '', '', '', '', '', '', '', ''),
 (16, 1, 'crystalit', '', '', 'crystalit', '', '', '', '', '', '', '', '', '', '', '', ''),
 (16, 2, 'crystalit', '', '', 'crystalit', '', '', '', '', '', '', '', '', '', '', '', ''),
-(17, 1, 'axor', '', '', 'axor', '', '', '', '', '', '', '', '', '', '', '', ''),
 (18, 1, 'danke', '', '', 'danke', '', '', '', '', '', '', '', '', '', '', '', ''),
 (18, 2, 'danke', '', '', 'danke', '', '', '', '', '', '', '', '', '', '', '', ''),
 (19, 1, 'hoppe', '', '', 'hoppe', '', '', '', '', '', '', '', '', '', '', '', ''),
@@ -2853,9 +2909,12 @@ INSERT INTO `oc_manufacturer_description` (`manufacturer_id`, `language_id`, `na
 (23, 2, 'vorne', '', '', 'vorne', '', '', '', '', '', '', '', '', '', '', '', ''),
 (24, 1, 'siegenia', '', '', 'siegenia', '', '', '', '', '', '', '', '', '', '', '', ''),
 (24, 2, 'siegenia', '', '', 'siegenia', '', '', '', '', '', '', '', '', '', '', '', ''),
-(17, 2, 'axor', '', '', 'axor', '', '', '', '', '', '', '', '', '', '', '', ''),
-(8, 1, 'veka', '&lt;p&gt;Оконная система ПВХ профилей Veka не сегодняшний день одна из лидирующих\r\n торговых марок по уровню продаж в Украине окна Veka завоевали доверие \r\nпотребителей неизменным качеством, высоким уровнем состава ПВХ, высокими\r\n светопропускающими свойствами, стильным и элегантным внешним видом. \r\nзавоевали доверие потребителей неизменным качеством, высоким уровнем \r\nсостава ПВХ, высокими светопропускающими свойствами, стильным и \r\nэлегантным внешним видом. Окна Veka отличает глянцевая поверхность, \r\nобработанная антистатиком, благодаря чему уход за новыми пластиковыми \r\nокнами станет простым.&lt;br&gt;&lt;/p&gt;', '&lt;p&gt;Пластиковые окна Veka изготавливаются по экологически чистой рецептуре, которая обеспечивает безопасность для здоровья людей. Благодаря качественному составу ПВХ окна Века не боятся воздействия повышенной температуры, не плавятся и не имеют неприятного запаха.&lt;/p&gt;\r\n\r\n&lt;p&gt;Прочность окна Века благодаря замкнутому армированию.Это главное отличие и преимущество окон Века наряду с другими брендами. Каждое окно, изготовленное из профиля Veka, комплектуется специальным армированием типа «квадрат». Благодаря этому пластиковые окна из этого профиля будут выдерживать большие ветровые нагрузки, в особенности на высоких этажах многоэтажек. Также, клиентам, у которых стоит вопрос установки габаритных контрукций, стоит обратить внимание на этот несомненный плюс в характеристике профилей Века.Теплые окна VEKA&lt;/p&gt;\r\n\r\n&lt;p&gt;Благодаря специальной геометрии теплоизоляция окон Века достигает максимального сохранения тепла в доме. Система установки каучуковых уплотнителей, которые разработаны компанией индивидуально, не допустят появление в помещении сквозняка и холодного воздуха.&lt;/p&gt;', 'veka', 'Окна Veka — преимущества, дизайн, надежность', '', '', 'catalog/demo/canon_eos_5d_1.jpg', 'catalog/demo/canon_eos_5d_2.jpg', 'catalog/demo/canon_eos_5d_3.jpg', '111111111111111111111111', '2222222222222222222', 'Таб 3', '12222222222222222222222222222', 'Описание 222222222222222', 'Описание 3'),
-(8, 2, 'veka', '&lt;p&gt;Оконная система ПВХ профилей Veka не сегодняшний день одна из лидирующих торговых марок по уровню продаж в Украине окна Veka завоевали доверие потребителей неизменным качеством, высоким уровнем состава ПВХ, высокими светопропускающими свойствами, стильным и элегантным внешним видом. завоевали доверие потребителей неизменным качеством, высоким уровнем состава ПВХ, высокими светопропускающими свойствами, стильным и элегантным внешним видом. Окна Veka отличает глянцевая поверхность, обработанная антистатиком, благодаря чему уход за новыми пластиковыми окнами станет простым.&lt;br&gt;&lt;/p&gt;', '&lt;p&gt;Пластиковые окна Veka изготавливаются по экологически чистой рецептуре, которая обеспечивает безопасность для здоровья людей. Благодаря качественному составу ПВХ окна Века не боятся воздействия повышенной температуры, не плавятся и не имеют неприятного запаха.&lt;br&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Прочность окна Века благодаря замкнутому армированию.Это главное отличие и преимущество окон Века наряду с другими брендами. Каждое окно, изготовленное из профиля Veka, комплектуется специальным армированием типа «квадрат». Благодаря этому пластиковые окна из этого профиля будут выдерживать большие ветровые нагрузки, в особенности на высоких этажах многоэтажек. Также, клиентам, у которых стоит вопрос установки габаритных контрукций, стоит обратить внимание на этот несомненный плюс в характеристике профилей Века.Теплые окна VEKA&lt;/p&gt;\r\n\r\n&lt;p&gt;Благодаря специальной геометрии теплоизоляция окон Века достигает максимального сохранения тепла в доме. Система установки каучуковых уплотнителей, которые разработаны компанией индивидуально, не допустят появление в помещении сквозняка и холодного воздуха.&lt;/p&gt;', 'veka', '', '', '', '', '', '', '', '', '', '', '', '');
+(8, 1, 'veka', '&lt;p&gt;Оконная система ПВХ профилей Veka не сегодняшний день одна из лидирующих\r\n торговых марок по уровню продаж в Украине окна Veka завоевали доверие \r\nпотребителей неизменным качеством, высоким уровнем состава ПВХ, высокими\r\n светопропускающими свойствами, стильным и элегантным внешним видом. \r\nзавоевали доверие потребителей неизменным качеством, высоким уровнем \r\nсостава ПВХ, высокими светопропускающими свойствами, стильным и \r\nэлегантным внешним видом. Окна Veka отличает глянцевая поверхность, \r\nобработанная антистатиком, благодаря чему уход за новыми пластиковыми \r\nокнами станет простым.&lt;br&gt;&lt;/p&gt;', '&lt;p&gt;Пластиковые окна Veka изготавливаются по экологически чистой рецептуре, которая обеспечивает безопасность для здоровья людей. Благодаря качественному составу ПВХ окна Века не боятся воздействия повышенной температуры, не плавятся и не имеют неприятного запаха.&lt;/p&gt;\r\n\r\n&lt;p&gt;Прочность окна Века благодаря замкнутому армированию.Это главное отличие и преимущество окон Века наряду с другими брендами. Каждое окно, изготовленное из профиля Veka, комплектуется специальным армированием типа «квадрат». Благодаря этому пластиковые окна из этого профиля будут выдерживать большие ветровые нагрузки, в особенности на высоких этажах многоэтажек. Также, клиентам, у которых стоит вопрос установки габаритных контрукций, стоит обратить внимание на этот несомненный плюс в характеристике профилей Века.Теплые окна VEKA&lt;/p&gt;\r\n\r\n&lt;p&gt;Благодаря специальной геометрии теплоизоляция окон Века достигает максимального сохранения тепла в доме. Система установки каучуковых уплотнителей, которые разработаны компанией индивидуально, не допустят появление в помещении сквозняка и холодного воздуха.&lt;/p&gt;', 'veka', 'Окна Veka — преимущества, дизайн, надежность', '', '', 'catalog/demo/canon_eos_5d_1.jpg', 'catalog/demo/canon_eos_5d_2.jpg', 'catalog/demo/canon_eos_5d_3.jpg', '111111111111111111111111', '2222222222222222222', 'Таб 3', '&lt;div class=&quot;col-md-5&quot;&gt;\r\n        &lt;div class=&quot;brand-info-block&quot;&gt;\r\n          &lt;h3&gt;Veka Euroline – трехкамерная экономия&lt;/h3&gt;\r\n          &lt;p&gt;Металлопластиковые системы Veka Euroline представляют собой трехкамерный профиль с оптимальными характеристиками. Он лучшим образом подойдет для качественного и одновременно экономного остекления любых помещений и балконов. При глубине монтажа 58 мм рамы способны вмещать стеклоблоки до 32 мм. В числе главных преимуществ Veka Euroline:&lt;/p&gt;\r\n        &lt;/div&gt;\r\n      &lt;/div&gt;\r\n      &lt;div class=&quot;col-md-7&quot;&gt;\r\n        &lt;div class=&quot;brand-info-block&quot;&gt;\r\n          &lt;h3 class=&quot;charact&quot;&gt;Технические характеристики&lt;/h3&gt;\r\n          &lt;table class=&quot;brand-info-table&quot;&gt;\r\n            &lt;tbody&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Вид&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Стеклопакет&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Монтажная глубина&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Профильная система&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Цвет&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Камерность профиля&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Толщина стеклопакета&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Фуртитура&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n              &lt;tr&gt;\r\n                &lt;td&gt;Коэффициент теплопередачи&lt;/td&gt;\r\n                &lt;td&gt;2279&lt;/td&gt;\r\n              &lt;/tr&gt;\r\n            &lt;/tbody&gt;\r\n          &lt;/table&gt;\r\n        &lt;/div&gt;\r\n      &lt;/div&gt;\r\n      &lt;div class=&quot;col-md-5&quot;&gt;\r\n        &lt;div class=&quot;brand-info-block&quot;&gt;\r\n          &lt;h3 class=&quot;star&quot;&gt;Преимущество окон VEKA&lt;/h3&gt;\r\n          &lt;ul class=&quot;circle-list&quot;&gt;\r\n            &lt;li&gt;Доступность цены. При этом даже в бюджетном варианте окна Века будут оставаться престижным выбором.&lt;/li&gt;\r\n            &lt;li&gt;Легкий вес систем ПВХ. Этот фактор может стать решающим в вопросе остекления балконов старых домов.&lt;/li&gt;\r\n            &lt;li&gt;Отличная статичность. Жесткость конструкций обеспечивается замкнутым армированием.&lt;/li&gt;\r\n            &lt;li&gt;Достойная тепло-, звукоизоляция и герметичность.&lt;/li&gt;\r\n          &lt;/ul&gt;\r\n        &lt;/div&gt;\r\n        &lt;div class=&quot;brand-info-block&quot;&gt;\r\n          &lt;h3 class=&quot;add&quot;&gt;Дополнительная комплектация&lt;/h3&gt;\r\n          &lt;ul class=&quot;check-list&quot;&gt;\r\n            &lt;li&gt;Подоконник 26 см - 106 грн&lt;/li&gt;\r\n            &lt;li&gt;Отлив 15 см - 70 грн&lt;/li&gt;\r\n            &lt;li&gt;Москитная сетка - 120 грн&lt;/li&gt;\r\n            &lt;li&gt;Установка окна 486 грн&lt;/li&gt;\r\n          &lt;/ul&gt;\r\n        &lt;/div&gt;\r\n      &lt;/div&gt;', 'Описание 222222222222222', 'Описание 3'),
+(8, 2, 'veka', '&lt;p&gt;Оконная система ПВХ профилей Veka не сегодняшний день одна из лидирующих торговых марок по уровню продаж в Украине окна Veka завоевали доверие потребителей неизменным качеством, высоким уровнем состава ПВХ, высокими светопропускающими свойствами, стильным и элегантным внешним видом. завоевали доверие потребителей неизменным качеством, высоким уровнем состава ПВХ, высокими светопропускающими свойствами, стильным и элегантным внешним видом. Окна Veka отличает глянцевая поверхность, обработанная антистатиком, благодаря чему уход за новыми пластиковыми окнами станет простым.&lt;br&gt;&lt;/p&gt;', '&lt;p&gt;Пластиковые окна Veka изготавливаются по экологически чистой рецептуре, которая обеспечивает безопасность для здоровья людей. Благодаря качественному составу ПВХ окна Века не боятся воздействия повышенной температуры, не плавятся и не имеют неприятного запаха.&lt;br&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Прочность окна Века благодаря замкнутому армированию.Это главное отличие и преимущество окон Века наряду с другими брендами. Каждое окно, изготовленное из профиля Veka, комплектуется специальным армированием типа «квадрат». Благодаря этому пластиковые окна из этого профиля будут выдерживать большие ветровые нагрузки, в особенности на высоких этажах многоэтажек. Также, клиентам, у которых стоит вопрос установки габаритных контрукций, стоит обратить внимание на этот несомненный плюс в характеристике профилей Века.Теплые окна VEKA&lt;/p&gt;\r\n\r\n&lt;p&gt;Благодаря специальной геометрии теплоизоляция окон Века достигает максимального сохранения тепла в доме. Система установки каучуковых уплотнителей, которые разработаны компанией индивидуально, не допустят появление в помещении сквозняка и холодного воздуха.&lt;/p&gt;', 'veka', '', '', '', '', '', '', '11', '22', '33', '', '', ''),
+(10, 1, 'rehau', '&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;margin-bottom: 6.4pt; text-align: justify; line-height: normal;&quot;&gt;&lt;span style=&quot;font-weight: bold;&quot;&gt;П&lt;/span&gt;&lt;span style=&quot;font-weight: bold; font-size: 12pt; font-family: &amp;quot;Open Sans&amp;quot;, serif; color: rgb(51, 51, 51);&quot;&gt;ластиковые окна Рехау&lt;/span&gt;&lt;span style=&quot;font-size:12.0pt;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-font-family:\r\n&amp;quot;Times New Roman&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;color:#333333;\r\nmso-fareast-language:RU&quot;&gt;&amp;nbsp;являются одной из самых популярных торговых\r\nмарок на Украине.&lt;br&gt;\r\nЛидирующие позиции концерна Rehau обусловлены безусловным заявленным качеством\r\nвсей производимой продукции при оптимальной стоимости для конечного покупателя.\r\nОфициальное представительство Рехау в Украине находится в Чабанах Киевской\r\nобласти. Здесь же размещен склад всей продукции, а также Академия по обучению\r\nспециалистов оконного дела. На сегодняшний день поставки ПВХ профилей\r\nосуществляются с &amp;nbsp;заводов Польши и Германии.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p style=&quot;margin-bottom: 6.4pt; text-align: justify; line-height: normal;&quot;&gt;&lt;span style=&quot;font-size:12.0pt;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-font-family:\r\n&amp;quot;Times New Roman&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;color:#333333;\r\nmso-fareast-language:RU&quot;&gt;\r\nЛидирующие позиции концерна Rehau обусловлены безусловным заявленным качеством\r\nвсей производимой продукции при оптимальной стоимости для конечного покупателя.\r\nОфициальное представительство Рехау в Украине находится в Чабанах Киевской\r\nобласти. Здесь же размещен склад всей продукции, а также Академия по обучению\r\nспециалистов оконного дела. На сегодняшний день поставки ПВХ профилей\r\nосуществляются с &amp;nbsp;заводов Польши и Германии.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;\r\n\r\n&lt;p class=&quot;MsoNormal&quot; style=&quot;margin-bottom:6.4pt;text-align:justify;line-height:\r\nnormal&quot;&gt;&lt;span style=&quot;font-size:12.0pt;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-fareast-font-family:&amp;quot;Times New Roman&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;\r\ncolor:#333333;mso-fareast-language:RU&quot;&gt;Одна из основных миссий\r\nпредставительства заключается в контроле качества производимых окон Рехау\r\nавторизированными заводами-производителями. Присвоение статуса\r\nавторизированного партнера означает как работу на первоклассном современном\r\nоборудовании, закупку только подлинных комплектующих через официальное\r\nпредставительство, соответствие изготовления окон Рехау установленным нормам\r\nГост, так и контроль качества всех этапов производства. Для того, чтобы\r\nпокупатель был уверен в оригинальности установленных окон Rehau, существует\r\nгорячая линия Рехау для всех клиентов, куда может обратится любой потребитель и\r\nпо маркировке профиля (специальному коду) определить подлинность своих окон.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;\r\n\r\n&lt;p class=&quot;MsoNormal&quot; style=&quot;margin-bottom:6.4pt;text-align:justify;line-height:\r\nnormal&quot;&gt;&lt;span style=&quot;font-size:12.0pt;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-fareast-font-family:&amp;quot;Times New Roman&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;\r\ncolor:#333333;mso-fareast-language:RU&quot;&gt;У нас вы можете приобрести&amp;nbsp;&lt;b&gt;оригинальные\r\nокна Rehau&lt;/b&gt;&amp;nbsp;всех&amp;nbsp;серий: Rehau Ecosol Design 60, Rehau Ecosol\r\nDesign 70, Rehau Brillant Design и Geneo.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;', '&lt;h2&gt;&lt;font face=&quot;Open Sans, serif&quot;&gt;Купить окна Рехау у нас - это:&lt;/font&gt;&lt;img src=&quot;http://tvoeokno.lshoes.com.ua/image/catalog/15046.png&quot; style=&quot;width: 92.4px; float: right; height: 92.4px;&quot;&gt;&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;100% оригинальный профиль и комплектующие для окон Рехау. При изготовлении\r\nокон &lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;используются комлпектующие с официального склада представительтва компании\r\nRehau в Украине. се элементы окна можно проверить на подлинность.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;text-align: right; &quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, serif;&quot;&gt;Производство на автоматизированной\r\nлинии, исключающее влияние человеческого&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;img src=&quot;http://tvoeokno.lshoes.com.ua/image/catalog/15044.png&quot; style=&quot;width: 94.2125px; float: right; height: 94.2125px;&quot;&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:\r\n&amp;quot;Times New Roman&amp;quot;;mso-fareast-language:RU&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, serif;&quot;&gt;фактора.&amp;nbsp;Все окна REHAU\r\nсобираются на современной автоматизированной линии, что гарантирует точность и\r\nаккуратность каждого шва и угла.&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:\r\n&amp;quot;Times New Roman&amp;quot;;mso-fareast-language:RU&quot;&gt;Гарантия на любой элемент окна Rehau\r\n- 5 лет. Мы предоставляем гарантию на &lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:\r\n&amp;quot;Times New Roman&amp;quot;;mso-fareast-language:RU&quot;&gt;пластиковые окна&amp;nbsp;Rehau в течение 5\r\nлет при условии монтажа силами нашей компании. В компании существует свой\r\nсервисный отдел.&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;mso-ansi-language:EN-US;mso-fareast-language:\r\nRU&quot;&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;mso-ansi-language:UK;mso-fareast-language:\r\nRU&quot;&gt;Устанавливаем армирующий проф&lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;mso-fareast-language:RU&quot;&gt;и&lt;/span&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;\r\nmso-ansi-language:UK;mso-fareast-language:RU&quot;&gt;ль толщиной 1,5 мм (ГОСТ) для\r\n&lt;/span&gt;&lt;img src=&quot;http://tvoeokno.lshoes.com.ua/image/catalog/15047.png&quot; style=&quot;width: 67px; float: right; height: 65.4419px;&quot;&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;\r\nmso-ansi-language:UK;mso-fareast-language:RU&quot;&gt;прочности конструкций Рехау. Отличная статика окон &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;\r\nmso-ansi-language:EN-US;mso-fareast-language:RU&quot;&gt;Rehau&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;\r\nmso-fareast-language:RU&quot;&gt; &lt;/span&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;mso-ansi-language:UK;mso-fareast-language:\r\nRU&quot;&gt;достигается за &lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;mso-fareast-language:RU&quot;&gt;счет\r\nиспользования армированных профилей с П-образной формой сечения.&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:\r\n&amp;quot;Times New Roman&amp;quot;;mso-fareast-language:RU&quot;&gt;Полная комплектация оригинальной\r\nавстрийской фурнитурой Maco серии Multi-Trend. Окна Rehau мы комплектуем\r\nкачественной австрийской фурнитурой Maco Multi-Trend, которая рассчитана на более\r\nчем 20000 открываний.&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:\r\n&amp;quot;Times New Roman&amp;quot;;mso-fareast-language:RU&quot;&gt;Использование\r\nкачественных стеклопакетов торговой марки Glasstrosch и&amp;nbsp; Guardian. Мы &lt;/span&gt;&lt;img src=&quot;http://tvoeokno.lshoes.com.ua/image/catalog/15041.png&quot; style=&quot;width: 88.7px; float: right; height: 88.7px;&quot;&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-bidi-font-family:\r\n&amp;quot;Times New Roman&amp;quot;;mso-fareast-language:RU&quot;&gt;устанавливаем энергосберегающие стеклопакеты с использованием сырья швейцарского бренда Glasstrosch и Guaridian (Глобал Гласс Украина)&lt;span style=&quot;font-size: 14.6667px;&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;/p&gt;', 'rehau', 'Окна REHAU (Рехау) - гарантия качественной покупки', '', '', '', '', '', '', '', '', '', '', ''),
+(10, 2, 'rehau', '', '', 'rehau', '', '', '', '', '', '', '', '', '', '', '', ''),
+(17, 1, 'Axor', '&lt;p class=&quot;MsoNormal&quot;&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-ansi-language:EN-US;mso-fareast-language:RU&quot;&gt;Axor&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt; &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-ansi-language:EN-US;\r\nmso-fareast-language:RU&quot;&gt;Industry&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:\r\n&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-family:\r\n&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt;– &lt;/span&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-ansi-language:UK;mso-fareast-language:\r\nRU&quot;&gt;молодая межднародная компания, которая в свое время прошла путь от представителя\r\nоконно-дверной фурнитуры к производителю фурнитуры к светопрозрачным конструкціям.\r\nНа сегодняшний день бренд &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-ansi-language:EN-US;mso-fareast-language:RU&quot;&gt;Axor&lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt; расположил\r\nсвои основные производственные мощности в городе Днепр (Украина). Завод\r\nпредставляет собой мощный комплекс полного цикла, которому нет аналогов в\r\nУкраине и является одним из самых больших заводов в Восточной Европе в области\r\nпроизводства фурнитуры. Высокое качество продукции &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-ansi-language:EN-US;mso-fareast-language:\r\nRU&quot;&gt;Axor&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-fareast-language:RU&quot;&gt; &lt;/span&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-ansi-language:UK;mso-fareast-language:RU&quot;&gt;обеспе&lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt;чивает\r\nмаксимальная автоматизация всех этапов: от литья, штампования, гальваники до\r\nтестирования готовых деталей в центре контроля качества. Процесс изготовления\r\nдеталей фурнитуры соответствует международным стандартам &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-ansi-language:EN-US;\r\nmso-fareast-language:RU&quot;&gt;EN&lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-fareast-language:RU&quot;&gt;, &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-ansi-language:EN-US;mso-fareast-language:RU&quot;&gt;DIN&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt; &lt;/span&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-ansi-language:UK;mso-fareast-language:\r\nRU&quot;&gt;и подтвержден сертификацией передового отраслевого института &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-ansi-language:EN-US;\r\nmso-fareast-language:RU&quot;&gt;IFT&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-fareast-language:RU&quot;&gt; &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-ansi-language:EN-US;mso-fareast-language:RU&quot;&gt;Rosenhieim&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt; &lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt;(Германия) по\r\nпрограмме &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-ansi-language:EN-US;mso-fareast-language:RU&quot;&gt;QM&lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt;328&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;\r\n\r\n&lt;/p&gt;&lt;p class=&quot;MsoNormal&quot;&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-ansi-language:UK;mso-fareast-language:RU&quot;&gt;Фурнитура &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-ansi-language:EN-US;\r\nmso-fareast-language:RU&quot;&gt;Axor&lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-fareast-language:RU&quot;&gt; &lt;/span&gt;&lt;span lang=&quot;EN-US&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;\r\nmso-ansi-language:EN-US;mso-fareast-language:RU&quot;&gt;K&lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt;3 &lt;/span&gt;&lt;span lang=&quot;UK&quot; style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-ansi-language:UK;mso-fareast-language:\r\nRU&quot;&gt;уже в базовой комплектации имеет превосходн&lt;/span&gt;&lt;span style=&quot;font-family:\r\n&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:RU&quot;&gt;ые эксплуатационные характеристики.\r\nЭто и плавность хода, бесшумная работа всех деталей, и плотный прижим створки к\r\nраме благодаря грибовидным цапфам в обвязке створки. Состав стали обеспечивают\r\nзащиту от деформации деталей даже при больших весовых нагрузках, а\r\nантикоррозийное покрытие обеспечит гарантию 15 лет от производителя или до 15000 циклов открываний поворотно-откидной створки.&lt;/span&gt;&lt;/p&gt;', '&lt;ul&gt;&lt;li&gt;&lt;img src=&quot;http://tvoeokno.lshoes.com.ua/image/catalog/axor-zavod.jpg&quot; style=&quot;width: 605px;&quot;&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Дополнительная комплектация фурнитуры:&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;Противовзломная фурнитура&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;Блокиратор ошибочного открывания + микролифт-компенсатор провисания&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;Элемент «Оконная няня»&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;Микропроветривание&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;Пошаговое («зубчатое») микропроветривание&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;«Ленивая» створка&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;;mso-fareast-language:\r\nRU&quot;&gt;Балконная защелка&lt;/span&gt;&lt;span style=&quot;font-family:&amp;quot;Open Sans&amp;quot;,&amp;quot;serif&amp;quot;&quot;&gt;&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;iframe frameborder=&quot;0&quot; src=&quot;//www.youtube.com/embed/_nDrPmUmCOo&quot; width=&quot;640&quot; height=&quot;360&quot; class=&quot;note-video-clip&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;', 'Фурнитура Axor K3', 'Фурнитура Axor K3', '', '', 'catalog/demo/axor-picture.jpg', 'catalog/demo/873398109_w640_h640_montazhnaya_shema.jpg', 'catalog/sertifikat-axor-1.png', 'Характеристики Axor K3', 'Дополнительно', 'Сертификаты', '', '', ''),
+(17, 2, 'axor', '', '', 'axor', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3428,13 +3487,13 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (80, 'Salamander 2D', '', '', '', '', '', '', '', 1, 7, '', 7, 1, '1096.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 8, 1, 3, '2017-12-14 20:52:16', '2017-12-20 16:50:12'),
 (81, 'Salamander BluEvolution', '', '', '', '', '', '', '', 1, 7, '', 7, 1, '2420.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 10, 1, 7, '2017-12-14 20:52:16', '2017-12-20 16:50:01'),
 (82, 'Salamander Streamline', '', '', '', '', '', '', '', 1, 7, '', 7, 1, '1293.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 9, 1, 7, '2017-12-14 20:52:16', '2017-12-20 16:42:34'),
-(83, 'WDS 400', '', '', '', '', '', '', '', 1, 7, 'catalog/podokonnik-danke-lucido_bianco-belii-glyanec-interer.jpg', 9, 1, '816.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 2, 1, 83, '2017-12-14 20:52:16', '2017-12-27 17:32:20'),
+(83, 'WDS 400', '', '', '', '', '', '', '', 1, 7, 'catalog/podokonnik-danke-lucido_bianco-belii-glyanec-interer.jpg', 9, 1, '816.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 2, 1, 96, '2017-12-14 20:52:16', '2018-01-08 23:42:08'),
 (84, 'WDS 500', '', '', '', '', '', '', '', 1, 7, '', 9, 1, '855.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 3, 1, 13, '2017-12-14 20:52:16', '2017-12-20 16:49:50'),
 (85, 'WDS Olimpia', '', '', '', '', '', '', '', 1, 7, '', 9, 1, '772.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 1, 1, 2, '2017-12-14 20:52:16', '2017-12-14 20:54:27'),
 (86, 'Decco 71', '', '', '', '', '', '', '', 1, 7, '', 13, 1, '1013.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 11, 0, 0, '2017-12-16 20:36:50', '0000-00-00 00:00:00'),
 (87, 'WDS Olimpia', '', '', '', '', '', '', '', 1, 7, '', 8, 1, '1700.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 11, 1, 3, '2017-12-16 20:39:47', '2017-12-20 16:43:29'),
 (88, 'Rehau Ecosol 60', '', '', '', '', '', '', '', 1, 7, '', 8, 1, '1800.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 11, 1, 5, '2017-12-16 20:40:42', '2017-12-20 16:50:44'),
-(89, 'Danke', '19122017', '', '', '', '', '', '', 1, 7, 'catalog/kraft.jpg', 18, 1, '0.0000', 0, 0, '2017-12-19', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 1, 1, 16, '2017-12-19 14:48:21', '0000-00-00 00:00:00'),
+(89, 'Danke', '19122017', '', '', '', '', '', '', 1, 7, 'catalog/kraft.jpg', 18, 1, '0.0000', 0, 0, '2017-12-19', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 1, 1, 17, '2017-12-19 14:48:21', '0000-00-00 00:00:00'),
 (90, 'Decco 71', '', '', '', '', '', '', '', 1, 7, 'catalog/veka-1.jpg', 13, 1, '1013.0000', 0, 0, '2017-12-14', '0.00', 1, '0.00', '0.00', '0.00', 1, 1, 1, 11, 0, 0, '2017-12-28 13:22:12', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -3572,7 +3631,6 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (81, 1, 'Salamander BluEvolution', '', '', '', '', '', ''),
 (82, 2, 'Salamander Streamline', '', '', '', '', '', ''),
 (82, 1, 'Salamander Streamline', '', '', '', '', '', ''),
-(83, 1, 'WDS 400', '&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации &quot;Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст..&quot; Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам &quot;lorem ipsum&quot; сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
 (84, 1, 'WDS 500', '', '', '', '', '', ''),
 (84, 2, 'WDS 500', '', '', '', '', '', ''),
 (85, 1, 'WDS Olimpia', '', '', '', '', '', ''),
@@ -3588,7 +3646,8 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (90, 1, 'Decco 71', '&lt;p&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-family: FiraSans-Regular, sans-serif; font-size: 14px;&quot;&gt;Металлопластиковые системы Veka Euroline представляют собой трехкамерный профиль с оптимальными характеристиками. Он лучшим образом подойдет для качественного и одновременно экономного остекления любых помещений и балконов. При глубине монтажа 58 мм рамы способны вмещать стеклоблоки до 32 мм.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
 (62, 1, 'Decco 71', '&lt;p&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-family: FiraSans-Regular, sans-serif; font-size: 14px;&quot;&gt;Металлопластиковые системы Veka Euroline представляют собой трехкамерный профиль с оптимальными характеристиками. Он лучшим образом подойдет для качественного и одновременно экономного остекления любых помещений и балконов. При глубине монтажа 58 мм рамы способны вмещать стеклоблоки до 32 мм.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
 (62, 2, 'Decco 71', '&lt;p&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-family: FiraSans-Regular, sans-serif; font-size: 14px;&quot;&gt;УКР Металлопластиковые системы Veka Euroline представляют собой трехкамерный профиль с оптимальными характеристиками. Он лучшим образом подойдет для качественного и одновременно экономного остекления любых помещений и балконов. При глубине монтажа 58 мм рамы способны вмещать стеклоблоки до 32 мм.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
-(83, 2, 'WDS 400', '&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;Вже давно відомо, що читабельний зміст буде заважати зосередитись людині, яка оцінює композицію сторінки. Сенс використання Lorem Ipsum полягає в тому, що цей текст має більш-менш нормальне розподілення літер на відміну від, наприклад, &quot;Тут іде текст. Тут іде текст.&quot; Це робить текст схожим на оповідний. Багато програм верстування та веб-дизайну використовують Lorem Ipsum як зразок і пошук за терміном &quot;lorem ipsum&quot; відкриє багато веб-сайтів, які знаходяться ще в зародковому стані. Різні версії Lorem Ipsum з\'явились за минулі роки, деякі випадково, деякі було створено зумисно (зокрема, жартівливі).&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', '', '', '', '', '');
+(83, 2, 'WDS 400', '&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;Вже давно відомо, що читабельний зміст буде заважати зосередитись людині, яка оцінює композицію сторінки. Сенс використання Lorem Ipsum полягає в тому, що цей текст має більш-менш нормальне розподілення літер на відміну від, наприклад, &quot;Тут іде текст. Тут іде текст.&quot; Це робить текст схожим на оповідний. Багато програм верстування та веб-дизайну використовують Lorem Ipsum як зразок і пошук за терміном &quot;lorem ipsum&quot; відкриє багато веб-сайтів, які знаходяться ще в зародковому стані. Різні версії Lorem Ipsum з\'явились за минулі роки, деякі випадково, деякі було створено зумисно (зокрема, жартівливі).&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', '', '', '', '', ''),
+(83, 1, 'WDS 400', '&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации &quot;Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст..&quot; Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам &quot;lorem ipsum&quot; сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3891,6 +3950,34 @@ CREATE TABLE `oc_product_special` (
   `date_start` date NOT NULL DEFAULT '0000-00-00',
   `date_end` date NOT NULL DEFAULT '0000-00-00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oc_product_table`
+--
+
+CREATE TABLE `oc_product_table` (
+  `product_id` int(11) NOT NULL,
+  `brand` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `price1` int(7) NOT NULL,
+  `price2` int(7) NOT NULL,
+  `sort_order` int(7) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `oc_product_table`
+--
+
+INSERT INTO `oc_product_table` (`product_id`, `brand`, `price1`, `price2`, `sort_order`) VALUES
+(83, 'Salamander Streamline', 2200, 2300, 6),
+(83, 'Salamander 2D', 2100, 2200, 5),
+(83, 'Rehau Ecosol 70', 2000, 2100, 4),
+(83, 'Rehau Ecosol 60', 1900, 2000, 3),
+(83, 'WDS Olimpia	', 1800, 1900, 2),
+(83, 'Open teck', 1770, 1800, 1),
+(83, 'Windom Eco', 2300, 2400, 7),
+(83, 'Decco 71', 2400, 2500, 8);
 
 -- --------------------------------------------------------
 
@@ -4692,7 +4779,6 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (638, 'common/home', ''),
 (1265, 'category_id=74', 'Стеклопакеты'),
 (1251, 'category_id=20', 'okna'),
-(1306, 'manufacturer_id=8', 'veka'),
 (1252, 'information_id=4', 'about_us'),
 (1240, 'category_id=82', 'ruchki-dlya-okon'),
 (1256, 'category_id=80', 'Окна_Rehau'),
@@ -4720,7 +4806,7 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (956, 'manufacturer_id=5', 'kbe'),
 (950, 'manufacturer_id=7', 'salamander'),
 (957, 'manufacturer_id=6', 'windom'),
-(1279, 'manufacturer_id=10', 'rehau'),
+(1327, 'manufacturer_id=10', 'okna-rehau-kiev'),
 (1297, 'blog_id=92', 'delivery'),
 (1294, 'information_id=3', 'contacts'),
 (844, 'blog_category_id=50', 'action'),
@@ -4766,7 +4852,7 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (962, 'manufacturer_id=14', 'сlima'),
 (963, 'manufacturer_id=15', 'glas'),
 (964, 'manufacturer_id=16', 'crystalit'),
-(976, 'manufacturer_id=17', 'axor'),
+(1342, 'manufacturer_id=17', 'axor'),
 (966, 'manufacturer_id=18', 'danke'),
 (967, 'manufacturer_id=19', 'hoppe'),
 (968, 'manufacturer_id=20', 'kraft'),
@@ -4789,7 +4875,8 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (1147, 'blog_id=84', 'grafik-raboty-kompanii-v-prazdnichnyj-period-2017'),
 (1178, 'blog_id=85', 'online_windows_calculator11'),
 (1157, 'blog_id=86', ' nonstandards'),
-(1273, 'blog_id=87', 'service-master');
+(1273, 'blog_id=87', 'service-master'),
+(1310, 'manufacturer_id=8', 'veka');
 
 -- --------------------------------------------------------
 
@@ -9281,6 +9368,12 @@ ALTER TABLE `oc_attribute3`
   ADD PRIMARY KEY (`attribute_id`);
 
 --
+-- Indexes for table `oc_attribute4`
+--
+ALTER TABLE `oc_attribute4`
+  ADD PRIMARY KEY (`attribute4_id`);
+
+--
 -- Indexes for table `oc_attribute_description`
 --
 ALTER TABLE `oc_attribute_description`
@@ -9297,6 +9390,12 @@ ALTER TABLE `oc_attribute_description2`
 --
 ALTER TABLE `oc_attribute_description3`
   ADD PRIMARY KEY (`attribute_id`,`language_id`);
+
+--
+-- Indexes for table `oc_attribute_description4`
+--
+ALTER TABLE `oc_attribute_description4`
+  ADD PRIMARY KEY (`attribute4_id`,`language_id`);
 
 --
 -- Indexes for table `oc_attribute_group`
@@ -9927,6 +10026,12 @@ ALTER TABLE `oc_product_special`
   ADD KEY `product_id` (`product_id`);
 
 --
+-- Indexes for table `oc_product_table`
+--
+ALTER TABLE `oc_product_table`
+  ADD UNIQUE KEY `product_id` (`product_id`,`brand`,`price1`,`price2`);
+
+--
 -- Indexes for table `oc_product_to_category`
 --
 ALTER TABLE `oc_product_to_category`
@@ -10188,6 +10293,11 @@ ALTER TABLE `oc_attribute2`
 ALTER TABLE `oc_attribute3`
   MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
+-- AUTO_INCREMENT for table `oc_attribute4`
+--
+ALTER TABLE `oc_attribute4`
+  MODIFY `attribute4_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `oc_attribute_group`
 --
 ALTER TABLE `oc_attribute_group`
@@ -10231,7 +10341,7 @@ ALTER TABLE `oc_blog_comment`
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `oc_category`
 --
@@ -10586,7 +10696,7 @@ ALTER TABLE `oc_upload`
 -- AUTO_INCREMENT for table `oc_url_alias`
 --
 ALTER TABLE `oc_url_alias`
-  MODIFY `url_alias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1307;
+  MODIFY `url_alias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1343;
 --
 -- AUTO_INCREMENT for table `oc_user`
 --

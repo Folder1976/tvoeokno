@@ -1173,6 +1173,25 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
+		//table
+		if (isset($this->request->post['product_table'])) {
+			$data['product_tables'] = $this->request->post['product_table'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$data['product_tables'] = $this->model_catalog_product->getProductTables($this->request->get['product_id']);
+		} else {
+			$data['product_tables'] = array();
+		}
+
+
+		// Attributes4 Дополнительно
+		if (isset($this->request->post['product_attribute4'])) {
+			$data['product_attribute4s'] = $this->request->post['product_attribute4'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$data['product_attribute4s'] = $this->model_catalog_product->getProductAttribute4s($this->request->get['product_id']);
+		} else {
+			$data['product_attribute4s'] = array();
+		}
+		
 		// Attributes
 		$this->load->model('catalog/attribute');
 

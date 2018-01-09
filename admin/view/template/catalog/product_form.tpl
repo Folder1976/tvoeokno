@@ -31,6 +31,8 @@
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
             <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li>
             <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
+            <li><a href="#tab-table" data-toggle="tab">Таблица брендов</a></li>
+            <li><a href="#tab-attribute4" data-toggle="tab">Дополнительно</a></li>
             <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
             <li><a href="#tab-recurring" data-toggle="tab"><?php echo $tab_recurring; ?></a></li>
             <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li>
@@ -453,6 +455,7 @@
                 </div>
               </div>
             </div>
+						
             <div class="tab-pane" id="tab-attribute">
               <div class="table-responsive">
                 <table id="attribute" class="table table-striped table-bordered table-hover">
@@ -488,6 +491,85 @@
                 </table>
               </div>
             </div>
+						
+						<div class="tab-pane" id="tab-table">
+              <div class="table-responsive">
+                <table id="table" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left">Бренд</td>
+                      <td class="text-left">1-камерый</td>
+                      <td class="text-left">2-камерый</td>
+                      <td class="text-left">Сорт</td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $table_row = 0; ?>
+                    <?php foreach ($product_tables as $product_table) { ?>
+                    <tr id="table-row<?php echo $table_row; ?>">
+                      <td class="text-left" style="width: 20%;"><input type="text" name="product_table[<?php echo $table_row; ?>][brand]" value="<?php echo $product_table['brand']; ?>" placeholder="Имя бренда" class="form-control" /></td>
+											<td class="text-left" style="width: 20%;"><input type="text" name="product_table[<?php echo $table_row; ?>][price1]" value="<?php echo $product_table['price1']; ?>" placeholder="0.00" class="form-control" /></td>
+											<td class="text-left" style="width: 20%;"><input type="text" name="product_table[<?php echo $table_row; ?>][price2]" value="<?php echo $product_table['price2']; ?>" placeholder="0.00" class="form-control" /></td>
+											<td class="text-left" style="width: 20%;"><input type="text" name="product_table[<?php echo $table_row; ?>][sort_order]" value="<?php echo $product_table['sort_order']; ?>" placeholder="0" class="form-control" /></td>
+             
+						           <td class="text-left"><button type="button" onclick="$('#table-row<?php echo $table_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                    </tr>
+                    <?php $table_row++; ?>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4"></td>
+                      <td class="text-left"><button type="button" onclick="addTable();" data-toggle="tooltip" title="<?php echo $button_attribute_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+						
+            <div class="tab-pane" id="tab-attribute4">
+              <div class="table-responsive">
+                <table id="attribute4" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left">Наименование</td>
+                      <td class="text-left">Цена</td>
+                      <td class="text-left">Сортировка</td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $attribute4_row = 0; ?>
+                    <?php foreach ($product_attribute4s as $product_attribute4) { ?>
+                    <tr id="attribute4-row<?php echo $attribute4_row; ?>">
+                    
+										  <td class="text-left"><?php foreach ($languages as $language) { ?>
+                        <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+                          <textarea name="product_attribute4[<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text'] : ''; ?></textarea>
+                        </div>
+                        <?php } ?></td>
+                    
+										
+										  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[<?php echo $attribute4_row; ?>][price]" value="<?php echo $product_attribute4['price']; ?>" placeholder="0.00" class="form-control" />
+                        <input type="hidden" name="product_attribute4[<?php echo $attribute4_row; ?>][attribute4_id]" value="<?php echo $product_attribute4['attribute4_id']; ?>" /></td>
+											<td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[<?php echo $attribute4_row; ?>][sort_order]" value="<?php echo $product_attribute4['sort_order']; ?>" placeholder="0.00" class="form-control" /></td>
+                      <td class="text-left"><button type="button" onclick="$('#attribute4-row<?php echo $attribute4_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                    </tr>
+                    <?php $attribute4_row++; ?>
+                    <?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="3"></td>
+                      <td class="text-left"><button type="button" onclick="addAttribute4();" data-toggle="tooltip" title="<?php echo $button_attribute4_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+						
             <div class="tab-pane" id="tab-option">
               <div class="row">
                 <div class="col-sm-2">
@@ -1115,6 +1197,48 @@ $('#product-related').delegate('.fa-minus-circle', 'click', function() {
 });
 //--></script>
   <script type="text/javascript"><!--
+
+var table_row = <?php echo $table_row; ?>;
+function addTable() {
+    html  = '<tr id="table-row' + table_row + '">';
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_table[' + table_row + '][brand]" value="" placeholder="Название бренда" class="form-control" /></td>';
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_table[' + table_row + '][price1]" value="" placeholder="0.00" class="form-control" /></td>';
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_table[' + table_row + '][price2]" value="" placeholder="0.00" class="form-control" /></td>';
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_table[' + table_row + '][sort_order]" value="" placeholder="0" class="form-control" /></td>';
+	
+	html += '  <td class="text-left"><button type="button" onclick="$(\'#table-row' + table_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+    html += '</tr>';
+
+	$('#table tbody').append(html);
+
+	
+	table_row++;
+}
+
+var attribute4_row = <?php echo $attribute4_row; ?>;
+
+function addAttribute4() {
+	html  = '<tr id="attribute4-row' + attribute4_row + '">';
+	html += '  <td class="text-left">';
+	<?php foreach ($languages as $language) { ?>
+	html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><textarea name="product_attribute4[' + attribute4_row + '][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="Наименование товара или услуги" class="form-control"></textarea></div>';
+    <?php } ?>
+	html += '  </td>';
+	
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[' + attribute4_row + '][price]" value="" placeholder="0.00" class="form-control" /><input type="hidden" name="product_attribute4[' + attribute4_row + '][attribute4_id]" value="" /></td>';
+html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[' + attribute4_row + '][sort_order]" value="" placeholder="0" class="form-control" /></td>';
+
+	
+	html += '  <td class="text-left"><button type="button" onclick="$(\'#attribute4-row' + attribute4_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+    html += '</tr>';
+
+	$('#attribute4 tbody').append(html);
+
+
+	attribute4_row++;
+}
+
+
 var attribute_row = <?php echo $attribute_row; ?>;
 
 function addAttribute() {
