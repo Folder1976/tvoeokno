@@ -22,7 +22,12 @@ class ModelCatalogInformation extends Model {
 		}
 
 		if (isset($data['keyword'])) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'information_id=" . (int)$information_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'information_id=" . (int)$information_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
 		}
 
 		$this->cache->delete('information');
@@ -57,8 +62,13 @@ class ModelCatalogInformation extends Model {
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'information_id=" . (int)$information_id . "'");
 
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'information_id=" . (int)$information_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+		if (isset($data['keyword'])) {
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'information_id=" . (int)$information_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
 		}
 
 		$this->cache->delete('information');
@@ -75,9 +85,27 @@ class ModelCatalogInformation extends Model {
 	}
 
 	public function getInformation($information_id) {
-		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'information_id=" . (int)$information_id . "' LIMIT 1) AS keyword FROM " . DB_PREFIX . "information WHERE information_id = '" . (int)$information_id . "'");
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "information WHERE information_id = '" . (int)$information_id . "'");
 
-		return $query->row;
+		$return = $query->row;
+		
+		$return['keyword'] = $this->getKeyword($information_id);
+		
+		return $return;
+	}
+	
+	public function getKeyword($information_id) {
+		
+		$sql = "SELECT language_id, keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'information_id=" . (int)$information_id . "'";
+		
+		$query = $this->db->query($sql);
+		
+		$return = array();
+		foreach($query->rows as $row){
+			$return[$row['language_id']] = $row['keyword'];
+		}
+
+		return $return;
 	}
 
 	public function getInformations($data = array()) {

@@ -32,6 +32,8 @@
 
                 );
    $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+   $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = 'ua';}
+  
    //Пример
   //<?php echo $lib['русская фраза']; ? >
   ?><!DOCTYPE html>
@@ -84,7 +86,7 @@
           <nav class="header-nav">
             <ul class="header-nav-list">
               <?php foreach($group_list[16]['list'] as $row){ ?>
-                <li><a href="<?php echo $row['href']; ?>"><?php echo $row['name']; ?></a></li>
+                <li><a href="<?php echo $row['href'.$lang_key]; ?>"><?php echo $row['name']; ?></a></li>
               <?php } ?>
 
             </ul>
@@ -111,7 +113,8 @@
         <div class="row">
           <div class="col-md-3 col-sm-4">
             <div class="header-logo">
-              <a href="/">
+    
+              <a href="/<?php echo $dir; ?>">
                 <img src="/catalog/view/theme/default/image/logo.svg" alt="лого Твое окно">
                 <?php echo $open; ?>
               </a>
@@ -122,11 +125,10 @@
               <div class="header-info-top">
                 <p><?php echo $group_list[17]['name']; ?></p>
                 <ul class="header-info-top-list">
-                  <!-- <li><a href="tel:<?php echo preg_replace('~[^0-9]+~','',$telephone); ?>"><?php echo $telephone;?></a></li> -->
                   <?php foreach($group_list[17]['list'] as $row){ ?>
                     <li
-                       <?php if(strpos($row['href'], 'viber') !== false){ ?> class="viber"<?php } ?>
-                       ><a href="<?php echo $row['href']; ?>"><?php echo $row['name']; ?></a></li>
+                       <?php if(strpos($row['href'.$lang_key], 'viber') !== false){ ?> class="viber"<?php } ?>
+                       ><a href="<?php echo $row['href'.$lang_key]; ?>"><?php echo $row['name']; ?></a></li>
                   <?php } ?>
                 </ul>
               </div>
@@ -179,14 +181,14 @@
         <div class="main-nav">
           <ul class="main-nav-list">
             <li>
-              <a href="/">
+              <a href="/<?php echo $dir; ?>">
                 <img src="/catalog/view/theme/default/image/i.svg" alt="">
                 <span><?php echo $group_list[10]['name']; ?></span>
               </a>
               <div class="main-nav-dropdown">
                 <ul>
                 <?php foreach($group_list[10]['list'] as $row){ ?>
-                    <li class="main-nav-dropdown-item"><a href="<?php echo $row['href']; ?>"><?php echo $row['name']; ?></a></li>
+                    <li class="main-nav-dropdown-item"><a href="<?php echo $row['href'.$lang_key]; ?>"><?php echo $row['name']; ?></a></li>
                 <?php } ?>
                 </ul>
               </div>
@@ -348,22 +350,22 @@
     <section class="main-sect">
         <ul class="side-nav">
           <li>
-            <a href="/chertog"><span><?php echo $lib['Отправить чертеж на почту'];?></span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
+            <a href="/<?php echo $group_list[18]['list'][75]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][75]['name']; ?></span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
           </li>
           <li>
-            <a href="/online_windows_calculator"><span><?php echo $lib['Расчет окон'];?></span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
+            <a href="/<?php echo $group_list[18]['list'][76]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][76]['name']; ?></span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
           </li>
           <li>
-            <a href="/comments"><span><?php echo $lib['Отзывы'];?></span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
+            <a href="/<?php echo $group_list[18]['list'][77]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][77]['name']; ?></span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>
           </li>
           <li>
-            <a href="/zamer"><span><?php echo $lib['Запись на замер'];?></span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
+            <a href="/<?php echo $group_list[18]['list'][78]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][78]['name']; ?></span><img src="/catalog/view/theme/default/image/54.png" alt=""></a>
           </li>
           <li>
-            <a href="/service-master"><span><?php echo $lib['Ремонт окон'];?></span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
+            <a href="/<?php echo $group_list[18]['list'][79]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][79]['name']; ?></span><img src="/catalog/view/theme/default/image/55.png" alt=""></a>
           </li>
           <li>
-            <a href="/works"><span><?php echo $lib['Фото работ'];?></span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
+            <a href="/<?php echo $group_list[18]['list'][80]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][80]['name']; ?></span><img src="/catalog/view/theme/default/image/56.png" alt=""></a>
           </li>
         </ul>
     </section>

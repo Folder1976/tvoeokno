@@ -63,9 +63,18 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-href">href</label>
+            
+            <?php $language = $languages['ru-ru'] ;?>
+            <label class="col-sm-2 control-label" for="input-href1"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?> href </label>
             <div class="col-sm-10">
-              <input type="text" name="href" value="<?php echo $href; ?>" placeholder="http://" id="input-href" class="form-control" />
+              <input type="text" name="href1" value="<?php echo $href1; ?>" placeholder="http://" id="input-href1" class="form-control" />
+            </div>
+          </div>
+         <div class="form-group">
+          <?php $language = $languages['ua-uk'] ;?>
+            <label class="col-sm-2 control-label" for="input-href2"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?> href </label>
+            <div class="col-sm-10">
+              <input type="text" name="href2" value="<?php echo $href2; ?>" placeholder="http://" id="input-href2" class="form-control" />
             </div>
           </div>
         </form>

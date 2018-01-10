@@ -6,6 +6,34 @@ class ControllerStartupSeoUrl extends Controller {
 			$this->url->addRewrite($this);
 		}
 
+		if(isset($this->request->post['redirect'])){
+			//die($this->request->post['redirect']);
+		}
+		
+		
+		$data['code'] = $this->session->data['language'];
+
+		$this->load->model('localisation/language');
+
+		$data['languages'] = array();
+
+		$results = $this->model_localisation_language->getLanguages();
+
+		foreach ($results as $result) {
+			if ($result['status']) {
+				$data['languages'][$result['language_id']] = array(
+					'name' => $result['name'],
+					'code' => $result['code']
+				);
+			}
+		}
+		
+		//header("Content-Type: text/html; charset=UTF-8");
+		//echo '<pre>'; print_r(var_dump( $_SESSION  ));
+		//die();
+		
+		
+			
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
 			
@@ -30,6 +58,17 @@ class ControllerStartupSeoUrl extends Controller {
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($part) . "'");
 
 				if ($query->num_rows) {
+					
+					$language_code = $data['languages'][$query->row['language_id']]['code'];
+					if($language_code != $this->session->data['language']){
+						$this->session->data['language'] = $language_code;
+						foreach($_SESSION as $key => $value){
+							$_SESSION[$key]['language'] = $language_code;
+						}
+						$this->response->redirect('/'.$query->row['keyword']);	
+					}
+				//window_prices
+				//Okna-Ceny
 					$url = explode('=', $query->row['query']);
 
 
@@ -66,9 +105,16 @@ class ControllerStartupSeoUrl extends Controller {
 						$this->request->get['route'] = $query->row['query'];
 					}
 				} else {
-					$this->request->get['route'] = 'error/not_found';
-
-					break;
+					
+					if($this->request->get['_route_'] == 'ua' AND $this->session->data['language'] != 'ua-uk'){
+						$this->request->get['route'] = 'common/home';
+						$this->session->data['language'] = 'ua-uk';
+						$this->response->redirect('/ua');
+					}else{
+						$this->request->get['route'] = 'error/not_found';
+					}
+						break;
+					
 				}
 			}
 
@@ -89,6 +135,15 @@ class ControllerStartupSeoUrl extends Controller {
 					$this->request->get['route'] = 'information/information';
 				}
 			}
+			
+			
+			
+		}else{
+			if($this->session->data['language'] != 'ru-ru' AND !isset($this->request->post['redirect'])){
+				$this->session->data['language'] = 'ru-ru';
+				$this->response->redirect('/');
+			}
+				
 		}
 	}
 
@@ -104,7 +159,9 @@ class ControllerStartupSeoUrl extends Controller {
 		foreach ($data as $key => $value) {
 			if (isset($data['route'])) {
 				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id') || ($data['route'] == 'blog/blog' && $key == 'blog_id')) {
-					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'");
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'
+											  AND language_id = '" . (int)$this->config->get('config_language_id') . "'
+											  ");
 
 					if ($query->num_rows && $query->row['keyword']) {
 						$url .= '/' . $query->row['keyword'];
@@ -115,7 +172,9 @@ class ControllerStartupSeoUrl extends Controller {
 				} elseif ($key == 'blogpath') {
 					$blog_categories = explode('_', $value);
 					foreach ($blog_categories as $category) {
-						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'blog_category_id=" . (int)$category . "'");
+						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'blog_category_id=" . (int)$category . "'
+														AND language_id = '" . (int)$this->config->get('config_language_id') . "'
+														");
 						if ($query->num_rows) {
 							$url .= '/' . $query->row['keyword'];
 						} else {
@@ -138,7 +197,9 @@ class ControllerStartupSeoUrl extends Controller {
 					$categories = explode('_', $value);
 
 					foreach ($categories as $category) {
-						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'");
+						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'
+												  AND language_id = '" . (int)$this->config->get('config_language_id') . "'
+												  ");
 
 						if ($query->num_rows && $query->row['keyword']) {
 							$url .= '/' . $query->row['keyword'];

@@ -1,7 +1,9 @@
 <?php
 class ModelCatalogAttribute3 extends Model {
 	public function addAttribute($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "attribute3 SET href = '" . $data['href'] . "',
+		$this->db->query("INSERT INTO " . DB_PREFIX . "attribute3 SET
+						 href1 = '" . $data['href1'] . "',
+						 href2 = '" . $data['href2'] . "',
 						 attribute_group_id = '" . (int)$data['attribute_group_id'] . "',
 						 sort_order = '" . (int)$data['sort_order'] . "'");
 
@@ -18,7 +20,10 @@ class ModelCatalogAttribute3 extends Model {
 	}
 
 	public function editAttribute($attribute_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "attribute3 SET href = '" . $data['href'] . "', attribute_group_id = '" . (int)$data['attribute_group_id'] . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE attribute_id = '" . (int)$attribute_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "attribute3 SET
+						 href1 = '" . $data['href1'] . "',
+						 href2 = '" . $data['href2'] . "',
+						 attribute_group_id = '" . (int)$data['attribute_group_id'] . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE attribute_id = '" . (int)$attribute_id . "'");
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute_description3 WHERE attribute_id = '" . (int)$attribute_id . "'");
 

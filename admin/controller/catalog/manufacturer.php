@@ -468,6 +468,7 @@ class ControllerCatalogManufacturer extends Controller {
 			}
 		}
 
+		/*
 		if (utf8_strlen($this->request->post['keyword']) > 0) {
 			$this->load->model('catalog/url_alias');
 
@@ -485,7 +486,8 @@ class ControllerCatalogManufacturer extends Controller {
 				$this->error['warning'] = $this->language->get('error_warning');
 			}
 		}
-
+		*/
+		
 		return !$this->error;
 	}
 

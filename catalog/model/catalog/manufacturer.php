@@ -4,7 +4,7 @@ class ModelCatalogManufacturer extends Model {
 		$query = $this->db->query("SELECT DISTINCT *, md.name AS name FROM " . DB_PREFIX . "manufacturer m
 									LEFT JOIN " . DB_PREFIX . "manufacturer_description md ON (m.manufacturer_id = md.manufacturer_id)
 									LEFT JOIN " . DB_PREFIX . "manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id)
-									LEFT JOIN " . DB_PREFIX . "url_alias ua ON (ua.query = CONCAT('manufacturer_id=', m.manufacturer_id))
+									LEFT JOIN " . DB_PREFIX . "url_alias ua ON (ua.query = CONCAT('manufacturer_id=', m.manufacturer_id)) AND ua.language_id = '" . (int)$this->config->get('config_language_id') . "'
 									WHERE md.language_id = '" . (int)$this->config->get('config_language_id') . "' && m.manufacturer_id = '" . (int)$manufacturer_id . "' AND m2s.store_id = '" . (int)$this->config->get('config_store_id') . "'");
 
 		return $query->row;
@@ -14,7 +14,7 @@ class ModelCatalogManufacturer extends Model {
 		if ($data) {
 			$sql = "SELECT * FROM " . DB_PREFIX . "manufacturer m
 			LEFT JOIN " . DB_PREFIX . "manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id)
-			LEFT JOIN " . DB_PREFIX . "url_alias ua ON (ua.query = CONCAT('manufacturer_id=', m.manufacturer_id))
+			LEFT JOIN " . DB_PREFIX . "url_alias ua ON (ua.query = CONCAT('manufacturer_id=', m.manufacturer_id)) AND ua.language_id = '" . (int)$this->config->get('config_language_id') . "'
 			LEFT JOIN " . DB_PREFIX . "manufacturer_description md ON (m.manufacturer_id = md.manufacturer_id) WHERE md.language_id = '" . (int)$this->config->get('config_language_id') . "' && m2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
 
 			$sort_data = array(
@@ -55,7 +55,7 @@ class ModelCatalogManufacturer extends Model {
 			if (!$manufacturer_data) {
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "manufacturer m
 										  LEFT JOIN " . DB_PREFIX . "manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id)
-										  LEFT JOIN " . DB_PREFIX . "url_alias ua ON (ua.query = CONCAT('manufacturer_id=', m.manufacturer_id))
+										  LEFT JOIN " . DB_PREFIX . "url_alias ua ON (ua.query = CONCAT('manufacturer_id=', m.manufacturer_id)) AND ua.language_id = '" . (int)$this->config->get('config_language_id') . "'
 										  LEFT JOIN " . DB_PREFIX . "manufacturer_description md ON (m.manufacturer_id = md.manufacturer_id) WHERE md.language_id = '" . (int)$this->config->get('config_language_id') . "' && m2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ORDER BY md.name");
 
 				$manufacturer_data = $query->rows;

@@ -363,19 +363,27 @@ class ControllerCatalogAttribute3 extends Controller {
 			$data['sort_order'] = '';
 		}
 
-		if (isset($this->request->post['href'])) {
-			$data['href'] = $this->request->post['href'];
+		if (isset($this->request->post['href1'])) {
+			$data['href1'] = $this->request->post['href1'];
 		} elseif (!empty($attribute_info)) {
-			$data['href'] = $attribute_info['href'];
+			$data['href1'] = $attribute_info['href1'];
 		} else {
-			$data['href'] = '';
+			$data['href1'] = '';
+		}
+
+		if (isset($this->request->post['href2'])) {
+			$data['href2'] = $this->request->post['href2'];
+		} elseif (!empty($attribute_info)) {
+			$data['href2'] = $attribute_info['href2'];
+		} else {
+			$data['href2'] = '';
 		}
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/attribute_form2', $data));
+		$this->response->setOutput($this->load->view('catalog/attribute_form3', $data));
 	}
 
 	protected function validateForm() {

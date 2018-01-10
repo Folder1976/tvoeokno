@@ -153,16 +153,21 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'product_id=" . (int)$product_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
-		}
-
 		if (isset($data['product_recurring'])) {
 			foreach ($data['product_recurring'] as $recurring) {
 				$this->db->query("INSERT INTO `" . DB_PREFIX . "product_recurring` SET `product_id` = " . (int)$product_id . ", customer_group_id = " . (int)$recurring['customer_group_id'] . ", `recurring_id` = " . (int)$recurring['recurring_id']);
 			}
 		}
 
+		if (isset($data['keyword'])) {
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'product_id=" . (int)$product_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
+		}
+		
 		$this->cache->delete('product');
 
 		return $product_id;
@@ -345,12 +350,6 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
-		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "'");
-
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'product_id=" . (int)$product_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
-		}
-
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "product_recurring` WHERE product_id = " . (int)$product_id);
 
 		if (isset($data['product_recurring'])) {
@@ -359,6 +358,17 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "'");
+
+		if (isset($data['keyword'])) {
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'product_id=" . (int)$product_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
+		}
+		
 		$this->cache->delete('product');
 	}
 
@@ -421,11 +431,29 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function getProduct($product_id) {
-		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "' LIMIT 1) AS keyword FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
-		return $query->row;
+		$return = $query->row;
+		
+		$return['keyword'] = $this->getKeyword($product_id);
+		
+		return $return;
 	}
 
+	public function getKeyword($product_id) {
+		
+		$sql = "SELECT language_id, keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "'";
+		
+		$query = $this->db->query($sql);
+		
+		$return = array();
+		foreach($query->rows as $row){
+			$return[$row['language_id']] = $row['keyword'];
+		}
+
+		return $return;
+	}
+	
 	public function getProducts($data = array()) {
 
 			$sql = "SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)";

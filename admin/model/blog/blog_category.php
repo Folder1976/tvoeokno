@@ -43,11 +43,13 @@ class ModelBlogBlogCategory extends Model {
 			}
 		}
 						
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET 
-			query = 'blog_category_id=" . (int)$blog_category_id . "', 
-			keyword = '" . $this->db->escape($data['keyword']) . "'
-			");
+		if (isset($data['keyword'])) {
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'blog_category_id=" . (int)$blog_category_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
 		}
 		
 		$this->cache->delete('blog_category');
@@ -106,11 +108,13 @@ class ModelBlogBlogCategory extends Model {
 						
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'blog_category_id=" . (int)$blog_category_id. "'");
 		
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET 
-			query = 'blog_category_id=" . (int)$blog_category_id . "', 
-			keyword = '" . $this->db->escape($data['keyword']) . "'
-			");
+		if (isset($data['keyword'])) {
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'blog_category_id=" . (int)$blog_category_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
 		}
 		
 		$this->cache->delete('blog_category');
@@ -136,13 +140,30 @@ class ModelBlogBlogCategory extends Model {
 		$query = $this->db->query("SELECT DISTINCT *
 		FROM " . DB_PREFIX . "blog_category c
 		LEFT JOIN " . DB_PREFIX . "blog_category_description cd ON (c.blog_category_id = cd.blog_category_id)
-		LEFT JOIN " . DB_PREFIX . "url_alias ua ON (ua.query = CONCAT('blog_category_id=',c.blog_category_id))
 		WHERE 
 		c.blog_category_id = '" . (int)$blog_category_id . "' AND cd.language_id = '" . (int)$this->config->get('config_language_id') . "'
 		");
 		
-		return $query->row;
+		$return = $query->row;
+		
+		$return['keyword'] = $this->getKeyword($blog_category_id);
+		
+		return $return;
 	}
+	
+	public function getKeyword($blog_category_id) {
+		
+		$sql = "SELECT language_id, keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'blog_category_id=" . (int)$blog_category_id . "'";
+		
+		$query = $this->db->query($sql);
+		
+		$return = array();
+		foreach($query->rows as $row){
+			$return[$row['language_id']] = $row['keyword'];
+		}
+
+		return $return;
+	}	
 	
 	public function getBlogIdCategories($filter_id) {
 		$query = $this->db->query("SELECT *, (SELECT name FROM " . DB_PREFIX . "blog_category_description fgd WHERE 

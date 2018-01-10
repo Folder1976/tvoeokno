@@ -35,8 +35,9 @@
                 '' => '',
 
                 );
+  
   $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
-
+ $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = 'ua';}
   //Пример
   //<?php echo $lib['русская фраза']; ? >
   ?><footer class="footer">
@@ -62,6 +63,8 @@
               <h2><?php echo $lib['ПРИЕЗЖАЙТЕ К НАМ В ОФИС']; ?></h2>
               <p><?php echo $address; ?></p>
             </div>
+            
+             
             <div class="col-md-3">
               <a href="<?php echo $group_list[12]['href']; ?>" class="top-link"><?php echo $group_list[12]['name']; ?></a>
               <a href="<?php echo $group_list[7]['href']; ?>" class="top-link"><?php echo $group_list[7]['name']; ?></a>
@@ -75,7 +78,7 @@
           <div class="row">
             <div class="col-md-3">
                <?php foreach($group_list[16]['list'] as $row){ ?>
-                    <a href="<?php echo $row['href']; ?>" class="top-link"><?php echo $row['name']; ?></a>
+                    <a href="<?php echo $row['href'.$lang_key]; ?>" class="top-link"><?php echo $row['name']; ?></a>
                <?php } ?>
                <?php if ( isset($logged) && $logged ) { ?>
                 <a href="<?php echo $account; ?>" class="top-link"><?php echo $text_account; ?></a>
@@ -84,33 +87,33 @@
                 <a href="<?php echo $register; ?>" class="top-link"><?php echo $text_register; ?></a>
                 <!-- <a href="<?php echo $login; ?>" class="top-link"><?php echo $text_login; ?></a> -->
                <?php } ?>
-              <a href="/chertog" class="top-link"><?php echo $lib['Отправить чертеж на почту'];?></a>
-              <a href="/online_windows_calculator" class="top-link"><?php echo $lib['Расчет окон'];?></a>
-              <a href="/comments" class="top-link"><?php echo $lib['Отзывы'];?></a>
-              <a href="/zamer" class="top-link"><?php echo $lib['Вызвать замерщика'];?></a>
-              <a href="/service-master" class="top-link"><?php echo $lib['Ремонт окон'];?></a>
-              <a href="/works" class="top-link"><?php echo $lib['Фото работ'];?></a>
+              <a href="/<?php echo $group_list[18]['list'][75]['href'.$lang_key]; ?>" class="top-link"><?php echo $group_list[18]['list'][75]['name']; ?></a>
+              <a href="/<?php echo $group_list[18]['list'][76]['href'.$lang_key]; ?>" class="top-link"><?php echo $group_list[18]['list'][76]['name']; ?></a>
+              <a href="/<?php echo $group_list[18]['list'][77]['href'.$lang_key]; ?>" class="top-link"><?php echo $group_list[18]['list'][77]['name']; ?></a>
+              <a href="/<?php echo $group_list[18]['list'][78]['href'.$lang_key]; ?>" class="top-link"><?php echo $group_list[18]['list'][78]['name']; ?></a>
+              <a href="/<?php echo $group_list[18]['list'][79]['href'.$lang_key]; ?>" class="top-link"><?php echo $group_list[18]['list'][79]['name']; ?></a>
+              <a href="/<?php echo $group_list[18]['list'][80]['href'.$lang_key]; ?>" class="top-link"><?php echo $group_list[18]['list'][80]['name']; ?></a>
             </div>
             <div class="col-md-9">
               <div class="row">
                     <div class="col-md-4 single">
                          <h2><?php echo $group_list[10]['name']; ?></h2>
                          <?php foreach($group_list[10]['list'] as $row){ ?>
-                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                              <a href="<?php echo $row['href'.$lang_key]; ?>" class="footer-link"><?php echo $row['name']; ?></a>
                          <?php } ?>
                     </div>
                     
                     <div class="col-md-4 single">
                          <h2><?php echo $group_list[8]['name']; ?></h2>
                          <?php foreach($group_list[8]['list'] as $row){ ?>
-                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                              <a href="<?php echo $row['href'.$lang_key]; ?>" class="footer-link"><?php echo $row['name']; ?></a>
                          <?php } ?>
                     </div>
                     
                     <div class="col-md-4 single">
                          <h2><?php echo $group_list[9]['name']; ?></h2>
                          <?php foreach($group_list[9]['list'] as $row){ ?>
-                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                              <a href="<?php echo $row['href'.$lang_key]; ?>" class="footer-link"><?php echo $row['name']; ?></a>
                          <?php } ?>
                     </div>
 
@@ -120,21 +123,21 @@
                     <div class="col-md-4 single">
                          <h2><?php echo $group_list[13]['name']; ?></h2>
                          <?php foreach($group_list[13]['list'] as $row){ ?>
-                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                              <a href="<?php echo $row['href'.$lang_key]; ?>" class="footer-link"><?php echo $row['name']; ?></a>
                          <?php } ?>
                     </div>
                     
                     <div class="col-md-4 single">
                          <h2><?php echo $group_list[14]['name']; ?></h2>
                          <?php foreach($group_list[14]['list'] as $row){ ?>
-                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                              <a href="<?php echo $row['href'.$lang_key]; ?>" class="footer-link"><?php echo $row['name']; ?></a>
                          <?php } ?>
                     </div>
                     
                     <div class="col-md-4 single">
                          <h2><?php echo $group_list[15]['name']; ?></h2>
                          <?php foreach($group_list[15]['list'] as $row){ ?>
-                              <a href="<?php echo $row['href']; ?>" class="footer-link"><?php echo $row['name']; ?></a>
+                              <a href="<?php echo $row['href'.$lang_key]; ?>" class="footer-link"><?php echo $row['name']; ?></a>
                          <?php } ?>
                     </div>
               </div>

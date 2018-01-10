@@ -44,7 +44,12 @@ class ModelCatalogManufacturer extends Model {
 		}
 
 		if (isset($data['keyword'])) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'manufacturer_id=" . (int)$manufacturer_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'manufacturer_id=" . (int)$manufacturer_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
 		}
 
 		$this->cache->delete('manufacturer');
@@ -102,8 +107,13 @@ class ModelCatalogManufacturer extends Model {
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'manufacturer_id=" . (int)$manufacturer_id . "'");
 
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'manufacturer_id=" . (int)$manufacturer_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+			if (isset($data['keyword'])) {
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'manufacturer_id=" . (int)$manufacturer_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
 		}
 
 		$this->cache->delete('manufacturer');
@@ -119,9 +129,30 @@ class ModelCatalogManufacturer extends Model {
 	}
 
 	public function getManufacturer($manufacturer_id) {
-		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'manufacturer_id=" . (int)$manufacturer_id . "' LIMIT 1) AS keyword FROM " . DB_PREFIX . "manufacturer WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
+		
+		$sql = "SELECT DISTINCT * FROM " . DB_PREFIX . "manufacturer WHERE manufacturer_id = '" . (int)$manufacturer_id . "'";
+		
+		$query = $this->db->query($sql);
 
-		return $query->row;
+		$return = $query->row;
+		
+		$return['keyword'] = $this->getKeyword($manufacturer_id);
+		
+		return $return;
+		
+	}
+	public function getKeyword($manufacturer_id) {
+		
+		$sql = "SELECT language_id, keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'manufacturer_id=" . (int)$manufacturer_id . "'";
+		
+		$query = $this->db->query($sql);
+		
+		$return = array();
+		foreach($query->rows as $row){
+			$return[$row['language_id']] = $row['keyword'];
+		}
+
+		return $return;
 	}
 
 	public function getManufacturerDescriptions($manufacturer_id) {

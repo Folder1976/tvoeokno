@@ -72,8 +72,8 @@ class ControllerCommonHome extends Controller {
  		$res = $this->model_blog_blog_category->getBlogCategories();
  		
  		foreach($res as $index => $row){
- 			$data['blogs'][$row['keyword']] = $row;
- 			$data['blogs'][$row['keyword']]['blogs'] = $this->model_blog_blog->getBlogsByBlogCategoryId($row['blog_category_id']);
+ 			$data['blogs'][$row['blog_category_id']] = $row;
+ 			$data['blogs'][$row['blog_category_id']]['blogs'] = $this->model_blog_blog->getBlogsByBlogCategoryId($row['blog_category_id']);
  		}
  		
 		$_GET['blog_id'] = 80;

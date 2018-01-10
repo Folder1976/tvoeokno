@@ -1458,7 +1458,7 @@ class ControllerCatalogProduct extends Controller {
 		if ((utf8_strlen($this->request->post['model']) < 1) || (utf8_strlen($this->request->post['model']) > 64)) {
 			$this->error['model'] = $this->language->get('error_model');
 		}
-
+/*
 		if (utf8_strlen($this->request->post['keyword']) > 0) {
 			$this->load->model('catalog/url_alias');
 
@@ -1472,7 +1472,7 @@ class ControllerCatalogProduct extends Controller {
 				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
 			}
 		}
-
+*/
 		if ($this->error && !isset($this->error['warning'])) {
 			$this->error['warning'] = $this->language->get('error_warning');
 		}

@@ -34,6 +34,8 @@
  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
     //Пример
     //<?php echo $lib['русская фраза']; ? >
+ $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = 'ua';}
+    
 echo $header; ?>
 
  <div class="main-slider owl-carousel">
@@ -66,7 +68,7 @@ echo $header; ?>
                     <p class="type">секунд</p>
                   </div>
                 </div>
-                <form action="/" class="timer-form js-form-call-me">
+                <form action="/<?php echo $dir; ?>" class="timer-form js-form-call-me">
                   <input type="hidden" name="formname" value="call_me__home_slider_discount">
                   <input type="text" placeholder="Ваше имя" name="name" required>
                   <input type="tel" placeholder="Ваш телефон" name="phone" required>
@@ -106,7 +108,7 @@ echo $header; ?>
                     <p class="type">секунд</p>
                   </div>
                 </div>
-                <form action="/" class="timer-form js-form-call-me">
+                <form action="/<?php echo $dir; ?>" class="timer-form js-form-call-me">
                   <input type="hidden" name="formname" value="call_me__home_slider_discount">
                   <input type="text" placeholder="Ваше имя" name="name" required>
                   <input type="tel" placeholder="Ваш телефон" name="phone" required>
@@ -127,7 +129,7 @@ echo $header; ?>
         <?php foreach($manufacturers as $manufacture){ ?>
           <div class="col-md-3 col-sm-4">
             <a href="/<?php echo $manufacture['keyword'];?>" class="brands-single">
-              <img src="/image/<?php echo $manufacture['image'];?>" alt="Бренд <?php echo $manufacture['title'];?>">
+              <img src="/image/<?php echo $manufacture['image'];?>" alt="Бренд <?php echo $manufacture['name'];?>">
             </a>
           </div>
         <?php } ?>
@@ -220,10 +222,11 @@ echo $header; ?>
     </div>
   </section>
   <section class="advantages">
+  
     <div class="container">
-      <h2 class="main-title"><?php echo $blogs['our_advantages']['name'];?></h2>
+      <h2 class="main-title"><?php echo $blogs[49]['name'];?></h2>
       <div class="row">
-        <?php foreach($blogs['our_advantages']['blogs'] as $blog){ ?>
+        <?php foreach($blogs[49]['blogs'] as $blog){ ?>
           <div class="col-md-3 col-sm-6">
             <div class="advantages-single">
               <img src="/image/<?php echo $blog['image'];?>" alt="Картинка <?php echo $blog['title'];?>">
@@ -238,27 +241,27 @@ echo $header; ?>
   <section class="news">
     <div class="container">
       <div class="news-nav">
-        <a href="#tab-actions" class="active left" data-toggle="tab"><?php echo $blogs['action']['name']; ?></a>
+        <a href="#tab-actions" class="active left" data-toggle="tab"><?php echo $blogs[50]['name']; ?></a>
         <a href="#tab-news" class="right" data-toggle="tab"><?php echo $lib['новости']; ?></a>
       </div>
       <div class="row news-tab active" id="tab-actions">
         <div class="col-md-7">
           <div class="news-single">
-            <img src="/image/<?php echo $blogs['action']['blogs'][0]['image']; ?>" alt="">
+            <img src="/image/<?php echo $blogs[50]['blogs'][0]['image']; ?>" alt="">
             <div class="news-single-content">
               <h2><?php
-                if ( empty($blogs['action']['blogs'][0]['description']) ) {
-                  echo $blogs['action']['blogs'][0]['title'];
+                if ( empty($blogs[50]['blogs'][0]['description']) ) {
+                  echo $blogs[50]['blogs'][0]['title'];
                 } else {
-                  echo '<a href="/'.$blogs['action']['blogs'][0]['keyword'].'">'.$blogs['action']['blogs'][0]['title'].'</a>';
+                  echo '<a href="/'.$blogs[50]['blogs'][0]['keyword'].'">'.$blogs[50]['blogs'][0]['title'].'</a>';
                 } ?></h2>
-              <p><?php echo $blogs['action']['blogs'][0]['short_description']; ?></p>
-              <span class="time"><?php echo $blogs['action']['blogs'][0]['date_added']; ?></span>
+              <p><?php echo $blogs[50]['blogs'][0]['short_description']; ?></p>
+              <span class="time"><?php echo $blogs[50]['blogs'][0]['date_added']; ?></span>
             </div>
           </div>
         </div>
         <div class="col-md-5">
-          <?php $blogs_action = array_slice($blogs['action']['blogs'], 1, 3); ?>
+          <?php $blogs_action = array_slice($blogs[50]['blogs'], 1, 3); ?>
           <?php foreach ($blogs_action as $key => $post) { ?>
           <div class="news-single">
             <div class="news-single-content">
@@ -274,28 +277,28 @@ echo $header; ?>
           </div>
           <?php } ?>
           <div class="news-btn">
-            <a href="/<?php echo $blogs['action']['keyword']; ?>" class="red-btn"><?php echo $lib['все акции']; ?></a>
+            <a href="/<?php echo $blogs[50]['keyword']; ?>" class="red-btn"><?php echo $lib['все акции']; ?></a>
           </div>
         </div>
       </div>
       <div class="row news-tab" id="tab-news">
         <div class="col-md-7">
           <div class="news-single">
-            <img src="/image/<?php echo $blogs['news']['blogs'][0]['image']; ?>" alt="">
+            <img src="/image/<?php echo $blogs[54]['blogs'][0]['image']; ?>" alt="">
             <div class="news-single-content">
               <h2><?php
-                if ( empty($blogs['news']['blogs'][0]['description']) ) {
-                  echo $blogs['news']['blogs'][0]['title'];
+                if ( empty($blogs[54]['blogs'][0]['description']) ) {
+                  echo $blogs[54]['blogs'][0]['title'];
                 } else {
-                  echo '<a href="/'.$blogs['news']['blogs'][0]['keyword'].'">'.$blogs['news']['blogs'][0]['title'].'</a>';
+                  echo '<a href="/'.$blogs[54]['blogs'][0]['keyword'].'">'.$blogs[54]['blogs'][0]['title'].'</a>';
                 } ?></h2>
-              <p><?php echo $blogs['news']['blogs'][0]['short_description']; ?></p>
-              <span class="time"><?php echo $blogs['news']['blogs'][0]['date_added']; ?></span>
+              <p><?php echo $blogs[54]['blogs'][0]['short_description']; ?></p>
+              <span class="time"><?php echo $blogs[54]['blogs'][0]['date_added']; ?></span>
             </div>
           </div>
         </div>
         <div class="col-md-5">
-          <?php $blogs_action = array_slice($blogs['news']['blogs'], 1, 3); ?>
+          <?php $blogs_action = array_slice($blogs[54]['blogs'], 1, 3); ?>
           <?php foreach ($blogs_action as $key => $post) { ?>
           <div class="news-single">
             <div class="news-single-content">
@@ -311,7 +314,7 @@ echo $header; ?>
           </div>
           <?php } ?>
           <div class="news-btn">
-            <a href="/<?php echo $blogs['news']['keyword']; ?>" class="red-btn"><?php echo $lib['все акции']; ?></a>
+            <a href="/<?php echo $blogs[54]['keyword']; ?>" class="red-btn"><?php echo $lib['все акции']; ?></a>
           </div>
         </div>
       </div>
@@ -322,9 +325,9 @@ echo $header; ?>
 
   <section class="certificates">
     <div class="container-fluid">
-      <h2 class="main-title"><?php echo $blogs['garanty']['name'];?></h2>
+      <h2 class="main-title"><?php echo $blogs[52]['name'];?></h2>
       <div class="row">
-        <?php $blogs_action = array_shift($blogs['garanty']['blogs']); ?>
+        <?php $blogs_action = array_shift($blogs[52]['blogs']); ?>
         <div class="col-md-4 col-md-offset-1">
           <div class="certificates-info">
             <?php if($language_id == 1){ ?>
@@ -393,7 +396,7 @@ echo $header; ?>
           </div>
         </div>
         <div class="col-md-4">
-          <form action="/" class="review-form" id="comment_form">
+          <form action="/<?php echo $dir; ?>" class="review-form" id="comment_form">
             <h3><?php echo $lib['Оставить отзыв'];?></h3>
             <input type="text" placeholder="<?php echo $lib['Имя'];?>" name="name" required>
             <input type="text" placeholder="<?php echo $lib['Номер договора'];?>" name="email">
@@ -420,7 +423,7 @@ echo $header; ?>
           </div>
         </div>
         <div class="col-md-4">
-          <form action="/" class="feedback-sect-form js-form-call-me">
+          <form action="/<?php echo $dir; ?>" class="feedback-sect-form js-form-call-me">
             <input type="hidden" name="formname" value="call_me__home">
             <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
             <input type="text" placeholder="<?php echo $lib['Номер телефона'];?>" name="phone" required>
@@ -432,8 +435,8 @@ echo $header; ?>
   </section>
   <section class="offers">
     <div class="container">
-      <h2 class="main-title"><?php echo $blogs['our_services']['name'];?></h2>
-      <?php foreach($blogs['our_services']['blogs'] as $blog){ ?>
+      <h2 class="main-title"><?php echo $blogs[53]['name'];?></h2>
+      <?php foreach($blogs[53]['blogs'] as $blog){ ?>
       
         <div class="offers-single">
           <div class="offers-single-head">
