@@ -77,12 +77,11 @@ class ControllerCommonLanguage extends Controller {
 			
 			$sql = "SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($redirect) . "' LIMIT 1";
 			$query = $this->db->query($sql);
-//echo '<br>'.$sql;
+
 				if ($query->num_rows) {
 					$sql = "SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($query->row['query']) . "' AND language_id = '$language_id' LIMIT 1";
 					$query2 = $this->db->query($sql);
-//echo '<br>'.$sql;
-//die();
+
 					if ($query2->num_rows) {
 						$redirect = '/'.$query2->row['keyword'];
 					}
