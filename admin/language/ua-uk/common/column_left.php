@@ -4,6 +4,11 @@ $_['text_affiliate'] = 'Партнерська програма';
 $_['text_api'] = 'API';
 $_['text_attribute'] = 'Атрибути';
 $_['text_attribute_group'] = 'Групи атрибутів';
+$_['text_attribute2'] = 'Списки';
+$_['text_attribute_group2'] = 'Групи спискiв';
+$_['text_attribute3']          				= 'Футер Меню';
+$_['text_attribute_group3']          		= 'Группы меню';
+
 $_['text_backup'] = 'Імпорт / Експорт';
 $_['text_banner'] = 'Банери';
 $_['text_catalog'] = 'Каталог';

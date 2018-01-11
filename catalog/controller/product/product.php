@@ -4,7 +4,25 @@ class ControllerProductProduct extends Controller {
 
 	public function index() {
 		$this->load->language('product/product');
-
+		
+		//==============================================
+		$this->load->model('catalog/attribute2');
+		$this->load->model('catalog/attribute_group2');
+		$lists = $this->model_catalog_attribute2->getAttributes();
+		$groups = $this->model_catalog_attribute_group2->getAttributeGroups();
+		
+		$group_list = array();
+		foreach($lists as $index => $list){
+			if(!isset($group_list[$list['attribute_group_id']]['name'])){
+				$group_list[$list['attribute_group_id']] = $groups[$list['attribute_group_id']];
+			}
+			$group_list[$list['attribute_group_id']]['list'][$list['attribute_id']] = $list;
+		}
+		
+		$data['group_list'] = $group_list;
+		//==============================================
+		
+		
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -225,10 +243,11 @@ class ControllerProductProduct extends Controller {
 			$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 			$data['heading_title'] = $product_info['name'];
-
+$data['language_id'] = (int)$this->config->get('config_language_id');
 			$data['text_select'] = $this->language->get('text_select');
 			$data['text_manufacturer'] = $this->language->get('text_manufacturer');
 			$data['text_model'] = $this->language->get('text_model');
+			$data['text_detail'] = $this->language->get('text_detail');
 			$data['text_reward'] = $this->language->get('text_reward');
 			$data['text_points'] = $this->language->get('text_points');
 			$data['text_stock'] = $this->language->get('text_stock');
@@ -293,6 +312,11 @@ class ControllerProductProduct extends Controller {
 				$data['thumb'] = '';
 			}
 
+			$data['brand_list'] = $this->model_catalog_product->getProductTables($this->request->get['product_id']);
+			$data['addons'] = $this->model_catalog_product->getProductAttribute4s($this->request->get['product_id']);
+
+			
+			
 			$data['images'] = array();
 
 			$results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);

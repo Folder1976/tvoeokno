@@ -20,7 +20,8 @@ class ControllerCommonHome extends Controller {
 		$this->load->model('blog/blog');
 		$_GET['blog_id'] = 80;
 		$data['comment_blog'] = $this->model_blog_blog->getBlog(80);
-		
+		$data['footer_hi_text'] = $this->model_blog_blog->getBlog(91);
+		$data['language_id'] = (int)$this->config->get('config_language_id');
 		$results = $this->model_blog_blog->getCommentsByBlogId(80, 0, 10);
 
 		foreach ($results as $result) {
@@ -62,14 +63,17 @@ class ControllerCommonHome extends Controller {
 			}
 		}
 	
+		$this->load->model('design/banner');
+		$data['banner_sertificate'] = $this->model_design_banner->getBanner(9);
+	
 		$this->load->model('blog/blog');
  		$this->load->model('blog/blog_category');
  		
  		$res = $this->model_blog_blog_category->getBlogCategories();
  		
  		foreach($res as $index => $row){
- 			$data['blogs'][$row['keyword']] = $row;
- 			$data['blogs'][$row['keyword']]['blogs'] = $this->model_blog_blog->getBlogsByBlogCategoryId($row['blog_category_id']);
+ 			$data['blogs'][$row['blog_category_id']] = $row;
+ 			$data['blogs'][$row['blog_category_id']]['blogs'] = $this->model_blog_blog->getBlogsByBlogCategoryId($row['blog_category_id']);
  		}
  		
 		$_GET['blog_id'] = 80;

@@ -9,6 +9,18 @@ class Response {
 	}
 
 	public function redirect($url, $status = 302) {
+		
+		if(strpos($url, 'index.php?route=common/home') !== false OR $url == 'index.php'){
+			
+			$url = '/';
+			$lang = array_shift($_SESSION);
+			$dir = '';
+			$lang_key = 1;
+			if(isset($lang['language']) AND $lang['language'] == 'ua-uk'){
+				$url = '/'.UA_URL;
+			}
+		}
+		//echo $url.'--'.$lang['language'];
 		header('Location: ' . str_replace(array('&amp;', "\n", "\r"), array('&', '', ''), $url), true, $status);
 		exit();
 	}

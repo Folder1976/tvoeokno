@@ -36,7 +36,11 @@ class ControllerCommonHeader extends Controller {
 		$data['direction'] = $this->language->get('direction');
 
 		$data['name'] = $this->config->get('config_name');
-
+		$data['address'] = htmlspecialchars_decode ($this->config->get('config_address'), ENT_QUOTES);
+		$data['open'] = htmlspecialchars_decode ($this->config->get('config_open'), ENT_QUOTES);
+		$data['email'] = $this->config->get('config_email');
+		$data['language_id'] = (int)$this->config->get('config_language_id');
+		
 		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
 			$data['logo'] = $server . 'image/' . $this->config->get('config_logo');
 		} else {
@@ -52,6 +56,23 @@ class ControllerCommonHeader extends Controller {
 
 		$data['text_home'] = $this->language->get('text_home');
 
+		//==============================================
+		$this->load->model('catalog/attribute3');
+		$this->load->model('catalog/attribute_group3');
+		$lists = $this->model_catalog_attribute3->getAttributes();
+		$groups = $this->model_catalog_attribute_group3->getAttributeGroups();
+		
+		$group_list = array();
+		foreach($lists as $index => $list){
+			if(!isset($group_list[$list['attribute_group_id']]['name'])){
+				$group_list[$list['attribute_group_id']] = $groups[$list['attribute_group_id']];
+			}
+			$group_list[$list['attribute_group_id']]['list'][$list['attribute_id']] = $list;
+		}
+		
+		$data['group_list'] = $group_list;
+		//==============================================
+		
 		// Wishlist
 		if ($this->customer->isLogged()) {
 			$this->load->model('account/wishlist');
@@ -115,7 +136,7 @@ class ControllerCommonHeader extends Controller {
 
 					$children_data[] = array(
 						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+						'href'  => $this->url->link('product/category', 'path=' . $child['category_id'])
 					);
 				}
 
@@ -128,7 +149,7 @@ class ControllerCommonHeader extends Controller {
 				);
 			}
 		}
-
+		
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');

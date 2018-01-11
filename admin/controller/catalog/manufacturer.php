@@ -409,6 +409,37 @@ class ControllerCatalogManufacturer extends Controller {
 			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 		}
 
+		foreach($data['manufacturer_description'] as $language_id => $row){
+			
+			if (isset($this->request->post['manufacturer_description'][$language_id]['image1']) && is_file(DIR_IMAGE . $this->request->post['manufacturer_description'][$language_id]['image1'])) {
+				$data['manufacturer_description'][$language_id]['thumb1'] = $this->model_tool_image->resize($this->request->post['manufacturer_description'][$language_id]['image1'], 100, 100);
+			} elseif (isset($this->request->get['manufacturer_id'])) {
+				$data['manufacturer_description'][$language_id]['thumb1'] = $this->model_tool_image->resize($row['image1'], 100, 100);
+			} else {
+				$data['manufacturer_description'][$language_id]['thumb1'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+			}
+
+			
+			if (isset($this->request->post['manufacturer_description'][$language_id]['image2']) && is_file(DIR_IMAGE . $this->request->post['manufacturer_description'][$language_id]['image2'])) {
+				$data['manufacturer_description'][$language_id]['thumb2'] = $this->model_tool_image->resize($this->request->post['manufacturer_description'][$language_id]['image2'], 100, 100);
+			} elseif (isset($this->request->get['manufacturer_id'])) {
+				$data['manufacturer_description'][$language_id]['thumb2'] = $this->model_tool_image->resize($row['image2'], 100, 100);
+			} else {
+				$data['manufacturer_description'][$language_id]['thumb2'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+			}
+
+			
+			if (isset($this->request->post['manufacturer_description'][$language_id]['image3']) && is_file(DIR_IMAGE . $this->request->post['manufacturer_description'][$language_id]['image3'])) {
+				$data['manufacturer_description'][$language_id]['thumb3'] = $this->model_tool_image->resize($this->request->post['manufacturer_description'][$language_id]['image3'], 100, 100);
+			} elseif (isset($this->request->get['manufacturer_id'])) {
+				$data['manufacturer_description'][$language_id]['thumb3'] = $this->model_tool_image->resize($row['image3'], 100, 100);
+			} else {
+				$data['manufacturer_description'][$language_id]['thumb3'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+			}
+
+			
+		}
+		
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 
 		if (isset($this->request->post['sort_order'])) {
@@ -437,6 +468,7 @@ class ControllerCatalogManufacturer extends Controller {
 			}
 		}
 
+		/*
 		if (utf8_strlen($this->request->post['keyword']) > 0) {
 			$this->load->model('catalog/url_alias');
 
@@ -454,7 +486,8 @@ class ControllerCatalogManufacturer extends Controller {
 				$this->error['warning'] = $this->language->get('error_warning');
 			}
 		}
-
+		*/
+		
 		return !$this->error;
 	}
 

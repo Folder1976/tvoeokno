@@ -17,8 +17,14 @@ switch ($page_href) {
     $section_class = 'works';
     break;
 
-  default:
+  case 'chertog':
+  case 'zamer':
+  case 'service-master':
     $section_class = 'main-feedback';
+    break;
+
+  default:
+    $section_class = 'post';
     break;
 }
 ?>

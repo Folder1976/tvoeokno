@@ -32,6 +32,11 @@
         margin-top: 0
     }
 }
+@media (max-width: 1310px) {
+    .header-social {
+        display: none
+    }
+}
 @media (max-width: 1199px) {
     .header-social {
         display: none
@@ -888,6 +893,9 @@
     }
     .main-nav-list img {
         display: none
+    }
+    .main-nav-dropdown {
+        top: 200px;
     }
     .prices {
         padding: 20px 0

@@ -78,7 +78,72 @@
                   <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
                 </div>
               </div>
+      
+            <h2>Табы на странице</h2>
+          
+          <h1>Первый таб</h1>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-image1<?php echo $language['language_id']; ?>">Картинка для таб1</label>
+            <div class="col-sm-10"> <a href="" id="thumb-image1<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $manufacturer_description[$language['language_id']]['thumb1']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <input type="hidden" name="manufacturer_description[<?php echo $language['language_id']; ?>][image1]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['image1'] : ''; ?>" id="input-image1" />
             </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-tab1<?php echo $language['language_id']; ?>">Таб 1</label>
+                <div class="col-sm-10">
+                  <input type="text" name="manufacturer_description[<?php echo $language['language_id']; ?>][tab1]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab1'] : ''; ?>" placeholder="Заголовок таб1" id="input-tab1<?php echo $language['language_id']; ?>" class="form-control" />
+                </div>
+          </div>
+          <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-tab_description1<?php echo $language['language_id']; ?>">Описание 1</label>
+                <div class="col-sm-10">
+                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][tab_description1]" rows="5" placeholder="" id="input-tab_description1<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab_description1'] : ''; ?></textarea>
+                </div>
+            </div>
+         
+          
+          <h1>Второй таб</h1>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-image2<?php echo $language['language_id']; ?>">Картинка для таб2</label>
+            <div class="col-sm-10"> <a href="" id="thumb-image2<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $manufacturer_description[$language['language_id']]['thumb2']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <input type="hidden" name="manufacturer_description[<?php echo $language['language_id']; ?>][image2]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['image2'] : ''; ?>" id="input-image2" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-tab2<?php echo $language['language_id']; ?>">Таб 2</label>
+                <div class="col-sm-10">
+                  <input type="text" name="manufacturer_description[<?php echo $language['language_id']; ?>][tab2]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab2'] : ''; ?>" placeholder="Заголовок таб2" id="input-tab2<?php echo $language['language_id']; ?>" class="form-control" />
+                </div>
+          </div>
+          <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-tab_description2<?php echo $language['language_id']; ?>">Описание 2</label>
+                <div class="col-sm-10">
+                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][tab_description2]" rows="5" placeholder="" id="input-tab_description2<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab_description2'] : ''; ?></textarea>
+                </div>
+              </div>
+          
+          
+          <h1>Третий таб</h1>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-image3<?php echo $language['language_id']; ?>">Картинка для таб3</label>
+            <div class="col-sm-10"> <a href="" id="thumb-image3<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $manufacturer_description[$language['language_id']]['thumb3']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+              <input type="hidden" name="manufacturer_description[<?php echo $language['language_id']; ?>][image3]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['image3'] : ''; ?>" id="input-image3" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-tab3<?php echo $language['language_id']; ?>">Таб 3</label>
+                <div class="col-sm-10">
+                  <input type="text" name="manufacturer_description[<?php echo $language['language_id']; ?>][tab3]" value="<?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab3'] : ''; ?>" placeholder="Заголовок таб3" id="input-tab1<?php echo $language['language_id']; ?>" class="form-control" />
+                </div>
+          </div>
+          <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-tab_description2<?php echo $language['language_id']; ?>">Описание 3</label>
+                <div class="col-sm-10">
+                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][tab_description3]" rows="5" placeholder="" id="input-tab_description3<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['tab_description3'] : ''; ?></textarea>
+                </div>
+              </div>
+          </div>
+          
           <?php } ?>
 
           <div class="form-group">
@@ -112,15 +177,34 @@
               </div>
             </div>
           </div>
+          
+          <?php
+                function translitArtkl($str) {
+                    $rus = array('и','і','є','Є','ї','\"','\'','.',' ','А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+                    $lat = array('u','i','e','E','i','','','','-','A', 'B', 'V', 'G', 'D', 'E', 'E', 'Gh', 'Z', 'I', 'Y', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'F', 'H', 'C', 'Ch', 'Sh', 'Sch', 'Y', 'Y', 'Y', 'E', 'Yu', 'Ya', 'a', 'b', 'v', 'g', 'd', 'e', 'e', 'gh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh', 'sch', 'y', 'y', 'y', 'e', 'yu', 'ya');
+                  return str_replace($rus, $lat, $str);
+                }
+          ?>
+          
+          <?php foreach ($languages as $language) { ?>
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
+            <label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?>
+            <img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?>
+            </span></label>
             <div class="col-sm-10">
-              <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
-              <?php if ($error_keyword) { ?>
-              <div class="text-danger"><?php echo $error_keyword; ?></div>
-              <?php } ?>
+              <?php
+                $name = $manufacturer_description[$language['language_id']]['name'];
+                if(isset($keyword[$language['language_id']]) AND $keyword[$language['language_id']] != ''){
+                  $alias = $keyword[$language['language_id']];
+                }else{
+                  $alias = translitArtkl($name);
+                }
+              ?>
+              <input type="text" name="keyword[<?php echo $language['language_id'] ;?>]" value="<?php echo $alias; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
             </div>
           </div>
+              
+        <?php } ?> 
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
             <div class="col-sm-10"> <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
@@ -141,7 +225,7 @@
     <?php if ($ckeditor) { ?>
     <?php foreach ($languages as $language) { ?>
       ckeditorInit('input-description<?php echo $language['language_id']; ?>', getURLVar('token'));
-      <?php } ?>
+       <?php } ?>
     <?php } ?>
   //--></script>
   <script type="text/javascript"><!--

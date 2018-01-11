@@ -52,88 +52,68 @@
   <div class="brand-info">
     <div class="container">
       <div class="news-nav">
-        <?php //foreach ($variable as $key => $value) { ?>
+        <?php if ( !empty($tab1) || !empty($tab2) || !empty($tab3) ) { ?>
+        <ul>
+          <?php if ( !empty($tab1) ) { ?>
+          <li><a href="#tab1" class="left" data-toggle="tab"><?php echo $tab1; ?></a></li>
+          <?php } ?>
 
-        <?php //} ?>
-        <a href="#" class="active left">veka euroline</a>
-        <a href="#" class="center">veka softline</a>
-        <a href="#" class="right">veka softline 82</a>
+          <?php if ( !empty($tab2) ) { ?>
+          <li><a href="#tab2" class="center" data-toggle="tab"><?php echo $tab2; ?></a></li>
+          <?php } ?>
+
+          <?php if ( !empty($tab3) ) { ?>
+          <li><a href="#tab3" class="right" data-toggle="tab"><?php echo $tab3; ?></a></li>
+          <?php } ?>
+        </ul>
+        <?php } ?>
       </div>
-      <div class="col-md-7">
-        <div class="brand-info-img">
-          <img src="/catalog/view/theme/default/image/veka-euroline-58.jpg" alt="">
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="brand-info-block">
-          <h3>Veka Euroline – трехкамерная экономия</h3>
-          <p>Металлопластиковые системы Veka Euroline представляют собой трехкамерный профиль с оптимальными характеристиками. Он лучшим образом подойдет для качественного и одновременно экономного остекления любых помещений и балконов. При глубине монтажа 58 мм рамы способны вмещать стеклоблоки до 32 мм. В числе главных преимуществ Veka Euroline:</p>
-        </div>
-      </div>
-      <div class="col-md-7">
-        <div class="brand-info-block">
-          <h3 class="charact">Технические характеристики</h3>
-          <table class="brand-info-table">
-            <tbody>
-              <tr>
-                <td>Вид</td>
-                <td>2279</td>
-              </tr>
-              <tr>
-                <td>Стеклопакет</td>
-                <td>2279</td>
-              </tr>
-              <tr>
-                <td>Монтажная глубина</td>
-                <td>2279</td>
-              </tr>
-              <tr>
-                <td>Профильная система</td>
-                <td>2279</td>
-              </tr>
-              <tr>
-                <td>Цвет</td>
-                <td>2279</td>
-              </tr>
-              <tr>
-                <td>Камерность профиля</td>
-                <td>2279</td>
-              </tr>
-              <tr>
-                <td>Толщина стеклопакета</td>
-                <td>2279</td>
-              </tr>
-              <tr>
-                <td>Фуртитура</td>
-                <td>2279</td>
-              </tr>
-              <tr>
-                <td>Коэффициент теплопередачи</td>
-                <td>2279</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="brand-info-block">
-          <h3 class="star">Преимущество окон VEKA</h3>
-          <ul class="circle-list">
-            <li>Доступность цены. При этом даже в бюджетном варианте окна Века будут оставаться престижным выбором.</li>
-            <li>Легкий вес систем ПВХ. Этот фактор может стать решающим в вопросе остекления балконов старых домов.</li>
-            <li>Отличная статичность. Жесткость конструкций обеспечивается замкнутым армированием.</li>
-            <li>Достойная тепло-, звукоизоляция и герметичность.</li>
-          </ul>
-        </div>
-        <div class="brand-info-block">
-          <h3 class="add">Дополнительная комплектация</h3>
-          <ul class="check-list">
-            <li>Подоконник 26 см - 106 грн</li>
-            <li>Отлив 15 см - 70 грн</li>
-            <li>Москитная сетка - 120 грн</li>
-            <li>Установка окна 486 грн</li>
-          </ul>
-        </div>
+      <div class="tab-content">
+        <?php if ( !empty($tab1) || !empty($tab2) || !empty($tab3) ) { ?>
+
+          <?php if ( !empty($tab1) ) { ?>
+          <div class="tab-pane" id="tab1">
+            <?php if ( !empty($image1) ) { ?>
+            <div class="col-md-7">
+              <div class="brand-info-img">
+                <img src="/image/<?php echo $image1; ?>" alt="">
+              </div>
+            </div>
+            <?php } ?>
+
+            <?php echo $tab_description1; ?>
+          </div>
+          <?php } ?>
+
+          <?php if ( !empty($tab2) ) { ?>
+          <div class="tab-pane" id="tab2">
+            <?php if ( !empty($image2) ) { ?>
+            <div class="col-md-7">
+              <div class="brand-info-img">
+                <img src="/image/<?php echo $image2; ?>" alt="">
+              </div>
+            </div>
+            <?php } ?>
+
+            <?php echo $tab_description2; ?>
+          </div>
+          <?php } ?>
+
+          <?php if ( !empty($tab3) ) { ?>
+          <div class="tab-pane" id="tab3">
+            <?php if ( !empty($image3) ) { ?>
+            <div class="col-md-7">
+              <div class="brand-info-img">
+                <img src="/image/<?php echo $image3; ?>" alt="">
+              </div>
+            </div>
+            <?php } ?>
+
+            <?php echo $tab_description3; ?>
+          </div>
+          <?php } ?>
+
+        <?php } ?>
       </div>
     </div>
   </div>
@@ -175,28 +155,32 @@
                   <tr>
                     <td><?php echo $products[$product_id]['name']; ?></td>
                     <td><?php
-                      $opt = $products[$product_id]['option'][0]['product_option_value'][0];
-                      // var_dump($products[$product_id], $opt);
-                      if ( $opt['price'] ) {
-                        if ( $opt['price_prefix'] == '+' ) {
-                          echo $products[$product_id]['price'] + str_replace(' грн.', '', $opt['price']);
+                      if ( isset($products[$product_id]['option'][0]['product_option_value'][0]) ) {
+                        $opt = $products[$product_id]['option'][0]['product_option_value'][0];
+                        // var_dump($products[$product_id], $opt);
+                        if ( $opt['price'] ) {
+                          if ( $opt['price_prefix'] == '+' ) {
+                            echo str_replace(' грн.', '', $products[$product_id]['price']) + str_replace(' грн.', '', $opt['price']).' грн';
+                          } else {
+                            echo str_replace(' грн.', '', $products[$product_id]['price']) - str_replace(' грн.', '', $opt['price']).' грн';
+                          }
                         } else {
-                          echo $products[$product_id]['price'] - str_replace(' грн.', '', $opt['price']);
+                          echo $products[$product_id]['price'];
                         }
-                      } else {
-                        echo $products[$product_id]['price'];
                       }?></td>
                     <td><?php
-                      $opt = $products[$product_id]['option'][0]['product_option_value'][1];
-                      // var_dump($products[$product_id], $opt);
-                      if ( $opt['price'] ) {
-                        if ( $opt['price_prefix'] == '+' ) {
-                          echo $products[$product_id]['price'] + str_replace(' грн.', '', $opt['price']);
+                      if ( isset($products[$product_id]['option'][0]['product_option_value'][1]) ) {
+                        $opt = $products[$product_id]['option'][0]['product_option_value'][1];
+                        // var_dump($products[$product_id], $opt);
+                        if ( $opt['price'] ) {
+                          if ( $opt['price_prefix'] == '+' ) {
+                            echo str_replace(' грн.', '', $products[$product_id]['price']) + str_replace(' грн.', '', $opt['price']).' грн';
+                          } else {
+                            echo str_replace(' грн.', '', $products[$product_id]['price']) - str_replace(' грн.', '', $opt['price']).' грн';
+                          }
                         } else {
-                          echo $products[$product_id]['price'] - str_replace(' грн.', '', $opt['price']);
+                          echo $products[$product_id]['price'];
                         }
-                      } else {
-                        echo $products[$product_id]['price'];
                       }?></td>
 
                   </tr>
@@ -207,7 +191,6 @@
             <div class="col-md-3">
               <div class="prices-single-right">
                 <?php echo $category_info['description']; ?>
-                <?php // echo $categorys[$category_id]['description']; ?>
               </div>
             </div>
           </div>
@@ -322,6 +305,7 @@
 <?php echo $content_bottom; ?>
 
 <script>
+$('.news-nav li:first a').tab('show');
 $('.prices-type li:first a').tab('show');
 </script>
 

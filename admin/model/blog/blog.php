@@ -46,13 +46,6 @@ class ModelBlogBlog extends Model {
 			}
 		}
 		
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET 
-			query = 'blog_id=" . (int)$blog_id . "', 
-			keyword = '" . $this->db->escape($data['keyword']) . "'
-			");
-		}
-		
 		if (isset($data['this_blog_category'])) {
 			foreach ($data['this_blog_category'] as $blog_category_id) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "blog_to_category SET 
@@ -77,6 +70,15 @@ class ModelBlogBlog extends Model {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "blog_related_products SET 
 				blog_id = '" . (int)$blog_id . "', 
 				related_id = '" . (int)$related_id . "'");
+			}
+		}
+		
+		if (isset($data['keyword'])) {
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'blog_id=" . (int)$blog_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
 			}
 		}
 		
@@ -133,15 +135,6 @@ class ModelBlogBlog extends Model {
 			}
 		}
 		
-		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'blog_id=" . (int)$blog_id. "'");
-		
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET 
-			query = 'blog_id=" . (int)$blog_id . "', 
-			keyword = '" . $this->db->escape($data['keyword']) . "'
-			");
-		}
-		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "blog_to_category WHERE blog_id = '" . (int)$blog_id . "'");
 		
 		if (isset($data['this_blog_category'])) {
@@ -175,6 +168,17 @@ class ModelBlogBlog extends Model {
 			}
 		}
 		
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'blog_id=" . (int)$blog_id . "'");
+
+		if (isset($data['keyword'])) {
+			foreach ($data['keyword'] as $language_id => $keyword) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+								 query = 'blog_id=" . (int)$blog_id . "',
+								 language_id = '" . (int)$language_id . "',
+								 keyword = '" . $this->db->escape($keyword) . "'");
+			}
+		}
+		
 		$this->cache->delete('blog');
 	}
 	
@@ -193,13 +197,28 @@ class ModelBlogBlog extends Model {
 	}	
 
 	public function getBlog($blog_id) {
-		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE 
-		query = 'blog_id=" . (int)$blog_id . "') 
-		AS keyword FROM " . DB_PREFIX . "blog WHERE 
-		blog_id = '" . (int)$blog_id . "'
-		");
+		$query = $this->db->query("SELECT DISTINCT *  FROM " . DB_PREFIX . "blog WHERE blog_id = '" . (int)$blog_id . "'");
 		
-		return $query->row;
+		
+
+		$return = $query->row;
+		
+		$return['keyword'] = $this->getKeyword($blog_id);
+		
+		return $return;
+	}
+	
+	public function getKeyword($blog_id) {
+		
+		$sql = "SELECT language_id, keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'blog_id=" . (int)$blog_id . "'";
+		
+		$query = $this->db->query($sql);
+		$return = array();
+		foreach($query->rows as $row){
+			$return[$row['language_id']] = $row['keyword'];
+		}
+
+		return $return;
 	}
 		
 	public function getBlogs($data = array()) {

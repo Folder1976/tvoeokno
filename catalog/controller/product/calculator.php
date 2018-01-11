@@ -1,6 +1,24 @@
 <?php
 class ControllerProductCalculator extends Controller {
 	public function index() {
+		
+		//==============================================
+		$this->load->model('catalog/attribute2');
+		$this->load->model('catalog/attribute_group2');
+		$lists = $this->model_catalog_attribute2->getAttributes();
+		$groups = $this->model_catalog_attribute_group2->getAttributeGroups();
+		
+		$group_list = array();
+		foreach($lists as $index => $list){
+			if(!isset($group_list[$list['attribute_group_id']]['name'])){
+				$group_list[$list['attribute_group_id']] = $groups[$list['attribute_group_id']];
+			}
+			$group_list[$list['attribute_group_id']]['list'][$list['attribute_id']] = $list;
+		}
+		
+		$data['group_list'] = $group_list;
+		//==============================================
+		
 		$this->load->language('product/calculator');
 
 		$this->load->model('catalog/calculator');
@@ -10,7 +28,7 @@ class ControllerProductCalculator extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
+$data['language_id'] = (int)$this->config->get('config_language_id');
 		$data['text_index'] = $this->language->get('text_index');
 		$data['text_empty'] = $this->language->get('text_empty');
 

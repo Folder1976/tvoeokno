@@ -9,6 +9,16 @@ jQuery.fn.extend({
   }
 });
 
+
+$('.side-nav').on('mouseover', 'li a', function(){
+  $(this).css('right', '-' + $(this).width() + 'px');
+});
+$('.side-nav').on('mouseout', 'li a', function(){
+  $(this).css('right', '-63px');
+});
+
+
+
 var map;
 
 function initMap() {
@@ -48,11 +58,14 @@ jQuery(document).ready(function($) {
     $.ajax({
       url: '/index.php?route=account/universalform',
       type: 'post',
-      // dataType: 'json',
-      dataType: 'html',
+      dataType: 'json',
+      //dataType: 'html',
       data: $(this).serialize(),
       success: function(json) {
         var c = $('#fb-modal');
+
+         
+        console.log(json);
 
         if (json['success']) {
           c.html('<h2>Форма отправлена</h2>');
@@ -86,6 +99,13 @@ jQuery(document).ready(function($) {
   // модалка "Получить скидку"
   $('.js-order-discount').on('click', function(){
     var c = $('#modal-discount');
+    fb_open(c);
+    return false;
+  });
+
+  // модалка "Получить скидку"
+  $('.js-send-letter-director').on('click', function(){
+    var c = $('#modal-send-letter-director');
     fb_open(c);
     return false;
   });
@@ -282,72 +302,58 @@ jQuery(document).ready(function($) {
   });
 
   var heightSlider = document.getElementById('height-slider');
-  heightSlider.style.height = '400px';
-  var heightValues = [
-    document.getElementById('price-lower'),
-    document.getElementById('price-upper')
-  ];
-  noUiSlider.create(heightSlider, {
-    start: [0],
-    connect: true,
-    tooltips: true,
-    step: 1,
-    orientation: 'vertical',
-    direction: 'rtl',
-    range: {
-      'min': 0,
-      'max': 2400,
-    },
-    format: {
-      to: function ( value ) {
-      return value + ' млн.р.';
+  if ( heightSlider ) {
+    heightSlider.style.height = '400px';
+    var heightValues = [
+      document.getElementById('price-lower'),
+      document.getElementById('price-upper')
+    ];
+    noUiSlider.create(heightSlider, {
+      start: [1000],
+      connect: true,
+      tooltips: true,
+      step: 1,
+      orientation: 'vertical',
+      direction: 'rtl',
+      range: {
+        'min': 0,
+        'max': 2400,
       },
-      from: function ( value ) {
-      return value.replace(',-', '');
-      }
-    }
-  });
-  // heightSlider.noUiSlider.on('update', function( values, handle ) {
-  //   var value = values[handle];
-
-  //   if ( handle ) {
-  //     document.getElementById('price-upper').value = value;
-  //   } else {
-  //     document.getElementById('price-lower').value = value;
-  //   }
-  // });
+    });
+    heightSlider.noUiSlider.on('update', function( values, handle ) {
+      var value = values[handle];
+      $('#height_window_input').val(value);
+    });
+    $('#height_window_input').on('change', function(){
+      heightSlider.noUiSlider.set(this.value);
+    });
+  }
 
   var widthSlider = document.getElementById('width-slider');
-  widthSlider.style.width = '400px';
-  var heightValues = [
-    document.getElementById('price-lower'),
-    document.getElementById('price-upper')
-  ];
-  noUiSlider.create(widthSlider, {
-    start: [0],
-    connect: true,
-    tooltips: true,
-    step: 1,
-    range: {
-      'min': 0,
-      'max': 2400,
-    },
-    format: {
-      to: function ( value ) {
-      return value + ' млн.р.';
+  if ( widthSlider ) {
+    widthSlider.style.width = '400px';
+    var heightValues = [
+      document.getElementById('price-lower'),
+      document.getElementById('price-upper')
+    ];
+    noUiSlider.create(widthSlider, {
+      start: [500],
+      connect: true,
+      tooltips: true,
+      step: 1,
+      range: {
+        'min': 0,
+        'max': 2400,
       },
-      from: function ( value ) {
-      return value.replace(',-', '');
-      }
-    }
-  });
-  // widthSlider.noUiSlider.on('update', function( values, handle ) {
-  //   var value = values[handle];
+    });
+    widthSlider.noUiSlider.on('update', function( values, handle ) {
+      var value = values[handle];
+      $('#width_window_input').val(value);
+    });
+    $('#width_window_input').on('change', function(){
+      widthSlider.noUiSlider.set(this.value);
+    });
+  }
 
-  //   if ( handle ) {
-  //     document.getElementById('price-upper').value = value;
-  //   } else {
-  //     document.getElementById('price-lower').value = value;
-  //   }
-  // });
+
 });

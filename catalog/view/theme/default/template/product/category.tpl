@@ -1,4 +1,32 @@
-<?php echo $header; ?>
+<?php
+  $lands = array(
+                'Фильтр' => 'Фільтр',
+                'ПОДРОБНЕЕ' => 'ДЕТАЛЬНІШЕ',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                '' => '',
+                );
+  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+   $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = 'ua';}
+    //Пример
+    //<?php echo $lib['русская фраза']; ? >
+echo $header; ?>
+<style>
+.main-sect { display: none; }
+</style>
+
 <section class="compared window-price">
   <div class="breadcrumbs">
     <div class="container">
@@ -38,7 +66,7 @@
         <?php if ( isset($_GET['filter']) ) { ?>
         <?php $filter_arr = explode(',', $_GET['filter']); ?>
         <div class="filter">
-          <p>Фильтр:</p>
+          <p><?php echo $lib['Фильтр']; ?>:</p>
           <ul class="filter-list">
             <?php foreach ($filter_arr as $value) { ?>
               <li><a href="javascript:void(0)" class="js-filter-remove" data-id="<?php echo $value; ?>"><?php echo $value; ?><span>×</span></a></li>
@@ -128,7 +156,7 @@
                 </div>
                 <p class="name"><?php echo $product['name']; ?></p>
                 <a href="#" class="favorite-link" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a>
-                <a href="<?php echo $product['href']; ?>" class="more green-btn">пОДРОБНЕЕ</a>
+                <a href="<?php echo $product['href']; ?>" class="more green-btn"><?php echo $lib['ПОДРОБНЕЕ']; ?></a>
               </div>
 
 

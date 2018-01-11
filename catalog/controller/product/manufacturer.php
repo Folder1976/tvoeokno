@@ -169,6 +169,18 @@ class ControllerProductManufacturer extends Controller {
 
 			$data['description'] = html_entity_decode($manufacturer_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['short_description'] = html_entity_decode($manufacturer_info['short_description'], ENT_QUOTES, 'UTF-8');
+			
+			$data['image1'] = $manufacturer_info['image1'];
+			$data['tab1'] = html_entity_decode($manufacturer_info['tab1'], ENT_QUOTES, 'UTF-8');
+			$data['tab_description1'] = html_entity_decode($manufacturer_info['tab_description1'], ENT_QUOTES, 'UTF-8');
+
+			$data['image2'] = $manufacturer_info['image2'];
+			$data['tab2'] = html_entity_decode($manufacturer_info['tab2'], ENT_QUOTES, 'UTF-8');
+			$data['tab_description2'] = html_entity_decode($manufacturer_info['tab_description2'], ENT_QUOTES, 'UTF-8');
+
+			$data['image3'] = $manufacturer_info['image3'];
+			$data['tab3'] = html_entity_decode($manufacturer_info['tab3'], ENT_QUOTES, 'UTF-8');
+			$data['tab_description3'] = html_entity_decode($manufacturer_info['tab_description3'], ENT_QUOTES, 'UTF-8');
 
 			$data['text_empty'] = $this->language->get('text_empty');
 			$data['text_quantity'] = $this->language->get('text_quantity');

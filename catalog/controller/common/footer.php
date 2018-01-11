@@ -37,6 +37,28 @@ class ControllerCommonFooter extends Controller {
 			}
 		}
 
+		
+		
+		//==============================================
+		$this->load->model('catalog/attribute3');
+		$this->load->model('catalog/attribute_group3');
+		$lists = $this->model_catalog_attribute3->getAttributes();
+		$groups = $this->model_catalog_attribute_group3->getAttributeGroups();
+		
+		$group_list = array();
+		foreach($lists as $index => $list){
+			if(!isset($group_list[$list['attribute_group_id']]['name'])){
+				$group_list[$list['attribute_group_id']] = $groups[$list['attribute_group_id']];
+			}
+			$group_list[$list['attribute_group_id']]['list'][$list['attribute_id']] = $list;
+		}
+		
+		$data['group_list'] = $group_list;
+		//==============================================
+		$data['address'] = htmlspecialchars_decode ($this->config->get('config_address'), ENT_QUOTES);
+		$data['open'] = htmlspecialchars_decode ($this->config->get('config_open'), ENT_QUOTES);
+		$data['email'] = $this->config->get('config_email');
+		
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);
 		$data['sitemap'] = $this->url->link('information/sitemap');
@@ -53,6 +75,8 @@ class ControllerCommonFooter extends Controller {
 		$data['login'] = $this->url->link('account/login', '', true);
 		$data['logout'] = $this->url->link('account/logout', '', true);
 
+		$data['language_id'] = (int)$this->config->get('config_language_id');
+		
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
 		// Whos Online

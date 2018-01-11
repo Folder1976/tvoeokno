@@ -3,7 +3,27 @@ class ModelCatalogProduct extends Model {
 	public function updateViewed($product_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}
+	public function getProductTables($product_id){
+		
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_table WHERE product_id = '" . (int)$product_id . "' GROUP BY sort_order");
+		
+		return $query->rows;
+		
+	}
+	public function getProductAttribute4s($product_id) {
+		$product_attribute_data = array();
 
+		$product_attribute_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "attribute4 A
+														LEFT JOIN " . DB_PREFIX . "attribute_description4 AD ON A.attribute4_id = AD.attribute4_id AND AD.language_id = '" . (int)$this->config->get('config_language_id') . "'
+														WHERE product_id = '" . (int)$product_id . "' ORDER BY sort_order");
+
+		foreach ($product_attribute_query->rows as $product_attribute) {
+			$product_attribute_data[$product_attribute['attribute4_id']] = $product_attribute;
+			
+		}
+
+		return $product_attribute_data;
+	}
 	public function getProduct($product_id) {
 		$query = $this->db->query("SELECT DISTINCT *, pd.name AS name, p.image, p2c.category_id,
 								  (SELECT md.name FROM " . DB_PREFIX . "manufacturer_description md WHERE md.manufacturer_id = p.manufacturer_id AND md.language_id = '" . (int)$this->config->get('config_language_id') . "') AS manufacturer,
@@ -325,8 +345,9 @@ class ModelCatalogProduct extends Model {
 	public function getProductAttributes($product_id) {
 		$product_attribute_group_data = array();
 
-		$product_attribute_group_query = $this->db->query("SELECT ag.attribute_group_id, agd.name FROM " . DB_PREFIX . "product_attribute pa LEFT JOIN " . DB_PREFIX . "attribute a ON (pa.attribute_id = a.attribute_id) LEFT JOIN " . DB_PREFIX . "attribute_group ag ON (a.attribute_group_id = ag.attribute_group_id) LEFT JOIN " . DB_PREFIX . "attribute_group_description agd ON (ag.attribute_group_id = agd.attribute_group_id) WHERE pa.product_id = '" . (int)$product_id . "' AND agd.language_id = '" . (int)$this->config->get('config_language_id') . "' GROUP BY ag.attribute_group_id ORDER BY ag.sort_order, agd.name");
-
+		$sql = "SELECT ag.attribute_group_id, agd.name FROM " . DB_PREFIX . "product_attribute pa LEFT JOIN " . DB_PREFIX . "attribute a ON (pa.attribute_id = a.attribute_id) LEFT JOIN " . DB_PREFIX . "attribute_group ag ON (a.attribute_group_id = ag.attribute_group_id) LEFT JOIN " . DB_PREFIX . "attribute_group_description agd ON (ag.attribute_group_id = agd.attribute_group_id) WHERE pa.product_id = '" . (int)$product_id . "' AND agd.language_id = '" . (int)$this->config->get('config_language_id') . "' GROUP BY ag.attribute_group_id ORDER BY ag.sort_order, agd.name";
+		$product_attribute_group_query = $this->db->query($sql);
+		
 		foreach ($product_attribute_group_query->rows as $product_attribute_group) {
 			$product_attribute_data = array();
 

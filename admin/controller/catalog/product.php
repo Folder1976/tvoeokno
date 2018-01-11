@@ -1173,6 +1173,25 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
+		//table
+		if (isset($this->request->post['product_table'])) {
+			$data['product_tables'] = $this->request->post['product_table'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$data['product_tables'] = $this->model_catalog_product->getProductTables($this->request->get['product_id']);
+		} else {
+			$data['product_tables'] = array();
+		}
+
+
+		// Attributes4 Дополнительно
+		if (isset($this->request->post['product_attribute4'])) {
+			$data['product_attribute4s'] = $this->request->post['product_attribute4'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$data['product_attribute4s'] = $this->model_catalog_product->getProductAttribute4s($this->request->get['product_id']);
+		} else {
+			$data['product_attribute4s'] = array();
+		}
+		
 		// Attributes
 		$this->load->model('catalog/attribute');
 
@@ -1439,7 +1458,7 @@ class ControllerCatalogProduct extends Controller {
 		if ((utf8_strlen($this->request->post['model']) < 1) || (utf8_strlen($this->request->post['model']) > 64)) {
 			$this->error['model'] = $this->language->get('error_model');
 		}
-
+/*
 		if (utf8_strlen($this->request->post['keyword']) > 0) {
 			$this->load->model('catalog/url_alias');
 
@@ -1453,7 +1472,7 @@ class ControllerCatalogProduct extends Controller {
 				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
 			}
 		}
-
+*/
 		if ($this->error && !isset($this->error['warning'])) {
 			$this->error['warning'] = $this->language->get('error_warning');
 		}
