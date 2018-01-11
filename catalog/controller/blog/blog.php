@@ -318,6 +318,7 @@ class ControllerBlogBlog extends Controller {
       		$data['text_write_comment'] = $this->language->get('text_write_comment');
       		$data['entry_name'] = $this->language->get('entry_name');
       		$data['entry_email'] = $this->language->get('entry_email');
+			$data['entry_adress'] = $this->language->get('entry_adress');
 			$data['entry_comment'] = $this->language->get('entry_comment');
       		$data['text_comments'] = $this->language->get('text_comments');
 			$data['text_write_comment'] = $this->language->get('text_write_comment');

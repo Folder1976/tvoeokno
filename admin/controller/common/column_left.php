@@ -124,7 +124,7 @@ class ControllerCommonColumnLeft extends Controller {
 			
 			if ($attribute2) {
 				$catalog[] = array(
-					'name'	   => $this->language->get('text_attribute2'),
+					'name'	   => 'Калькулятор',
 					'href'     => '',
 					'children' => $attribute2
 				);

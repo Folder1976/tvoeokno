@@ -163,6 +163,7 @@ class ModelBlogBlog extends Model {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "blog_comment SET 
 		name = '" . $this->db->escape($data['name']) . "', 
 		email = '" . $this->db->escape($data['email']) . "', 
+		adress = '" . $this->db->escape($data['adress']) . "', 
 		blog_id = '" . (int)$blog_id . "', 
 		comment = '" . $this->db->escape($data['comment']) . "', 
 		status = '" . $comment_status . "',
