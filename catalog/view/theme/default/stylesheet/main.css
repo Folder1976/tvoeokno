@@ -2134,7 +2134,7 @@ textarea {
       position: absolute;
       top: 0;
       right: 100%;
-      width: 213px; }
+      width: 233px; }
     .window-size-bottom .count {
       font-size: 0; }
       .window-size-bottom .count p {
@@ -4560,7 +4560,7 @@ textarea {
 }
 
 .blog-blog .main_thumb img {
-  float: left;
+  float: right;
 }
 
 /* Informations */
@@ -4717,7 +4717,7 @@ textarea {
 .window-size-bottom .count input {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  width: 72px;
+  width: 90px;
   text-align: center;
   color: #0E5887;
   font-size: 18px;
@@ -4762,5 +4762,7 @@ textarea {
 .btn.btn-primary:hover {
   background: #00C01B !important;
 }
-
+.google-map iframe {
+    width: 100%;
+}
 /*********************/

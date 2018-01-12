@@ -50,11 +50,7 @@ switch ($page_href) {
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
     <div class="blog blog_post">
-    
-      <?php if($main_thumb && $blogsetting_post_thumb && strpos($blogsetting_post_thumb, 'no_image') === false){ ?>
-      <div class="main_thumb"><img src="<?php echo $blogsetting_post_thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" /></div>
-      <?php } ?>
-      
+
     	<h1 class="main-title"><?php echo $heading_title; ?></h1>
     	<div class="blog_stats">
     	<?php if($post_author_status){ ?><span><i class="fa fa-user"></i><b class="text"><?php echo $text_posted_by; ?></b> <b class="hl"><?php echo $author; ?></b></span><?php } ?>
@@ -64,6 +60,9 @@ switch ($page_href) {
     	</div>
     </div>
 
+      <?php if($main_thumb && $blogsetting_post_thumb && strpos($blogsetting_post_thumb, 'no_image') === false){ ?>
+      <div class="main_thumb"><img src="<?php echo $blogsetting_post_thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" /></div>
+      <?php } ?>
     <div class="main_description">
     	<?php echo $description; ?>
     </div>

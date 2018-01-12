@@ -152,7 +152,7 @@ echo $header; ?>
             <div class="col-md-4 col-sm-4">
               <div class="favorites-single">
                 <div class="img">
-                  <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>">
+                  <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>"></a>
                 </div>
                 <p class="name"><?php echo $product['name']; ?></p>
                 <a href="#" class="favorite-link" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a>
