@@ -51,13 +51,19 @@
               <div class="tab-content">
                 <?php foreach ($languages as $language) { ?>
                 <div class="tab-pane" id="language<?php echo $language['language_id']; ?>">
-                  <div class="form-group required">
+                  <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-name<?php echo $language['language_id']; ?>"><?php echo $entry_name; ?></label>
                     <div class="col-sm-10">
                       <input type="text" name="product_description[<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" class="form-control" />
                       <?php if (isset($error_name[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_name[$language['language_id']]; ?></div>
                       <?php } ?>
+                    </div>
+                  </div>
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-umova<?php echo $language['language_id']; ?>">Отдельные условия</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="product_description[<?php echo $language['language_id']; ?>][umova]" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['umova'] : ''; ?>" placeholder="При заказе с установкой*" id="input-umova<?php echo $language['language_id']; ?>" class="form-control" />
                     </div>
                   </div>
                   <div class="form-group">
@@ -357,6 +363,38 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-links">
+							
+							<div class="form-group">
+                <label class="col-sm-2 control-label" for="input-tab1">Таб на главную страницу</label>
+                <div class="col-sm-10">
+									<?php $tabs = array(
+																			'1' => 'Двухстворчатое окно',
+																			'2' => 'Трехстворчатое окно',
+																			'3' => 'Балконный блок',
+																			'4' => 'Остекление лоджии',
+																			); ?>
+							    <table class="table table-striped">
+                    <?php foreach ($tabs as $id => $tab) { ?>
+                    <tr>
+                      <td class="checkbox">
+                        <label>
+                          <?php if ($id == $main_page_tab) { ?>
+                          <input type="checkbox" name="main_page_tab[<?php echo $id; ?>][]" value="<?php echo $id; ?>" checked="checked" />
+                          <?php echo $tab; ?>
+                          <?php } else { ?>
+                          <input type="checkbox" name="main_page_tab[<?php echo $id; ?>][]" value="<?php echo $id; ?>" />
+                          <?php echo $tab; ?>
+                          <?php } ?>
+                        </label>
+                      </td>
+                    </tr>
+                    <?php } ?>
+                    </table>
+                  
+								</div>
+              </div>
+							
+														
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-manufacturer"><?php echo $entry_manufacturer; ?></label>
                 <div class="col-sm-10">

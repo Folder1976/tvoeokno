@@ -91,7 +91,7 @@ echo $header; ?>
                   echo round($price_and_currency[0], 2).' '.$price_and_currency[1];
                 } 
                 ?></span></p>
-                <p class="dop"><?php echo $lib['При заказе с установкой']; ?>* </p>
+                <p class="dop"><?php echo $umova; ?> </p>
                 <p class="product-card-id"><?php echo $text_model; ?> <?php echo $model; ?></p>
               </div>
             </div>

@@ -53,7 +53,7 @@
             </td>
             <td><?php echo $blog_comment['comment']; ?></td>
              <td class="left"><?php echo $blog_comment['title']; ?></td>
-            <td><?php echo $blog_comment['name']; ?><br />(<?php echo $blog_comment['email']; ?>)</td>
+            <td><?php echo $blog_comment['name']; ?><br />тел/email: <?php echo $blog_comment['email']; ?><br />Адрес:<?php echo $blog_comment['adress']; ?></td>
             <td class="text-right"><?php echo $blog_comment['date_added']; ?></td>
             <td class="text-right">
             <?php if($blog_comment['status']){ ?>

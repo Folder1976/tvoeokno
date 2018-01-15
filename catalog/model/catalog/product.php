@@ -43,6 +43,7 @@ class ModelCatalogProduct extends Model {
 			return array(
 				'product_id'       => $query->row['product_id'],
 				'name'             => $query->row['name'],
+				'umova'             => $query->row['umova'],
 				'category_id'       => $query->row['category_id'],
 				'description'      => $query->row['description'],
 				'meta_title'       => $query->row['meta_title'],

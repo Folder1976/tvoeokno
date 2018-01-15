@@ -192,8 +192,9 @@ switch ($page_href) {
           <form id="comment_form" class="leave-review-form">
             <input type="text" name="name" value="" id="input-name" class="form-control" placeholder="<?php echo $entry_name; ?>" required />
             <input type="text" name="email" value="" id="input-email" class="form-control" placeholder="<?php echo $entry_email; ?>" required />
+            <input type="text" name="adress" value="" id="input-adress" class="form-control" placeholder="<?php echo $entry_adress; ?>" required />
             <textarea name="comment" rows="5" id="input-comment" class="form-control" placeholder="<?php echo $entry_comment; ?>"></textarea>
-            <label class="control-label" for="input-captcha_comment"><span class="input-group-addon captcha_wrap" style="background:#ffffff;padding:0 10px;"><img src="index.php?route=blog/blog/captcha" alt="" id="captcha_comment" /></span></label>
+            <label class="control-label" for="input-captcha_comment"><span class="input-group-addon captcha_wrap" style="background:#ffffff;padding:0 10px;"><img src="/index.php?route=blog/blog/captcha" alt="" id="captcha_comment" /></span></label>
             <input type="text" name="captcha_comment" value="" id="input-captcha_comment" class="form-control" placeholder="<?php echo $entry_captcha; ?>" />
             <button type="button" id="button-comment" class="btn btn-primary"><?php echo $button_send; ?></button>
           </form>
@@ -249,6 +250,7 @@ $('#button-comment').on('click', function() {
 				
 				$('input[name=\'name\']').val('');
 				$('input[name=\'email\']').val('');
+					$('input[name=\'adress\']').val('');
 				$('textarea[name=\'comment\']').val('');
 				$('input[name=\'captcha_comment\']').val('');
 			}

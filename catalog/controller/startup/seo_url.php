@@ -35,7 +35,7 @@ class ControllerStartupSeoUrl extends Controller {
 		if (isset($this->request->get['_route_'])) {
 
 			if($this->request->get['_route_'] == 'blogs/blogs'){
-				$this->response->redirect('/uk/blogs');
+				$this->response->redirect('uk/blogs');
 			}
 		
 			if ($this->request->get['_route_'] == 'online_windows_calculator') {	

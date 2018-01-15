@@ -122,6 +122,7 @@ class ControllerBlogBlogComment extends Controller {
 			$data['blog_comments'][] = array(
 				'blog_comment_id' => $result['blog_comment_id'],
 				'name'        => $result['name'],
+				'adress'        => $result['adress'],
 				'email'        => $result['email'],
 				'comment'        => $result['comment'],
 				'date_added'        => $result['date_added'],

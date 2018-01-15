@@ -9,7 +9,12 @@ class ModelCatalogAttribute2 extends Model {
 	public function getAttributes($data = array()) {
 		$sql = "SELECT *, (SELECT agd.name FROM " . DB_PREFIX . "attribute_group_description2 agd
 		WHERE agd.attribute_group_id = a.attribute_group_id AND agd.language_id = '" . (int)$this->config->get('config_language_id') . "') AS attribute_group
-		FROM " . DB_PREFIX . "attribute2 a LEFT JOIN " . DB_PREFIX . "attribute_description2 ad ON (a.attribute_id = ad.attribute_id) WHERE ad.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		FROM " . DB_PREFIX . "attribute2 a
+		LEFT JOIN " . DB_PREFIX . "attribute_description2 ad ON (a.attribute_id = ad.attribute_id)
+		LEFT JOIN " . DB_PREFIX . "attribute_group2 ag ON (a.attribute_group_id = ag.attribute_group_id)
+		WHERE ad.language_id = '" . (int)$this->config->get('config_language_id') . "'
+		
+		";
 
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND ad.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
@@ -19,7 +24,7 @@ class ModelCatalogAttribute2 extends Model {
 			$sql .= " AND a.attribute_group_id = '" . $this->db->escape($data['filter_attribute_group_id']) . "'";
 		}
 
-		$sql .= " ORDER BY attribute_group ASC, a.sort_order ASC, ad.name ASC";
+		$sql .= " ORDER BY ag.sort_order ASC, a.sort_order ASC, ad.name ASC";
 
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {

@@ -139,7 +139,7 @@
                 </div>
                 <div class="block address">
                   <p><?php echo $lib['Наш адрес:']; ?></p>
-                  <a href="#"><?php echo $address; ?></a>
+                  <a href="<?php echo $group_list[16]['list'][69]['href'.$lang_key]; ?>"><?php echo $address; ?></a>
                 </div>
               </div>
               <?php echo $search; ?>
