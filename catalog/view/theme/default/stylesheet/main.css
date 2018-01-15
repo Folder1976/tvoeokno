@@ -2134,7 +2134,7 @@ textarea {
       position: absolute;
       top: 0;
       right: 100%;
-      width: 213px; }
+      width: 233px; }
     .window-size-bottom .count {
       font-size: 0; }
       .window-size-bottom .count p {
@@ -4560,7 +4560,7 @@ textarea {
 }
 
 .blog-blog .main_thumb img {
-  float: left;
+  float: right;
 }
 
 /* Informations */
@@ -4717,7 +4717,11 @@ textarea {
 .window-size-bottom .count input {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+<<<<<<< HEAD
   width: 72px;
+=======
+  width: 90px;
+>>>>>>> 75e9f2d0e6e7e701d8d36e5ac537854a09eded3a
   text-align: center;
   color: #0E5887;
   font-size: 18px;
@@ -4732,6 +4736,7 @@ textarea {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -4763,4 +4768,39 @@ textarea {
   background: #00C01B !important;
 }
 
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+/*********************/
+.btn.btn-primary {
+  display: inline-block;
+  background: linear-gradient(180deg, #00C01B -38.05%, rgba(255, 255, 255, 0.6) -6.02%, #00C01B 55%), #00C01B;
+  box-shadow: inset 0px -5px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 22px;
+  border-color: #fff;
+  color: #fff;
+  padding: 9px 0;
+  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.25), -1px -1px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  width: 264px;
+  text-align: center;
+}
+.btn.btn-primary:hover {
+  background: #00C01B !important;
+}
+.google-map iframe {
+    width: 100%;
+}
+>>>>>>> 75e9f2d0e6e7e701d8d36e5ac537854a09eded3a
 /*********************/
