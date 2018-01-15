@@ -38,9 +38,6 @@
     //<?php echo $lib['русская фраза']; ? >
 echo $header; ?>
 
-<style>
-.main-sect { display: none; }
-</style>
 
 <div class="wrap">
     <section class="product-card">
@@ -69,6 +66,20 @@ echo $header; ?>
               <div class="prices-single-img">
                 <img src="<?php echo $popup; ?>" alt="">
               </div>
+              <ul id="productGallery" class="owl-carousel prices-single-thumb">
+                  <li>
+                    <a href="javascript:void(0)">
+                      <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
+                    </a>
+                  </li>
+                  <?php foreach ($images as $image) { ?>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <img src="<?php echo $image['thumb']; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $image['popup']; ?>" />
+                    </a>
+                  </li>
+                  <?php } ?>
+                </ul>
             </div>
             
             <div class="col-md-2">
@@ -916,13 +927,15 @@ $('#button-review').on('click', function() {
 });
 
 $(document).ready(function() {
-	$('.thumbnails').magnificPopup({
-		type:'image',
-		delegate: 'a',
-		gallery: {
-			enabled:true
-		}
-	});
+	$('.prices-single-thumb').on('click', '.js-set-main_image', function(){
+    var s = $(this).data('image');
+    $('.prices-single-img img').attr('src', s);
+
+    $('.prices-single-thumb li').removeClass('active');
+    $(this).parent().parent().addClass('active');
+  });
 });
+
+
 //--></script>
 <?php echo $footer; ?>

@@ -231,6 +231,16 @@ jQuery(document).ready(function($) {
     owl4.trigger('next.owl.carousel');
   });
 
+  var owl5 = $('#productGallery');
+  owl5.owlCarousel({
+    items: 2,
+    loop: false,
+    autoplay: false,
+    smartSpeed: 400,
+    nav: true,
+    navText: ['<span></span>','<span></span>'],
+  });
+
   $(".second-count-btn").on("click", function(e) {
     e.preventDefault();
 
