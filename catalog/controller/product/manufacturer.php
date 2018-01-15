@@ -251,6 +251,8 @@ class ControllerProductManufacturer extends Controller {
 
 				$data['categorys'][$result['category_id']]['products'][] = $result['product_id'];
 				
+				$options = array();
+				
 				foreach ($this->model_catalog_product->getProductOptions($result['product_id']) as $option) {
 					$product_option_value_data = array();
 	

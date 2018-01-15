@@ -16,6 +16,8 @@ class ModelBlogBlog extends Model {
 		blog_id = '" . (int)$blog_id . "', 
 		language_id = '" . (int)$language_id . "', 
 		title = '" . $this->db->escape($value['title']) . "',
+		alt = '" . $this->db->escape($value['alt']) . "',
+		img_title = '" . $this->db->escape($value['img_title']) . "',
 		page_title = '" . $this->db->escape($value['page_title']) . "', 
 		short_description = '" . $this->db->escape($value['short_description']) . "', 
 		meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', 
@@ -100,6 +102,8 @@ class ModelBlogBlog extends Model {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "blog_description SET 
 		blog_id = '" . (int)$blog_id . "', 
 		language_id = '" . (int)$language_id . "', 
+		alt = '" . $this->db->escape($value['alt']) . "',
+		img_title = '" . $this->db->escape($value['img_title']) . "',
 		title = '" . $this->db->escape($value['title']) . "',
 		page_title = '" . $this->db->escape($value['page_title']) . "',
 		short_description = '" . $this->db->escape($value['short_description']) . "', 
@@ -286,6 +290,8 @@ class ModelBlogBlog extends Model {
 		foreach ($query->rows as $result) {
 			$blog_description_data[$result['language_id']] = array(
 				'title'       => $result['title'],
+				'alt'       => $result['alt'],
+				'img_title'       => $result['img_title'],
 				'page_title'       => $result['page_title'],
 				'meta_keyword'       => $result['meta_keyword'],
 				'meta_description'       => $result['meta_description'],

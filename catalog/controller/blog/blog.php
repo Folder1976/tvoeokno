@@ -189,6 +189,8 @@ class ControllerBlogBlog extends Controller {
 			foreach ($related_blogs as $result) {
       			$data['related_blogs'][] = array(
         		'title' => $result['title'],
+				'img_title' => $result['img_title'],
+				'alt' => $result['alt'],
 				'count_read' => $result['count_read'],
 				'short_description' => utf8_substr(strip_tags(html_entity_decode($result['short_description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('blogsetting_rel_characters')) . '..',
 				'author' => $result['author'],
@@ -212,6 +214,8 @@ class ControllerBlogBlog extends Controller {
 			$this->document->addLink($this->url->link('blog/blog', 'blog_id=' . $this->request->get['blog_id']), 'canonical');
 										
       		$data['heading_title'] = $blog_info['title'];
+			$data['img_title'] = $blog_info['img_title'];
+			$data['alt'] = $blog_info['alt'];
 			
 			$data['description'] = html_entity_decode($blog_info['description'], ENT_QUOTES, 'UTF-8');
 			

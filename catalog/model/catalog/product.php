@@ -44,8 +44,11 @@ class ModelCatalogProduct extends Model {
 				'product_id'       => $query->row['product_id'],
 				'name'             => $query->row['name'],
 				'umova'             => $query->row['umova'],
+				'alt'             => $query->row['alt'],
+				'title'             => $query->row['title'],
+				'main_page_tab'             => $query->row['main_page_tab'],
 				'category_id'       => $query->row['category_id'],
-				'description'      => $query->row['description'],
+				'description'      => Htmlspecialchars_decode($query->row['description'],ENT_QUOTES),
 				'meta_title'       => $query->row['meta_title'],
 				'meta_h1'          => $query->row['meta_h1'],
 				'meta_description' => $query->row['meta_description'],
@@ -134,6 +137,10 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		if (isset($data['main_page_tab']) || !empty($data['main_page_tab'])) {
+			$sql .= " AND p.main_page_tab > 0 ";
+		}
+		
 		if (!empty($data['filter_name']) || !empty($data['filter_tag'])) {
 			$sql .= " AND (";
 

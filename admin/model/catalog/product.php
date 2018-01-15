@@ -19,6 +19,8 @@ class ModelCatalogProduct extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "',
 							 name = '" . $this->db->escape($value['name']) . "',
 							 umova = '" . $this->db->escape($value['umova']) . "',
+							 alt = '" . $this->db->escape($value['alt']) . "',
+							 title = '" . $this->db->escape($value['title']) . "',
 							 description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
 
@@ -183,6 +185,8 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function editProduct($product_id, $data) {
+		
+		
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET model = '" . $this->db->escape($data['model']) . "', sku = '" . $this->db->escape($data['sku']) . "', upc = '" . $this->db->escape($data['upc']) . "', ean = '" . $this->db->escape($data['ean']) . "', jan = '" . $this->db->escape($data['jan']) . "', isbn = '" . $this->db->escape($data['isbn']) . "', mpn = '" . $this->db->escape($data['mpn']) . "', location = '" . $this->db->escape($data['location']) . "', quantity = '" . (int)$data['quantity'] . "', minimum = '" . (int)$data['minimum'] . "', subtract = '" . (int)$data['subtract'] . "', stock_status_id = '" . (int)$data['stock_status_id'] . "', date_available = '" . $this->db->escape($data['date_available']) . "', manufacturer_id = '" . (int)$data['manufacturer_id'] . "', shipping = '" . (int)$data['shipping'] . "', price = '" . (float)$data['price'] . "', points = '" . (int)$data['points'] . "', weight = '" . (float)$data['weight'] . "', weight_class_id = '" . (int)$data['weight_class_id'] . "', length = '" . (float)$data['length'] . "', width = '" . (float)$data['width'] . "', height = '" . (float)$data['height'] . "', length_class_id = '" . (int)$data['length_class_id'] . "', status = '" . (int)$data['status'] . "', tax_class_id = '" . (int)$data['tax_class_id'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
 
 		if (isset($data['image'])) {
@@ -203,6 +207,8 @@ class ModelCatalogProduct extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "',
 							 name = '" . $this->db->escape($value['name']) . "',
 							 umova = '" . $this->db->escape($value['umova']) . "',
+							 alt = '" . $this->db->escape($value['alt']) . "',
+							 title = '" . $this->db->escape($value['title']) . "',
 							 description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
 
@@ -260,14 +266,18 @@ class ModelCatalogProduct extends Model {
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_table WHERE product_id = '" . (int)$product_id . "'");
 
+
+
 		if (isset($data['product_table'])) {
 			foreach ($data['product_table'] as $product_table) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_table SET
+				$sql = "INSERT INTO " . DB_PREFIX . "product_table SET
 								 product_id = '" . (int)$product_id . "',
 								 sort_order = '" . (int)$product_table['sort_order'] . "',
 								 price1 = '" . (float)$product_table['price1'] . "',
 								 price2 = '" . (float)$product_table['price2'] . "',
-								 brand = '" . $this->db->escape($product_table['brand']) . "'");
+								 brand = '" . $this->db->escape($product_table['brand']) . "'";
+				$this->db->query($sql) or die($sql);
+				
 			}
 		}
 
@@ -571,6 +581,8 @@ class ModelCatalogProduct extends Model {
 			$product_description_data[$result['language_id']] = array(
 				'name'             => $result['name'],
 				'umova'             => $result['umova'],
+				'alt'             => $result['alt'],
+				'title'             => $result['title'],
 				'description'      => $result['description'],
 				'meta_title'       => $result['meta_title'],
 				'meta_h1'          => $result['meta_h1'],
@@ -609,7 +621,7 @@ class ModelCatalogProduct extends Model {
 	
 	public function getProductTables($product_id){
 		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_table WHERE product_id = '" . (int)$product_id . "' GROUP BY sort_order");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_table WHERE product_id = '" . (int)$product_id . "' ORDER BY sort_order");
 		
 		return $query->rows;
 		

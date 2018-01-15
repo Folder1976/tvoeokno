@@ -95,15 +95,36 @@ class ControllerCommonHome extends Controller {
  		$data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
 		
 		
-		$this->load->model('catalog/category');
+		$filter_data = array(
+				'main_page_tab' => 1
+			);
+		
+		$this->load->model('catalog/product');
+		$result = $this->model_catalog_product->getProducts($filter_data);
+		
+		$data['categorys'] = array();
+		
+		foreach($result as $index => $row){
+			$data['categorys'][$row['main_page_tab']] = $row;
+			$data['categorys'][$row['main_page_tab']]['product_tables'] = $this->model_catalog_product->getProductTables($row['product_id']);
+			$data['categorys'][$row['main_page_tab']]['addons'] = $this->model_catalog_product->getProductAttribute4s($row['product_id']);
+			
+			if ($row['image']) {
+				$data['categorys'][$row['main_page_tab']]['thumb'] = $this->model_tool_image->resize($row['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
+			} else {
+				$data['categorys'][$row['main_page_tab']]['thumb'] = '';
+			}
+			
+		}
+		
+		/*
+			$this->load->model('catalog/category');
 			$this->load->model('catalog/product');
 		
 			$data['products'] = array();
 			$data['categorys'] = array();
 
-			$filter_data = array(
-				'filter_category_id' => 0
-			);
+			
 
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
@@ -193,7 +214,7 @@ class ControllerCommonHome extends Controller {
 				$data['categorys'][$_category_id]['products'] = $row['products'];
 				
 			}
-		
+		*/
 		
 		$this->response->setOutput($this->load->view('common/home', $data));
 	}

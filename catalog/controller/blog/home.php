@@ -111,6 +111,8 @@ class ControllerBlogHome extends Controller {
 			'comment_total' => $this->model_blog_blog->getTotalCommentsByBlogId($result['blog_id']),
 			'blog_id' => $result['blog_id'],
 			'title'      => $result['title'],
+			'img_title'      => $result['img_title'],
+			'alt'      => $result['alt'],
 			'short_description'      => html_entity_decode($result['short_description'], ENT_QUOTES, 'UTF-8'),
 			'date_added_full' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 			'author' => $result['author'],

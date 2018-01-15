@@ -46,7 +46,7 @@
 
             <?php foreach ($blogs as $blog) { ?>
             <div class="all-news-single">
-              <img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>">
+              <img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['alt']; ?>" title="<?php echo $blog['img_title']; ?>">
               <div class="all-news-content">
                 <h3><a href="<?php echo $blog['href']; ?>"><?php echo $blog['title']; ?></a></h3>
                 <p><?php echo $blog['short_description']; ?></p>

@@ -57,7 +57,7 @@ echo $header; ?>
           <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
           <?php } ?>
           <?php if ($description) { ?>
-          <div class="col-sm-10"><?php // echo $description; ?></div>
+          <div class="col-sm-10"><?php  echo $description; ?></div>
           <?php } ?>
         </div>
         <?php } ?>
@@ -152,9 +152,9 @@ echo $header; ?>
             <div class="col-md-4 col-sm-4">
               <div class="favorites-single">
                 <div class="img">
-                  <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>"></a>
+                  <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['alt']; ?>" title="<?php echo $product['title']; ?>"></a>
                 </div>
-                <p class="name"><?php echo $product['name']; ?></p>
+                <p class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></p>
                 <a href="#" class="favorite-link" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a>
                 <a href="<?php echo $product['href']; ?>" class="more green-btn"><?php echo $lib['ПОДРОБНЕЕ']; ?></a>
               </div>
@@ -229,6 +229,16 @@ echo $header; ?>
           <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
         </div>
         <?php } ?>
+        
+        <?php if ($description1) { ?>
+        <div class="row">
+          <div class="col-sm-10"><?php  echo $description1; ?></div>
+        </div>
+        <?php } ?>
+
+
+        
+        
         </div>
       </div>
   </div>

@@ -2,10 +2,7 @@
 
 <script type="text/javascript" src="/admin/view/javascript/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="/admin/view/javascript/ckeditor/ckeditor_init.js"></script>
-<link type="text/css" href="/admin/view/javascript/summernote/summernote.css" rel="stylesheet" media="screen" />
-<script type="text/javascript" src="/admin/view/javascript/summernote/summernote.js"></script>
-<script type="text/javascript" src="/admin/view/javascript/summernote/lang/summernote-ru-RU.js"></script>
-<script type="text/javascript" src="/admin/view/javascript/summernote/opencart.js"></script>
+
 
 <!--script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script-->
 
@@ -78,10 +75,24 @@
               </div>
               </div>
               
+             <div class="form-group">
+                <label class="col-sm-2 control-label">Alt картинки</label>
+                <div class="col-sm-10">
+                <input name="blog_description[<?php echo $language['language_id']; ?>][alt]" class="form-control" value="<?php echo isset($blog_description[$language['language_id']]) ? $blog_description[$language['language_id']]['alt'] : ''; ?>" />
+              </div>
+              </div>
+              
+             <div class="form-group">
+                <label class="col-sm-2 control-label">Title картинки</label>
+                <div class="col-sm-10">
+                <input name="blog_description[<?php echo $language['language_id']; ?>][img_title]" class="form-control" value="<?php echo isset($blog_description[$language['language_id']]) ? $blog_description[$language['language_id']]['img_title'] : ''; ?>" />
+              </div>
+              </div>
+              
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_description; ?></label>
                 <div class="col-sm-10">
-                <textarea name="blog_description[<?php echo $language['language_id']; ?>][description]" id="description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($blog_description[$language['language_id']]) ? $blog_description[$language['language_id']]['description'] : ''; ?></textarea>
+                <textarea name="blog_description[<?php echo $language['language_id']; ?>][description]" id="description<?php echo $language['language_id']; ?>" class="form-control textarea"><?php echo isset($blog_description[$language['language_id']]) ? $blog_description[$language['language_id']]['description'] : ''; ?></textarea>
               </div>
               </div>
               
@@ -354,8 +365,8 @@
 
 //ckeditorInit('description<?php echo $language['language_id']; ?>', getURLVar('token'));
 
-
-$('#description<?php echo $language['language_id']; ?>').summernote({
+/*
+$('#description<?php echo $language['language_id']; ?>').textarea({
 	height: 250,
 	toolbar: [
     ['style', ['style']], // no style button
@@ -370,7 +381,7 @@ $('#description<?php echo $language['language_id']; ?>').summernote({
 	['codeview', ['fullscreen', 'codeview']] //no help button
   ]
 });
-
+*/
 <?php } ?>
 //--></script> 
 <script type="text/javascript"><!--
@@ -467,4 +478,104 @@ $('#product-related').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
 //--></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script>
+    /*
+	function elFinderBrowser (field_name, url, type, win) {
+                tinymce.activeEditor.windowManager.open({
+                  file: '/admin/elFinder-master/elfinder.html',// use an absolute path!
+                  title: 'elFinder 2.0',
+                  width: 900,  
+                  height: 450,
+                  resizable: 'yes'
+                }, {
+                  setUrl: function (url) {
+                    win.document.getElementById(field_name).value = url;
+                  }
+                });
+                return false;
+            }
+      */
+  
+  
+    function elFinderBrowser (field_name, url, type, win) {
+            tinymce.activeEditor.windowManager.open({
+              file: '/admin/model/elFinder-master/elfinder.html',// use an absolute path!
+              title: 'elFinder 2.0',
+              width: 900,  
+              height: 450,
+              resizable: 'yes'
+            }, {
+              setUrl: function (url) {
+                win.document.getElementById(field_name).value = 'elFinder-master/'+url;
+              }
+            });
+            return false;
+    }
+  
+            
+  
+	tinymce.init({
+			selector: ".textarea",
+			height: 500,
+            file_browser_callback : elFinderBrowser,
+			plugins: [
+			  "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+			  "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+			  "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern"
+			],
+		  
+			toolbar1: "newdocument fullpage | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+			toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+			toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+		  
+			menubar: false,
+			toolbar_items_size: 'small',
+		  
+			style_formats: [{
+			  title: 'Bold text',
+			  inline: 'b'
+			}, {
+			  title: 'Red text',
+			  inline: 'span',
+			  styles: {
+				color: '#ff0000'
+			  }
+			}, {
+			  title: 'Red header',
+			  block: 'h1',
+			  styles: {
+				color: '#ff0000'
+			  }
+			}, {
+			  title: 'Example 1',
+			  inline: 'span',
+			  classes: 'example1'
+			}, {
+			  title: 'Example 2',
+			  inline: 'span',
+			  classes: 'example2'
+			}, {
+			  title: 'Table styles'
+			}, {
+			  title: 'Table row 1',
+			  selector: 'tr',
+			  classes: 'tablerow1'
+			}],
+		  
+			templates: [{
+			  title: 'Test template 1',
+			  content: 'Test 1'
+			}, {
+			  title: 'Test template 2',
+			  content: 'Test 2'
+			}],
+			content_css: [
+			  '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+			  '//www.tinymce.com/css/codepen.min.css'
+			]
+	});
+  
+  
+  </script>
 <?php echo $footer; ?>

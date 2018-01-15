@@ -9,6 +9,7 @@ class ModelCatalogCategory extends Model {
 		if($query->num_rows){
 			$row = $query->row;
 			$row['description'] = htmlspecialchars_decode($row['description'], ENT_QUOTES);
+			$row['description1'] = htmlspecialchars_decode($row['description1'], ENT_QUOTES);
 		}else{
 			return $query->row;
 		}

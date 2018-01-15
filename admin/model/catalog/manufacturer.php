@@ -33,6 +33,9 @@ class ModelCatalogManufacturer extends Model {
 							 tab_description2 = '" . $this->db->escape($value['tab_description2']) . "',
 							 tab_description3 = '" . $this->db->escape($value['tab_description3']) . "',
 							
+							 alt = '" . $this->db->escape($value['alt']) . "',
+							 title = '" . $this->db->escape($value['title']) . "',
+							
 							 short_description = '" . $this->db->escape($value['short_description']) . "',
 							 meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
@@ -79,6 +82,8 @@ class ModelCatalogManufacturer extends Model {
 							 language_id = '" . (int)$language_id . "',
 							 name = '" . $this->db->escape($value['name']) . "',
 							 short_description = '" . $this->db->escape($value['short_description']) . "',
+							 alt = '" . $this->db->escape($value['alt']) . "',
+							 title = '" . $this->db->escape($value['title']) . "',
 							 description = '" . $this->db->escape($value['description']) . "',
 							 
 							image1 = '" . $this->db->escape($value['image1']) . "',
@@ -168,6 +173,8 @@ class ModelCatalogManufacturer extends Model {
 				'meta_description' => $result['meta_description'],
 				'meta_keyword'     => $result['meta_keyword'],
 				'short_description'      => $result['short_description'],
+				'alt'      => $result['alt'],
+				'title'      => $result['title'],
 				'description'      	=> $result['description'],
 				'image1'      		=> $result['image1'],
 				'image2'      		=> $result['image2'],

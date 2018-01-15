@@ -29,7 +29,11 @@
                 'Прикрепить файл' => 'Прикріпити файл',
                 'Перезвонить' => 'Передзвонити',
                 'все о гарантии' => 'все про гарантії',
-                'Номер договора' => 'Номер договору'
+                'Номер договора' => 'Номер договору',
+                'Двухстворчатое окно' => 'Двухстворчате вікно',
+                'Трехстворчатое окно' => 'Трйохстворчате вікно',
+                'Балконный блок' => 'Балконний блок',
+                'Остекление лоджии' => 'Скління лоджії',
                 );
  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
     //Пример
@@ -129,7 +133,7 @@ echo $header; ?>
         <?php foreach($manufacturers as $manufacture){ ?>
           <div class="col-md-3 col-sm-4">
             <a href="/<?php echo $manufacture['keyword'];?>" class="brands-single">
-              <img src="/image/<?php echo $manufacture['image'];?>" alt="Бренд <?php echo $manufacture['name'];?>">
+              <img src="/image/<?php echo $manufacture['image'];?>" alt="<?php echo $manufacture['alt'];?>" title="<?php echo $manufacture['title'];?>">
             </a>
           </div>
         <?php } ?>
@@ -143,22 +147,22 @@ echo $header; ?>
       <div class="prices-type">
         <p class="bold"><?php echo $lib['ЦЕНЫ']; ?>:</p>
         <ul>
-          <?php foreach($categorys as $category_id => $category_info){ ?>
-          <?php if ( is_numeric($category_id) ) { ?>
-            <li><a href="#tab_<?php echo $category_info['category_id']; ?>" data-toggle="tab"><?php echo $category_info['name']; ?></a></li>
-          <?php } ?>
-          <?php } ?>
+            <li><a href="#tab_1" data-toggle="tab"><?php echo $lib['Двухстворчатое окно']; ?></a></li>
+            <li><a href="#tab_2" data-toggle="tab"><?php echo $lib['Трехстворчатое окно']; ?></a></li>
+            <li><a href="#tab_3" data-toggle="tab"><?php echo $lib['Балконный блок']; ?></a></li>
+            <li><a href="#tab_4" data-toggle="tab"><?php echo $lib['Остекление лоджии']; ?></a></li>
         </ul>
         <p><?php echo $lib['*Цены без установки']; ?></p>
       </div>
       <div class="tab-content">
+
         <?php foreach($categorys as $category_id => $category_info){ ?>
-        <div class="tab-pane" id="tab_<?php echo $category_info['category_id']; ?>">
+        <div class="tab-pane" id="tab_<?php echo $category_id; ?>">
           <div class="prices-single">
             <div class="row">
               <div class="col-md-3">
                 <div class="prices-single-img">
-                  <img src="/catalog/view/theme/default/image/window.png" alt="">
+                  <img src="<?php echo $category_info['thumb']; ?>" alt="<?php echo $category_info['alt']; ?>" title="<?php echo $category_info['title']; ?>">
                 </div>
               </div>
               <div class="col-md-6">
@@ -171,47 +175,21 @@ echo $header; ?>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($category_info['products'] as $product_id){ ?>
-                    <tr>
-                      <td><?php echo $products[$product_id]['name']; ?></td>
-                      <td><?php
-                        if ( isset($products[$product_id]['option'][0]['product_option_value'][0]) ) {
-                          $opt = $products[$product_id]['option'][0]['product_option_value'][0];
-                          // var_dump($products[$product_id], $opt);
-                          if ( $opt['price'] ) {
-                            if ( $opt['price_prefix'] == '+' ) {
-                              echo str_replace(' грн.', '', $products[$product_id]['price']) + str_replace(' грн.', '', $opt['price']).' грн';
-                            } else {
-                              echo str_replace(' грн.', '', $products[$product_id]['price']) - str_replace(' грн.', '', $opt['price']).' грн';
-                            }
-                          } else {
-                            echo $products[$product_id]['price'];
-                          }
-                        }?></td>
-                      <td><?php
-                        if ( isset($products[$product_id]['option'][0]['product_option_value'][1]) ) {
-                          $opt = $products[$product_id]['option'][0]['product_option_value'][1];
-                          // var_dump($products[$product_id], $opt);
-                          // var_dump($products[$product_id]['price'], $opt['price']);
-                          if ( $opt['price'] ) {
-                            if ( $opt['price_prefix'] == '+' ) {
-                              echo str_replace(' грн.', '', $products[$product_id]['price']) + str_replace(' грн.', '', $opt['price']).' грн';
-                            } else {
-                              echo str_replace(' грн.', '', $products[$product_id]['price']) - str_replace(' грн.', '', $opt['price']).' грн';
-                            }
-                          } else {
-                            echo $products[$product_id]['price'];
-                          }
-                        }?></td>
-
-                    </tr>
+                    <?php foreach($category_info['product_tables'] as $row){ ?>
+                      <tr>
+                        <td><?php echo $row['brand'] ;?></td>
+                        <td><?php echo $row['price1'] ;?> грн</td>
+                        <td><?php echo $row['price2'] ;?> грн</td>
+                      </tr>
                     <?php } ?>
                   </tbody>
                 </table>
               </div>
               <div class="col-md-3">
                 <div class="prices-single-right">
-                  <?php echo $category_info['description']; ?>
+                  <?php foreach($category_info['addons'] as $row){ ?>
+                    <p><?php echo $row['text'] ;?> - <?php echo $row['price'] ;?> грн</p>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -229,7 +207,7 @@ echo $header; ?>
         <?php foreach($blogs[49]['blogs'] as $blog){ ?>
           <div class="col-md-3 col-sm-6">
             <div class="advantages-single">
-              <img src="/image/<?php echo $blog['image'];?>" alt="Картинка <?php echo $blog['title'];?>">
+              <img src="/image/<?php echo $blog['image'];?>" alt="<?php echo $blog['alt'];?>" title="<?php echo $blog['img_title'];?>">
               <h3><?php echo $blog['title'];?></h3>
               <p><?php echo $blog['short_description'];?></p>
             </div>
@@ -330,13 +308,9 @@ echo $header; ?>
         <?php $blogs_action = array_shift($blogs[52]['blogs']); ?>
         <div class="col-md-4 col-md-offset-1">
           <div class="certificates-info">
-            <?php if($language_id == 1){ ?>
-              <img src="/catalog/view/theme/default/image/guarantee.png" alt="5 лет гарантии" class="guarantee">
-            <?php }else{ ?>
-              <img src="/catalog/view/theme/default/image/guarantee_ua.png" alt="5 років гарантії" class="guarantee">
-            <?php } ?>
+            <img src="/catalog/view/theme/default/image/guarantee.png" alt="<?php echo $blogs_action['alt']; ?>" title="<?php echo $blogs_action['img_title']; ?>" class="guarantee">
             <h3><?php echo $blogs_action['title']; ?></h3>
-            <p><?php echo $blogs_action['description']; ?></p>
+            <p><?php echo $blogs_action['short_description']; ?></p>
             <a href="/returns_and_guarantees" class="green-btn"><?php echo $lib['все о гарантии']; ?></a>
           </div>
         </div>
