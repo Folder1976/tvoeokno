@@ -4717,11 +4717,8 @@ textarea {
 .window-size-bottom .count input {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-<<<<<<< HEAD
   width: 72px;
-=======
   width: 90px;
->>>>>>> 75e9f2d0e6e7e701d8d36e5ac537854a09eded3a
   text-align: center;
   color: #0E5887;
   font-size: 18px;
@@ -4735,8 +4732,6 @@ textarea {
 }
 
 
-
-<<<<<<< HEAD
 
 
 
@@ -4768,7 +4763,6 @@ textarea {
   background: #00C01B !important;
 }
 
-=======
 
 
 
@@ -4802,7 +4796,6 @@ textarea {
 .google-map iframe {
     width: 100%;
 }
-.main-sect { display: none; }
 .prices-single-thumb .owl-nav {
   text-align: center;
 }

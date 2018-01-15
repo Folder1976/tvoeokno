@@ -38,6 +38,9 @@
     //<?php echo $lib['русская фраза']; ? >
 echo $header; ?>
 
+<style>
+.main-sect { display: none; }
+</style>
 
 <div class="wrap">
     <section class="product-card">
