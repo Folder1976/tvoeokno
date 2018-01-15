@@ -43,7 +43,11 @@ echo $header; ?>
     <div class="container">
       <div class="row">
         <div class="col-md-2 col-sm-3">
+<<<<<<< HEAD
+          <input type="hidden" name="window-type" id="window-type" value="scheme-1">
+=======
           <input type="hidden" name="window-type" id="window-type" value="/catalog/view/theme/default/image/calc/scheme-1.gif">
+>>>>>>> 75e9f2d0e6e7e701d8d36e5ac537854a09eded3a
           <div class="window-type">
             <a href="javascript:void(0)" class="window-type-single active js-window-type-single">
               <img src="/catalog/view/theme/default/image/calc/scheme-1.gif" alt="scheme-1">
@@ -186,7 +190,11 @@ $('.js-window-type-single').on('click', 'img', function(){
   var img_main_src = $(this).data('main-img');
   var img_tmbl_src = $(this).attr('src');
   var img_tmbl = $(this).closest('.js-window-type-single').children('img');
+<<<<<<< HEAD
+  var val = $(this).attr('alt');
+=======
   var val = img_tmbl_src;//$(this).attr('alt');
+>>>>>>> 75e9f2d0e6e7e701d8d36e5ac537854a09eded3a
 
   if ( img_main_src ) {
     $('.js-window-type-single').removeClass('active');
