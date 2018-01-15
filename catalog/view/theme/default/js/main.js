@@ -54,26 +54,32 @@ jQuery(document).ready(function($) {
 
   // форма "перезвонить мне"
   $('.js-form-call-me').submit(function(e){
+    var c = $('#fb-modal');
+    c.html('<h2></h2>');
 
     $.ajax({
       url: '/index.php?route=account/universalform',
       type: 'post',
       dataType: 'json',
       //dataType: 'html',
+      beforeSend: function () {
+        c.find('h2').html('<h2>Сообщение отсылается. Пожалуйста подождите...</h2>');
+        fb_open(c);
+      },
       data: $(this).serialize(),
       success: function(json) {
-        var c = $('#fb-modal');
-
-         
         console.log(json);
 
         if (json['success']) {
-          c.html('<h2>Форма отправлена</h2>');
+          c.find('h2').html('<h2>Форма отправлена</h2>');
         } else {
-          c.html('<h2>Ошибка</h2>');
+          c.find('h2').html('<h2>Ошибка</h2>');
         }
 
-        fb_open(c);
+        if ( !$('body').hasClass('fancybox-active') ) {
+          fb_open(c);
+        }
+        
       }
     });
 
@@ -223,6 +229,16 @@ jQuery(document).ready(function($) {
   $('.similar-next').click(function(e) {
     e.preventDefault();
     owl4.trigger('next.owl.carousel');
+  });
+
+  var owl5 = $('#productGallery');
+  owl5.owlCarousel({
+    items: 2,
+    loop: false,
+    autoplay: false,
+    smartSpeed: 400,
+    nav: true,
+    navText: ['<span></span>','<span></span>'],
   });
 
   $(".second-count-btn").on("click", function(e) {

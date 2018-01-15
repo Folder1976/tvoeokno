@@ -4717,11 +4717,8 @@ textarea {
 .window-size-bottom .count input {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-<<<<<<< HEAD
   width: 72px;
-=======
   width: 90px;
->>>>>>> 75e9f2d0e6e7e701d8d36e5ac537854a09eded3a
   text-align: center;
   color: #0E5887;
   font-size: 18px;
@@ -4735,8 +4732,6 @@ textarea {
 }
 
 
-
-<<<<<<< HEAD
 
 
 
@@ -4768,7 +4763,6 @@ textarea {
   background: #00C01B !important;
 }
 
-=======
 
 
 
@@ -4802,5 +4796,51 @@ textarea {
 .google-map iframe {
     width: 100%;
 }
->>>>>>> 75e9f2d0e6e7e701d8d36e5ac537854a09eded3a
+.prices-single-thumb .owl-nav {
+  text-align: center;
+}
+.prices-single-thumb .owl-dots { display: none; }
+.prices-single-thumb .owl-prev,
+.prices-single-thumb .owl-next {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(180deg, rgba(231, 231, 231, 0.5) -2.21%, rgba(164, 164, 164, 0.5) 126.13%);
+  border-radius: 100%;
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  text-align: center;
+  padding: 3px;
+}
+.prices-single-thumb .owl-prev span,
+.prices-single-thumb .owl-next span {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(180deg, #D5D5D5 -38.05%, rgba(255, 255, 255, 0.6) -6.02%, #D5D5D5 55%), #D5D5D5;
+  box-shadow: inset 0px -5px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 100%;
+  display: block;
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  position: relative;
+  padding: 8px 7px;
+}
+.prices-single-thumb .owl-prev span:before,
+.prices-single-thumb .owl-next span:before {
+  position: absolute;
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid #7b7b7b;
+  border-left: 1px solid #7b7b7b;
+  display: block;
+}
+.prices-single-thumb .owl-prev span:before {
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.prices-single-thumb .owl-next span:before {
+  -ms-transform: rotate(130deg);
+  transform: rotate(130deg);
+}
 /*********************/
