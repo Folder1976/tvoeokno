@@ -182,7 +182,7 @@ class ControllerProductManufacturer extends Controller {
 			$data['tab3'] = html_entity_decode($manufacturer_info['tab3'], ENT_QUOTES, 'UTF-8');
 			$data['tab_description3'] = html_entity_decode($manufacturer_info['tab_description3'], ENT_QUOTES, 'UTF-8');
 
-			$data['description'] = $this->model_design_banner->setBanner($data['description']);
+			//$data['description'] = $this->model_design_banner->setBanner($data['description']);
 			
 			
 			$data['text_empty'] = $this->language->get('text_empty');

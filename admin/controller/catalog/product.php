@@ -1121,7 +1121,8 @@ class ControllerCatalogProduct extends Controller {
 		} elseif (!empty($product_info)) {
 			$manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($product_info['manufacturer_id']);
 
-			if ($manufacturer_info) {
+
+			if ($manufacturer_info AND isset($manufacturer_info['name'])) {
 				$data['manufacturer'] = $manufacturer_info['name'];
 			} else {
 				$data['manufacturer'] = '';

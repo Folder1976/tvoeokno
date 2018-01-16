@@ -43,7 +43,7 @@ echo $header; ?>
     <div class="container">
       <div class="row">
         <div class="col-md-2 col-sm-3">
-          <input type="hidden" name="window-type" id="window-type" value="scheme-1">
+          <input type="hidden" name="window-type-s" id="window-type-s" value="scheme-1">
           <input type="hidden" name="window-type" id="window-type" value="/catalog/view/theme/default/image/calc/scheme-1.gif">
           <div class="window-type">
             <a href="javascript:void(0)" class="window-type-single active js-window-type-single">
@@ -188,14 +188,19 @@ $('.js-window-type-single').on('click', 'img', function(){
   var img_tmbl_src = $(this).attr('src');
   var img_tmbl = $(this).closest('.js-window-type-single').children('img');
   var val = $(this).attr('alt');
-  var val = img_tmbl_src;//$(this).attr('alt');
+  var src = $(this).attr('src');
+
 
   if ( img_main_src ) {
     $('.js-window-type-single').removeClass('active');
     $(this).closest('.js-window-type-single').addClass('active');
     $('#main-type-img').attr('src', img_main_src);
     img_tmbl.attr('src', img_tmbl_src);
-    $('#window-type').val(val);
+    $('#window-type-s').val(val);
+    $('#window-type').val(src);
+    
+    console.log($('#window-type-s').val());
+    console.log($('#window-type').val());
   }
 });
 

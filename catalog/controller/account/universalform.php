@@ -8,6 +8,12 @@ class Controlleraccountuniversalform extends Controller {
 		$lists = $this->model_catalog_attribute2->getAttributes();
 		$groups = $this->model_catalog_attribute_group2->getAttributeGroups();
 	
+	/*
+	header("Content-Type: text/html; charset=UTF-8");
+	echo '<pre>'; print_r(var_dump( $_FILES  ));
+	echo '<pre>'; print_r(var_dump( $this->request->post  ));
+	die();
+	*/
 	
 		//Заголовки и поля
 		$text = array(
@@ -23,6 +29,12 @@ class Controlleraccountuniversalform extends Controller {
 					  'page_chertog' => 'ОТПРАВИТЬ ЧЕРТЕЖ НА ПОЧТУ',
 					  'page_zamer' => 'ВЫЗВАТЬ ЗАМЕРЩИКА',
 					  'page_service_master' => 'РЕМОНТ ОКОН',
+					   'call_me__modal_send_letter_director' => 'Написать директору',
+					   '' => '',
+					   '' => '',
+					   '' => '',
+					   '' => '',
+					   '' => '',
 					  
 					  
 					  'phone' => 'Номер телефона',
@@ -47,12 +59,20 @@ class Controlleraccountuniversalform extends Controller {
 					  'amount' => 'Количество',
 					  'order' => 'Номер заказа',
 					  'flor' => 'Этаж',
+					  'window-type-s' => 'Тип окна',
+					  'window-type' => 'Изображение',
+					  'height_window' => 'Ширина окна',
+					  'width_window' => 'Высота окна',
+					  'email' => 'email',
+					  'redireck' => 'redireck',
+					  'file' => 'file',
 					  '' => '',
 					  
 					  );
 		
 		$mail_message = "Мы получили форму со следующими полями:\n\r";
 		
+	
 		foreach($this->request->post as $index => $row){
 			
 			if(($this->request->post['formname'] == 'calculator' OR
@@ -114,10 +134,24 @@ class Controlleraccountuniversalform extends Controller {
         }
 		//$email_to = 'folder.list@gmail.com';
 		
+		//die($email_to);
+		
         $mail->setTo($email_to);
         $mail->setFrom(explode(',', $this->config->get('config_email'))[0]);
         $mail->setSender($this->config->get('config_name'));
-        $mail->setSubject(html_entity_decode($text[$this->request->post['formname']]), ENT_QUOTES, 'UTF-8');
+		
+		if(isset($this->request->post['window-type'])){
+			$mail->AddAttachment(DIR_APPLICATION.'..'.$this->request->post['window-type'], $this->request->post['window-type-s']);
+		}
+		
+		if(isset( $_FILES['file']['tmp_name'])){
+			$tmpFilename = $_FILES['file']['tmp_name'];
+			$Filename = $_FILES['file']['name'];
+			copy($tmpFilename, DIR_DOWNLOAD.$Filename);
+			$mail->AddAttachment(DIR_DOWNLOAD.$Filename, $Filename);
+		}
+        
+		$mail->setSubject(html_entity_decode($text[$this->request->post['formname']]), ENT_QUOTES, 'UTF-8');
         $mail->setHtml($mail_message);
         $mail->setReplyTo(explode(',', $this->config->get('config_email'))[0]);
 
@@ -142,10 +176,16 @@ class Controlleraccountuniversalform extends Controller {
             $mail->send();
         }
 
-		$json['success'] = true;
-        $this->response->addHeader('Content-Type: application/json');
-        $this->response->setOutput(json_encode($json));
-    
+		
+		if(isset($this->request->post['redireck'] )){
+			$this->response->redirect($this->request->post['redireck']);
+		}else{
+		
+			$json['success'] = true;
+			$this->response->addHeader('Content-Type: application/json');
+			$this->response->setOutput(json_encode($json));
+		}
+		
 	
 	}
 }

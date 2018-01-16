@@ -68,7 +68,8 @@ jQuery(document).ready(function($) {
       },
       data: $(this).serialize(),
       success: function(json) {
-        console.log(json);
+       // console.log('++++++++');
+      console.log(json);
 
         if (json['success']) {
           c.find('h2').html('<h2>Форма отправлена</h2>');

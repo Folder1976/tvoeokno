@@ -28,6 +28,7 @@
                 'Ваш номер' => 'Ваш номер',
                 'Прикрепить файл' => 'Прикріпити файл',
                 'Перезвонить' => 'Передзвонити',
+                 'Отправить' => 'Надiслати',
                 'все о гарантии' => 'все про гарантії',
                 'Номер договора' => 'Номер договору',
                 'Двухстворчатое окно' => 'Двухстворчате вікно',
@@ -435,16 +436,17 @@ echo $header; ?>
   <section class="calc">
     <div class="container">
       <h2><?php echo $lib['экспресс расчет ваших окон'];?></h2>
-      <form action="/index.php?route=account/universalform" class="calc-form" method="post">
+      <form action="/index.php?route=account/universalform" class="calc-form" method="post" enctype="multipart/form-data">
         <input type="hidden" name="formname" value="call_me__home_calc_windows">
         <input type="hidden" name="redireck" value="/">
         <input type="text" placeholder="<?php echo $lib['Ваше имя'];?>" name="name" required>
         <input type="tel" placeholder="<?php echo $lib['Ваш номер'];?>" name="phone" required>
+        <!--input id="file" type="file" class="file-input" name="file"-->
         <div class="file">
           <label for="file"><?php echo $lib['Прикрепить файл'];?></label>
           <input id="file" type="file" class="file-input" name="file">
         </div>
-        <button type="submit" class="blue-btn"><?php echo $lib['Перезвонить'];?></button>
+        <button type="submit" class="blue-btn"><?php echo $lib['Отправить'];?></button>
       </form>
     </div>
   </section>
