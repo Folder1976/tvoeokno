@@ -128,6 +128,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 			}
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
+			$data['description1'] = html_entity_decode($category_info['description1'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
 
 			$url = '';
