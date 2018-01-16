@@ -116,6 +116,14 @@ jQuery(document).ready(function($) {
     return false;
   });
 
+  // зум фото на странице товара
+  $('.prices-single-img img').on('click', function(){
+    var s = $(this).attr('src');
+    var c = $('#fb-modal');
+    c.html('<img src="'+s+'">');
+    fb_open(c);
+  });
+
 });
 
 
