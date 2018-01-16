@@ -18,7 +18,7 @@ switch ($page_href) {
     break;
 
   case 'chertog':
-  case 'zamer':
+  case 'vizov-zamerschika':
   case 'service-master':
     $section_class = 'main-feedback';
     break;

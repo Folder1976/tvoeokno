@@ -187,9 +187,12 @@ echo $header; ?>
               </div>
               <div class="col-md-3">
                 <div class="prices-single-right">
-                  <?php foreach($category_info['addons'] as $row){ ?>
-                    <p><?php echo $row['text'] ;?> - <?php echo $row['price'] ;?> грн</p>
-                  <?php } ?>
+                  <div class="complectation">
+                    <h3>Комплектация к окну</h3>
+                    <?php foreach($category_info['addons'] as $row){ ?>
+                      <p><?php echo $row['text'] ;?> - <?php echo $row['price'] ;?> грн</p>
+                    <?php } ?>
+                  </div>
                 </div>
               </div>
             </div>

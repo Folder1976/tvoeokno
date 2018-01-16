@@ -937,6 +937,16 @@ $(document).ready(function() {
     $('.prices-single-thumb li').removeClass('active');
     $(this).parent().parent().addClass('active');
   });
+
+  $('.prices-single-img img').on('click', function(){
+    var s = $(this).attr('src');
+    $.fancybox({
+      'padding': 0,
+      'href': s,
+      'transitionIn': 'elastic',
+      'transitionOut': 'elastic'
+    });
+  });
 });
 
 

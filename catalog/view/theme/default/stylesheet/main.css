@@ -4844,3 +4844,11 @@ textarea {
   transform: rotate(130deg);
 }
 /*********************/
+
+
+/********** PRODUCT **********/
+.description ul {
+    list-style: inside;
+    margin-left: 27px;
+}
+/*****************************/
