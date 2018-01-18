@@ -4560,7 +4560,8 @@ textarea {
 }
 
 .blog-blog .main_thumb img {
-  float: right;
+    float: right;
+    margin-left: 30px;
 }
 
 /* Informations */
