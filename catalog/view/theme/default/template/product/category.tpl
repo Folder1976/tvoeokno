@@ -206,21 +206,11 @@ echo $header; ?>
             </div>
             <?php } ?>
           </div>
-          <div class="pagination">
-            <ul class="pagination-list">
-              <li><a href="#" class="prev"></a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li>...</li>
-              <li><a href="#">8</a></li>
-              <li><a href="#" class="next"></a></li>
-            </ul>
+          <div style="text-align: center;">
+            <div class="pagination">
+              <?php echo $pagination; ?>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
-          <div class="col-sm-6 text-right"><?php echo $results; ?></div>
         </div>
         <?php } ?>
         <?php if (!$categories && !$products) { ?>

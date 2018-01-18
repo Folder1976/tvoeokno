@@ -153,9 +153,9 @@
                 <button class="red-btn"><?php echo $lib['Перезвонить мне']; ?></button>
               </form>
               <div class="wrap-header-button">
-                <a href="/index.php?route=product/compare" class="header-callback-single">
+                <a href="/<?php echo $group_list[18]['list'][76]['href'.$lang_key]; ?>" class="header-callback-single" title="<?php echo $group_list[18]['list'][76]['name']; ?>">
                   <span class="img compare"></span>
-                  <p><?php echo $lib['В сравнении']; ?></p>
+                  <p><?php echo $group_list[18]['list'][76]['name']; ?></p>
                 </a>
                 <a href="<?php echo $wishlist; ?>" class="header-callback-single" title="<?php echo $text_wishlist; ?>">
                   <span class="img star"></span>

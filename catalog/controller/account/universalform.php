@@ -29,12 +29,12 @@ class Controlleraccountuniversalform extends Controller {
 					  'page_chertog' => 'ОТПРАВИТЬ ЧЕРТЕЖ НА ПОЧТУ',
 					  'page_zamer' => 'ВЫЗВАТЬ ЗАМЕРЩИКА',
 					  'page_service_master' => 'РЕМОНТ ОКОН',
-					   'call_me__modal_send_letter_director' => 'Написать директору',
-					   '' => '',
-					   '' => '',
-					   '' => '',
-					   '' => '',
-					   '' => '',
+					  'call_me__modal_send_letter_director' => 'Написать директору',
+					  'call_me__contact' => 'КОНТАКТЫ',
+					  '' => '',
+					  '' => '',
+					  '' => '',
+					  '' => '',
 					  
 					  
 					  'phone' => 'Номер телефона',
