@@ -336,7 +336,9 @@ button {
       margin: 0 24px;
       text-align: center; }
       .header-callback-single:hover .compare {
-        background: url(/catalog/view/theme/default/image/compare1.png) no-repeat center; }
+        /*background: url(/catalog/view/theme/default/image/compare1.png) no-repeat center; */
+        background: url(/catalog/view/theme/default/image/52.png) no-repeat center; 
+      }
       .header-callback-single:hover .star {
         background: url(/catalog/view/theme/default/image/star1.png) no-repeat center; }
       .header-callback-single:hover .busket {
@@ -353,7 +355,9 @@ button {
         display: block;
         transition: 0.3s ease-in-out; }
       .header-callback-single .compare {
-        background: url(/catalog/view/theme/default/image/compare.png) no-repeat center; }
+        /*background: url(/catalog/view/theme/default/image/compare.png) no-repeat center;*/
+        background: url(/catalog/view/theme/default/image/52.png) no-repeat center;
+        border-radius: 100%; }
       .header-callback-single .star {
         background: url(/catalog/view/theme/default/image/star.png) no-repeat center; }
       .header-callback-single .busket {
