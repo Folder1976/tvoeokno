@@ -1565,6 +1565,15 @@
     .news-page .all-news-single h3 {
         font-size: 18px
     }
+    .fancybox-close-small {
+        right: 0;
+    }
+    .modal-measure .image,
+    .modal-call .image,
+    .modal-discount .image,
+    .modal-send-letter-director .image {
+        display: none;
+    }
 }
 @media (max-width: 445px) {
     .header-top {
