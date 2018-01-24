@@ -3,7 +3,8 @@ class ControllerStartupSeoUrl extends Controller {
 	public function index() {
 		// Add rewrite to url class
 		
-		
+
+	
 		if ($this->config->get('config_seo_url')) {
 			$this->url->addRewrite($this);
 		}
@@ -59,7 +60,7 @@ class ControllerStartupSeoUrl extends Controller {
 			foreach ($parts as $part) {
 				
 				$sql = "SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($part) . "'";
-				//echo $sql;
+				
 				$query = $this->db->query($sql);
 
 				if ($query->num_rows) {
@@ -128,7 +129,7 @@ class ControllerStartupSeoUrl extends Controller {
 				}
 			}
 
-
+	
 			
 			if (!isset($this->request->get['route'])) {
 				if (isset($this->request->get['product_id'])) {
@@ -151,9 +152,14 @@ class ControllerStartupSeoUrl extends Controller {
 			
 			
 		}else{
-			if($this->session->data['language'] != 'ru-ru' AND !isset($this->request->post['redirect'])){
-				$this->session->data['language'] = 'ru-ru';
-				$this->response->redirect('/');
+			
+			if($this->session->data['language'] != 'ru-ru' AND
+				!isset($this->request->post['redirect'])){
+				
+				if(!isset($this->request->get['route'])){
+					$this->session->data['language'] = 'ru-ru';
+					$this->response->redirect('/');
+				}
 			}
 				
 		}
