@@ -3,6 +3,22 @@ namespace Cart;
 class Cart {
 	private $data = array();
 
+	private $option_name = array(
+						'montage' => array(1=>'Монтаж/демонтаж', 2=>'Монтаж/демонтаж'),
+						'moskito' => array(1=>'Москитная сетка', 2=>'Москітна сітка'),
+						'on' => array(1=>'Да', 2=>'Так'),
+						'otkos' => array(1=>'Откос', 2=>'Відкоси'),
+						'otliv' => array(1=>'Отлив', 2=>'Відлив'),
+						'w_height' => array(1=>'Высота окна', 2=>'Висота вiкна'),
+						'w_width' => array(1=>'Ширина окна', 2=>'Ширина вiкна'),
+						'p_height' => array(1=>'Высота подоконника', 2=>'Висота підвіконня'),
+						'p_width' => array(1=>'Ширина подоконника', 2=>'Ширина підвіконня'),
+						'w_items' => array(1=>'Количество окон', 2=>'Кількість вікон'),
+						'address' => array(1=>'Адрес', 2=>'Адреса'),
+						'comments' => array(1=>'Коментарий', 2=>'Коментар'),
+						'window' => array(1=>'Окна', 2=>'Вiкна'),
+								 );
+	
 	public function __construct($registry) {
 		$this->config = $registry->get('config');
 		$this->customer = $registry->get('customer');
@@ -48,7 +64,10 @@ class Cart {
 				$option_data = array();
 
 				foreach (json_decode($cart['option']) as $product_option_id => $value) {
-					$option_query = $this->db->query("SELECT po.product_option_id, po.option_id, od.name, o.type FROM " . DB_PREFIX . "product_option po LEFT JOIN `" . DB_PREFIX . "option` o ON (po.option_id = o.option_id) LEFT JOIN " . DB_PREFIX . "option_description od ON (o.option_id = od.option_id) WHERE po.product_option_id = '" . (int)$product_option_id . "' AND po.product_id = '" . (int)$cart['product_id'] . "' AND od.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+					
+					$option_query = $this->db->query("SELECT po.product_option_id, po.option_id, od.name, o.type FROM " . DB_PREFIX . "product_option po LEFT JOIN `" . DB_PREFIX . "option` o ON (po.option_id = o.option_id)
+													 LEFT JOIN " . DB_PREFIX . "option_description od ON (o.option_id = od.option_id)
+													 WHERE po.product_option_id = '" . (int)$product_option_id . "' AND po.product_id = '" . (int)$cart['product_id'] . "' AND od.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
 					if ($option_query->num_rows) {
 						if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio') {
@@ -160,9 +179,66 @@ class Cart {
 								'weight_prefix'           => ''
 							);
 						}
+					}else{
+						
+						if(!is_numeric($product_option_id)){
+							
+							if(!is_numeric($value)){
+								$value = $this->option_name[$value][(int)$this->config->get('config_language_id')];
+							}
+							
+							$option_data[] = array(
+										'product_option_id'       => $product_option_id,
+										'product_option_value_id' => $value,
+										'option_id'               => '',
+										'option_value_id'         => '',
+										'name'                    => $this->option_name[$product_option_id][(int)$this->config->get('config_language_id')],
+										'value'                   => $value,
+										'type'                    => 'select',
+										'quantity'                => $cart['quantity'],
+										'subtract'                => 0,
+										'price'                   => 0,
+										'price_prefix'            => '',
+										'points'                  => '',
+										'points_prefix'           => '',
+										'weight'                  => '',
+										'weight_prefix'           => ''
+									);
+						}else{
+						
+							$option_query = $this->db->query("SELECT *,
+																AD2.name AS ad_name,
+																AGD2.name AS agd_name
+																FROM " . DB_PREFIX . "attribute2 A2
+															 LEFT JOIN `" . DB_PREFIX . "attribute_description2` AD2 ON (A2.attribute_id = AD2.attribute_id AND AD2.language_id = '" . (int)$this->config->get('config_language_id') . "')
+															 LEFT JOIN " . DB_PREFIX . "attribute_group_description2 AGD2 ON  (A2.attribute_group_id = AGD2.attribute_group_id AND AD2.language_id = '" . (int)$this->config->get('config_language_id') . "')
+															 WHERE A2.attribute_group_id = '" . (int)$product_option_id . "' AND  A2.attribute_id = '" . (int)$value . "' LIMIT 1");
+	
+							if ($option_query->num_rows) {
+									$option_data[] = array(
+										'product_option_id'       => $product_option_id,
+										'product_option_value_id' => $value,
+										'option_id'               => $option_query->row['attribute_group_id'],
+										'option_value_id'         => $option_query->row['attribute_id'],
+										'name'                    => $option_query->row['agd_name'],
+										'value'                   => $option_query->row['ad_name'],
+										'type'                    => 'select',
+										'quantity'                => $cart['quantity'],
+										'subtract'                => 0,
+										'price'                   => 0,
+										'price_prefix'            => '',
+										'points'                  => '',
+										'points_prefix'           => '',
+										'weight'                  => '',
+										'weight_prefix'           => ''
+									);
+						
+							}
+						}
+						
+					
 					}
 				}
-
 				$price = $product_query->row['price'];
 
 				// Product Discounts

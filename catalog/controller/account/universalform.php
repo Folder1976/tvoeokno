@@ -31,6 +31,8 @@ class Controlleraccountuniversalform extends Controller {
 					  'page_service_master' => 'РЕМОНТ ОКОН',
 					  'call_me__modal_send_letter_director' => 'Написать директору',
 					  'call_me__contact' => 'КОНТАКТЫ',
+					  'product_id' => 'Ид продукта',
+					  'quantity' => 'Количество',
 					  '' => '',
 					  '' => '',
 					  '' => '',
@@ -71,8 +73,18 @@ class Controlleraccountuniversalform extends Controller {
 					  );
 		
 		$mail_message = "Мы получили форму со следующими полями:\n\r";
-		
 	
+		if(isset($this->request->post['option'])){
+			
+			foreach($this->request->post['option'] as $index => $value){
+				$this->request->post[$index] = $value;
+			}
+			
+			unset($this->request->post['option']);
+			
+		}
+
+
 		foreach($this->request->post as $index => $row){
 			
 			if(($this->request->post['formname'] == 'calculator' OR

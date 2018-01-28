@@ -151,7 +151,7 @@ var cart = {
 			},
 			success: function(json) {
 				$('.alert, .text-danger').remove();
-
+console.log(json);
 				if (json['redirect']) {
 					location = json['redirect'];
 				}
