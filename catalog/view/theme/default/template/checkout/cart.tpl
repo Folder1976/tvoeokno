@@ -1,14 +1,109 @@
 <?php echo $header; ?>
-<div class="breadcrumbs">
-  <div class="container">
-    <ul class="breadcrumbs-list">
-      <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-      <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-      <?php } ?>
-    </ul>
+
+<style>
+  .main-sect {display: none;}
+</style>
+
+<section class="cart">
+  <div class="breadcrumbs">
+    <div class="container">
+      <ul class="breadcrumbs-list">
+        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+        <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+        <?php } ?>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="container">
+  <div class="container-fluid">
+    <form action="/" class="js-form-call-me">
+      <input name="formname" value="cart" type="hidden">
+      <h2 class="main-title">Корзина</h2>
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="cart-order">
+            <h3><span>оформления заказа №666666666асав</span></h3>
+            <p>Пожалуйста, введите контактный номер телефона. Он будет использоваться как логин в нашем магазине, и все ваши заказы будут привязаны к нему.</p>
+            <div class="cart-order-form">
+              <input type="tel" name="telephone" class="form-controll small" placeholder="Контактный телефон">
+              <input type="text" name="firstname" class="form-controll small" placeholder="Как к вам обращаться?">
+              <input type="email" name="email" class="form-controll" placeholder="Ваш E-mail">
+              <h4 class="address-title" style="font-size: 0;">Адрес доставки</h4>
+              <input type="text" name="city" class="form-controll small" placeholder="Город">
+              <input type="text" name="address_1" class="form-controll small" placeholder="Адрес">
+              <input type="text" name="address_detail" class="form-controll" placeholder="Номер квартиры, этаж, подьезд, этаж, код от подъезд">
+              <textarea name="note" class="form-controll" placeholder="Примечание"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="cart-info">
+            <h3><span>ваша корзина</span></h3>
+            <?php foreach ($products as $product) { ?>
+            <div class="cart-item">
+              <a href="#" class="close" onclick="cart.remove('1');">×</a>
+              <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
+              <div class="img">
+                <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>">
+              </div>
+              <?php if ( count($product['option']) > 0 ) { ?>
+              <table class="cart-item-table">
+                <tbody>
+                  <?php foreach ($product['option'] as $value) { ?>
+                    <tr>
+                      <td><?php echo $value['name']; ?></td>
+                      <td><?php echo $value['value']; ?></td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+              <?php } ?>
+              <div class="cart-item-price">
+                <p>Стоимость:</p>
+                <span><?php echo $product['total']; ?></span>
+                <p>Код товара: <br> <?php echo $product['model']; ?></p>
+              </div>
+            </div>
+            <?php } ?>
+
+            <div class="additional">
+              <p class="title">Дополнительная комплектация</p>
+              <div class="checkbox">
+                <input id="c1" type="checkbox" checked>
+                <label for="c1">Отлив</label>
+              </div>
+              <div class="checkbox">
+                <input id="c2" type="checkbox" checked>
+                <label for="c2">Монтаж</label>
+              </div>
+              <div class="checkbox">
+                <input id="c3" type="checkbox" checked>
+                <label for="c3">Москитная сетка</label>
+              </div>
+              <div class="checkbox">
+                <input id="c4" type="checkbox" checked>
+                <label for="c4">Откосы</label>
+              </div>
+            </div>
+            <div class="total">
+              <input type="text" class="form-controll" placeholder="Введите промокод">
+              <p>Доставка: <span>Бесплатно</span></p>
+              <p class="big">Вам будет начисленно: <span>666 балов</span></p>
+              <p>Общая стоимость: <span><?php echo $totals[0]['text'] ?></span></p>
+              <div class="total-btn">
+                <button type="submit" class="green-btn">Отправить на расчет</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+<div class="container" style="display: none;">
   <?php if ($attention) { ?>
   <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $attention; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -133,4 +228,6 @@
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
+
+
 <?php echo $footer; ?>

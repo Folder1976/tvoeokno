@@ -72,111 +72,20 @@ echo $header; ?>
             <div class="col-md-6">
               <div class="color">
                 <p>Выберете цвет подоконника</p>
-                <div class="img">
+                <div class="img prices-single-img">
                   <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
                 </div>
                 <div class="color-checkboxes">
-                  <div class="color-checkbox">
-                    <input id="c1" type="checkbox">
-                    <label for="c1"></label>
+                  <?php
+                  // foreach ($colors as $key => $value) { // в какой переменной находятся цвета???
+                  for ($i = 0; $i<15; $i++) {
+                  ?>
+                   <div class="color-checkbox">
+                    <input id="c_<?php echo $i?>" type="radio" name="option[color]" value="<?php echo $i; ?>">
+                    <label for="c_<?php echo $i?>" style="background: rgb(<?php echo rand(0, 255).','.rand(0, 255).','.rand(0, 255); ?>)"></label>
                   </div>
-                  <div class="color-checkbox red">
-                    <input id="c2" type="checkbox">
-                    <label for="c2"></label>
-                  </div>
-                  <div class="color-checkbox grey">
-                    <input id="c3" type="checkbox">
-                    <label for="c3"></label>
-                  </div>
-                  <div class="color-checkbox brown">
-                    <input id="c4" type="checkbox">
-                    <label for="c4"></label>
-                  </div>
-                  <div class="color-checkbox yellow">
-                    <input id="c5" type="checkbox">
-                    <label for="c5"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c6" type="checkbox">
-                    <label for="c6"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c7" type="checkbox">
-                    <label for="c7"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c8" type="checkbox">
-                    <label for="c8"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c9" type="checkbox">
-                    <label for="c9"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c10" type="checkbox">
-                    <label for="c10"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c11" type="checkbox">
-                    <label for="c11"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c12" type="checkbox">
-                    <label for="c12"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c13" type="checkbox">
-                    <label for="c13"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c14" type="checkbox">
-                    <label for="c14"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c15" type="checkbox">
-                    <label for="c15"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c16" type="checkbox">
-                    <label for="c16"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c17" type="checkbox">
-                    <label for="c17"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c18" type="checkbox">
-                    <label for="c18"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c19" type="checkbox">
-                    <label for="c19"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c20" type="checkbox">
-                    <label for="c20"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c21" type="checkbox">
-                    <label for="c21"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c22" type="checkbox">
-                    <label for="c22"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c23" type="checkbox">
-                    <label for="c23"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c24" type="checkbox">
-                    <label for="c24"></label>
-                  </div>
-                  <div class="color-checkbox">
-                    <input id="c25" type="checkbox">
-                    <label for="c25"></label>
-                  </div>
-                </div>
+                  <?php } ?>
+               </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -221,357 +130,34 @@ echo $header; ?>
             </div>
           </div>
           <div class="add-order-fav window-sill-order">
-            <a href="#" class="link favorite-link">В избранное</a>
-            <a href="#" class="link brand-link">Добавить бренд в сравнение</a>
-            <a href="#" class="link-price green-btn">Добавить в корзину</a>
-          </div>
+              <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
+              <a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a>
+              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+              <button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button>
+            </div>
         </form>
       </div>
     </section>
-    
-    <section class="tech window-sill-tech">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="char">
-              <h3 class="product-card-title">Технические характеристики</h3>
-              <table class="tech-table">
-                <tbody>
-                  <tr>
-                    <td>Вид</td>
-                    <td>2279</td>
-                  </tr>
-                  <tr>
-                    <td>Стеклопакет</td>
-                    <td>2279</td>
-                  </tr>
-                  <tr>
-                    <td>Монтажная глубина</td>
-                    <td>2279</td>
-                  </tr>
-                  <tr>
-                    <td>Профильная система</td>
-                    <td>2279</td>
-                  </tr>
-                  <tr>
-                    <td>Цвет</td>
-                    <td>2279</td>
-                  </tr>
-                  <tr>
-                    <td>Камерность профиля</td>
-                    <td>2279</td>
-                  </tr>
-                  <tr>
-                    <td>Толщина стеклопакета</td>
-                    <td>2279</td>
-                  </tr>
-                  <tr>
-                    <td>Фуртитура</td>
-                    <td>2279</td>
-                  </tr>
-                  <tr>
-                    <td>Коэффициент теплопередачи</td>
-                    <td>2279</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="desc">
-              <h3 class="product-card-title">Описание</h3>
-              <p>Металлопластиковые системы Veka Euroline представляют собой трехкамерный профиль с оптимальными характеристиками. Он лучшим образом подойдет для качественного и одновременно экономного остекления любых помещений и балконов. При глубине монтажа 58 мм рамы способны вмещать стеклоблоки до 32 мм.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section>
-      <div class="container-fluid">
-        <div class="prices-single">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="prices-single-img">
-                <img src="<?php echo $popup; ?>" alt="">
-              </div>
-              <ul id="productGallery" class="owl-carousel prices-single-thumb">
-                  <li>
-                    <a href="javascript:void(0)">
-                      <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
-                    </a>
-                  </li>
-                  <?php foreach ($images as $image) { ?>
-                  <li>
-                    <a href="javascript:void(0)">
-                      <img src="<?php echo $image['thumb']; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $image['popup']; ?>" />
-                    </a>
-                  </li>
-                  <?php } ?>
-                </ul>
-            </div>
-            
-            <div class="col-md-2">
-              <div class="product-card-info">
-                <?php if ($attribute_groups) { ?>
-                    <div class="sizes">
-                        <?php foreach ($attribute_groups as $attribute_group) { ?>
-                            <?php //echo $attribute_group['name']; ?>
-                            <?php if($attribute_group['attribute_group_id'] == 7){ ?>
-                                <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-                                  <p><?php echo $attribute['name']; ?>: <span><?php echo $attribute['text']; ?></span></p>
-                                <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-                    </div>
-                <?php } ?>
-                <p class="product-card-price"><?php echo $lib['Цена от']; ?>: <span><?php 
-                if ($price) {
-                  $price_and_currency = explode(' ', $price);
-                  echo round($price_and_currency[0], 2).' '.$price_and_currency[1];
-                } 
-                ?></span></p>
-                <p class="dop"><?php echo $umova; ?> </p>
-                <p class="product-card-id"><?php echo $text_model; ?> <?php echo $model; ?></p>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <table class="prices-single-table">
-                <thead>
-                  <tr>
-                    <th><?php echo $lands['Бренды'];?></th>
-                    <th><?php echo $lands['1-камерный'];?></th>
-                    <th><?php echo $lands['2-камерный'];?></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach($brand_list as $row){ ?>
-                  <tr>
-                    <td><?php echo $row['brand'] ;?></td>
-                    <td><?php echo $row['price1'] ;?> грн</td>
-                    <td><?php echo $row['price2'] ;?> грн</td>
-                  </tr>
-                  <?php } ?>
-                </tbody>
-              </table>
-            </div>
-            <div class="col-md-3">
-              <div class="prices-single-right">
-                <div class="complectation">
-                  <h3><?php echo $lands['Дополнительно'];?></h3>
-                  <?php foreach($addons as $row){ ?>
-                    <p><?php echo $row['text'] ;?> - <?php echo $row['price'] ;?> грн</p>
-                  <?php } ?>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<pre>
+<?php
+  // var_dump($group_list);
+?>
+</pre>
 
-      <form action="/" class="product-card-form js-form-call-me">
-        <input name="formname" value="product" type="hidden">
-        <section class="product-card-data">
-          <div class="container">
-            <h3 class="product-card-title"><?php echo $lib['Внести свои данные для расчета']; ?></h3>
-            <div class="row">
-              <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="sizes">
-                  <p><?php echo $lib['Размер окна']; ?></p>
-                  <div class="sizes-group">
-                    <label for="height"><?php echo $lib['Высота']; ?>, см</label>
-                    <input id="height" name="w_height" type="text" class="form-controll" value="0">
-                  </div>
-                  <div class="sizes-group">
-                    <label for="width"><?php echo $lib['Ширина']; ?>, см</label>
-                    <input id="width" name="w_width" type="text" class="form-controll" value="0">
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-9 col-md-8 col-sm-6">
-                <div class="info">
 
-                  <?php $group = $group_list[7]; // Оконная система ?>
-                  <?php if ( $group['enable'] == 1 ) { ?>
-                  <div class="info-select">
-                    <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
-                      <option disabled selected><?php echo $group['name']; ?></option>
-                      <?php foreach ($group['list'] as $k => $attribute) { ?>
-                      <?php if ( $attribute['enable'] == 1 ) { ?>
-                        <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
-                      <?php } ?>
-                      <?php } ?>
-                    </select>
-                  </div>
-                  <?php } ?>
-
-                  <?php $group = $group_list[8]; // Стеклопакет ?>
-                  <?php if ( $group['enable'] == 1 ) { ?>
-                  <div class="info-select">
-                    <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
-                      <option disabled selected><?php echo $group['name']; ?></option>
-                      <?php foreach ($group['list'] as $k => $attribute) { ?>
-                      <?php if ( $attribute['enable'] == 1 ) { ?>
-                        <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
-                      <?php } ?>
-                      <?php } ?>
-                    </select>
-                    <a href="/характеристики_стеклопакетов"><?php echo $lib['характеристики стеклопакетов']; ?></a>
-                  </div>
-                  <?php } ?>
-
-                  <?php $group = $group_list[9]; // Фурнитура ?>
-                  <?php if ( $group['enable'] == 1 ) { ?>
-                  <div class="info-select">
-                    <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
-                      <option disabled selected><?php echo $group['name']; ?></option>
-                      <?php foreach ($group['list'] as $k => $attribute) { ?>
-                      <?php if ( $attribute['enable'] == 1 ) { ?>
-                        <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
-                      <?php } ?>
-                      <?php } ?>
-                    </select>
-                    <a href="/характеристики_фурнитуры"><?php echo $lib['характеристики фурнитуры']; ?></a>
-                  </div>
-                  <?php } ?>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="add-order">
-          <div class="container">
-            <h3 class="product-card-title"><?php echo $lib['Добавить к заказу']; ?></h3>
-
-            <?php $group = $group_list[10]; // Подоконник ?>
-            <?php if ( $group['enable'] == 1 ) { ?>
-            <div class="info-select">
-              <select class="select" name="<?php echo $group['attribute_group_id']; ?>">
-                <option disabled selected><?php echo $group['name']; ?></option>
-                <?php foreach ($group['list'] as $k => $attribute) { ?>
-                <?php if ( $attribute['enable'] == 1 ) { ?>
-                  <option value="<?php echo $attribute['attribute_id'] ; ?>"><?php echo $attribute['name']; ?></option>
-                <?php } ?>
-                <?php } ?>
-              </select>
-              <a href="/посмотреть_цвета_подоконников"><?php echo $lib['посмотреть цвета подоконников']; ?></a>
-            </div>
-            <?php } ?>
-
-            <div class="counts">
-              <div class="first-count">
-                <p><?php echo $lib['Размер подоконника']; ?></p>
-                <div class="sizes-group">
-                  <label for="height2"><?php echo $lib['Глубина']; ?>, см</label>
-                  <input id="height2" name="p_height" type="text" class="form-controll" value="0">
-                </div>
-                <div class="sizes-group">
-                  <label for="width2"><?php echo $lib['Ширина']; ?>, см</label>
-                  <input id="width2" name="p_width" type="text" class="form-controll" value="0">
-                </div>
-              </div>
-              <div class="second-count">
-                <p><?php echo $lib['Количество окон']; ?></p>
-                <div class="second-count-input">
-                  <a href="#" class="second-count-btn btn-prev">-</a>
-                  <input type="number" name="w_items" value="1">
-                  <a href="#" class="second-count-btn btn-next">+</a>
-                </div>
-              </div>
-            </div>
-            <div class="add-order-dop">
-              <div class="checkbox">
-                <input id="c1" type="checkbox" name="otliv" checked>
-                <label for="c1"><?php echo $lib['Отлив']; ?></label>
-              </div>
-              <div class="checkbox">
-                <input id="c2" type="checkbox" name="montage" checked>
-                <label for="c2"><?php echo $lib['Монтаж']; ?></label>
-              </div>
-              <div class="checkbox">
-                <input id="c3" type="checkbox" name="moskito" checked>
-                <label for="c3"><?php echo $lib['Москитная сетка']; ?></label>
-              </div>
-              <div class="checkbox">
-                <input id="c4" type="checkbox" name="otkos" checked>
-                <label for="c4"><?php echo $lib['Откосы']; ?></label>
-              </div>
-            </div>
-            <div class="add-order-fav">
-              <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
-              <a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a>
-              <button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button>
-            </div>
-          </div>
-        </section>
-        <section class="tech">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8">
-                <div class="char">
-                  <h3 class="product-card-title"><?php echo $tab_attribute; ?></h3>
-                  <table class="tech-table">
-                    <tbody>
-                <?php if ($attribute_groups) { ?>
-                        <?php foreach ($attribute_groups as $attribute_group) { ?>
-                            <?php if($attribute_group['attribute_group_id'] != 7){ ?>
-                                <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-                                     <tr>
-                                        <td><?php echo $attribute['name']; ?></td>
-                                        <td><?php echo $attribute['text']; ?></td>
-                                    </tr>
-                                 <?php } ?>
-                            <?php } ?>
-                        <?php } ?>
-            
-                <?php } ?>
-                        
-                         </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="desc">
-                  <h3 class="product-card-title"><?php echo $tab_description; ?></h3>
-                  <?php echo $description; ?>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </form>
       
       
           
-      <section class="similar-product">
-        <?php if ($products) { ?>
-        <div class="container">
-          <h2 class="main-title"><?php echo $text_related; ?></h2>
-          <div class="slider">
-            <div class="owl-nav navs">
-              <a href="#" class="owl-prev similar-next prev"><span></span></a>
-              <a href="#" class="owl-next similar-prev next"><span></span></a>
-            </div>
-            <div class="similar-product-slider owl-carousel">
-                <?php $i = 0; ?>
-                <?php foreach ($products as $product) { ?>
-                    <div class="item">
-                      <div class="favorites-single">
-                        <div class="img">
-                          <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>">
-                        </div>
-                        <p class="name"><?php echo $product['name']; ?></p>
-                        <a href="javascript:;" onclick="wishlist.add('<?php echo $product['product_id']; ?>');" class="favorite-link"><?php echo $button_wishlist; ?></a>
-                        <a href="<?php echo $product['href']; ?>" class="more green-btn"><?php echo $text_detail; ?></a>
-                      </div>
-                    </div>
-                <?php } ?>
-            </div>
-          </div>
-        </div>
-        <?php } ?>
+
+
+
+
+
+
+
+
+
 
 
 <div class="container" style="display: none;">
@@ -1031,7 +617,7 @@ $('#button-cart').on('click', function() {
 			}
 
 			if (json['success']) {
-				$('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('.breadcrumbs').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 				$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
 

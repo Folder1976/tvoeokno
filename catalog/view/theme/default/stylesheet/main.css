@@ -4856,4 +4856,7 @@ textarea {
     list-style: inside;
     margin-left: 27px;
 }
+.window-sill .color img {
+  max-width: 289px;
+}
 /*****************************/
