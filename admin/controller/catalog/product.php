@@ -1068,6 +1068,14 @@ class ControllerCatalogProduct extends Controller {
 			$data['weight_class_id'] = $this->config->get('config_weight_class_id');
 		}
 
+		if (isset($this->request->post['tpl'])) {
+			$data['tpl'] = $this->request->post['tpl'];
+		} elseif (!empty($product_info)) {
+			$data['tpl'] = $product_info['tpl'];
+		} else {
+			$data['tpl'] = '';
+		}
+
 		if (isset($this->request->post['length'])) {
 			$data['length'] = $this->request->post['length'];
 		} elseif (!empty($product_info)) {

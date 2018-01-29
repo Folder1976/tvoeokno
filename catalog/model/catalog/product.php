@@ -44,6 +44,7 @@ class ModelCatalogProduct extends Model {
 				'product_id'       => $query->row['product_id'],
 				'name'             => $query->row['name'],
 				'umova'             => $query->row['umova'],
+				'tpl'             => $query->row['tpl'],
 				'alt'             => $query->row['alt'],
 				'title'             => $query->row['title'],
 				'main_page_tab'             => $query->row['main_page_tab'],

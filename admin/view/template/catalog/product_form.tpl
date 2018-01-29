@@ -375,7 +375,24 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-links">
-							
+							<div class="form-group">
+                <label class="col-sm-2 control-label">Шаблон товара</label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+										<?php $tpls = array('Продукт'=>'','Подоконник'=>'product_sill'); ?>
+										
+										<?php foreach($tpls as $name => $value){ ?> 
+											<?php if ($value == $tpl) { ?>
+											<input type="radio" name="tpl" value="<?php echo $value;?>" checked="checked" />&nbsp;&nbsp;&nbsp;<?php echo $name; ?><br>
+											<?php } else { ?>
+											<input type="radio" name="tpl" value="<?php echo $value;?>" />&nbsp;&nbsp;&nbsp;<?php echo $name; ?><br>
+											<?php } ?>
+										<?php } ?>
+                  </label>
+                 
+                </div>
+              </div>
+								
 							<div class="form-group">
                 <label class="col-sm-2 control-label" for="input-tab1">Таб на главную страницу</label>
                 <div class="col-sm-10">
