@@ -4859,4 +4859,11 @@ textarea {
 .window-sill .color img {
   max-width: 289px;
 }
+.color-checkbox img {
+  width: 24px;
+  border-radius: 100%;
+}
+.product-card .color-checkboxes .color-checkbox input:checked + label img {
+    border: 1px solid #309DE0;
+}
 /*****************************/
