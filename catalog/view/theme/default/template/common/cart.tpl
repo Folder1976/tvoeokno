@@ -1,6 +1,6 @@
 <div id="cart" class="btn-group btn-block">
   <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total"><?php echo $text_items; ?></span></button>
-  <ul class="dropdown-menu pull-right">
+  <ul class="pull-right">
     <?php if ($products || $vouchers) { ?>
     <li>
       <table class="table table-striped">
@@ -46,7 +46,7 @@
           </tr>
           <?php } ?>
         </table>
-        <p class="text-right"><a href="<?php echo $cart; ?>"><strong><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></strong></a>&nbsp;&nbsp;&nbsp;<a href="<?php echo $checkout; ?>"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a></p>
+        <p class="text-right"><!-- <a href="<?php echo $cart; ?>"><strong><i class="fa fa-shopping-cart"></i> <?php echo $text_cart; ?></strong></a>&nbsp;&nbsp;&nbsp; --><a href="<?php echo $checkout; ?>"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a></p>
       </div>
     </li>
     <?php } else { ?>

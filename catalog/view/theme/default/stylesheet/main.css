@@ -2569,8 +2569,8 @@ textarea {
       color: #000;
       font-family: "FiraSans-Regular", sans-serif;
       margin-bottom: 20px; }
-    .cart-order-form {
-      font-size: 0; }
+    /*.cart-order-form {
+      font-size: 0; }*/
       .cart-order-form .small {
         width: 47%;
         margin-right: 6%; }

@@ -9,6 +9,7 @@
                 'Размер окна' => 'Розмір вікна',
                 'Высота' => 'Висота',
                 'Ширина' => 'Ширина',
+                'Длина' => 'Довжина',
                 'характеристики стеклопакетов' => 'характеристики склопакетів',
                 'характеристики фурнитуры' => 'характеристики фурнітури',
                 'Добавить к заказу' => 'Додати до замовлення',
@@ -25,7 +26,13 @@
                 '1-камерный' => '1-камерний',
                 '2-камерный' => '1-камерний',
                 'Дополнительно' => 'Додатково',
-                '' => '',
+                'Выберете цвет подоконника' => 'Виберіть колір підвіконника',
+                'Размер окна' => 'Розмір вікна',
+                'Заглушка' => 'Заглушка',
+                'Торцевая' => 'Торцевая',
+                'Cоединительная' => 'Зєднувальна',
+                'Стоимость' => 'Вартість',
+                'Количество' => 'Кількість',
                 '' => '',
                 '' => '',
                 '' => '',
@@ -72,19 +79,24 @@ echo $header; ?>
       <h2 class="main-title"><?php echo $heading_title; ?></h2>
 
       <div class="container">
-        <form action="/" class="product-card-form js-form-call-me">
+        <form action="/" class="product-card-form js-form-call-me" id="product">
           <input name="formname" value="product_sill" type="hidden">
+          <input name="product_id" value="<?php echo $product_id; ?>" type="hidden">
           <div class="row">
             <div class="col-md-6">
               <div class="color">
-                <p>Выберете цвет подоконника</p>
+                <p><?php echo $lands['Выберете цвет подоконника'];?></p>
                 <div class="img prices-single-img">
                   <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
                 </div>
                 <div class="color-checkboxes">
                   <?php
                   foreach ($options as $option) {
-                    if ( $option['option_id'] == 17 ) {  // цвет
+                    if ( $option['option_id'] == 17 ) {  // цвет ?>
+
+                      <div id="input-option<?php echo $option['product_option_id']; ?>">
+
+                      <?php
                       foreach ($option['product_option_value'] as $option_value) {
                       ?>
                        <div class="color-checkbox ">
@@ -98,6 +110,9 @@ echo $header; ?>
                       </div>
                   <?php 
                       }
+                  ?>
+                      </div>
+                  <?php
                     }
                   }
                   ?>
@@ -108,37 +123,42 @@ echo $header; ?>
               <div class="window-sill-info">
                 <div class="window-sill-info-left">
                   <div class="sizes">
-                    <p>Размер окна</p>
+                    <p><?php echo $lands['Размер окна'];?></p>
                     <div class="sizes-group">
-                      <label for="height">Ширина, м.п</label>
-                      <input id="height" type="text" class="form-controll">
+                      <label for="width"><?php echo $lib['Ширина']; ?>, м.п</label>
+                      <input id="width" name="option[w_width]" type="text" class="form-controll" value="0">
                     </div>
                     <div class="sizes-group">
-                      <label for="width">Длина, м.п</label>
-                      <input id="width" type="text" class="form-controll">
+                      <label for="height"><?php echo $lib['Длина']; ?>, м.п</label>
+                      <input id="height" name="option[w_height]" type="text" class="form-controll" value="0">
                     </div>
                   </div>
                   <div class="stub">
-                    <p>Заглушка</p>
+                    <p><?php echo $lands['Размер окна'];?></p>
                     <div class="radio">
-                      <input id="r1" type="radio" name="stub">
-                      <label for="r1">Торцевая</label>
+                      <input id="r1" name="stub" type="radio" class="form-controll" value="Торцевая">
+                      <label for="r1"><?php echo $lands['Торцевая'];?></label>
                     </div>
                     <div class="radio">
-                      <input id="r2" type="radio" name="stub">
-                      <label for="r2">Cоединительная</label>
+                      <input id="r2" name="stub" type="radio" class="form-controll" value="Cоединительная">
+                      <label for="r2"><?php echo $lands['Cоединительная'];?></label>
                     </div>
                   </div>
                 </div>
                 <div class="window-sill-info-right">
                   <div class="price">
-                    <p>Стоимость: <span>169 грн</span></p>
-                    <p class="id">Код товара: 316516acab</p>
+                    <p><?php echo $lands['Стоимость'];?>: <span><?php 
+                if ($price) {
+                  $price_and_currency = explode(' ', $price);
+                  echo round($price_and_currency[0], 2).' '.$price_and_currency[1];
+                } 
+                ?></span></p>
+                    <p class="id"><?php echo $text_model; ?> <?php echo $model; ?></p>
                   </div>
                   <div class="second-count-input window-sill-count">
-                    <p>Количество</p>
+                    <p><?php echo $lands['Количество'];?></p>
                     <a href="#" class="second-count-btn btn-prev">-</a>
-                    <input type="number" value="1">
+                    <input type="number" id="input-quantity" name="quantity" value="1">
                     <a href="#" class="second-count-btn btn-next">+</a>
                   </div>
                 </div>
