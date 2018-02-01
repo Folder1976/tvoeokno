@@ -155,7 +155,15 @@ echo $header; ?>
                   <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['alt']; ?>" title="<?php echo $product['title']; ?>"></a>
                 </div>
                 <p class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></p>
+                
+                <div class="price">
+                <?php
+                  $price_and_currency = explode(' ', $product['price']);
+                  echo round($price_and_currency[0], 2).' '.$price_and_currency[1];
+                ?></div>
+                
                 <a href="#" class="favorite-link" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a>
+                
                 <a href="<?php echo $product['href']; ?>" class="more green-btn"><?php echo $lib['ПОДРОБНЕЕ']; ?></a>
               </div>
 

@@ -20,7 +20,7 @@
                 'Узнать стоимость' => 'Дізнатися вартість',
                 'Бренды' => 'Бренди',
                 '1-камерный' => '1-камерний',
-                '2-камерный' => '1-камерний',
+                '2-камерный' => '2-камерний',
                 'Дополнительно' => 'Додатково',
                 '' => '',
                 '' => '',
@@ -113,9 +113,9 @@ echo $header; ?>
               <table class="prices-single-table">
                 <thead>
                   <tr>
-                    <th><?php echo $lands['Бренды'];?></th>
-                    <th><?php echo $lands['1-камерный'];?></th>
-                    <th><?php echo $lands['2-камерный'];?></th>
+                    <th><?php echo $lib['Бренды'];?></th>
+                    <th><?php echo $lib['1-камерный'];?></th>
+                    <th><?php echo $lib['2-камерный'];?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -132,7 +132,7 @@ echo $header; ?>
             <div class="col-md-3">
               <div class="prices-single-right">
                 <div class="complectation">
-                  <h3><?php echo $lands['Дополнительно'];?></h3>
+                  <h3><?php echo $lib['Дополнительно'];?></h3>
                   <?php foreach($addons as $row){ ?>
                     <p><?php echo $row['text'] ;?> - <?php echo $row['price'] ;?> грн</p>
                   <?php } ?>
@@ -276,9 +276,9 @@ echo $header; ?>
             </div>
             <div class="add-order-fav">
               <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
-              <a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a>
-              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
-              <button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button>
+              <!--a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a-->
+              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="link-price green-btn btn btn-primary btn-lg btn-block"><?php echo $lib['Узнать стоимость']; ?></button>
+              <!--button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button-->
             </div>
           </div>
         </section>

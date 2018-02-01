@@ -7,7 +7,7 @@ class ModelBlogBlog extends Model {
 		status = '" . (int)$data['status'] . "', 
 		author = '" . $this->db->escape($data['author']) . "',
 		allow_comment = '" . (int)$data['allow_comment'] . "', 
-		date_added = NOW()");
+		date_added = '" . $this->db->escape($data['date_added']) . "'");
 
 		$blog_id = $this->db->getLastId(); 
 			
@@ -93,7 +93,8 @@ class ModelBlogBlog extends Model {
 		image = '" . $this->db->escape($data['image']) . "', 
 		allow_comment = '" . (int)$data['allow_comment'] . "' , 
 		author = '" . $this->db->escape($data['author']) . "',
-		status = '" . (int)$data['status'] . "'
+		status = '" . (int)$data['status'] . "',
+		date_added = '" . $data['date_added'] . "'
 		WHERE blog_id = '" . (int)$blog_id . "'");
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "blog_description WHERE blog_id = '" . (int)$blog_id . "'");

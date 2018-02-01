@@ -4866,4 +4866,16 @@ textarea {
 .product-card .color-checkboxes .color-checkbox input:checked + label img {
     border: 1px solid #309DE0;
 }
+
+.header-callback a{
+  color: #BA2626;
+}
+
+.favorites-single .price {
+    font-size: 30px;
+    color: #EF4424;
+    font-family: "pfdintextpro-medium", sans-serif;
+    display: block;
+}
+
 /*****************************/

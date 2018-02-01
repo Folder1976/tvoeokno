@@ -24,7 +24,7 @@
                 'Узнать стоимость' => 'Дізнатися вартість',
                 'Бренды' => 'Бренди',
                 '1-камерный' => '1-камерний',
-                '2-камерный' => '1-камерний',
+                '2-камерный' => '2-камерний',
                 'Дополнительно' => 'Додатково',
                 'Выберете цвет подоконника' => 'Виберіть колір підвіконника',
                 'Размер окна' => 'Розмір вікна',
@@ -85,7 +85,7 @@ echo $header; ?>
           <div class="row">
             <div class="col-md-6">
               <div class="color">
-                <p><?php echo $lands['Выберете цвет подоконника'];?></p>
+                <p><?php echo $lib['Выберете цвет подоконника'];?></p>
                 <div class="img prices-single-img">
                   <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
                 </div>
@@ -123,7 +123,7 @@ echo $header; ?>
               <div class="window-sill-info">
                 <div class="window-sill-info-left">
                   <div class="sizes">
-                    <p><?php echo $lands['Размер окна'];?></p>
+                    <p><?php echo $lib['Размер окна'];?></p>
                     <div class="sizes-group">
                       <label for="width"><?php echo $lib['Ширина']; ?>, м.п</label>
                       <input id="width" name="option[w_width]" type="text" class="form-controll" value="0">
@@ -134,20 +134,20 @@ echo $header; ?>
                     </div>
                   </div>
                   <div class="stub">
-                    <p><?php echo $lands['Размер окна'];?></p>
+                    <p><?php echo $lib['Размер окна'];?></p>
                     <div class="radio">
                       <input id="r1" name="stub" type="radio" class="form-controll" value="Торцевая">
-                      <label for="r1"><?php echo $lands['Торцевая'];?></label>
+                      <label for="r1"><?php echo $lib['Торцевая'];?></label>
                     </div>
                     <div class="radio">
                       <input id="r2" name="stub" type="radio" class="form-controll" value="Cоединительная">
-                      <label for="r2"><?php echo $lands['Cоединительная'];?></label>
+                      <label for="r2"><?php echo $lib['Cоединительная'];?></label>
                     </div>
                   </div>
                 </div>
                 <div class="window-sill-info-right">
                   <div class="price">
-                    <p><?php echo $lands['Стоимость'];?>: <span><?php 
+                    <p><?php echo $lib['Стоимость'];?>: <span><?php 
                 if ($price) {
                   $price_and_currency = explode(' ', $price);
                   echo round($price_and_currency[0], 2).' '.$price_and_currency[1];
@@ -156,7 +156,7 @@ echo $header; ?>
                     <p class="id"><?php echo $text_model; ?> <?php echo $model; ?></p>
                   </div>
                   <div class="second-count-input window-sill-count">
-                    <p><?php echo $lands['Количество'];?></p>
+                    <p><?php echo $lib['Количество'];?></p>
                     <a href="#" class="second-count-btn btn-prev">-</a>
                     <input type="number" id="input-quantity" name="quantity" value="1">
                     <a href="#" class="second-count-btn btn-next">+</a>
@@ -167,9 +167,9 @@ echo $header; ?>
           </div>
           <div class="add-order-fav window-sill-order">
               <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
-              <a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a>
-              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
-              <button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button>
+              <!--a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a-->
+              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="link-price green-btn btn btn-primary btn-lg btn-block"><?php echo $lib['Узнать стоимость']; ?></button>
+              <!--button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button-->
             </div>
         </form>
       </div>
@@ -205,7 +205,7 @@ $('#button-cart').on('click', function() {
 		url: 'index.php?route=checkout/cart/add',
 		type: 'post',
 		data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-		dataType: 'json',
+		dataType: 'text',
 		beforeSend: function() {
 			$('#button-cart').button('loading');
 		},
@@ -213,7 +213,10 @@ $('#button-cart').on('click', function() {
 			$('#button-cart').button('reset');
 		},
 		success: function(json) {
-			$('.alert, .text-danger').remove();
+		
+    console.log(json);
+    
+    	$('.alert, .text-danger').remove();
 			$('.form-group').removeClass('has-error');
 
 			if (json['error']) {

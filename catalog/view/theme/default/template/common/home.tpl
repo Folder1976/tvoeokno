@@ -30,6 +30,7 @@
                 'Перезвонить' => 'Передзвонити',
                  'Отправить' => 'Надiслати',
                 'все о гарантии' => 'все про гарантії',
+                'garantiya' => 'uk/garantiya',
                 'Номер договора' => 'Номер договору',
                 'Двухстворчатое окно' => 'Двухстворчате вікно',
                 'Трехстворчатое окно' => 'Трйохстворчате вікно',
@@ -315,7 +316,7 @@ echo $header; ?>
             <img src="/catalog/view/theme/default/image/guarantee.png" alt="<?php echo $blogs_action['alt']; ?>" title="<?php echo $blogs_action['img_title']; ?>" class="guarantee">
             <h3><?php echo $blogs_action['title']; ?></h3>
             <p><?php echo $blogs_action['short_description']; ?></p>
-            <a href="/returns_and_guarantees" class="green-btn"><?php echo $lib['все о гарантии']; ?></a>
+            <a href="/<?php echo $lib['garantiya']; ?>" class="green-btn"><?php echo $lib['все о гарантии']; ?></a>
           </div>
         </div>
         <div class="col-md-7">

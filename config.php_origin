@@ -5,6 +5,8 @@ define('HTTP_SERVER', 'http://tvoeokno.lshoes.com.ua/');
 // HTTPS
 define('HTTPS_SERVER', 'http://tvoeokno.lshoes.com.ua/');
 
+define('MAIN_DIR', '/home/folder/public_html/tvoeokno.lshoes.com.ua/');
+
 // DIR
 define('DIR_APPLICATION', '/home/folder/public_html/tvoeokno.lshoes.com.ua/catalog/');
 define('DIR_SYSTEM', '/home/folder/public_html/tvoeokno.lshoes.com.ua/system/');

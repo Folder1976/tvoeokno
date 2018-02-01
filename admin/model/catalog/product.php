@@ -9,7 +9,7 @@ class ModelCatalogProduct extends Model {
 
 		$product_id = $this->db->getLastId();
 
-		if (isset($data['main_page_tab'])) {
+		if (isset($data['main_page_tab']) AND is_array($data['main_page_tab'])) {
 			foreach($data['main_page_tab'] as $id => $value){
 				$this->db->query("UPDATE " . DB_PREFIX . "product SET main_page_tab = '" . (int)$id . "' WHERE product_id = '" . (int)$product_id . "'");
 			}
@@ -174,12 +174,13 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
-		if (isset($data['keyword'])) {
+		if (isset($data['keyword']) AND is_array($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'product_id=" . (int)$product_id . "',
 								 language_id = '" . (int)$language_id . "',
-								 keyword = '" . $this->db->escape($keyword) . "'");
+								 keyword = '" . $this->db->escape($keyword) . "'
+								 ON DUPLICATE KEY UPDATE language_id = '" . (int)$language_id . "'");
 			}
 		}
 		
@@ -437,7 +438,8 @@ class ModelCatalogProduct extends Model {
 			$data['product_layout'] = $this->getProductLayouts($product_id);
 			$data['product_store'] = $this->getProductStores($product_id);
 			$data['product_recurrings'] = $this->getRecurrings($product_id);
-
+			$data['product_table'] = $this->getProductTables($product_id);
+			
 			$data['main_category_id'] = $this->getProductMainCategoryId($product_id);
 
 			$this->addProduct($data);

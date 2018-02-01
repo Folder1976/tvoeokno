@@ -163,7 +163,15 @@
           </div>
               
         <?php } ?> 
+                
+             <div class="form-group">
+                <label class="col-sm-2 control-label">Дата публикации<br>[0000-00-00 00:00:00]</label>
+                 <div class="col-sm-10">
+                <input name="date_added" value="<?php echo $date_added; ?>" placeholder="<?php echo date('Y-m-d H:i:s'); ?>" class="form-control" />
+              </div>
+              </div>		
               
+           
               <?php if ($allow_author_change) { ?>
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_author; ?></label>

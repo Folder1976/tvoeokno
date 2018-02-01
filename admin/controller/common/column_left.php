@@ -252,7 +252,15 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()		
 				);
 			}
-					
+			
+			if ($this->user->hasPermission('access', 'extension/feed/gcrdev_sitemap')) { 
+				$extension[] = array( 
+				'name'	=> "Sitemap 2", 
+				'href' => $this->url->link('extension/feed/gcrdev_sitemap', 'token=' . $this->session->data['token'], true), 
+				'children' => array() 
+				); 
+			}
+			
 			if ($extension) {					
 				$data['menus'][] = array(
 					'id'       => 'menu-extension',
