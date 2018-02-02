@@ -52,12 +52,6 @@ echo $header; ?>
 .main-sect { display: none; }
 </style>
 
-<pre>
-<?php
-// var_dump(get_defined_vars());
-?>
-</pre>
-
 <div class="wrap">
     <section class="product-card window-sill">
       <div class="breadcrumbs">
@@ -121,6 +115,7 @@ echo $header; ?>
                 <div class="window-sill-info-left">
                   <div class="sizes">
                     <p><?php echo $lib['Размер окна'];?></p>
+<<<<<<< HEAD
                     <div class="sizes-group">
                       <label for="width"><?php echo $lib['Ширина']; ?>, м.п</label>
                         <?php
@@ -163,7 +158,43 @@ echo $header; ?>
                       <input id="r2" name="stub" type="radio" class="form-controll" value="Cоединительная">
                       <label for="r2"><?php echo $lib['Cоединительная'];?></label>
                     </div>
+=======
+                    <?php foreach ($options as $option) {
+                      if ( $option['option_id'] == 16 ) {  // Глубина ?>
+                        <div class="sizes-group" id="input-option<?php echo $option['product_option_id']; ?>">
+                          <label for="width"><?php echo $option['name']; ?></label>
+                          <input id="width" name="option[<?php echo $option['product_option_id']; ?>]" type="text" class="form-controll" value="0">
+                        </div>
+                      <?php } ?>
+                    <?php } ?>
+
+                    <?php foreach ($options as $option) {
+                      if ( $option['option_id'] == 14 ) {  // Ширина ?>
+                        <div class="sizes-group" id="input-option<?php echo $option['product_option_id']; ?>">
+                          <label for="width"><?php echo $option['name']; ?></label>
+                          <input id="width" name="option[<?php echo $option['product_option_id']; ?>]" type="text" class="form-controll" value="0">
+                        </div>
+                      <?php } ?>
+                    <?php } ?>
+
+>>>>>>> fc6bf5a34c31fddee7d84850fabde4854d635c17
                   </div>
+                  
+                    <?php foreach ($options as $option) { ?>
+                      <div class="stub" id="input-option<?php echo $option['product_option_id']; ?>">
+                      <?php if ( $option['option_id'] == 18 ) {  // тип подоконника ?>
+                      <p><?php echo $option['name']; ?></p>
+
+                      <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                        <div class="radio">
+                          <input id="c_option[<?php echo $option['product_option_id']; ?>]__<?php echo $option_value['product_option_value_id']; ?>" name="option[<?php echo $option['product_option_id']; ?>]" type="radio" class="form-controll" value="<?php echo $option_value['product_option_value_id']; ?>">
+                          <label for="c_option[<?php echo $option['product_option_id']; ?>]__<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?></label>
+                        </div>
+                      <?php } ?>
+
+                      <?php } ?>
+                      </div>
+                    <?php } ?>
                 </div>
                 <div class="window-sill-info-right">
                   <div class="price">
@@ -225,7 +256,7 @@ $('#button-cart').on('click', function() {
 		url: 'index.php?route=checkout/cart/add',
 		type: 'post',
 		data: $('#product input[type=\'text\'], #product input[type=\'hidden\'], #product input[type=\'radio\']:checked, #product input[type=\'checkbox\']:checked, #product select, #product textarea'),
-		dataType: 'text',
+		dataType: 'json',
 		beforeSend: function() {
 			$('#button-cart').button('loading');
 		},
@@ -235,7 +266,7 @@ $('#button-cart').on('click', function() {
 		success: function(json) {
 		
     console.log(json);
-    
+
     	$('.alert, .text-danger').remove();
 			$('.form-group').removeClass('has-error');
 
@@ -243,6 +274,8 @@ $('#button-cart').on('click', function() {
 				if (json['error']['option']) {
 					for (i in json['error']['option']) {
 						var element = $('#input-option' + i.replace('_', '-'));
+
+
 
 						if (element.parent().hasClass('input-group')) {
 							element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');

@@ -3987,7 +3987,7 @@ textarea {
       background: #FFB665; }
 
 .window-sill-info {
-  font-size: 0;
+  /*font-size: 0;*/
   overflow: hidden; }
   .window-sill-info-left {
     width: 255px;
