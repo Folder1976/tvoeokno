@@ -1,5 +1,6 @@
 <?php echo $header; ?>
 
+
 <?php
 // Класс для section в зависимости от страницы
 switch ($_GET['_route_']) {
@@ -43,7 +44,7 @@ switch ($_GET['_route_']) {
       <a href="https://maps.google.com/maps?q=<?php echo urlencode($geocode); ?>&hl=<?php echo $geocode_hl; ?>&t=m&z=15" target="_blank" class="btn btn-info"><i class="fa fa-map-marker"></i> <?php echo $button_map; ?></a>
       -->
     <?php } ?>
-          
+         
 <?php echo $content_bottom; ?>
 <?php echo $column_right; ?>
 <?php echo $footer; ?>

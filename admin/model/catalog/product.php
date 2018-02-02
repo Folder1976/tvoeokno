@@ -441,7 +441,8 @@ class ModelCatalogProduct extends Model {
 			$data['product_table'] = $this->getProductTables($product_id);
 			
 			$data['main_category_id'] = $this->getProductMainCategoryId($product_id);
-
+			$data['product_attribute4'] = $this->getProductAttribute4s($product_id);
+			
 			$this->addProduct($data);
 		}
 	}

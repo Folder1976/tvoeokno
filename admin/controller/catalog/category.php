@@ -433,6 +433,14 @@ class ControllerCatalogCategory extends Controller {
 			unset($data['categories'][$category_info['category_id']]);
 		}
 
+		if (isset($this->request->post['tpl'])) {
+			$data['tpl'] = $this->request->post['tpl'];
+		} elseif (!empty($category_info)) {
+			$data['tpl'] = $category_info['tpl'];
+		} else {
+			$data['tpl'] = '';
+		}
+
 		if (isset($this->request->post['parent_id'])) {
 			$data['parent_id'] = $this->request->post['parent_id'];
 		} elseif (!empty($category_info)) {
@@ -502,6 +510,40 @@ class ControllerCatalogCategory extends Controller {
 			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 		}
 
+		foreach($data['category_description'] as $language_id => $row){
+			
+			if (isset($this->request->post['category_description'][$language_id]['image1']) && is_file(DIR_IMAGE . $this->request->post['category_description'][$language_id]['image1'])) {
+				$data['category_description'][$language_id]['thumb1'] = $this->model_tool_image->resize($this->request->post['category_description'][$language_id]['image1'], 100, 100);
+			} elseif (isset($this->request->get['category_id'])) {
+				$data['category_description'][$language_id]['thumb1'] = $this->model_tool_image->resize($row['image1'], 100, 100);
+			} else {
+				$data['category_description'][$language_id]['thumb1'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+			}
+
+			
+			if (isset($this->request->post['category_description'][$language_id]['image2']) && is_file(DIR_IMAGE . $this->request->post['category_description'][$language_id]['image2'])) {
+				$data['category_description'][$language_id]['thumb2'] = $this->model_tool_image->resize($this->request->post['category_description'][$language_id]['image2'], 100, 100);
+			} elseif (isset($this->request->get['category_id'])) {
+				$data['category_description'][$language_id]['thumb2'] = $this->model_tool_image->resize($row['image2'], 100, 100);
+			} else {
+				$data['category_description'][$language_id]['thumb2'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+			}
+
+			
+			if (isset($this->request->post['category_description'][$language_id]['image3']) && is_file(DIR_IMAGE . $this->request->post['category_description'][$language_id]['image3'])) {
+				$data['category_description'][$language_id]['thumb3'] = $this->model_tool_image->resize($this->request->post['category_description'][$language_id]['image3'], 100, 100);
+			} elseif (isset($this->request->get['category_id'])) {
+				$data['category_description'][$language_id]['thumb3'] = $this->model_tool_image->resize($row['image3'], 100, 100);
+			} else {
+				$data['category_description'][$language_id]['thumb3'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+			}
+
+			
+		}
+		
+
+		
+		
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 
 		if (isset($this->request->post['top'])) {

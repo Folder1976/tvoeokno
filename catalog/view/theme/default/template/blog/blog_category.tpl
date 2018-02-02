@@ -46,8 +46,13 @@
 
             <?php foreach ($blogs as $blog) { ?>
             <div class="all-news-single">
-              <img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>">
-              <div class="all-news-content">
+								<?php if(strpos($blog['image'], 'no_image') === false){?>
+								<img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>">
+								<div class="all-news-content">
+							<?php }else{ ?>
+							
+							<div class="all-news-content" style="width: 100%;">
+							<?php } ?>
                 <h3><a href="<?php echo $blog['href']; ?>"><?php echo $blog['title']; ?></a></h3>
                 <p><?php echo $blog['short_description']; ?></p>
                 <div class="bottom">

@@ -1804,7 +1804,7 @@ textarea {
       height: 88px; }
 
 .repair-form {
-  width: 510px; }
+  /*width: 510px;*/ }
   .repair-form .recaptcha {
     display: inline-block;
     vertical-align: middle;

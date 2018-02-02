@@ -128,9 +128,23 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 			}
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
-			$data['description1'] = html_entity_decode($category_info['description1'], ENT_QUOTES, 'UTF-8');
+			$data['short_description'] = $data['description1'] = html_entity_decode($category_info['description1'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
 
+			$data['image1'] = $category_info['image1'];
+			$data['tab1'] = html_entity_decode($category_info['tab1'], ENT_QUOTES, 'UTF-8');
+			$data['tab_description1'] = html_entity_decode($category_info['tab_description1'], ENT_QUOTES, 'UTF-8');
+
+			$data['image2'] = $category_info['image2'];
+			$data['tab2'] = html_entity_decode($category_info['tab2'], ENT_QUOTES, 'UTF-8');
+			$data['tab_description2'] = html_entity_decode($category_info['tab_description2'], ENT_QUOTES, 'UTF-8');
+
+			$data['image3'] = $category_info['image3'];
+			$data['tab3'] = html_entity_decode($category_info['tab3'], ENT_QUOTES, 'UTF-8');
+			$data['tab_description3'] = html_entity_decode($category_info['tab_description3'], ENT_QUOTES, 'UTF-8');
+
+
+			
 			$url = '';
 
 			if (isset($this->request->get['filter'])) {
@@ -429,10 +443,19 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 				$data['fastorder'] = $this->load->controller('product/fastorder', $product_info = $this->model_catalog_product->getProduct($result['product_id'])); // FastOrder
 			}
 			
+			
 			if(isset($this->request->get['all'])){
 				$this->response->setOutput($this->load->view('product/category2', $data));	
 			}else{
-				$this->response->setOutput($this->load->view('product/category', $data));	
+				
+				
+				if($category_info['tpl'] != ''){
+					$this->response->setOutput($this->load->view('product/'.$category_info['tpl'], $data));
+				}else{
+					$this->response->setOutput($this->load->view('product/category', $data));
+				}
+				
+				//$this->response->setOutput($this->load->view('product/category', $data));	
 			}
 			
 			

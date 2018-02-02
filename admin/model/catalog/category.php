@@ -1,7 +1,12 @@
 <?php
 class ModelCatalogCategory extends Model {
 	public function addCategory($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "',
+						 `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "',
+						 `column` = '" . (int)$data['column'] . "',
+						 tpl = '" . $data['tpl'] . "',
+						 sort_order = '" . (int)$data['sort_order'] . "',
+						 status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
 
 		$category_id = $this->db->getLastId();
 
@@ -13,6 +18,20 @@ class ModelCatalogCategory extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "',
 							 description1 = '" . $this->db->escape($value['description1']) . "',
 							 description = '" . $this->db->escape($value['description']) . "',
+							 	
+							image1 = '" . $this->db->escape($value['image1']) . "',
+							 image2 = '" . $this->db->escape($value['image2']) . "',
+							 image3 = '" . $this->db->escape($value['image3']) . "',
+							
+							 tab1 = '" . $this->db->escape($value['tab1']) . "',
+							 tab2 = '" . $this->db->escape($value['tab2']) . "',
+							 tab3 = '" . $this->db->escape($value['tab3']) . "',
+							
+							 tab_description1 = '" . $this->db->escape($value['tab_description1']) . "',
+							 tab_description2 = '" . $this->db->escape($value['tab_description2']) . "',
+							 tab_description3 = '" . $this->db->escape($value['tab_description3']) . "',
+					
+					
 							 meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
 
@@ -66,7 +85,11 @@ class ModelCatalogCategory extends Model {
 	public function editCategory($category_id, $data) {
 		
 		
-		$this->db->query("UPDATE " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE category_id = '" . (int)$category_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "',
+						 `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "',
+						 `column` = '" . (int)$data['column'] . "',
+						 tpl = '" . $data['tpl'] . "',
+						 sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE category_id = '" . (int)$category_id . "'");
 
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "category SET image = '" . $this->db->escape($data['image']) . "' WHERE category_id = '" . (int)$category_id . "'");
@@ -78,6 +101,18 @@ class ModelCatalogCategory extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "',
 							 description = '" . $this->db->escape($value['description']) . "',
 							description1 = '" . $this->db->escape($value['description1']) . "',
+								 	image1 = '" . $this->db->escape($value['image1']) . "',
+							 image2 = '" . $this->db->escape($value['image2']) . "',
+							 image3 = '" . $this->db->escape($value['image3']) . "',
+							
+							 tab1 = '" . $this->db->escape($value['tab1']) . "',
+							 tab2 = '" . $this->db->escape($value['tab2']) . "',
+							 tab3 = '" . $this->db->escape($value['tab3']) . "',
+							
+							 tab_description1 = '" . $this->db->escape($value['tab_description1']) . "',
+							 tab_description2 = '" . $this->db->escape($value['tab_description2']) . "',
+							 tab_description3 = '" . $this->db->escape($value['tab_description3']) . "',
+					
 							 meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
 
@@ -311,7 +346,17 @@ class ModelCatalogCategory extends Model {
 				'meta_description' => $result['meta_description'],
 				'meta_keyword'     => $result['meta_keyword'],
 				'description1'      => $result['description1'],
-				'description'      => $result['description']
+				'description'      => $result['description'],
+				'image1'      		=> $result['image1'],
+				'image2'      		=> $result['image2'],
+				'image3'      		=> $result['image3'],
+				'tab1'      		=> $result['tab1'],
+				'tab2'      		=> $result['tab2'],
+				'tab3'      		=> $result['tab3'],
+				'tab_description1'      => $result['tab_description1'],
+				'tab_description2'      => $result['tab_description2'],
+				'tab_description3'      => $result['tab_description3'],
+	
 			);
 		}
 

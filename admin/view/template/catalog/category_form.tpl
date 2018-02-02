@@ -29,6 +29,7 @@
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
             <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
+            <li><a href="#tab-tabs" data-toggle="tab">Табы на странице</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -49,6 +50,7 @@
                       <?php } ?>
                     </div>
                   </div>
+                  
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>">ВЕРХ <?php echo $entry_description; ?></label>
                     <div class="col-sm-10">
@@ -106,7 +108,7 @@
             </span></label>
             <div class="col-sm-10">
               <?php
-                $name = $category_description[$language['language_id']]['name'];
+                $name = isset($category_description[$language['language_id']]['name']) ? $category_description[$language['language_id']]['name'] : "";
                 if(isset($keyword[$language['language_id']]) AND $keyword[$language['language_id']] != ''){
                   $alias = $keyword[$language['language_id']];
                 }else{
@@ -118,6 +120,24 @@
           </div>
               
         <?php } ?> 
+              
+         			<div class="form-group">
+                <label class="col-sm-2 control-label">Шаблон товара</label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+										<?php $tpls = array('Категория'=>'','Бренд/Производитель'=>'category_brend'); ?>
+										
+										<?php foreach($tpls as $name => $value){ ?> 
+											<?php if ($value == $tpl) { ?>
+											<input type="radio" name="tpl" value="<?php echo $value;?>" checked="checked" />&nbsp;&nbsp;&nbsp;<?php echo $name; ?><br>
+											<?php } else { ?>
+											<input type="radio" name="tpl" value="<?php echo $value;?>" />&nbsp;&nbsp;&nbsp;<?php echo $name; ?><br>
+											<?php } ?>
+										<?php } ?>
+                  </label>
+                 
+                </div>
+         	</div>
               
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-parent"><?php echo $entry_parent; ?></label>
@@ -268,6 +288,85 @@
                 </table>
               </div>
             </div>
+            
+            
+            
+            <div class="tab-pane" id="tab-tabs">
+              <ul class="nav nav-tabs" id="tab_language">
+                <?php foreach ($languages as $language) { ?>
+                <li><a href="#tab_language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
+                <?php } ?>
+              </ul>
+              <div class="tab-content">
+                <?php foreach ($languages as $language) { ?>
+                <div class="tab-pane" id="tab_language<?php echo $language['language_id']; ?>">
+                  <h1>Первый таб</h1>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-image1<?php echo $language['language_id']; ?>">Картинка для таб1</label>
+                      <div class="col-sm-10"> <a href="" id="thumb-image1<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $category_description[$language['language_id']]['thumb1']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image1]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image1'] : ''; ?>" id="input-image1" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-tab1<?php echo $language['language_id']; ?>">Таб 1</label>
+                          <div class="col-sm-10">
+                            <input type="text" name="category_description[<?php echo $language['language_id']; ?>][tab1]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['tab1'] : ''; ?>" placeholder="Заголовок таб1" id="input-tab1<?php echo $language['language_id']; ?>" class="form-control" />
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="col-sm-2 control-label" for="input-tab_description1<?php echo $language['language_id']; ?>">Описание 1</label>
+                          <div class="col-sm-10">
+                            <textarea name="category_description[<?php echo $language['language_id']; ?>][tab_description1]" rows="5" placeholder="" id="input-tab_description1<?php echo $language['language_id']; ?>" class="form-control textarea"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['tab_description1'] : ''; ?></textarea>
+                          </div>
+                      </div>
+                   
+                    
+                    <h1>Второй таб</h1>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-image2<?php echo $language['language_id']; ?>">Картинка для таб2</label>
+                      <div class="col-sm-10"> <a href="" id="thumb-image2<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $category_description[$language['language_id']]['thumb2']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image2]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image2'] : ''; ?>" id="input-image2" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-tab2<?php echo $language['language_id']; ?>">Таб 2</label>
+                          <div class="col-sm-10">
+                            <input type="text" name="category_description[<?php echo $language['language_id']; ?>][tab2]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['tab2'] : ''; ?>" placeholder="Заголовок таб2" id="input-tab2<?php echo $language['language_id']; ?>" class="form-control" />
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="col-sm-2 control-label" for="input-tab_description2<?php echo $language['language_id']; ?>">Описание 2</label>
+                          <div class="col-sm-10">
+                            <textarea name="category_description[<?php echo $language['language_id']; ?>][tab_description2]" rows="5" placeholder="" id="input-tab_description2<?php echo $language['language_id']; ?>" class="form-control textarea"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['tab_description2'] : ''; ?></textarea>
+                          </div>
+                        </div>
+                    
+                    
+                    <h1>Третий таб</h1>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-image3<?php echo $language['language_id']; ?>">Картинка для таб3</label>
+                      <div class="col-sm-10"> <a href="" id="thumb-image3<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $category_description[$language['language_id']]['thumb3']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image3]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image3'] : ''; ?>" id="input-image3" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-tab3<?php echo $language['language_id']; ?>">Таб 3</label>
+                          <div class="col-sm-10">
+                            <input type="text" name="category_description[<?php echo $language['language_id']; ?>][tab3]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['tab3'] : ''; ?>" placeholder="Заголовок таб3" id="input-tab1<?php echo $language['language_id']; ?>" class="form-control" />
+                          </div>
+                    </div>
+                    <div class="form-group">
+                          <label class="col-sm-2 control-label" for="input-tab_description2<?php echo $language['language_id']; ?>">Описание 3</label>
+                          <div class="col-sm-10">
+                            <textarea name="category_description[<?php echo $language['language_id']; ?>][tab_description3]" rows="5" placeholder="" id="input-tab_description3<?php echo $language['language_id']; ?>" class="form-control textarea"><?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['tab_description3'] : ''; ?></textarea>
+                        </div>
+                      </div>
+                  </div>
+                <?php } ?>
+              </div>
+            
+            
+            
           </div>
         </form>
       </div>
@@ -338,6 +437,7 @@ $('#category-filter').delegate('.fa-minus-circle', 'click', function() {
 //--></script> 
   <script type="text/javascript"><!--
 $('#language a:first').tab('show');
+$('#tab_language a:first').tab('show');
 //--></script></div>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
   <script>
