@@ -224,7 +224,7 @@ $('#button-cart').on('click', function() {
 		success: function(json) {
 		
     console.log(json);
-              debugger;    
+
     	$('.alert, .text-danger').remove();
 			$('.form-group').removeClass('has-error');
 
