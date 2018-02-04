@@ -4878,4 +4878,11 @@ textarea {
     display: block;
 }
 
+.color_option_lable{
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+.product-card .color-checkboxes .color-checkbox input + label{
+    float: left;
+  }
 /*****************************/

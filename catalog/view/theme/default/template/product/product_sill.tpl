@@ -100,8 +100,8 @@ echo $header; ?>
                         <label for="c_option[<?php echo $option['product_option_id']; ?>]__<?php echo $option_value['product_option_value_id']; ?>">
                         <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" /> 
                         <?php } ?>
-                        </label>
-                      </div>
+                        </label><label class="color_option_lable"><?php echo $option_value['name']; ?></label>
+                      </div><br>
                   <?php } ?>
                       </div>
                   <?php
@@ -115,50 +115,7 @@ echo $header; ?>
                 <div class="window-sill-info-left">
                   <div class="sizes">
                     <p><?php echo $lib['Размер окна'];?></p>
-<<<<<<< HEAD
-                    <div class="sizes-group">
-                      <label for="width"><?php echo $lib['Ширина']; ?>, м.п</label>
-                        <?php
-                            foreach ($options as $option) {
-                              if ( $option['option_id'] == 17 ) {  // цвет ?>
-          
-                                <div id="input-option<?php echo $option['product_option_id']; ?>">
-          
-                                <?php
-                                foreach ($option['product_option_value'] as $option_value) {
-                                ?>
-                                 <div class="color-checkbox ">
-                                  
-                                  <input id="c_option[<?php echo $option['product_option_id']; ?>]__<?php echo $option_value['product_option_value_id']; ?>" type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
-                                  <?php if ($option_value['image']) { ?>
-                                  <label for="c_option[<?php echo $option['product_option_id']; ?>]__<?php echo $option_value['product_option_value_id']; ?>">
-                                  <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" /> 
-                                  <?php } ?>
-                                  </label>
-                                </div>
-                            <?php } ?>
-                                </div>
-                            <?php
-                              }
-                            } ?>
-                      <input id="width" name="option[w_width]" type="text" class="form-controll" value="0">
-                    </div>
-                    <div class="sizes-group">
-                      <label for="height"><?php echo $lib['Длина']; ?>, м.п</label>
-                      <input id="height" name="option[w_height]" type="text" class="form-controll" value="0">
-                    </div>
-                  </div>
-                  <div class="stub">
-                    <p><?php echo $lib['Размер окна'];?></p>
-                    <div class="radio">
-                      <input id="r1" name="stub" type="radio" class="form-controll" value="Торцевая">
-                      <label for="r1"><?php echo $lib['Торцевая'];?></label>
-                    </div>
-                    <div class="radio">
-                      <input id="r2" name="stub" type="radio" class="form-controll" value="Cоединительная">
-                      <label for="r2"><?php echo $lib['Cоединительная'];?></label>
-                    </div>
-=======
+
                     <?php foreach ($options as $option) {
                       if ( $option['option_id'] == 16 ) {  // Глубина ?>
                         <div class="sizes-group" id="input-option<?php echo $option['product_option_id']; ?>">
@@ -177,7 +134,7 @@ echo $header; ?>
                       <?php } ?>
                     <?php } ?>
 
->>>>>>> fc6bf5a34c31fddee7d84850fabde4854d635c17
+
                   </div>
                   
                     <?php foreach ($options as $option) { ?>
