@@ -92,7 +92,8 @@ class ControllerCommonHome extends Controller {
 
 	
  		$this->load->model('catalog/manufacturer');
- 		$data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
+ 		$data['manufacturers'] = array();// $this->model_catalog_manufacturer->getManufacturers();
+		$data['Categories_manuf'] = $this->model_catalog_category->getBrandCategories();
 		
 		
 		$filter_data = array(

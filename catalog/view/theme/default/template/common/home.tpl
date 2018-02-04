@@ -131,7 +131,6 @@ echo $header; ?>
     <div class="container">
       <h2 class="main-title"><?php echo $lib['Проверенные бренды']; ?></h2>
       <div class="row">
-
         <?php foreach($manufacturers as $manufacture){ ?>
           <div class="col-md-3 col-sm-4">
             <a href="/<?php echo $manufacture['keyword'];?>" class="brands-single">
@@ -139,8 +138,16 @@ echo $header; ?>
             </a>
           </div>
         <?php } ?>
+        <?php foreach($Categories_manuf as $manufacture){ ?>
+          <div class="col-md-3 col-sm-4">
+            <a href="/<?php echo $manufacture['keyword'];?>" class="brands-single" >
+              <img style="max-height: 110px;" src="/image/<?php echo $manufacture['image'];?>" alt="<?php echo $manufacture['alt'];?>" title="<?php echo $manufacture['title'];?>">
+            </a>
+          </div>
+        <?php } ?>
       </div>
     </div>
+
   </section>
   <pre><?php //var_dump(get_defined_vars()); ?></pre>
   <section class="prices">

@@ -183,6 +183,11 @@ class ControllerProductManufacturer extends Controller {
 			$data['tab_description3'] = html_entity_decode($manufacturer_info['tab_description3'], ENT_QUOTES, 'UTF-8');
 
 			//$data['description'] = $this->model_design_banner->setBanner($data['description']);
+			$data['short_description'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['short_description']);
+			$data['description'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['description']);
+			$data['tab_description1'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['tab_description1']);
+			$data['tab_description2'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['tab_description2']);
+			$data['tab_description3'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['tab_description3']);
 			
 			
 			$data['text_empty'] = $this->language->get('text_empty');

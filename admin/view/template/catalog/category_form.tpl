@@ -41,6 +41,7 @@
               <div class="tab-content">
                 <?php foreach ($languages as $language) { ?>
                 <div class="tab-pane" id="language<?php echo $language['language_id']; ?>">
+                  
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-name<?php echo $language['language_id']; ?>"><?php echo $entry_name; ?></label>
                     <div class="col-sm-10">
@@ -49,6 +50,20 @@
                       <div class="text-danger"><?php echo $error_name[$language['language_id']]; ?></div>
                       <?php } ?>
                     </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-name<?php echo $language['language_id']; ?>">Альтр основной картинки</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="category_description[<?php echo $language['language_id']; ?>][alt]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['alt'] : ''; ?>" placeholder="Альтр основной картинки" id="input-name<?php echo $language['language_id']; ?>" class="form-control" />
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-name<?php echo $language['language_id']; ?>">Тайтл основной картинки</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="category_description[<?php echo $language['language_id']; ?>][title]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['title'] : ''; ?>" placeholder="Тайтл основной картинки" id="input-name<?php echo $language['language_id']; ?>" class="form-control" />
+                     </div>
                   </div>
                   
                   <div class="form-group">
@@ -461,8 +476,8 @@ $('#tab_language a:first').tab('show');
   
     function elFinderBrowser (field_name, url, type, win) {
             tinymce.activeEditor.windowManager.open({
-              file: '/admin/model/elFinder-master/elfinder.html',// use an absolute path!
-              title: 'elFinder 2.0',
+              file: '/admin/elFinder-master/elfinder.html',// use an absolute path!
+              title: 'Загрузка изображений',
               width: 900,  
               height: 450,
               resizable: 'yes'
@@ -477,7 +492,8 @@ $('#tab_language a:first').tab('show');
             
   
 	tinymce.init({
-			selector: ".textarea",
+    selector: "textarea",  // change this value according to your HTML
+      image_title: true,
 			height: 500,
             file_browser_callback : elFinderBrowser,
 			plugins: [

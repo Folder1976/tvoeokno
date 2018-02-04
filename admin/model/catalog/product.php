@@ -11,6 +11,7 @@ class ModelCatalogProduct extends Model {
 
 		if (isset($data['main_page_tab']) AND is_array($data['main_page_tab'])) {
 			foreach($data['main_page_tab'] as $id => $value){
+				$this->db->query("UPDATE " . DB_PREFIX . "product SET main_page_tab = '0' WHERE main_page_tab = '" . (int)$id . "'");
 				$this->db->query("UPDATE " . DB_PREFIX . "product SET main_page_tab = '" . (int)$id . "' WHERE product_id = '" . (int)$product_id . "'");
 			}
 		}
@@ -206,6 +207,7 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET main_page_tab = '' WHERE product_id = '" . (int)$product_id . "'");
 		if (isset($data['main_page_tab'])) {
 			foreach($data['main_page_tab'] as $id => $value){
+				$this->db->query("UPDATE " . DB_PREFIX . "product SET main_page_tab = '0' WHERE main_page_tab = '" . (int)$id . "'");
 				$this->db->query("UPDATE " . DB_PREFIX . "product SET main_page_tab = '" . (int)$id . "' WHERE product_id = '" . (int)$product_id . "'");
 			}
 		}

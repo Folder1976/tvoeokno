@@ -251,7 +251,7 @@
   
     function elFinderBrowser (field_name, url, type, win) {
             tinymce.activeEditor.windowManager.open({
-              file: '/admin/model/elFinder-master/elfinder.html',// use an absolute path!
+              file: '/admin/elFinder-master/elfinder.html',// use an absolute path!
               title: 'elFinder 2.0',
               width: 900,  
               height: 450,
@@ -268,6 +268,8 @@
   
 	tinymce.init({
 			selector: ".textarea",
+       image_title: true,
+			
 			height: 500,
             file_browser_callback : elFinderBrowser,
 			plugins: [

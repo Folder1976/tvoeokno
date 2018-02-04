@@ -19,9 +19,12 @@ class ModelCatalogCategory extends Model {
 							 description1 = '" . $this->db->escape($value['description1']) . "',
 							 description = '" . $this->db->escape($value['description']) . "',
 							 	
+							alt = '" . $this->db->escape($value['alt']) . "',
+							title = '" . $this->db->escape($value['title']) . "',
+							
 							image1 = '" . $this->db->escape($value['image1']) . "',
-							 image2 = '" . $this->db->escape($value['image2']) . "',
-							 image3 = '" . $this->db->escape($value['image3']) . "',
+							image2 = '" . $this->db->escape($value['image2']) . "',
+							image3 = '" . $this->db->escape($value['image3']) . "',
 							
 							 tab1 = '" . $this->db->escape($value['tab1']) . "',
 							 tab2 = '" . $this->db->escape($value['tab2']) . "',
@@ -101,7 +104,11 @@ class ModelCatalogCategory extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "category_description SET category_id = '" . (int)$category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "',
 							 description = '" . $this->db->escape($value['description']) . "',
 							description1 = '" . $this->db->escape($value['description1']) . "',
-								 	image1 = '" . $this->db->escape($value['image1']) . "',
+							
+							alt = '" . $this->db->escape($value['alt']) . "',
+							title = '" . $this->db->escape($value['title']) . "',
+							
+							image1 = '" . $this->db->escape($value['image1']) . "',
 							 image2 = '" . $this->db->escape($value['image2']) . "',
 							 image3 = '" . $this->db->escape($value['image3']) . "',
 							
@@ -347,6 +354,8 @@ class ModelCatalogCategory extends Model {
 				'meta_keyword'     => $result['meta_keyword'],
 				'description1'      => $result['description1'],
 				'description'      => $result['description'],
+				'alt'      => $result['alt'],
+				'title'      => $result['title'],
 				'image1'      		=> $result['image1'],
 				'image2'      		=> $result['image2'],
 				'image3'      		=> $result['image3'],

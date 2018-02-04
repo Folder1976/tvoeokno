@@ -26,6 +26,10 @@ class ControllerBlogCategory extends Controller {
 	$img_width = 848;
 	}
 	
+	$data['language_id'] = (int)$this->config->get('config_language_id');
+	$data['menu'] = $this->model_blog_blog_category->getBlogCategoriesInMenu();
+	
+	
 	$img_height = $this->config->get('blogsetting_thumbs_h');
 	if (empty($img_height)) {
 	$img_height = 424;

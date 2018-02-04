@@ -20,8 +20,7 @@ class ModelDesignBanner extends Model {
 		
 		foreach($query->rows as $row){
 			
-			$return['id'][$row['banner_id']] = $row['name'];
-			$return['name'][$row['name']] = $row['banner_id'];
+			$return[$row['banner_id']] = $row;
 			
 		}
 		

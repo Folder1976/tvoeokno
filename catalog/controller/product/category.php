@@ -95,7 +95,40 @@ class ControllerProductCategory extends Controller {
 			$this->document->setKeywords($category_info['meta_keyword']);
 
 			$data['heading_title'] = $category_info['name'];
-$data['language_id'] = (int)$this->config->get('config_language_id');
+			
+			if ($category_info['image']) {
+				$data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
+				$this->document->setOgImage($data['thumb']);
+			} else {
+				$data['thumb'] = '';
+			}
+			
+			if($category_info['tpl'] == 'category_brend'){
+				$filter_data = array(
+					'main_page_tab' => 1
+				);
+			
+				$this->load->model('catalog/product');
+				$result = $this->model_catalog_product->getProducts($filter_data);
+				
+				$data['tab_categorys'] = array();
+		
+				foreach($result as $index => $row){
+					$data['tab_categorys'][$row['main_page_tab']] = $row;
+					$data['tab_categorys'][$row['main_page_tab']]['product_tables'] = $this->model_catalog_product->getProductTables($row['product_id']);
+					$data['tab_categorys'][$row['main_page_tab']]['addons'] = $this->model_catalog_product->getProductAttribute4s($row['product_id']);
+					
+					if ($row['image']) {
+						$data['tab_categorys'][$row['main_page_tab']]['thumb'] = $this->model_tool_image->resize($row['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
+					} else {
+						$data['tab_categorys'][$row['main_page_tab']]['thumb'] = '';
+					}
+					
+				}
+			}
+	
+			
+			$data['language_id'] = (int)$this->config->get('config_language_id');
 			$data['text_refine'] = $this->language->get('text_refine');
 			$data['text_empty'] = $this->language->get('text_empty');
 			$data['text_quantity'] = $this->language->get('text_quantity');
@@ -131,6 +164,11 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 			$data['short_description'] = $data['description1'] = html_entity_decode($category_info['description1'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
 
+			
+			$data['short_description'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['short_description']);
+			$data['description'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['description']);
+			$data['description1'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['description1']);
+			
 			$data['image1'] = $category_info['image1'];
 			$data['tab1'] = html_entity_decode($category_info['tab1'], ENT_QUOTES, 'UTF-8');
 			$data['tab_description1'] = html_entity_decode($category_info['tab_description1'], ENT_QUOTES, 'UTF-8');

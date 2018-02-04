@@ -291,6 +291,9 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 			$data['points'] = $product_info['points'];
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 
+			$data['description'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['description']);
+			
+			
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
 			} elseif ($this->config->get('config_stock_display')) {

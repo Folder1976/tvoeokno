@@ -4,9 +4,10 @@ class ModelBlogBlogCategory extends Model {
 	public function addBlogCategory($data) {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "blog_category SET 
 		parent_id = '" . (int)$data['parent_id'] . "', 
+		in_menu = '" . (int)$data['in_menu'] . "', 
 		sort_order = '" . (int)$data['sort_order'] . "', 
-		status = '" . (int)$data['status'] . "', 
-		date_added = NOW()
+		date_added = '" . $data['date_added'] . "', 
+		status = '" . (int)$data['status'] . "' 
 		");
 	
 		$blog_category_id = $this->db->getLastId();
@@ -59,6 +60,8 @@ class ModelBlogBlogCategory extends Model {
 		$this->db->query("UPDATE " . DB_PREFIX . "blog_category SET 
 		parent_id = '" . (int)$data['parent_id'] . "', 
 		sort_order = '" . (int)$data['sort_order'] . "', 
+		date_added = '" . $data['date_added'] . "', 
+		in_menu = '" . (int)$data['in_menu'] . "', 
 		status = '" . (int)$data['status'] . "' 
 		WHERE blog_category_id = '" . (int)$blog_category_id . "'");
 
@@ -174,6 +177,7 @@ class ModelBlogBlogCategory extends Model {
 
 		return $query->row;
 	}
+
 	
 	public function getBlogCategories($parent_id) {
 		$blog_category_data = $this->cache->get('blog_category.' . $this->config->get('config_language_id') . '.' . $parent_id);
@@ -188,6 +192,7 @@ class ModelBlogBlogCategory extends Model {
 					'blog_category_id' => $result['blog_category_id'],
 					'name'        => $this->getPath($result['blog_category_id'], $this->config->get('config_language_id')),
 					'status'  	  => $result['status'],
+					'in_menu'  	  => $result['in_menu'],
 					'sort_order'  => $result['sort_order']
 				);
 			

@@ -132,6 +132,21 @@
                 </div>
               </div>
               
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Выводить в боковое меню<br>НОЛЬ или номер по порядку больше 0</label>
+                <div class="col-sm-10">
+                <input type="text" name="in_menu" value="<?php echo $in_menu; ?>" class="form-control" />
+                </div>
+              </div>
+              
+                
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Дата</label>
+                <div class="col-sm-10">
+                <input type="text" name="date_added" value="<?php echo $date_added; ?>" class="form-control" />
+                </div>
+              </div>
+              
                 
                 <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
@@ -300,7 +315,7 @@ $('#language a:first').tab('show');
   
     function elFinderBrowser (field_name, url, type, win) {
             tinymce.activeEditor.windowManager.open({
-              file: '/admin/model/elFinder-master/elfinder.html',// use an absolute path!
+              file: '/admin/elFinder-master/elfinder.html',// use an absolute path!
               title: 'elFinder 2.0',
               width: 900,  
               height: 450,
@@ -317,6 +332,7 @@ $('#language a:first').tab('show');
   
 	tinymce.init({
 			selector: ".textarea",
+			image_title: true,
 			height: 500,
             file_browser_callback : elFinderBrowser,
 			plugins: [

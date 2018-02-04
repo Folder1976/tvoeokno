@@ -1,4 +1,27 @@
-<?php echo $header; ?>
+<?php
+  $lands = array(
+                'тип информации' => 'тип інформації',
+                'новости' => 'новини',
+                'акции' => 'акції',
+                'Статьи' => 'статті',
+                'наши работы' => 'наші роботи',
+                'окна по серии дома' => 'вікна по серії будинку',
+                'выезд в пригород' => 'виїзд в передмістя',
+               
+							  'news' => 'uk/news',
+                'action' => 'uk/action',
+                'blogs' => 'uk/blogs',
+							  'nashi-raboty' => 'uk/nashi-raboty',
+                'okna-po-serii-doma' => 'uk/okna-po-serii-doma',
+                'ustanovka-okon-v-kievskoj-oblasti' => 'uk/ustanovka-okon-v-kievskoj-oblasti',
+                '' => '',
+                );
+  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+   $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = 'ua';}
+	  //Пример
+    //<?php echo $lib['русская фраза']; ? >
+		
+echo $header; ?>
 <section class="news-page">
 <div class="breadcrumbs">
   <div class="container">
@@ -31,27 +54,34 @@
   	<?php if($blogs){ ?>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3 col-lg-3">
-          <div class="aside blue-aside">
-            <h3 class="blue">тип информации</h3>
-            <ul class="aside-list">
-              <li><a href="/news">новости</a></li>
-              <li><a href="/action">акции</a></li>
-              <li><a href="/blogs">Статьи</a></li>
-            </ul>
-          </div>
-        </div>
+				<?php if(count($menu)){ ?>
+					<div class="col-md-3 col-lg-3">
+						<div class="aside blue-aside">
+							<h3 class="blue"><?php echo $lib['тип информации']; ?></h3>
+							<ul class="aside-list">
+								<?php foreach($menu as $row){ ?>
+									<li><a href="/<?php echo $row['keyword']; ?>"><?php echo $row['name']; ?></a></li>
+								<?php } ?>
+								
+								<!--li><a href="/action"><?php echo $lib['акции']; ?></a></li>
+								<li><a href="/blogs"><?php echo $lib['Статьи']; ?></a></li>
+								<li><a href="/nashi-raboty"><?php echo $lib['наши работы']; ?></a></li>
+								<li><a href="/okna-po-serii-doma"><?php echo $lib['окна по серии дома']; ?></a></li>
+								<li><a href="/ustanovka-okon-v-kievskoj-oblasti"><?php echo $lib['выезд в пригород']; ?></a></li-->
+							</ul>
+						</div>
+					</div>
+				<?php } ?>
         <div class="col-md-8">
           <div class="all-news">
 
             <?php foreach ($blogs as $blog) { ?>
             <div class="all-news-single">
-								<?php if(strpos($blog['image'], 'no_image') === false){?>
-								<img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>">
+							<?php if(strpos($blog['image'], 'no_image') === false){?>
+								<img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['alt']; ?>" title="<?php echo $blog['title']; ?>">
 								<div class="all-news-content">
 							<?php }else{ ?>
-							
-							<div class="all-news-content" style="width: 100%;">
+								<div class="all-news-content" style="width: 100%;">
 							<?php } ?>
                 <h3><a href="<?php echo $blog['href']; ?>"><?php echo $blog['title']; ?></a></h3>
                 <p><?php echo $blog['short_description']; ?></p>

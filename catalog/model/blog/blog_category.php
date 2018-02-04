@@ -13,6 +13,19 @@ class ModelBlogBlogCategory extends Model {
 		return $query->row;
 	}
 	
+		
+	public function getBlogCategoriesInMenu() {
+		
+		$sql = "SELECT * FROM " . DB_PREFIX . "blog_category BC
+									LEFT JOIN " . DB_PREFIX . "blog_category_description DCD ON BC.blog_category_id = DCD.blog_category_id AND DCD.language_id = '" . (int)$this->config->get('config_language_id') . "'
+									LEFT JOIN " . DB_PREFIX . "url_alias UA ON UA.query = CONCAT('blog_category_id=',BC.blog_category_id) AND UA.language_id = '" . (int)$this->config->get('config_language_id') . "'
+									WHERE BC.in_menu > '0' ORDER BY in_menu ";
+		//echo $sql.'<hr>';
+		$query = $this->db->query($sql);
+
+		return $query->rows;
+	}
+	
 	public function getBlogCategories($parent_id = 0) {
 
 		$blog_category_data = $this->cache->get('blog_category.' . $parent_id . '.' . $this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id'));

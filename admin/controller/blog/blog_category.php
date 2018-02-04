@@ -265,6 +265,22 @@ class ControllerBlogBlogCategory extends Controller {
 			$data['keyword'] = '';
 		}
 				
+		if (isset($this->request->post['in_menu'])) {
+			$data['in_menu'] = $this->request->post['in_menu'];
+		} elseif (isset($blog_category_info)) {
+			$data['in_menu'] = $blog_category_info['in_menu'];
+		} else {
+			$data['in_menu'] = 0;
+		}
+		
+		if (isset($this->request->post['date_added'])) {
+			$data['date_added'] = $this->request->post['date_added'];
+		} elseif (isset($blog_category_info)) {
+			$data['date_added'] = $blog_category_info['date_added'];
+		} else {
+			$data['date_added'] = date('Y-m-d H:i:s');
+		}
+		
 		if (isset($this->request->post['sort_order'])) {
 			$data['sort_order'] = $this->request->post['sort_order'];
 		} elseif (isset($blog_category_info)) {

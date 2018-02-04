@@ -190,5 +190,22 @@
     }
     </script>
 
+<?php if(isset($_GET['form_success'])){ ?>
+<div class="msg_back" style="width: 100%;height: 100%;top:0;left:0;position: fixed;opacity: 0.5;background-color: black;z-index: 1000;"></div>
+<div class="form_success fancybox-slide fancybox-slide--html fancybox-slide--current fancybox-slide--complete" style="z-index: 1001;">
+  <div id="fb-modal" class="fb-modal" style="display: inline-block;"><h2>Форма отправлена</h2>
+  <button data-fancybox-close="" class="fancybox-close-small" title="Close"></button>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){    
+    setTimeout(function(){
+      $('.msg_back').hide(1000);
+      $('.form_success').hide(1000);
+      },5000);
+  });
+</script>
+<?php } ?>
+
   </body>
 </html>

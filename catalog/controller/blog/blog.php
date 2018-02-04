@@ -16,6 +16,10 @@ class ControllerBlogBlog extends Controller {
 		$this->load->model('blog/blog');
 
 		$this->load->model('tool/image');
+		$this->load->model('design/banner');
+		
+		
+		
 		
 		$data['breadcrumbs'] = array();
 
@@ -75,7 +79,7 @@ class ControllerBlogBlog extends Controller {
 		} else {
 			$blog_id = 0;
 		}
-
+$data['language_id'] = (int)$this->config->get('config_language_id');
 		$blog_info = $this->model_blog_blog->getBlog($blog_id);
    		
 		if ($blog_info) {
@@ -218,6 +222,35 @@ class ControllerBlogBlog extends Controller {
 			$data['alt'] = $blog_info['alt'];
 			
 			$data['description'] = html_entity_decode($blog_info['description'], ENT_QUOTES, 'UTF-8');
+		
+			$data['description'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['description']);
+		
+			$banners_names = $this->model_design_banner->getBannerNames();
+			$banner_name = '';
+			$banner_id = 0;
+			
+			foreach($banners_names as $row){
+				if(strpos($data['description'], '[G]'.$row['name'].'[G]') !== false){
+					$banner_name = $row['name'];
+					$banner_id = $row['banner_id'];
+				}
+				
+			}
+		
+			if($banner_id > 0){
+				$banners = $this->model_design_banner->getBanner($banner_id);
+				
+				$html = '<div id="nanoGallery3">';
+				
+					foreach($banners as $banner){
+						$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
+					}
+				$html .= '</div>';
+				
+				$data['description'] = str_replace('[G]'.$banner_name.'[G]', $html, $data['description']);
+				
+			}
+	
 			
 			$img_width = $this->config->get('blogsetting_post_thumbs_w');
 			if (empty($img_width)) {

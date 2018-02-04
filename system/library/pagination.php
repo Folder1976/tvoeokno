@@ -19,6 +19,8 @@ class Pagination {
 			$page = $this->page;
 		}
 
+		$this->url = str_replace('blogs/blogs','blogs',$this->url);
+		
 		if (!(int)$this->limit) {
 			$limit = 10;
 		} else {

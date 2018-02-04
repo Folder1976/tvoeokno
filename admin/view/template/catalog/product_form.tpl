@@ -1697,7 +1697,7 @@ $('#option a:first').tab('show');
   
     function elFinderBrowser (field_name, url, type, win) {
             tinymce.activeEditor.windowManager.open({
-              file: '/admin/model/elFinder-master/elfinder.html',// use an absolute path!
+              file: '/admin/elFinder-master/elfinder.html',// use an absolute path!
               title: 'elFinder 2.0',
               width: 900,  
               height: 450,
@@ -1716,6 +1716,7 @@ $('#option a:first').tab('show');
 			selector: ".textarea",
 			height: 500,
             file_browser_callback : elFinderBrowser,
+			image_title: true,
 			plugins: [
 			  "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
 			  "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",

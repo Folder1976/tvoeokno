@@ -1,4 +1,14 @@
-<?php echo $header; ?>
+<?php
+  $lands = array(
+                'Фильтр' => 'Фільтр',
+                'ПОДРОБНЕЕ' => 'ДЕТАЛЬНІШЕ',
+                '' => '',
+                );
+  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+   $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = 'ua';}
+	  //Пример
+    //<?php echo $lib['русская фраза']; ? >
+	 echo $header; ?>
 
 <?php
 $page_href = array_pop($breadcrumbs)['href'];
@@ -222,7 +232,10 @@ $('#comment').delegate('.pagination a', 'click', function(e) {
 
 $('#comment').load('index.php?route=blog/blog/comment&blog_id=<?php echo $blog_id; ?>');
 //--></script>
-
+	<link href="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/css/nanogallery.css" rel="stylesheet" type="text/css">
+				<script type="text/javascript" src="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/jquery.nanogallery.js"></script>
+			
+			
 <script type="text/javascript"><!--
 
 $('#button-comment').on('click', function() {
@@ -257,5 +270,10 @@ $('#button-comment').on('click', function() {
 	});
 });    
 
+		$(document).ready(function () {
+			$("#nanoGallery3").nanoGallery({
+				itemsBaseURL:'/image'
+			});
+		});	
 </script>
 <?php echo $footer; ?> 
