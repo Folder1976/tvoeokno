@@ -319,7 +319,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="input-image1<?php echo $language['language_id']; ?>">Картинка для таб1</label>
                       <div class="col-sm-10"> <a href="" id="thumb-image1<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $category_description[$language['language_id']]['thumb1']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
-                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image1]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image1'] : ''; ?>" id="input-image1" />
+                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image1]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image1'] : ''; ?>" id="input-image1<?php echo $language['language_id']; ?>" />
                       </div>
                     </div>
                     <div class="form-group">

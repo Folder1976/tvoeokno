@@ -34,6 +34,8 @@
    $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
    $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = UA_URL;}
   
+  
+
    //Пример
   //<?php echo $lib['русская фраза']; ? >
   ?><!DOCTYPE html>
