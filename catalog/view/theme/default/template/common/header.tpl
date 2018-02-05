@@ -163,10 +163,7 @@
                   <span class="img star"></span>
                   <p><?php echo $text_wishlist; ?></p>
                 </a>
-                <a href="javascript:void(0)" class="header-callback-single js-modal-cart" title="<?php echo $text_checkout; ?>">
-                  <span class="img busket"></span>
-                  <p><?php echo $text_checkout; ?></p>
-                </a>
+                <?php echo $cart; ?>
               </div>
             </div>
           </div>
@@ -352,8 +349,6 @@
             </div>
         </form>
     </div>
-
-    <div id="modal-cart" class="fb-modal modal-cart" style="display: none;"><?php echo $cart; ?></div>
 
     <section class="main-sect">
         <ul class="side-nav">
