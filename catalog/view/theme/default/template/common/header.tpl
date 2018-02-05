@@ -207,10 +207,14 @@
                 </a>
                 <div class="main-nav-dropdown">
                   <ul>
+                    <?php foreach ($category['children'] as $k => $child) { ?>
+                      <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                    <?php } ?>
+                    
                     <?php
-                    foreach ($manufacturers as $key => $manuf) {
-                      echo '<li class="main-nav-dropdown-item"><a href="'.$manuf['keyword'].'">Окна '.$manuf['name'].'</a></li>';
-                    }
+                    //foreach ($manufacturers as $key => $manuf) {
+                     // echo '<li class="main-nav-dropdown-item"><a href="'.$manuf['keyword'].'">Окна '.$manuf['name'].'</a></li>';
+                    //}
                     ?>
                   </ul>
                 </div>

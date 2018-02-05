@@ -1,4 +1,43 @@
-<?php echo $header; ?>
+<?php
+  $lands = array(
+		  'Корзина' => 'Корзина',
+		  'оформления заказа' => 'оформлення замовлення',
+		  'Пожалуйста, введите контактный номер телефона. Он будет использоваться как логин в нашем магазине, и все ваши заказы будут привязаны к нему.' => 'Будьласка, введіть контактний номер телефону. Він буде використовуваться як логін в нашому магазині, і всі ваші замовлення будуть прив\'язані до нього.',
+		  'ваша корзина' => 'ваша корзина',
+		  'Стоимость' => 'Вартість',
+		  'Код товара' => 'Код товару',
+		  'Дополнительная комплектация' => 'Додаткова комплектація',
+		  'Отлив' => 'Отлив',
+		  'Монтаж' => 'Монтаж',
+		  'Москитная сетка' => 'Москітна сітка',
+		  'Откосы' => 'Откоси',
+		  'Доставка' => 'Доставка',
+		  'Бесплатно' => 'Безкоштовно',
+		  'Вам будет начисленно' => 'Вам будет нараховано',
+		  'Общая стоимость' => 'Загальна вартість',
+		  'Введите промокод' => 'Введіть промокод',
+		  'Контактный телефон' => 'Контактний телефон',
+		  'Как к вам обращаться?' => 'Як до вас звертатися?',
+		  'Ваш E-mail' => 'Ваш E-mail',
+		  'Город' => 'Місто',
+		  'Адрес' => 'Адреса',
+		  'Номер квартиры, подьезд, этаж, код от подъезд' => 'Номер квартири, підїзд, поверх, код від підїзду',
+		  'Примечание' => 'Примітки',
+			'' => '',
+		  '' => '',
+		  '' => '',
+		  '' => '',
+		  '' => '',
+		  '' => '',
+		  '' => '',
+		  '' => '',
+		  '' => '',
+		  );
+  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
+  $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = 'ua';}
+    //Пример
+    //<?php echo $lib['русская фраза'];
+echo $header; ?>
 
 <style>
   .main-sect {display: none;}
@@ -17,27 +56,50 @@
   <div class="container-fluid">
     <form action="/" class="js-form-call-me">
       <input name="formname" value="cart" type="hidden">
-      <h2 class="main-title">Корзина</h2>
+      <h2 class="main-title"><?php echo $lib['Корзина']; ?></h2>
       <div class="row">
         <div class="col-lg-5">
           <div class="cart-order">
-            <h3><span>оформления заказа №666666666асав</span></h3>
-            <p>Пожалуйста, введите контактный номер телефона. Он будет использоваться как логин в нашем магазине, и все ваши заказы будут привязаны к нему.</p>
+            <h3><span><?php echo $lib['оформления заказа']; ?></span></h3>
+            <p><?php echo $lib['Пожалуйста, введите контактный номер телефона. Он будет использоваться как логин в нашем магазине, и все ваши заказы будут привязаны к нему.']; ?></p>
             <div class="cart-order-form">
-              <input type="tel" name="telephone" class="form-controll small" placeholder="Контактный телефон">
-              <input type="text" name="firstname" class="form-controll small" placeholder="Как к вам обращаться?">
-              <input type="email" name="email" class="form-controll" placeholder="Ваш E-mail">
-              <h4 class="address-title" style="font-size: 0;">Адрес доставки</h4>
-              <input type="text" name="city" class="form-controll small" placeholder="Город">
-              <input type="text" name="address_1" class="form-controll small" placeholder="Адрес">
-              <input type="text" name="address_detail" class="form-controll" placeholder="Номер квартиры, этаж, подьезд, этаж, код от подъезд">
-              <textarea name="note" class="form-controll" placeholder="Примечание"></textarea>
+            	<div class="row">
+            		<div class="col-md-6">
+            			<input type="tel" name="telephone" class="form-controll" placeholder="Контактный телефон">
+            		</div>
+            		<div class="col-md-6">
+            			<input type="text" name="firstname" class="form-controll" placeholder="Как к вам обращаться?">
+            		</div>
+            	</div>
+              <div class="row">
+              	<div class="col-md-12">
+              		<input type="email" name="email" class="form-controll" placeholder="Ваш E-mail">
+              	</div>
+              </div>
+              <div class="row">
+              	<div class="col-md-6">
+              		<input type="text" name="city" class="form-controll" placeholder="Город">
+              	</div>
+              	<div class="col-md-6">
+              		<input type="text" name="address_1" class="form-controll" placeholder="Адрес">
+              	</div>
+              </div>
+              <div class="row">
+              	<div class="col-md-12">
+              		<input type="text" name="address_detail" class="form-controll" placeholder="Номер квартиры, этаж, подьезд, этаж, код от подъезд">
+              	</div>
+              </div>
+              <div class="row">
+              	<div class="col-md-12">
+              		<textarea name="note" class="form-controll" placeholder="Примечание"></textarea>
+              	</div>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-lg-7">
           <div class="cart-info">
-            <h3><span>ваша корзина</span></h3>
+            <h3><span><?php echo $lib['ваша корзина']; ?></span></h3>
             <?php foreach ($products as $product) { ?>
             <div class="cart-item">
               <a href="#" class="close" onclick="cart.remove('1');">×</a>
@@ -57,40 +119,40 @@
                 </tbody>
               </table>
               <?php } ?>
-              <div class="cart-item-price">
-                <p>Стоимость:</p>
-                <span><?php echo $product['total']; ?></span>
-                <p>Код товара: <br> <?php echo $product['model']; ?></p>
+             <div class="cart-item-price">
+                <p><?php echo $lib['Стоимость']; ?>:</p>
+								<span><?php echo $product['total']; ?></span>
+                <p><?php echo $lib['Код товара']; ?>: <br> <?php echo $product['model']; ?></p>
               </div>
             </div>
             <?php } ?>
 
             <div class="additional">
-              <p class="title">Дополнительная комплектация</p>
+              <p class="title"><?php echo $lib['Дополнительная комплектация']; ?></p>
               <div class="checkbox">
                 <input id="c1" type="checkbox" checked>
-                <label for="c1">Отлив</label>
+                <label for="c1"><?php echo $lib['Отлив']; ?></label>
               </div>
               <div class="checkbox">
                 <input id="c2" type="checkbox" checked>
-                <label for="c2">Монтаж</label>
+                <label for="c2"><?php echo $lib['Монтаж']; ?></label>
               </div>
               <div class="checkbox">
                 <input id="c3" type="checkbox" checked>
-                <label for="c3">Москитная сетка</label>
+                <label for="c3"><?php echo $lib['Москитная сетка']; ?></label>
               </div>
               <div class="checkbox">
                 <input id="c4" type="checkbox" checked>
-                <label for="c4">Откосы</label>
+                <label for="c4"><?php echo $lib['Откосы']; ?></label>
               </div>
             </div>
             <div class="total">
-              <input type="text" class="form-controll" placeholder="Введите промокод">
-              <p>Доставка: <span>Бесплатно</span></p>
-              <p class="big">Вам будет начисленно: <span>666 балов</span></p>
-              <p>Общая стоимость: <span><?php echo $totals[0]['text'] ?></span></p>
+              <input type="hidden" class="form-controll" placeholder="<?php echo $lib['Введите промокод']; ?>" name="promo-code" value="">
+              <p><?php echo $lib['Доставка']; ?>: <span><?php echo $lib['Бесплатно']; ?></span></p>
+              <p class="big"><?php echo $lib['Вам будет начисленно']; ?>: <span>0 балов</span></p>
+              <p style="width: calc(100% - 15px);"><?php echo $lib['Общая стоимость']; ?>: <span><?php echo $totals[0]['text'] ?></span></p>
               <div class="total-btn">
-                <button type="submit" class="green-btn">Отправить на расчет</button>
+                <input type="button" class="btn btn-primary" data-loading-text="<?php if (isset($text_loading)) echo $text_loading;else echo 'loading ...' ?>" id="button-register" value="<?php echo $heading_title;?>">
               </div>
             </div>
           </div>

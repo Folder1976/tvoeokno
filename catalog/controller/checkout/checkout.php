@@ -29,7 +29,7 @@ class ControllerCheckoutCheckout extends Controller {
 		}
 		
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-			if ($data['opencart2']) $this->response->redirect($this->url->link('checkout/cart')); else $this->redirect($this->url->link('checkout/cart'));
+			//if ($data['opencart2']) $this->response->redirect($this->url->link('checkout/cart')); else $this->redirect($this->url->link('checkout/cart'));
 		}
 
 		
@@ -66,8 +66,11 @@ class ControllerCheckoutCheckout extends Controller {
 		}
 		
 		//var_dump($this->session->data);
+$data['language_id'] = (int)$this->config->get('config_language_id');
+
 
 		$this->validate($data);
+
 		$this->login(false, $data);
 		$this->guest(false, $data);
 		$this->checkout(false, $data);
@@ -78,6 +81,7 @@ class ControllerCheckoutCheckout extends Controller {
 		//$this->cart(false);
 		$this->confirm(false, $data);
 
+	
 		//var_dump($data);
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/checkout/checkout.tpl')) {
 			$this->template  = $template =  $this->config->get('config_template') . '/checkout/checkout.tpl';
@@ -108,7 +112,8 @@ class ControllerCheckoutCheckout extends Controller {
         if (isset($this->request->get['quickconfirm'])) {
             $data['quickconfirm'] = $this->request->get['quickconfirm'];
         }
-				
+
+					
 		if ($this->customer->isLogged())
 		{ 
 			$data['firstname'] = $this->customer->getFirstName();
@@ -118,7 +123,8 @@ class ControllerCheckoutCheckout extends Controller {
 			$data['payment_address_id'] = $this->customer->getAddressId();
 			$data['address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
 		}
-				
+	
+
 
 		if ($opencart2)
 		{
@@ -139,7 +145,7 @@ class ControllerCheckoutCheckout extends Controller {
 		
 		if (isset($_REQUEST['register']) && !empty($_REQUEST['register']))
 		{ 
-			$json = $this->register_validate($data);
+			//$json = $this->register_validate($data);
 		}
 		else
 		{
@@ -149,6 +155,12 @@ class ControllerCheckoutCheckout extends Controller {
 		if (!isset($json['error'])) $json = array_merge($json, $this->shipping_address_validate());
 		if (!isset($json['error']) && !$this->customer->isLogged()) $json = array_merge($json, $this->shipping_method_validate());
 		if (!isset($json['error'])) $json = array_merge($json, $this->payment_method_validate());
+		
+		if (!isset($json['error'])) {
+			$this->confirm(true, $data);
+			$this->cart->clear();
+			$json['redirect'] = '/index.php?route=checkout/success';
+		}
 		
 		$this->response->setOutput(json_encode($json));	
 	}
@@ -343,6 +355,7 @@ class ControllerCheckoutCheckout extends Controller {
 			if (!$json) {
 				$this->session->data['account'] = 'guest';
 
+				
 				$this->session->data['guest']['customer_group_id'] = $customer_group_id;
 				$this->session->data['guest']['firstname'] = $this->request->post['firstname'];
 				$this->session->data['guest']['lastname'] = $this->request->post['lastname'];
@@ -821,11 +834,13 @@ class ControllerCheckoutCheckout extends Controller {
 				$information_info = $this->model_catalog_information->getInformation($this->config->get('config_account_id'));
 				
 				if ($information_info && !isset($this->request->post['agree'])) {
-					$json['error']['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+					$this->request->post['agree'] = true;
+					//$json['error']['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
 				}
 			}
 		}
-		
+
+	
 		if (!$json) {
 			//uncomment this
 			
@@ -904,7 +919,7 @@ class ControllerCheckoutCheckout extends Controller {
 			}
 
 		}	
-		
+	
 		return $json;	
 	} 	
 	
@@ -917,12 +932,12 @@ class ControllerCheckoutCheckout extends Controller {
 		
 		// Validate if customer is logged in.
 		if (!$this->customer->isLogged()) {
-			//$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 		
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-//			$json['redirect'] = $this->url->link('checkout/cart');
+			$json['redirect'] = $this->url->link('checkout/cart');
 		}	
 		
 		// Validate minimum quantity requirments.			
@@ -987,17 +1002,17 @@ class ControllerCheckoutCheckout extends Controller {
 						
 						if (isset($this->request->post['country_id'])) $country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
 						
-						if (isset($country_info) && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
-							$json['error']['postcode'] = $this->language->get('error_postcode');
-						}
+						//if (isset($country_info) && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+						//	$json['error']['postcode'] = $this->language->get('error_postcode');
+						//}
 						
-						if (!isset($this->request->post['country_id']) || ($this->request->post['country_id'] == '')) {
-							$json['error']['country_id'] = $this->language->get('error_country');
-						}
+						//if (!isset($this->request->post['country_id']) || ($this->request->post['country_id'] == '')) {
+						//	$json['error']['country_id'] = $this->language->get('error_country');
+						//}
 						
-						if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
-							$json['error']['zone_id'] = $this->language->get('error_zone');
-						}
+						//if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
+						//	$json['error']['zone_id'] = $this->language->get('error_zone');
+						//}
 						
 						// Custom field validation
 						$this->load->model('account/custom_field');
@@ -1131,11 +1146,11 @@ class ControllerCheckoutCheckout extends Controller {
 				}
 				
 				if (!isset($this->request->post['country_id']) || $this->request->post['country_id'] == '') {
-					$json['error']['country_id'] = $this->language->get('error_country');
+					//$json['error']['country_id'] = $this->language->get('error_country');
 				}
 				
 				if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
-					$json['error']['zone_id'] = $this->language->get('error_zone');
+					//$json['error']['zone_id'] = $this->language->get('error_zone');
 				}
 				
 				if (!$json) {
@@ -1331,21 +1346,23 @@ class ControllerCheckoutCheckout extends Controller {
 		
 		if (!$json) {
 			if (!isset($this->request->post['shipping_method'])) {
-				$json['error']['warning'] = $this->language->get('error_shipping');
+				//$json['error']['warning'] = $this->language->get('error_shipping');
 			} else {
 				$shipping = explode('.', $this->request->post['shipping_method']);
 				if (!isset($shipping[0]) || !isset($shipping[1])/* || !isset($this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]])*/) {
-					$json['error']['warning'] = $this->language->get('error_shipping');
+					//$json['error']['warning'] = $this->language->get('error_shipping');
 				}
 			}
 			
 			if (!$json) {
+				/*
 				$shipping = explode('.', $this->request->post['shipping_method']);
 					
 				if (isset($this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]]))
 				$this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
-				
+				*/
 				$this->session->data['comment'] = (isset($this->request->post['comment']))?strip_tags($this->request->post['comment']):'';
+				
 			}							
 		}
 		
@@ -1363,9 +1380,9 @@ class ControllerCheckoutCheckout extends Controller {
 		$this->load->model('account/address');
 		
 		if ($this->customer->isLogged() && isset($this->session->data['payment_address_id'])) {
-			$payment_address = $this->model_account_address->getAddress($this->session->data['payment_address_id']);		
+			//$payment_address = $this->model_account_address->getAddress($this->session->data['payment_address_id']);		
 		} elseif (isset($this->session->data['guest'])) {
-			$payment_address = $this->session->data['guest']['payment'];
+			//$payment_address = $this->session->data['guest']['payment'];
 		} else
 		{
 			$payment_address = $this->model_account_address->getAddress(0);		
@@ -1400,30 +1417,35 @@ class ControllerCheckoutCheckout extends Controller {
 		}
 				
 		if (!$json) {
+			
+			/*
+			$this->request->post['payment_method'] = 'free_checkout';
 			if (!isset($this->request->post['payment_method'])) {
 				$json['error']['warning'] = $this->language->get('error_payment');
 			} elseif (!isset($this->session->data['payment_methods'][$this->request->post['payment_method']])) {
 //				error_log(print_r($this->session->data['payment_methods'],1));
 				$json['error']['warning'] = $this->language->get('error_payment');
 			}	
-
+*/
 			if ($this->config->get('config_checkout_id')) {
 				$this->load->model('catalog/information');
 				
 				$information_info = $this->model_catalog_information->getInformation($this->config->get('config_checkout_id'));
 				
 				if ($information_info && !isset($this->request->post['agree'])) {
+					$this->request->post['agree'] = true;
 					$json['error']['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
 				}
 			}
 			
 			if (!$json) {
-				$this->session->data['payment_method'] = $this->session->data['payment_methods'][$this->request->post['payment_method']];
+				$this->session->data['payment_method'] = 'free_checkout';//$this->session->data['payment_methods'][$this->request->post['payment_method']];
 			  
 				$this->session->data['comment'] = (isset($this->request->post['comment']))?strip_tags($this->request->post['comment']):'';
 			}							
 		}
 		
+	
 		return $json;
 	}	
 	
@@ -2430,6 +2452,8 @@ class ControllerCheckoutCheckout extends Controller {
 					$points_total += $product['points'];
 				}
 			}		
+		
+
 				
       		$data['heading_title'] = $this->language->get('heading_title');
 			
@@ -2954,21 +2978,21 @@ class ControllerCheckoutCheckout extends Controller {
 							if (isset($this->session->data['payment_address'])) $payment_address = $this->session->data['payment_address'];
 						}						
 						
-						$order_data['payment_firstname'] = $payment_address['firstname'];
-						$order_data['payment_lastname'] = $payment_address['lastname'];	
-						$order_data['payment_company'] = $payment_address['company'];	
-						$order_data['payment_company_id'] = isset($payment_address['company_id'])?$payment_address['company_id']:'';	
-						$order_data['payment_tax_id'] = isset($payment_address['tax_id'])?$payment_address['tax_id']:'';	
-						$order_data['payment_address_1'] = $payment_address['address_1'];
-						$order_data['payment_address_2'] = $payment_address['address_2'];
-						$order_data['payment_city'] = $payment_address['city'];
-						$order_data['payment_postcode'] = $payment_address['postcode'];
-						$order_data['payment_zone'] = $payment_address['zone'];
-						$order_data['payment_zone_id'] = $payment_address['zone_id'];
-						$order_data['payment_country'] = $payment_address['country'];
-						$order_data['payment_country_id'] = $payment_address['country_id'];
-						$order_data['payment_address_format'] = $payment_address['address_format'];
-						$order_data['payment_custom_field'] = (isset($payment_address['custom_field']))?$payment_address['custom_field']:'';
+						$order_data['payment_firstname'] = '';//$payment_address['firstname'];
+						$order_data['payment_lastname'] = '';// = $payment_address['lastname'];	
+						$order_data['payment_company'] = '';// = $payment_address['company'];	
+						$order_data['payment_company_id'] = '';// = isset($payment_address['company_id'])?$payment_address['company_id']:'';	
+						$order_data['payment_tax_id'] = '';// = isset($payment_address['tax_id'])?$payment_address['tax_id']:'';	
+						$order_data['payment_address_1'] = '';// = $payment_address['address_1'];
+						$order_data['payment_address_2'] = '';// = $payment_address['address_2'];
+						$order_data['payment_city'] = '';// = $payment_address['city'];
+						$order_data['payment_postcode'] = '';// = $payment_address['postcode'];
+						$order_data['payment_zone'] = '';// = $payment_address['zone'];
+						$order_data['payment_zone_id'] = '';// = $payment_address['zone_id'];
+						$order_data['payment_country'] = '';// = $payment_address['country'];
+						$order_data['payment_country_id'] = '';// = $payment_address['country_id'];
+						$order_data['payment_address_format'] = '';// = $payment_address['address_format'];
+						$order_data['payment_custom_field'] = '';// = (isset($payment_address['custom_field']))?$payment_address['custom_field']:'';
 				}
 			
 
@@ -3040,7 +3064,7 @@ class ControllerCheckoutCheckout extends Controller {
 								$order_data['shipping_country_id'] = $this->session->data['shipping_address']['country_id'];
 								$order_data['shipping_address_format'] = $this->session->data['shipping_address']['address_format'];
 								$order_data['shipping_custom_field'] = (isset($this->session->data['shipping_address']['custom_field']) ? $this->session->data['shipping_address']['custom_field'] : array());
-								$order_data['shipping_method'] = $this->session->data['payment_method']['title'];
+								$order_data['shipping_method'] = '';//$this->session->data['payment_method']['title'];
 							}
 						}
 						else
@@ -3261,6 +3285,7 @@ class ControllerCheckoutCheckout extends Controller {
 
 				$order_data['products'] = array();
 
+
 				foreach ($this->cart->getProducts() as $product) {
 					$option_data = array();
 
@@ -3380,6 +3405,9 @@ class ControllerCheckoutCheckout extends Controller {
 				$data['text_recurring_item'] = $this->language->get('text_recurring_item');
 				$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
 			}
+	
+	
+	
 			$data['column_name'] = $this->language->get('column_name');
 			$data['column_model'] = $this->language->get('column_model');
 			$data['column_quantity'] = $this->language->get('column_quantity');
@@ -3444,8 +3472,7 @@ class ControllerCheckoutCheckout extends Controller {
                     $price = false;
                     $total = false;
                 }
-
-
+				
 				$data['products'][] = array(
 //					'key'        => $product['key'],
 					'product_id' => $product['product_id'],
@@ -3461,6 +3488,7 @@ class ControllerCheckoutCheckout extends Controller {
 				);
 			}
 
+			
 			// Gift Voucher
 			$data['vouchers'] = array();
 
@@ -3483,7 +3511,7 @@ class ControllerCheckoutCheckout extends Controller {
 			}
 			if ($render !== false)
 			{
-				echo $data['payment'] = $this->load->controller('extension/payment/' . $this->session->data['payment_method']['code']);
+				echo $data['payment'] = '';//$this->load->controller('extension/payment/' . $this->session->data['payment_method']['code']);
 			}
 		} else
 		{

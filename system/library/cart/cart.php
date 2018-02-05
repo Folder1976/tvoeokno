@@ -342,6 +342,7 @@ class Cart {
 			}
 		}
 
+
 		return $product_data;
 	}
 

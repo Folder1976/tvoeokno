@@ -100,6 +100,17 @@
               		<textarea name="note" class="form-controll" placeholder="Примечание"></textarea>
               	</div>
               </div>
+							
+							<input type="hidden" name="zone" class="form-controll" value="0">
+							<input type="hidden" name="zone_id" class="form-controll" value="0">
+							<input type="hidden" name="company" class="form-controll" value="0">
+							<input type="hidden" name="address_2" class="form-controll" value="0">
+							<input type="hidden" name="postcode" class="form-controll" value="0">
+							<input type="hidden" name="country_id" class="form-controll" value="0">
+							<input type="hidden" name="shipping_method" class="form-controll" value="0">
+							<input type="hidden" name="agree" class="form-controll" value="true">
+							<input type="hidden" name="lastname" class="form-controll" value="фамилия">
+							
             </div>
           </div>
         </div>
@@ -127,7 +138,7 @@
               <?php } ?>
               <div class="cart-item-price">
                 <p><?php echo $lib['Стоимость']; ?>:</p>
-                <span><?php echo $product['total']; ?></span>
+								<span><?php echo $product['total']; ?></span>
                 <p><?php echo $lib['Код товара']; ?>: <br> <?php echo $product['model']; ?></p>
               </div>
             </div>
@@ -153,11 +164,11 @@
               </div>
             </div>
             <div class="total">
-              <input type="text" class="form-controll" placeholder="<?php echo $lib['Введите промокод']; ?>" name="promo-code" value="">
+              <input type="hidden" class="form-controll" placeholder="<?php echo $lib['Введите промокод']; ?>" name="promo-code" value="">
               <p><?php echo $lib['Доставка']; ?>: <span><?php echo $lib['Бесплатно']; ?></span></p>
-              <p class="big"><?php echo $lib['Вам будет начисленно']; ?>: <span>666 балов</span></p>
-              <p><?php echo $lib['Общая стоимость']; ?>: <span><?php echo $totals[0]['text'] ?></span></p>
-              <div class="total-btn">
+              <p class="big"><?php echo $lib['Вам будет начисленно']; ?>: <span>0 балов</span></p>
+							<p style="width: calc(100% - 15px);"><?php echo $lib['Общая стоимость']; ?>: <span><?php echo $totals[0]['text'] ?></span></p>
+                <div class="total-btn">
                 <input type="button" class="btn btn-primary" data-loading-text="<?php if (isset($text_loading)) echo $text_loading;else echo 'loading ...' ?>" id="button-register" value="<?php echo $heading_title;?>">
               </div>
             </div>
@@ -205,10 +216,9 @@ $(document).delegate('#button-login', 'click', function() {
 });
 
 // Register
-$(document).delegate('#button-register', 'click', function() 
-{
+$(document).delegate('#button-register', 'click', function(){
 	
-	var data = $('.checkout_form input[type=\'text\'], .checkout_form input[type=\'date\'], .checkout_form input[type=\'datetime-local\'], .checkout_form input[type=\'time\'], .checkout_form input[type=\'password\'], .checkout_form input[type=\'hidden\'], .checkout_form input[type=\'checkbox\']:checked, .checkout_form input[type=\'radio\']:checked, .checkout_form textarea, .checkout_form select').serialize();
+	var data = $('.checkout_form input[type=\'text\'], .checkout_form input[type=\'tel\'],  .checkout_form input[type=\'email\'],  .checkout_form input[type=\'date\'], .checkout_form input[type=\'datetime-local\'], .checkout_form input[type=\'time\'], .checkout_form input[type=\'password\'], .checkout_form input[type=\'hidden\'], .checkout_form input[type=\'checkbox\']:checked, .checkout_form input[type=\'radio\']:checked, .checkout_form textarea, .checkout_form select').serialize();
 	data += '&_shipping_method='+ jQuery('.checkout_form input[name=\'shipping_method\']:checked').prop('title') + '&_payment_method=' + jQuery('.checkout_form input[name=\'payment_method\']:checked').prop('title');
 	
     $.ajax({
@@ -224,13 +234,14 @@ $(document).delegate('#button-register', 'click', function()
         },          
         success: function(json) {
             $('.alert, .text-danger').remove();
-                        
+      console.log(json);                  
             if (json['redirect']) {
                 location = json['redirect'];                
             } else if (json['error']) {
 				error = true;
                 if (json['error']['warning']) {
                     $('.error').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+										$('html, body').animate({ scrollTop: 0 }, 'slow');
                 }
                 
 		for (i in json['error']) {

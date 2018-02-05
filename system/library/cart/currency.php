@@ -30,7 +30,12 @@ class Currency {
 			$value = $this->currencies[$currency]['value'];
 		}
 
-		$amount = $value ? (float)$number * $value : (float)$number;
+		
+		if(is_numeric($value)){
+			$amount = $value ? (float)$number * $value : (float)$number;
+		}else{
+			$amount = (float)$number;
+		}
 		
 		$amount = round($amount, (int)$decimal_place);
 		
@@ -43,7 +48,8 @@ class Currency {
 		if ($symbol_left) {
 			$string .= $symbol_left;
 		}
-
+		
+		
 		$string .= number_format($amount, (int)$decimal_place, $this->language->get('decimal_point'), $this->language->get('thousand_point'));
 
 		if ($symbol_right) {

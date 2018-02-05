@@ -32,7 +32,14 @@ class Pagination {
 
 		$this->url = str_replace('%7Bpage%7D', '{page}', $this->url);
 
-		$output = '<ul class="pagination-list">';
+		if(strpos($_SERVER["REQUEST_URI"], 'admin/') !== false){
+			$output = '<ul class="pagination">';
+			$this->text_next = 'следующий';
+			$this->text_prev = 'предыдущий';
+		}else{
+			$output = '<ul class="pagination-list">';
+		}
+		
 
 		if ($page > 1) {
 			$output .= '<li><a href="' . str_replace('{page}', $page - 1, $this->url) . '" class="prev">' . $this->text_prev . '</a></li>';

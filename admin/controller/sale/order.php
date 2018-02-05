@@ -3,6 +3,8 @@ class ControllerSaleOrder extends Controller {
 	private $error = array();
 
 	public function index() {
+		
+	
 		$this->load->language('sale/order');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -79,6 +81,7 @@ class ControllerSaleOrder extends Controller {
 	}
 
 	protected function getList() {
+		
 		if (isset($this->request->get['filter_order_id'])) {
 			$filter_order_id = $this->request->get['filter_order_id'];
 		} else {
@@ -205,6 +208,8 @@ class ControllerSaleOrder extends Controller {
 
 		$order_total = $this->model_sale_order->getTotalOrders($filter_data);
 
+
+		
 		$results = $this->model_sale_order->getOrders($filter_data);
 
 		foreach ($results as $result) {
