@@ -1,13 +1,12 @@
-<<<<<<< HEAD
-<div id="cart" class="btn-group btn-block">
-  <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle">
-  <i class="fa fa-shopping-cart"></i> <span id="cart-total"><?php echo $text_items; ?></span></button>
-  <ul class="pull-right">
-=======
 <div id="cart" class="btn-group btn-block" style="width: auto;">
-  <a href="javascript:void(0)" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="header-callback-single dropdown-toggle"><span class="img busket"></span><p><?php echo $text_cart; ?></p><p id="cart-total"><?php echo $text_items; ?></p></a>
+  <a href="javascript:void(0)" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="header-callback-single dropdown-toggle">
+  <span class="img busket"></span>
+  <?php if($count_products){ ?>
+    <p id="cart-total"><?php echo $text_items; ?></p></a>
+  <?php }else{ ?>
+    <p><?php echo $text_cart; ?></p></a>
+  <?php } ?>
   <ul class="dropdown-menu pull-right">
->>>>>>> 89c5e944f979cc9174c97bd2a2891f02229b93f4
     <?php if ($products || $vouchers) { ?>
     <li>
       <table class="table table-striped">

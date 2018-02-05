@@ -36,6 +36,7 @@
                 'Трехстворчатое окно' => 'Трйохстворчате вікно',
                 'Балконный блок' => 'Балконний блок',
                 'Остекление лоджии' => 'Скління лоджії',
+                'Адрес' => 'Адреса'
                 );
  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
     //Пример
@@ -386,6 +387,7 @@ echo $header; ?>
             <h3><?php echo $lib['Оставить отзыв'];?></h3>
             <input type="text" placeholder="<?php echo $lib['Имя'];?>" name="name" required>
             <input type="text" placeholder="<?php echo $lib['Номер договора'];?>" name="email">
+            <input type="text" placeholder="<?php echo $lib['Адрес'];?>" name="adress">
             <textarea placeholder="<?php echo $lib['Ваш отзыв'];?>" name="comment" required></textarea>
 
             <!--input type="hidden" name="email" value="test@test.com"-->
@@ -492,6 +494,8 @@ $('#button-comment').on('click', function(e) {
         
         $('input[name=\'name\']').val('');
         $('input[name=\'contract_number\']').val('');
+        $('input[name=\'email\']').val('');
+        $('input[name=\'adress\']').val('');
         $('textarea[name=\'comment\']').val('');
       }
 
