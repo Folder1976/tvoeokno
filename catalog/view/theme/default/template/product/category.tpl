@@ -233,8 +233,10 @@ echo $header; ?>
         <?php } ?>
         
         <?php if ($description1) { ?>
-        <div class="row">
-          <div class="col-sm-10"><?php  echo $description1; ?></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-10"><?php  echo $description1; ?></div>
+          </div>
         </div>
         <?php } ?>
 
