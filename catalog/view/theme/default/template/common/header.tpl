@@ -185,6 +185,7 @@
                 <img src="/catalog/view/theme/default/image/i.svg" alt="">
                 <span class="title"><?php echo $group_list[10]['name']; ?></span>
               </a>
+              <span class="open-sub-menu"><i class="fas fa-angle-down"></i></span>
               <div class="main-nav-dropdown">
                 <ul>
                 <?php foreach($group_list[10]['list'] as $row){ ?>
