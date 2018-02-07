@@ -55,6 +55,7 @@
     <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
   <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css">
@@ -204,6 +205,7 @@
                   <img src="/catalog/view/theme/default/image/m1.svg" alt="">
                   <span><?php echo $category['name']; ?></span>
                 </a>
+                <span class="open-sub-menu"><i class="fas fa-angle-down"></i></span>
                 <div class="main-nav-dropdown">
                   <ul>
                     <?php foreach ($category['children'] as $k => $child) { ?>
@@ -228,6 +230,7 @@
                   <img src="/catalog/view/theme/default/image/m<?php echo $key+1;?>.svg" alt="">
                   <span><?php echo $category['name']; ?></span>
                 </a>
+                <span class="open-sub-menu"><i class="fas fa-angle-down"></i></span>
                 <?php if ( count($category['children']) > 0 ) { ?>
                 <div class="main-nav-dropdown">
                   <ul>
@@ -247,6 +250,7 @@
                   <img src="/catalog/view/theme/default/image/m<?php echo $key+1;?>.svg" alt="">
                   <span><?php echo $category['name']; ?></span>
                 </a>
+                <span class="open-sub-menu"><i class="fas fa-angle-down"></i></span>
                 <?php if ( count($category['children']) > 0 ) { ?>
                 <div class="main-nav-dropdown">
                   <ul>

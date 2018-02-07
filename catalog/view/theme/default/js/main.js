@@ -17,7 +17,19 @@ $('.side-nav').on('mouseout', 'li a', function(){
   $(this).css('right', '-63px');
 });
 
-
+jQuery(document).ready(function($) {
+  $('.open-sub-menu').on('click', function(){
+    if ( !$(this).hasClass('open') ) {
+      $('.open-sub-menu').removeClass('open');
+      $('.main-nav-dropdown').removeClass('open');
+      $(this).addClass('open');
+      $(this).closest('li').find('.main-nav-dropdown').addClass('open');
+    } else {
+      $(this).removeClass('open');
+      $(this).closest('li').find('.main-nav-dropdown').removeClass('open');
+    }
+  });
+});
 
 var map;
 

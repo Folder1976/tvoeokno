@@ -889,13 +889,43 @@
         text-align: left
     }
     .main-nav-list li a {
-        padding: 5px 0
+        padding: 5px 0;
+        width: 80%;
+        display: inline-block;
     }
     .main-nav-list img {
         display: none
     }
     .main-nav-dropdown {
         top: 200px;
+    }
+    .main-nav-list > li:hover .main-nav-dropdown {
+        display: none;
+    }
+    .main-nav-list .open-sub-menu {
+        font-size: 14px;
+        width: 20%;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-transition: all .2s;
+        -o-transition: all .2s;
+        transition: all .2s;
+    }
+    .main-nav-list .open-sub-menu.open {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transition: all .2s;
+        -o-transition: all .2s;
+        transition: all .2s;
+    }
+    .main-nav-list > li .main-nav-dropdown.open {
+        display: block;
+    }
+    .main-nav-list .open-sub-menu:hover {
+        opacity: .5;
     }
     .prices {
         padding: 20px 0
