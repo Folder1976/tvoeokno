@@ -40,11 +40,15 @@ class Pagination {
 			$output = '<ul class="pagination-list">';
 		}
 		
-
+		$pref_href = '';
+		if(isset($_GET['route']) AND $_GET['route'] == 'blog/blog/comment'){
+			$pref_href = 'href="javascript:;" data-';
+		}
+		
 		if ($page > 1) {
-			$output .= '<li><a href="' . str_replace('{page}', $page - 1, $this->url) . '" class="prev">' . $this->text_prev . '</a></li>';
+			$output .= '<li><a '.$pref_href.'href="' . str_replace('{page}', $page - 1, $this->url) . '" class="prev">' . $this->text_prev . '</a></li>';
 		} else {
-			$output .= '<li><a href="' . str_replace('{page}', $page, $this->url) . '" class="prev">' . $this->text_prev . '</a></li>';
+			$output .= '<li><a '.$pref_href.'href="' . str_replace('{page}', $page, $this->url) . '" class="prev">' . $this->text_prev . '</a></li>';
 		}
 
 		if ($num_pages > 1) {
@@ -71,18 +75,18 @@ class Pagination {
 					$output .= '<li class="active"><span>' . $i . '</span></li>';
 				} else {
 					if ($i === 1) {
-                        $output .= '<li><a href="' . str_replace(array('&amp;page={page}', '?page={page}', '&page={page}'), '', $this->url) . '">' . $i . '</a></li>';
+                        $output .= '<li><a '.$pref_href.'href="' . str_replace(array('&amp;page={page}', '?page={page}', '&page={page}'), '', $this->url) . '">' . $i . '</a></li>';
 					} else {
-						$output .= '<li><a href="' . str_replace('{page}', $i, $this->url) . '">' . $i . '</a></li>';
+						$output .= '<li><a '.$pref_href.'href="' . str_replace('{page}', $i, $this->url) . '">' . $i . '</a></li>';
 					}
 				}
 			}
 		}
 
 		if ($page < $num_pages) {
-			$output .= '<li><a href="' . str_replace('{page}', $page + 1, $this->url) . '" class="next">' . $this->text_next . '</a></li>';
+			$output .= '<li><a '.$pref_href.'href="' . str_replace('{page}', $page + 1, $this->url) . '" class="next">' . $this->text_next . '</a></li>';
 		} else {
-			$output .= '<li><a href="' . str_replace('{page}', $page, $this->url) . '" class="next">' . $this->text_next . '</a></li>';
+			$output .= '<li><a '.$pref_href.'href="' . str_replace('{page}', $page, $this->url) . '" class="next">' . $this->text_next . '</a></li>';
 		}
 
 		$output .= '</ul>';

@@ -365,7 +365,7 @@ echo $header; ?>
                   <p><?php echo $comment['comment']; ?></p>
                   <div class="bottom">
                     <p class="date"><?php //echo $comment['date_added']; ?></p>
-                    <p class="name"><?php echo $comment['name']; ?></p>
+                    <p class="name"><?php echo $comment['name']; ?>, <?php echo $comment['adress']; ?>, <?php echo $lib['Номер договора'];?>: <?php echo $comment['email']; ?></p>
                   </div>
                 </div>
               </div>

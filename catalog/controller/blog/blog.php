@@ -457,13 +457,15 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 		if (empty($limit)) {
 		$limit = 5;
 		}
-			
+		
+		$data['language_id'] = (int)$this->config->get('config_language_id');	
 		$results = $this->model_blog_blog->getCommentsByBlogId($this->request->get['blog_id'], ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
         		$data['comments'][] = array(
         			'name'     => $result['name'],
 					'email'     => $result['email'],
+					'adress'     => $result['adress'],
 					'comment'       => strip_tags($result['comment']),
         			'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
         		);
@@ -497,7 +499,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 	}
 
 
-		public function write() {
+	public function write() {
 		$this->load->language('blog/blog');
 		
 		$data['entry_comment'] = $this->language->get('entry_comment');

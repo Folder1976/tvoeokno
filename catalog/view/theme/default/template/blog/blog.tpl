@@ -230,7 +230,24 @@ $('#comment').delegate('.pagination a', 'click', function(e) {
 	
 });
 
-$('#comment').load('index.php?route=blog/blog/comment&blog_id=<?php echo $blog_id; ?>');
+<?php
+	
+	$page = 1;
+	if(isset($_GET['page'])) $page = (int)$_GET['page'];
+
+?>
+
+$('#comment').load('index.php?route=blog/blog/comment&blog_id=<?php echo $blog_id; ?>&page=<?php echo $page; ?>');
+
+$(document).on('click','a', function(){
+	
+	
+	if($(this).data('href') == undefined){
+	}else{
+		$('#comment').load($(this).data('href'));
+	}
+});
+
 //--></script>
 	<link href="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/css/nanogallery.css" rel="stylesheet" type="text/css">
 				<script type="text/javascript" src="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/jquery.nanogallery.js"></script>

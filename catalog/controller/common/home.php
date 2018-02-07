@@ -28,6 +28,7 @@ class ControllerCommonHome extends Controller {
         		$data['comments'][] = array(
         			'name'     => $result['name'],
 					'email'     => $result['email'],
+						'adress'     => $result['adress'],
 					'comment'       => strip_tags($result['comment']),
         			'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
         		);
@@ -79,17 +80,7 @@ class ControllerCommonHome extends Controller {
 		$_GET['blog_id'] = 80;
  		$data['comment_blog'] = $this->model_blog_blog->getBlog(80);
  		
- 		$results = $this->model_blog_blog->getCommentsByBlogId(80, 0, 10);
-  
- 		foreach ($results as $result) {
-         		$data['comments'][] = array(
-         			'name'     => $result['name'],
- 					'email'     => $result['email'],
- 					'comment'       => strip_tags($result['comment']),
-         			'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
-         		);
-       		}
-
+ 	
 	
  		$this->load->model('catalog/manufacturer');
  		$data['manufacturers'] = array();// $this->model_catalog_manufacturer->getManufacturers();

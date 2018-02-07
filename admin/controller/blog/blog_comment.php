@@ -53,6 +53,15 @@ class ControllerBlogBlogComment extends Controller {
 		$this->getList();
 	}
 	
+	public function editdate() {
+		
+		$this->load->model('blog/blog_comment');
+		
+		
+		$this->model_blog_blog_comment->editBlogCommentDate($this->request->get['date'], $this->request->get['id']);
+		
+	}
+	
 	public function disable() {
 		$this->load->language('blog/blog_comment');
 

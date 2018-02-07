@@ -141,12 +141,21 @@
               
                 
               <div class="form-group">
-                <label class="col-sm-2 control-label">Дата</label>
+                <label class="col-sm-2 control-label">Дата публикации<br>[0000-00-00]</label>
                 <div class="col-sm-10">
-                <input type="text" name="date_added" value="<?php echo $date_added; ?>" class="form-control" />
+                <input type="text" name="date_added" id="datepicker" data-date-format="yyyy-mm-dd" value="<?php echo date('Y-m-d', strtotime($date_added)); ?>" class="form-control" />
                 </div>
               </div>
-              
+ <!-- http://t1m0n.name/air-datepicker/docs/index-ru.html -->
+<link href="/admin/view/javascript/datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="/admin/view/javascript/datepicker/js/datepicker.min.js"></script>
+<script>
+  // Инициализация
+$('#datepicker').datepicker();
+
+// Доступ к экземпляру объекта
+$('#datepicker').data('datepicker');
+</script>              
                 
                 <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>

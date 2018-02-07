@@ -31,8 +31,17 @@ class ModelBlogBlogComment extends Model {
 	}
 
 	
+	public function editBlogCommentDate($date, $id) {
+		$sql = "UPDATE " . DB_PREFIX . "blog_comment SET date_added = '" . $date . "' WHERE blog_comment_id = '" . (int)$id . "'";
+		echo $sql;
+		$this->db->query($sql);
+	}
+	
 	public function enableBlogComment($id) {
-		$this->db->query("UPDATE " . DB_PREFIX . "blog_comment SET status = '1' WHERE blog_comment_id = '" . (int)$id . "'");
+		
+		$sql = "UPDATE " . DB_PREFIX . "blog_comment SET status = '1' WHERE blog_comment_id = '" . (int)$id . "'";
+		//echo $sql;
+		$this->db->query($sql);
 	}
 	
 	public function disableBlogComment($id) {

@@ -38,7 +38,30 @@ class ControllerStartupSeoUrl extends Controller {
 				$this->response->redirect('/uk/vse-stati');
 			}
 		
-			if ($this->request->get['_route_'] == 'online_windows_calculator') {	
+			if ($this->request->get['_route_'] == 'online_windows_calculator') {
+				
+				if($this->session->data['language'] != 'ru-ru'){
+					
+					$this->session->data['language'] = 'ru-ru';
+					$_SESSION['language'] = 'ru-ru';
+					$this->response->redirect('/online_windows_calculator');	
+					
+				}
+				
+				$this->request->get['route'] = 'product/calculator';
+				return true;
+			}
+			
+			if ($this->request->get['_route_'] == 'online_windows_calculator-ua') {
+				
+				if($this->session->data['language'] != 'ua-uk'){
+					
+					$this->session->data['language'] = 'ua-uk';
+					$_SESSION['language'] = 'ua-uk';
+					$this->response->redirect('/online_windows_calculator-ua');	
+					
+				}
+		
 				$this->request->get['route'] = 'product/calculator';
 				return true;
 			}
@@ -127,9 +150,7 @@ class ControllerStartupSeoUrl extends Controller {
 					
 				}
 			}
-
-	
-			
+				
 			if (!isset($this->request->get['route'])) {
 				if (isset($this->request->get['product_id'])) {
 					$this->request->get['route'] = 'product/product';

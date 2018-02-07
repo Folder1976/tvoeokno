@@ -54,7 +54,10 @@
             <td><?php echo $blog_comment['comment']; ?></td>
              <td class="left"><?php echo $blog_comment['title']; ?></td>
             <td><?php echo $blog_comment['name']; ?><br />тел/email: <?php echo $blog_comment['email']; ?><br />Адрес:<?php echo $blog_comment['adress']; ?></td>
-            <td class="text-right"><?php echo $blog_comment['date_added']; ?></td>
+            
+						<td class="text-right"><?php //echo $blog_comment['date_added']; ?>
+						    <input placeholder="<?php echo $blog_comment['date_added']; ?>" name="date_added" class="datepicker1" id="date<?php echo $blog_comment['blog_comment_id'];?>" data-date-format="yyyy-mm-dd" data-blog_comment_id="<?php echo $blog_comment['blog_comment_id'];?>"   class="form-control" style="width: 100px;"/>
+            </td>
             <td class="text-right">
             <?php if($blog_comment['status']){ ?>
             <span class="label label-success" style="font-size:100%;"><?php echo $text_enabled; ?></span>
@@ -80,4 +83,58 @@
     </div>
   </div>
 </div>
+	
+	<!-- http://t1m0n.name/air-datepicker/docs/index-ru.html -->
+<link href="/admin/view/javascript/datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="/admin/view/javascript/datepicker/js/datepicker.min.js"></script>
+<script>
+  // Инициализация
+$('.datepicker1').datepicker();
+
+
+
+$(document).on('change', '.datepicker1', function(){
+	
+	var blog_comment_id = $(this).data('blog_comment_id');
+	var date = $(this).vak();
+	
+	console.log(blog_comment_id+' '+date);
+	
+	});
+
+	$('.datepicker1').datepicker({
+    onShow: function(dp, animationCompleted){
+        if (!animationCompleted) {
+            //log('start showing')
+        } else {
+            //log('finished showing')
+        }
+    },
+    onHide: function(dp, animationCompleted){
+        if (!animationCompleted) {
+            //console.log('start hiding')
+        } else {
+            console.log('finished hiding')
+						
+						var id = dp.el.dataset.blog_comment_id;
+						var date = $('#date'+id).val();
+						
+						$.ajax({
+						url: 'index.php?route=blog/blog_comment/editdate&token=<?php echo $_GET['token']; ?>&date=' +  date+ '&id=' +  id,
+						method: "GET",
+						dataType: 'text',
+						success: function(json) {
+							console.log(json);
+						}
+						});
+						
+						
+        }
+    }
+})
+	
+// Доступ к экземпляру объекта
+$('.datepicker1').data('datepicker');
+</script>   
+	
 <?php echo $footer; ?>

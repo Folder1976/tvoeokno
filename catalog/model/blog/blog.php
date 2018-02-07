@@ -177,7 +177,7 @@ class ModelBlogBlog extends Model {
 	
 	
 	public function getCommentsByBlogId($blog_id, $start = 0, $limit = 40) {
-		$query = $this->db->query("SELECT nc.name, nc.email, nc.comment, nc.date_added FROM " . DB_PREFIX . "blog_comment nc
+		$query = $this->db->query("SELECT nc.name, nc.email, nc.comment, nc.adress, nc.date_added FROM " . DB_PREFIX . "blog_comment nc
 								  LEFT JOIN " . DB_PREFIX . "blog n ON (nc.blog_id = n.blog_id) LEFT JOIN " . DB_PREFIX . "blog_description nd ON (n.blog_id = nd.blog_id) WHERE n.blog_id = '" . (int)$blog_id . "' AND n.status = '1' AND nc.status = '1' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY nc.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
 		
 		return $query->rows;
