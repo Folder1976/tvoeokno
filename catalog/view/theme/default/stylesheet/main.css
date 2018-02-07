@@ -393,7 +393,7 @@ button {
     font-size: 18px;
     color: #fff;
     font-family: "FiraSans-Medium", sans-serif; }
-  .main-nav-list span {
+  .main-nav-list .title {
     display: block; }
 .main-nav-list > li > a {
   padding: 8px 12px;

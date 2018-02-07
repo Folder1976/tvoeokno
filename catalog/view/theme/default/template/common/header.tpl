@@ -183,7 +183,7 @@
             <li>
               <a href="/<?php echo $dir; ?>">
                 <img src="/catalog/view/theme/default/image/i.svg" alt="">
-                <span><?php echo $group_list[10]['name']; ?></span>
+                <span class="title"><?php echo $group_list[10]['name']; ?></span>
               </a>
               <div class="main-nav-dropdown">
                 <ul>
@@ -203,7 +203,7 @@
               <li>
                 <a href="<?php echo $category['href']; ?>">
                   <img src="/catalog/view/theme/default/image/m1.svg" alt="">
-                  <span><?php echo $category['name']; ?></span>
+                  <span class="title"><?php echo $category['name']; ?></span>
                 </a>
                 <span class="open-sub-menu"><i class="fas fa-angle-down"></i></span>
                 <div class="main-nav-dropdown">
@@ -228,7 +228,7 @@
               <li>
                 <a href="<?php echo $category['href']; ?>">
                   <img src="/catalog/view/theme/default/image/m<?php echo $key+1;?>.svg" alt="">
-                  <span><?php echo $category['name']; ?></span>
+                  <span class="title"><?php echo $category['name']; ?></span>
                 </a>
                 <span class="open-sub-menu"><i class="fas fa-angle-down"></i></span>
                 <?php if ( count($category['children']) > 0 ) { ?>
@@ -248,7 +248,7 @@
               <li>
                 <a href="<?php echo $category['href']; ?>">
                   <img src="/catalog/view/theme/default/image/m<?php echo $key+1;?>.svg" alt="">
-                  <span><?php echo $category['name']; ?></span>
+                  <span class="title"><?php echo $category['name']; ?></span>
                 </a>
                 <span class="open-sub-menu"><i class="fas fa-angle-down"></i></span>
                 <?php if ( count($category['children']) > 0 ) { ?>
