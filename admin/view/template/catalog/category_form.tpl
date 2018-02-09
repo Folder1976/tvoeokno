@@ -340,7 +340,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="input-image2<?php echo $language['language_id']; ?>">Картинка для таб2</label>
                       <div class="col-sm-10"> <a href="" id="thumb-image2<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $category_description[$language['language_id']]['thumb2']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
-                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image2]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image2'] : ''; ?>" id="input-image2" />
+                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image2]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image2'] : ''; ?>" id="input-image2<?php echo $language['language_id']; ?>" />
                       </div>
                     </div>
                     <div class="form-group">
@@ -361,7 +361,7 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="input-image3<?php echo $language['language_id']; ?>">Картинка для таб3</label>
                       <div class="col-sm-10"> <a href="" id="thumb-image3<?php echo $language['language_id']; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $category_description[$language['language_id']]['thumb3']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
-                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image3]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image3'] : ''; ?>" id="input-image3" />
+                        <input type="hidden" name="category_description[<?php echo $language['language_id']; ?>][image3]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['image3'] : ''; ?>" id="input-image3<?php echo $language['language_id']; ?>" />
                       </div>
                     </div>
                     <div class="form-group">
