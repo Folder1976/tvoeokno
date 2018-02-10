@@ -72,7 +72,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript">
+    <!--script type="text/javascript">
       document.ondragstart = noselect; 
       // запрет на перетаскивание 
       document.onselectstart = noselect; 
@@ -80,7 +80,7 @@
       document.oncontextmenu = noselect; 
       // запрет на выведение контекстного меню 
       function noselect() {return false;} 
-  </script>
+  </script-->
 
   </head>
   <body class="<?php echo $class; ?>" oncopy="return false;" oncontextmenu="return false;" onselectstart="return false">

@@ -4857,7 +4857,7 @@ textarea {
     margin-left: 27px;
 }
 .window-sill .color img {
-  max-width: 289px;
+  /*max-width: 289px;*/
 }
 .color-checkbox img {
   width: 24px;
@@ -4886,3 +4886,11 @@ textarea {
     float: left;
   }
 /*****************************/
+
+.product_sill_color_option{
+    padding-top: 5px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 8px;
+}

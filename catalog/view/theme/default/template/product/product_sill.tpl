@@ -14,7 +14,6 @@
                 'характеристики фурнитуры' => 'характеристики фурнітури',
                 'Добавить к заказу' => 'Додати до замовлення',
                 'посмотреть цвета подоконников' => 'подивитися кольору підвіконь',
-                'Размер подоконника' => 'Розмір підвіконня',
                 'Глубина' => 'Глибина',
                 'Количество окон' => 'Кількість вікон',
                 'Отлив' => 'Відплив',
@@ -27,13 +26,13 @@
                 '2-камерный' => '2-камерний',
                 'Дополнительно' => 'Додатково',
                 'Выберите цвет подоконника' => 'Виберіть колір підвіконника',
-                'Размер окна' => 'Розмір вікна',
+                'Размер подоконника' => 'Розмір підвіконня',
                 'Заглушка' => 'Заглушка',
                 'Торцевая' => 'Торцевая',
                 'Cоединительная' => 'Зєднувальна',
                 'Стоимость' => 'Вартість',
                 'Количество' => 'Кількість',
-                '' => '',
+                'Выберете цвет подоконника' => 'Виберіть кольори підвіконня',
                 '' => '',
                 '' => '',
                 '' => '',
@@ -79,42 +78,33 @@ echo $header; ?>
           <div class="row">
             <div class="col-md-6">
               <div class="color">
-                <p><?php echo $lib['Выберете цвет подоконника'];?></p>
+                <div class="info-select">
+                  <?php
+                    foreach ($options as $option) {
+                      if ( $option['option_id'] == 17 ) {  // цвет ?>
+                      <select class="select product_sill_color_option" name="option[<?php echo $option['product_option_id']; ?>]">
+                        <option disabled selected><?php echo $lib['Выберете цвет подоконника'];?></option>
+                      
+                            <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                              <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?></option>
+                            <?php } ?>
+                      
+                      </select>
+                    <?php } ?>
+                    <?php } ?>
+                </div>
+                
                 <div class="img prices-single-img">
                   <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
                 </div>
-                <div class="color-checkboxes">
-                  <?php
-                  foreach ($options as $option) {
-                    if ( $option['option_id'] == 17 ) {  // цвет ?>
-
-                      <div id="input-option<?php echo $option['product_option_id']; ?>">
-
-                      <?php
-                      foreach ($option['product_option_value'] as $option_value) {
-                      ?>
-                       <div class="color-checkbox ">
-                        
-                        <input id="c_option[<?php echo $option['product_option_id']; ?>]__<?php echo $option_value['product_option_value_id']; ?>" type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>">
-                        <?php if ($option_value['image']) { ?>
-                        <label for="c_option[<?php echo $option['product_option_id']; ?>]__<?php echo $option_value['product_option_value_id']; ?>">
-                        <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" /> 
-                        <?php } ?>
-                        </label><label class="color_option_lable"><?php echo $option_value['name']; ?></label>
-                      </div><br>
-                  <?php } ?>
-                      </div>
-                  <?php
-                    }
-                  } ?>
-               </div>
+                
               </div>
             </div>
             <div class="col-md-6">
               <div class="window-sill-info">
                 <div class="window-sill-info-left">
                   <div class="sizes">
-                    <p><?php echo $lib['Размер окна'];?></p>
+                    <p><?php echo $lib['Размер подоконника'];?></p>
 
                     <?php foreach ($options as $option) {
                       if ( $option['option_id'] == 16 ) {  // Глубина ?>
