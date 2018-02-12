@@ -4894,3 +4894,5 @@ textarea {
     vertical-align: middle;
     border-radius: 8px;
 }
+
+.open-sub-menu { display: none; }
