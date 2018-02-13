@@ -315,6 +315,14 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 			
+			if ($this->user->hasPermission('access', 'design/banner_home')) {
+				$design[] = array(
+					'name'	   => 'Баннеры на главную',
+					'href'     => $this->url->link('design/banner_home', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			}
+			
 			if ($design) {
 				$data['menus'][] = array(
 					'id'       => 'menu-design',

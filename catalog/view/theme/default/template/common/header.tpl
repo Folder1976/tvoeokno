@@ -83,7 +83,7 @@
   </script-->
 
   </head>
-  <body class="<?php echo $class; ?>" oncopy="return false;" oncontextmenu="return false;" onselectstart="return false">
+  <body class="<?php echo $class; ?>"> <!-- oncopy="return false;" oncontextmenu="return false;" onselectstart="return false"-->
     <header class="header">
       <div class="header-top">
         <div class="container-fluid">

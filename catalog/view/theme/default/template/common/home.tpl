@@ -45,33 +45,40 @@
     
 echo $header; ?>
 
+<?php if(isset($banner_home) AND $banner_home){ ?>
+
  <div class="main-slider owl-carousel">
-      <div class="item" style="background: url(/catalog/view/theme/default/image/slider1.png) no-repeat center; background-size: cover;">
+ 
+  <?php $count = 1; ?>
+  <?php foreach($banner_home as $row){ ?>
+
+       <div class="item" style="background: url(/image/<?php echo $row['image']; ?>) no-repeat center; background-size: cover;">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-4 col-md-offset-4">
               <div class="main-slider-info">
-                <h2>“Твое окно” — весь спектр услуг, от продажи до сервиса</h2>
-                <p>Только до <span>5 октября</span> скидка <span>-10%</span> на пластиковые окна фирмы WDS</p>
+                <h2><?php echo $row['h1']; ?></h2>
+                <p><?php echo htmlspecialchars_decode($row['text'], ENT_QUOTES); ?></p>
               </div>
             </div>
+
             <div class="col-md-4">
               <div class="timer">
                 <div class="timer-main">
                   <div class="timer-main-single">
-                    <p class="count">04</p>
+                    <p class="count" id="day<?php echo $count; ?>">04</p>
                     <p class="type">дней</p>
                   </div>
                   <div class="timer-main-single">
-                    <p class="count">04</p>
+                    <p class="count" id="hou<?php echo $count; ?>">04</p>
                     <p class="type">часов</p>
                   </div>
                   <div class="timer-main-single">
-                    <p class="count">04</p>
+                    <p class="count" id="min<?php echo $count; ?>">04</p>
                     <p class="type">минут</p>
                   </div>
                   <div class="timer-main-single">
-                    <p class="count">04</p>
+                    <p class="count" id="sec<?php echo $count++; ?>">04</p>
                     <p class="type">секунд</p>
                   </div>
                 </div>
@@ -86,48 +93,43 @@ echo $header; ?>
           </div>
         </div>
       </div>
-      <div class="item" style="background: url(/catalog/view/theme/default/image/slider1.png) no-repeat center; background-size: cover;">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-              <div class="main-slider-info">
-                <h2>“Твое окно” — весь спектр услуг, от продажи до сервиса</h2>
-                <p>Только до <span>5 октября</span> скидка <span>-10%</span> на пластиковые окна фирмы WDS</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="timer">
-                <div class="timer-main">
-                  <div class="timer-main-single">
-                    <p class="count">04</p>
-                    <p class="type">дней</p>
-                  </div>
-                  <div class="timer-main-single">
-                    <p class="count">04</p>
-                    <p class="type">часов</p>
-                  </div>
-                  <div class="timer-main-single">
-                    <p class="count">04</p>
-                    <p class="type">минут</p>
-                  </div>
-                  <div class="timer-main-single">
-                    <p class="count">04</p>
-                    <p class="type">секунд</p>
-                  </div>
-                </div>
-                <form action="/<?php echo $dir; ?>" class="timer-form js-form-call-me">
-                  <input type="hidden" name="formname" value="call_me__home_slider_discount">
-                  <input type="text" placeholder="Ваше имя" name="name" required>
-                  <input type="tel" placeholder="Ваш телефон" name="phone" required>
-                  <button class="green-btn"><?php echo $lib['Получить скидку']; ?></button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php } ?>
+ </div>
+ <?php } ?>
   </section>
+  
+  <?php $count = 1; ?>
+  <?php foreach($banner_home as $row){ ?>
+      <script type="text/javascript">
+        /*
+        timeend= new Date();
+        // IE и FF по разному отрабатывают getYear()
+        timeend= new Date(timeend.getYear()>1900?(timeend.getYear()+1):(timeend.getYear()+1901),0,1);
+        // для задания обратного отсчета до определенной даты укажите дату в формате:
+        // timeend= new Date(ГОД, МЕСЯЦ-1, ДЕНЬ);
+        // Для задания даты с точностью до времени укажите дату в формате:
+        timeend= new Date(<?php echo date('Y', strtotime($row['date'])); ?>, <?php echo date('m', strtotime($row['date'])); ?>-1, <?php echo date('d', strtotime($row['date'])); ?>, <?php echo date('H', strtotime($row['date'])); ?>-1, <?php echo date('i', strtotime($row['date'])); ?>);
+        function time<?php echo $count; ?>() {
+            today = new Date();
+            today = Math.floor((timeend-today)/1000);
+            tsec=today%60; today=Math.floor(today/60); if(tsec<10)tsec='0'+tsec;
+            tmin=today%60; today=Math.floor(today/60); if(tmin<10)tmin='0'+tmin;
+            thour=today%24; today=Math.floor(today/24);
+            timestr=today +" дней "+ thour+" часов "+tmin+" минут "+tsec+" секунд";
+            $('#day<?php echo $count; ?>').html(today);
+            $('#hou<?php echo $count; ?>').html(thour);
+            $('#min<?php echo $count; ?>').html(tmin);
+            $('#sec<?php echo $count; ?>').html(tsec);
+            window.setTimeout("time<?php echo $count; ?>()",1000);
+            console.log(timestr);
+        }
+        
+        $(document).ready(function(){
+          time<?php echo $count++; ?>();
+        });*/
+      </script>
+  <?php } ?>
+  
   <section class="brands">
     <div class="container">
       <h2 class="main-title"><?php echo $lib['Проверенные бренды']; ?></h2>
