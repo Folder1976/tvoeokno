@@ -66,19 +66,19 @@ echo $header; ?>
               <div class="timer">
                 <div class="timer-main">
                   <div class="timer-main-single">
-                    <p class="count" id="day<?php echo $count; ?>">04</p>
+                    <p class="count js-day<?php echo $count; ?>" id="day<?php echo $count; ?>">04</p>
                     <p class="type">дней</p>
                   </div>
                   <div class="timer-main-single">
-                    <p class="count" id="hou<?php echo $count; ?>">04</p>
+                    <p class="count js-hou<?php echo $count; ?>" id="hou<?php echo $count; ?>">04</p>
                     <p class="type">часов</p>
                   </div>
                   <div class="timer-main-single">
-                    <p class="count" id="min<?php echo $count; ?>">04</p>
+                    <p class="count js-min<?php echo $count; ?>" id="min<?php echo $count; ?>">04</p>
                     <p class="type">минут</p>
                   </div>
                   <div class="timer-main-single">
-                    <p class="count" id="sec<?php echo $count++; ?>">04</p>
+                    <p class="count js-sec<?php echo $count; ?>" id="sec<?php echo $count++; ?>">04</p>
                     <p class="type">секунд</p>
                   </div>
                 </div>
@@ -101,7 +101,7 @@ echo $header; ?>
   <?php $count = 1; ?>
   <?php foreach($banner_home as $row){ ?>
       <script type="text/javascript">
-        /*
+
         timeend= new Date();
         // IE и FF по разному отрабатывают getYear()
         timeend= new Date(timeend.getYear()>1900?(timeend.getYear()+1):(timeend.getYear()+1901),0,1);
@@ -116,17 +116,17 @@ echo $header; ?>
             tmin=today%60; today=Math.floor(today/60); if(tmin<10)tmin='0'+tmin;
             thour=today%24; today=Math.floor(today/24);
             timestr=today +" дней "+ thour+" часов "+tmin+" минут "+tsec+" секунд";
-            $('#day<?php echo $count; ?>').html(today);
-            $('#hou<?php echo $count; ?>').html(thour);
-            $('#min<?php echo $count; ?>').html(tmin);
-            $('#sec<?php echo $count; ?>').html(tsec);
+            $('.js-day<?php echo $count; ?>').html(today);
+            $('.js-hou<?php echo $count; ?>').html(thour);
+            $('.js-min<?php echo $count; ?>').html(tmin);
+            $('.js-sec<?php echo $count; ?>').html(tsec);
             window.setTimeout("time<?php echo $count; ?>()",1000);
-            console.log(timestr);
+            // console.log(timestr);
         }
-        
+
         $(document).ready(function(){
           time<?php echo $count++; ?>();
-        });*/
+        });
       </script>
   <?php } ?>
   
