@@ -133,30 +133,6 @@ echo $header; ?>
               <div class="window-sill-info">
               
                 <div class="window-sill-info-left">
-                  <div class="sizes">
-                    <p><?php echo $lib['Размер подоконника'];?></p>
-
-                    <?php foreach ($options as $option) {
-                      if ( $option['option_id'] == 16 ) {  // Глубина ?>
-                        <div class="sizes-group" id="input-option<?php echo $option['product_option_id']; ?>">
-                          <label for="width"><?php echo $option['name']; ?></label>
-                          <input id="width" name="option[<?php echo $option['product_option_id']; ?>]" type="text" class="form-controll" value="0">
-                        </div>
-                      <?php } ?>
-                    <?php } ?>
-
-                    <?php foreach ($options as $option) {
-                      if ( $option['option_id'] == 14 ) {  // Ширина ?>
-                        <div class="sizes-group" id="input-option<?php echo $option['product_option_id']; ?>">
-                          <label for="width"><?php echo $option['name']; ?></label>
-                          <input id="width" name="option[<?php echo $option['product_option_id']; ?>]" type="text" class="form-controll" value="0">
-                        </div>
-                      <?php } ?>
-                    <?php } ?>
-
-
-                  </div>
-                  
                     <?php foreach ($options as $option) { ?>
                       <div class="stub" id="input-option<?php echo $option['product_option_id']; ?>">
                       <?php if ( $option['option_id'] == 18 ) {  // тип подоконника ?>

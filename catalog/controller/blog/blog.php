@@ -189,8 +189,14 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 			$data['related_blogs'] = array();
 			
 			$related_blogs = $this->model_blog_blog->getRelatedBlog($this->request->get['blog_id']);
-		
+					
 			foreach ($related_blogs as $result) {
+				
+					$date = date($this->language->get('date_format_short'), strtotime($result['date_added']));
+			if(!$result['show_date']) $date = '';
+			if(date('Y-m-d',strtotime('2000-01-01')) > date('Y-m-d',strtotime($result['date_added']))) $date = '';
+
+				
       			$data['related_blogs'][] = array(
         		'title' => $result['title'],
 				'img_title' => $result['img_title'],
@@ -199,7 +205,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 				'short_description' => utf8_substr(strip_tags(html_entity_decode($result['short_description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('blogsetting_rel_characters')) . '..',
 				'author' => $result['author'],
 				'comment_total' => $this->model_blog_blog->getTotalCommentsByBlogId($result['blog_id']),
-        		'date_added_full' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+        		'date_added_full' => $date,
         		'image' => $this->model_tool_image->resize($result['image'], $rel_img_width, $rel_img_height),
 	    		'href'  => $result['keyword']//$this->url->link('blog/blog', 'blog_id=' . $result['blog_id'])
       			);
@@ -225,6 +231,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 		
 			$data['description'] = str_replace('elFinder-master/files/','admin/elFinder-master/files/',$data['description']);
 		
+			//Добавление галереи
 			$banners_names = $this->model_design_banner->getBannerNames();
 			$banner_name = '';
 			$banner_id = 0;
@@ -250,7 +257,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 				$data['description'] = str_replace('[G]'.$banner_name.'[G]', $html, $data['description']);
 				
 			}
-	
+			//******
 			
 			$img_width = $this->config->get('blogsetting_post_thumbs_w');
 			if (empty($img_width)) {
@@ -462,12 +469,18 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 		$results = $this->model_blog_blog->getCommentsByBlogId($this->request->get['blog_id'], ($page - 1) * $limit, $limit);
 
 		foreach ($results as $result) {
+			
+			$date = date($this->language->get('date_format_short'), strtotime($result['date_added']));
+			if(!$result['show_date']) $date = '';
+			if(date('Y-m-d',strtotime('2000-01-01')) > date('Y-m-d',strtotime($result['date_added']))) $date = '';
+
+			
         		$data['comments'][] = array(
         			'name'     => $result['name'],
 					'email'     => $result['email'],
 					'adress'     => $result['adress'],
 					'comment'       => strip_tags($result['comment']),
-        			'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+        			'date_added' => $date
         		);
       		}	
 		

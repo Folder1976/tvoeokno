@@ -213,7 +213,7 @@ class ControllerProductCategory extends Controller {
 
 				$data['categories'][] = array(
 					'name' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
+					'href' => $this->url->link('product/category', 'path=' . $result['category_id'] . $url)
 				);
 			}
 
@@ -394,6 +394,138 @@ class ControllerProductCategory extends Controller {
 				'value' => 'p.model-DESC',
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '&sort=p.model&order=DESC' . $url)
 			);
+
+			
+			//Добавление галереи
+			$this->load->model('design/banner');
+			$banners_names = $this->model_design_banner->getBannerNames();
+			$banner_name = '';
+			$banner_id = 0;
+			
+			$banner_name1 = '';
+			$banner_id1 = 0;
+			
+			$short_banner_name = '';
+			$short_banner_id = 0;
+			
+			$tab_1banner_name = '';
+			$tab_1banner_id = 0;
+			
+			$tab_2banner_name = '';
+			$tab_2banner_id = 0;
+			
+			$tab_3banner_name = '';
+			$tab_3banner_id = 0;
+			
+			foreach($banners_names as $row){
+				if(strpos($data['description'], '[G]'.$row['name'].'[G]') !== false){
+					$banner_name = $row['name'];
+					$banner_id = $row['banner_id'];
+				}
+				
+				if(strpos($data['description1'], '[G]'.$row['name'].'[G]') !== false){
+					$banner_name1 = $row['name'];
+					$banner_id1 = $row['banner_id'];
+				}
+				
+				if(strpos($data['short_description'], '[G]'.$row['name'].'[G]') !== false){
+					$short_banner_name = $row['name'];
+					$short_banner_id = $row['banner_id'];
+				}
+				
+				if(strpos($data['tab_description1'], '[G]'.$row['name'].'[G]') !== false){
+					$tab_1banner_name = $row['name'];
+					$tab_1banner_id = $row['banner_id'];
+				}
+				
+				if(strpos($data['tab_description2'], '[G]'.$row['name'].'[G]') !== false){
+					$tab_2banner_name = $row['name'];
+					$tab_2banner_id = $row['banner_id'];
+				}
+				
+				if(strpos($data['tab_description3'], '[G]'.$row['name'].'[G]') !== false){
+					$tab_3banner_name = $row['name'];
+					$tab_3banner_id = $row['banner_id'];
+				}
+				
+			}
+		
+			if($banner_id > 0){
+				$banners = $this->model_design_banner->getBanner($banner_id);
+				
+				$html = '<div id="nanoGallery3">';
+					foreach($banners as $banner){
+						$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
+					}
+				$html .= '</div>';
+				
+				$data['description'] = str_replace('[G]'.$banner_name.'[G]', $html, $data['description']);
+			}
+			
+			if($banner_id1 > 0){
+				$banners = $this->model_design_banner->getBanner($banner_id1);
+				
+				$html = '<div id="nanoGallery31">';
+					foreach($banners as $banner){
+						$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
+					}
+				$html .= '</div>';
+				
+				$data['description1'] = str_replace('[G]'.$banner_name1.'[G]', $html, $data['description1']);
+			}
+			
+			if($short_banner_id > 0){
+				$banners = $this->model_design_banner->getBanner($short_banner_id);
+				
+				$html = '<div id="nanoGallery32">';
+					foreach($banners as $banner){
+						$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
+					}
+				$html .= '</div>';
+				
+				$data['short_description'] = str_replace('[G]'.$short_banner_name.'[G]', $html, $data['short_description']);
+			}
+			
+			if($tab_1banner_id > 0){
+				$banners = $this->model_design_banner->getBanner($tab_1banner_id);
+				
+				$html = '<div id="nanoGallery33">';
+					foreach($banners as $banner){
+						$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
+					}
+				$html .= '</div>';
+				
+				$data['tab_description1'] = str_replace('[G]'.$tab_1banner_name.'[G]', $html, $data['tab_description1']);
+			}
+			
+			if($tab_2banner_id > 0){
+				$banners = $this->model_design_banner->getBanner($tab_2banner_id);
+				
+				$html = '<div id="nanoGallery34">';
+					foreach($banners as $banner){
+						$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
+					}
+				$html .= '</div>';
+				
+				$data['tab_description2'] = str_replace('[G]'.$tab_2banner_name.'[G]', $html, $data['tab_description2']);
+			}
+			
+			if($tab_3banner_id > 0){
+				$banners = $this->model_design_banner->getBanner($tab_3banner_id);
+				
+				$html = '<div id="nanoGallery35">';
+					foreach($banners as $banner){
+						$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
+					}
+				$html .= '</div>';
+				
+				$data['tab_description3'] = str_replace('[G]'.$tab_3banner_name.'[G]', $html, $data['tab_description3']);
+			}
+			
+			
+			
+			
+			//******
 
 			$url = '';
 

@@ -143,6 +143,18 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Дата публикации<br>[0000-00-00]</label>
                 <div class="col-sm-10">
+									  <div class="checkbox">
+                      <label>
+                        <?php if ($show_date) { ?>
+                        <input type="checkbox" name="show_date" checked="checked" />
+                        Отображать
+                        <?php } else { ?>
+                        <input type="checkbox" name="show_date" />
+                        Отображать
+                        <?php } ?>
+                      </label>
+                    </div>
+       
                 <input type="text" name="date_added" id="datepicker" data-date-format="yyyy-mm-dd" value="<?php echo date('Y-m-d', strtotime($date_added)); ?>" class="form-control" />
                 </div>
               </div>

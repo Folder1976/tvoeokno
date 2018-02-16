@@ -379,7 +379,7 @@
                 <label class="col-sm-2 control-label">Шаблон товара</label>
                 <div class="col-sm-10">
                   <label class="radio-inline">
-										<?php $tpls = array('Продукт'=>'','Подоконник'=>'product_sill'); ?>
+										<?php $tpls = array('Продукт'=>'','Подоконник'=>'product_sill','Простой товар'=>'product_simple'); ?>
 										
 										<?php foreach($tpls as $name => $value){ ?> 
 											<?php if ($value == $tpl) { ?>
@@ -628,6 +628,7 @@
                   <thead>
                     <tr>
                       <td class="text-left">Наименование</td>
+                      <td class="text-left">Единица измерения</td>
                       <td class="text-left">Цена</td>
                       <td class="text-left">Сортировка</td>
                       <td></td>
@@ -642,7 +643,13 @@
                         <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
                           <textarea name="product_attribute4[<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text'] : ''; ?></textarea>
                         </div>
-                        <?php } ?></td>
+										<?php } ?></td>
+                    
+										  <td class="text-left"><?php foreach ($languages as $language) { ?>
+                        <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+                          <textarea name="product_attribute4[<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text1]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text1'] : ''; ?></textarea>
+                        </div>
+										<?php } ?></td>
                     
 										
 										  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[<?php echo $attribute4_row; ?>][price]" value="<?php echo $product_attribute4['price']; ?>" placeholder="0.00" class="form-control" />
@@ -655,7 +662,7 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td colspan="3"></td>
+                      <td colspan="4"></td>
                       <td class="text-left"><button type="button" onclick="addAttribute4();" data-toggle="tooltip" title="<?php echo $button_attribute4_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
                     </tr>
                   </tfoot>
@@ -1319,8 +1326,14 @@ function addAttribute4() {
     <?php } ?>
 	html += '  </td>';
 	
+	html += '  <td class="text-left">';
+	<?php foreach ($languages as $language) { ?>
+	html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><textarea name="product_attribute4[' + attribute4_row + '][product_attribute4_description][<?php echo $language['language_id']; ?>][text1]" rows="1" class="form-control">м.п.</textarea></div>';
+    <?php } ?>
+	html += '  </td>';
+	
 	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[' + attribute4_row + '][price]" value="" placeholder="0.00" class="form-control" /><input type="hidden" name="product_attribute4[' + attribute4_row + '][attribute4_id]" value="" /></td>';
-html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[' + attribute4_row + '][sort_order]" value="" placeholder="0" class="form-control" /></td>';
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[' + attribute4_row + '][sort_order]" value="" placeholder="0" class="form-control" /></td>';
 
 	
 	html += '  <td class="text-left"><button type="button" onclick="$(\'#attribute4-row' + attribute4_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';

@@ -2627,7 +2627,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 
                 $data['products'][] = array(
                     'product_id'          => $product['product_id'],
-                    'thumb'               => $image,
+                    'thumb'               => $this->model_tool_image->resize($product['image'], 100, 100),
                     'name'                => $product['name'],
                     'model'               => $product['model'],
                     'option'              => $option_data,
@@ -2844,8 +2844,9 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 		if ($data['opencart2']) $this->load->language('checkout/checkout'); else $this->language->load('checkout/checkout');
 		$data['text_cart'] = $this->language->get('text_cart');
 
-		if ($opencart2) 
-		{
+		if ($opencart2){
+			
+			
 			if ($this->cart->hasShipping()) {
 				// Validate if shipping address has been set.
 				if (!isset($this->session->data['shipping_address'])) {
@@ -3399,6 +3400,14 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 					$order_data['accept_language'] = '';
 				}
 
+				if( $order_data['firstname'] == '') $order_data['firstname'] = $this->request->post['firstname'];
+				if( $order_data['lastname'] == '') $order_data['lastname'] = $this->request->post['lastname'];
+				if( $order_data['email'] == '') $order_data['email'] = $this->request->post['email'];
+				if( $order_data['telephone'] == '') $order_data['telephone'] = $this->request->post['telephone'];
+				//if( $order_data['fax'] == '') $order_data['fax'] = $this->request->post['fax'];
+				if( $order_data['comment'] == '') $order_data['comment'] = $this->request->post['note'];
+		
+				
 				$this->load->model('checkout/order');
 				$this->session->data['order_id'] = $this->model_checkout_order->addOrder($order_data);
 
@@ -3415,9 +3424,11 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 			$data['column_total'] = $this->language->get('column_total');
 
 			$this->load->model('tool/upload');
-
+			$this->load->model('tool/image');
+			
 			$data['products'] = array();
-
+		
+			
 			foreach ($this->cart->getProducts() as $product) {
 				$option_data = array();
 
@@ -3474,7 +3485,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
                 }
 				
 				$data['products'][] = array(
-//					'key'        => $product['key'],
+					'thumb'        => $this->model_tool_image->resize($product['image'], 150, 150),
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'model'      => $product['model'],
@@ -3851,6 +3862,15 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 						$data['accept_language'] = '';
 					}
 
+					
+				if( $order_data['firstname'] == '') $order_data['firstname'] = $this->request->post['firstname'];
+				if( $order_data['lastname'] == '') $order_data['lastname'] = $this->request->post['lastname'];
+				if( $order_data['email'] == '') $order_data['email'] = $this->request->post['email'];
+				if( $order_data['telephone'] == '') $order_data['telephone'] = $this->request->post['telephone'];
+				//if( $order_data['fax'] == '') $order_data['fax'] = $this->request->post['fax'];
+				if( $order_data['comment'] == '') $order_data['comment'] = $this->request->post['note'];
+		
+					
 					$this->load->model('checkout/order');
 
 					$this->session->data['order_id'] = $this->model_checkout_order->addOrder($data);
@@ -3910,6 +3930,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 							$profile_description .= sprintf($this->language->get('text_payment_until_canceled_description'), $recurring_price, $product['recurring_cycle'], $frequencies[$product['recurring_frequency']], $product['recurring_duration']);
 						}
 					}
+
 
 					$data['products'][] = array(
 //						'key'                 => $product['key'],

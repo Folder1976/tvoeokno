@@ -40,6 +40,8 @@ class ModelAccountOrder extends Model {
 				$shipping_zone_code = '';
 			}
 
+			if((int)$order_query->row['order_status_id'] < 1) $order_query->row['order_status_id'] = 1;
+			
 			return array(
 				'order_id'                => $order_query->row['order_id'],
 				'invoice_no'              => $order_query->row['invoice_no'],

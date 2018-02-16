@@ -435,6 +435,15 @@ class ControllerBlogBlog extends Controller {
 			$data['author'] = $user_info['firstname'];
 		}
 		
+		$data['show_date'] = 0;
+		if (isset($this->request->post['show_date'])) {
+			$data['show_date'] = 1;
+		} elseif (isset($blog_info)) {
+			$data['show_date'] = (int)$blog_info['show_date'];
+		} else{
+			$data['show_date'] = 1;
+		}
+		
 		if (isset($this->request->post['date_added'])) {
 			$data['date_added'] = $this->request->post['date_added'];
 		} elseif (isset($blog_info)) {

@@ -12,6 +12,9 @@
         <?php } ?>
       </ul>
     </div>
+    <div class="container-fluid">
+      <b style="color:red">!Памятка </b><b>коды: </b> <i>[G]имя галереи[G]</i>
+    </div>    
   </div>
   <div class="container-fluid">
     <?php if ($error_warning) { ?>

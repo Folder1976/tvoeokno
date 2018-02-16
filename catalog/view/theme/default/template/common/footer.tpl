@@ -189,6 +189,41 @@
       var parallax = new Parallax(scene);
     }
     </script>
+    <link href="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/css/nanogallery.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/jquery.nanogallery.js"></script>
+    <script>
+    $(document).ready(function () {
+      
+			$("#nanoGallery3").nanoGallery({
+				itemsBaseURL:'/image'
+			});
+		});	
+  	$(document).ready(function () {
+			$("#nanoGallery31").nanoGallery({
+				itemsBaseURL:'/image'
+			});
+		});	
+  	$(document).ready(function () {
+			$("#nanoGallery32").nanoGallery({
+				itemsBaseURL:'/image'
+			});
+		});	
+  	$(document).ready(function () {
+			$("#nanoGallery33").nanoGallery({
+				itemsBaseURL:'/image'
+			});
+		});	
+  	$(document).ready(function () {
+			$("#nanoGallery34").nanoGallery({
+				itemsBaseURL:'/image'
+			});
+		});	
+  	$(document).ready(function () {
+			$("#nanoGallery35").nanoGallery({
+				itemsBaseURL:'/image'
+			});
+		});	
+    </script>
 
 <?php if(isset($_GET['form_success'])){ ?>
 <div class="msg_back" style="width: 100%;height: 100%;top:0;left:0;position: fixed;opacity: 0.5;background-color: black;z-index: 1000;"></div>
@@ -197,13 +232,18 @@
   <button data-fancybox-close="" class="fancybox-close-small" title="Close"></button>
   </div>
 </div>
+	
+
 <script>
+console.log('start');
   $(document).ready(function(){    
     setTimeout(function(){
       $('.msg_back').hide(1000);
       $('.form_success').hide(1000);
       },5000);
   });
+
+
 </script>
 <?php } ?>
 

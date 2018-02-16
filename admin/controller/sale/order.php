@@ -212,6 +212,7 @@ class ControllerSaleOrder extends Controller {
 		
 		$results = $this->model_sale_order->getOrders($filter_data);
 
+
 		foreach ($results as $result) {
 			$data['orders'][] = array(
 				'order_id'      => $result['order_id'],

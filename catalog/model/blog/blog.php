@@ -35,9 +35,10 @@ class ModelBlogBlog extends Model {
 			}
 		}
         
-        $sql .= " ORDER BY i.sort_order, i.blog_id DESC LIMIT " . (int)$start . "," . (int)$limit;
-		
-        $query = $this->db->query($sql);
+        $sql .= " ORDER BY i.date_added DESC LIMIT " . (int)$start . "," . (int)$limit;
+		//$sql .= " ORDER BY i.sort_order, i.date_added DESC LIMIT " . (int)$start . "," . (int)$limit;
+	
+	    $query = $this->db->query($sql);
 		
 		return $query->rows;
 	}
@@ -80,7 +81,11 @@ class ModelBlogBlog extends Model {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "blog n LEFT JOIN " . DB_PREFIX . "blog_description nd ON (n.blog_id = nd.blog_id)
 								  LEFT JOIN " . DB_PREFIX . "blog_to_store n2s ON (n.blog_id = n2s.blog_id)
 								  LEFT JOIN " . DB_PREFIX . "url_alias ua ON (ua.query = CONCAT('blog_id=',n.blog_id)) AND ua.language_id = '" . (int)$this->config->get('config_language_id') . "'
-								  LEFT JOIN " . DB_PREFIX . "blog_to_category n2c ON (n.blog_id = n2c.blog_id) WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND n2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND n2c.blog_category_id = '" . (int)$blog_category_id . "' AND n.status = '1' AND n.sort_order <> '-1' ORDER BY n.sort_order, n.blog_id DESC LIMIT " . (int)$start . "," . (int)$limit);
+								  LEFT JOIN " . DB_PREFIX . "blog_to_category n2c ON (n.blog_id = n2c.blog_id)
+								  WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND
+								  n2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND
+								  n2c.blog_category_id = '" . (int)$blog_category_id . "' AND
+								  n.status = '1' AND n.sort_order <> '-1' ORDER BY n.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
 		
 		return $query->rows;
 	}
@@ -131,7 +136,8 @@ class ModelBlogBlog extends Model {
 	public function getRelatedBlog($blog_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "blog n LEFT JOIN " . DB_PREFIX . "blog_description nd ON (n.blog_id = nd.blog_id)
 								  LEFT JOIN " . DB_PREFIX . "blog_to_store n2s ON (n.blog_id = n2s.blog_id)
-								  LEFT JOIN " . DB_PREFIX . "blog_related nr ON (n.blog_id = nr.child_blog_id) WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND n2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND n.status = '1' AND n.sort_order <> '-1' AND nr.parent_blog_id = '" . (int)$blog_id. "' ORDER BY n.sort_order, n.blog_id DESC");
+								  LEFT JOIN " . DB_PREFIX . "blog_related nr ON (n.blog_id = nr.child_blog_id) WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND n2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND n.status = '1' AND n.sort_order <> '-1' AND nr.parent_blog_id = '" . (int)$blog_id. "'
+								  ORDER BY n.date_added DESC");
 		return $query->rows;
 	}
 	
@@ -178,7 +184,8 @@ class ModelBlogBlog extends Model {
 	
 	public function getCommentsByBlogId($blog_id, $start = 0, $limit = 40) {
 		$query = $this->db->query("SELECT nc.name, nc.email, nc.comment, nc.adress, nc.date_added FROM " . DB_PREFIX . "blog_comment nc
-								  LEFT JOIN " . DB_PREFIX . "blog n ON (nc.blog_id = n.blog_id) LEFT JOIN " . DB_PREFIX . "blog_description nd ON (n.blog_id = nd.blog_id) WHERE n.blog_id = '" . (int)$blog_id . "' AND n.status = '1' AND nc.status = '1' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY nc.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
+								  LEFT JOIN " . DB_PREFIX . "blog n ON (nc.blog_id = n.blog_id) LEFT JOIN " . DB_PREFIX . "blog_description nd ON (n.blog_id = nd.blog_id) WHERE n.blog_id = '" . (int)$blog_id . "' AND n.status = '1' AND nc.status = '1' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'
+								  ORDER BY nc.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
 		
 		return $query->rows;
 	}

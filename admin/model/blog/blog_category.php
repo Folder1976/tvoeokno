@@ -2,11 +2,15 @@
 class ModelBlogBlogCategory extends Model {
 	
 	public function addBlogCategory($data) {
+	
+		if(isset($data['show_date'])) $data['show_date'] = 1; else $data['show_date'] = 0;
+	
 		$this->db->query("INSERT INTO " . DB_PREFIX . "blog_category SET 
 		parent_id = '" . (int)$data['parent_id'] . "', 
 		in_menu = '" . (int)$data['in_menu'] . "', 
 		sort_order = '" . (int)$data['sort_order'] . "', 
-		date_added = '" . $data['date_added'] . "', 
+		date_added = '" . $data['date_added'] . "',
+		show_date = '" . (int)$data['show_date'] . "',
 		status = '" . (int)$data['status'] . "' 
 		");
 	
@@ -57,10 +61,14 @@ class ModelBlogBlogCategory extends Model {
 	}
 	
 	public function editBlogCategory($blog_category_id, $data) {
+		
+		if(isset($data['show_date'])) $data['show_date'] = 1; else $data['show_date'] = 0;
+	
 		$this->db->query("UPDATE " . DB_PREFIX . "blog_category SET 
 		parent_id = '" . (int)$data['parent_id'] . "', 
 		sort_order = '" . (int)$data['sort_order'] . "', 
-		date_added = '" . $data['date_added'] . "', 
+		date_added = '" . $data['date_added'] . "',
+		show_date = '" . (int)$data['show_date'] . "',
 		in_menu = '" . (int)$data['in_menu'] . "', 
 		status = '" . (int)$data['status'] . "' 
 		WHERE blog_category_id = '" . (int)$blog_category_id . "'");

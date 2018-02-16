@@ -162,12 +162,16 @@ class ControllerBlogCategory extends Controller {
 						
 			foreach ($results as $result) {
       		
+			$date = date($this->language->get('date_format_short'), strtotime($result['date_added']));
+			if(!$result['show_date']) $date = '';
+			if(date('Y-m-d',strtotime('2000-01-01')) > date('Y-m-d',strtotime($result['date_added']))) $date = '';
+			
 			$data['blogs'][] = array(
 				'count_read' => $result['count_read'],
         		'title' => $result['title'],
 				'author' => $result['author'],
 				'comment_total' => $this->model_blog_blog->getTotalCommentsByBlogId($result['blog_id']),
-        		'date_added_full' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+        		'date_added_full' => $date,
         		'description' => html_entity_decode($result['description']),
         		'short_description' => html_entity_decode($result['short_description'], ENT_QUOTES, 'UTF-8'),
         		'image' => $this->model_tool_image->resize($result['image'], $img_width, $img_height),

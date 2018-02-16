@@ -80,7 +80,6 @@ jQuery(document).ready(function($) {
       },
       data: $(this).serialize(),
       success: function(json) {
-       // console.log('++++++++');
       console.log(json);
 
         if (json['success']) {

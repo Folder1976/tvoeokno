@@ -1,11 +1,15 @@
 <?php
 class ModelBlogBlog extends Model {
 	public function addBlog($data) {
+	
+		if(isset($data['show_date'])) $data['show_date'] = 1; else $data['show_date'] = 0;
+		
 		$this->db->query("INSERT INTO " . DB_PREFIX . "blog SET 
 		sort_order = '" . (int)$this->request->post['sort_order'] . "', 
 		image = '" . $this->db->escape($data['image']) . "', 
 		status = '" . (int)$data['status'] . "', 
 		author = '" . $this->db->escape($data['author']) . "',
+		show_date = '" . (int)$data['show_date'] . "',
 		allow_comment = '" . (int)$data['allow_comment'] . "', 
 		date_added = '" . $this->db->escape($data['date_added']) . "'");
 
@@ -88,11 +92,15 @@ class ModelBlogBlog extends Model {
 	}
 	
 	public function editBlog($blog_id, $data) {
+		
+		if(isset($data['show_date'])) $data['show_date'] = 1; else $data['show_date'] = 0;
+	
 		$this->db->query("UPDATE " . DB_PREFIX . "blog SET 
 		sort_order = '" . (int)$data['sort_order'] . "', 
 		image = '" . $this->db->escape($data['image']) . "', 
 		allow_comment = '" . (int)$data['allow_comment'] . "' , 
 		author = '" . $this->db->escape($data['author']) . "',
+		show_date = '" . (int)$data['show_date'] . "',
 		status = '" . (int)$data['status'] . "',
 		date_added = '" . $data['date_added'] . "'
 		WHERE blog_id = '" . (int)$blog_id . "'");
@@ -203,9 +211,7 @@ class ModelBlogBlog extends Model {
 
 	public function getBlog($blog_id) {
 		$query = $this->db->query("SELECT DISTINCT *  FROM " . DB_PREFIX . "blog WHERE blog_id = '" . (int)$blog_id . "'");
-		
-		
-
+	
 		$return = $query->row;
 		
 		$return['keyword'] = $this->getKeyword($blog_id);

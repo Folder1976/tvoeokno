@@ -33,7 +33,7 @@ class Controlleraccountuniversalform extends Controller {
 					  'call_me__contact' => 'КОНТАКТЫ',
 					  'product_id' => 'Ид продукта',
 					  'quantity' => 'Количество',
-					  '' => '',
+					  'call_me__home_slider_discount' => 'Форма из банера на главной',
 					  '' => '',
 					  '' => '',
 					  '' => '',

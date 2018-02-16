@@ -1,30 +1,30 @@
 <?php
   $lands = array(
-		  'Корзина' => 'Корзина',
+		  'Корзина' => 'Кошик',
 		  'оформления заказа' => 'оформлення замовлення',
 		  'Пожалуйста, введите контактный номер телефона. Он будет использоваться как логин в нашем магазине, и все ваши заказы будут привязаны к нему.' => 'Будьласка, введіть контактний номер телефону. Він буде використовуваться як логін в нашому магазині, і всі ваші замовлення будуть прив\'язані до нього.',
-		  'ваша корзина' => 'ваша корзина',
+		  'ваша корзина' => 'ваш коршик',
 		  'Стоимость' => 'Вартість',
 		  'Код товара' => 'Код товару',
 		  'Дополнительная комплектация' => 'Додаткова комплектація',
-		  'Отлив' => 'Отлив',
+		  'Отлив' => 'Вiдлив',
 		  'Монтаж' => 'Монтаж',
 		  'Москитная сетка' => 'Москітна сітка',
-		  'Откосы' => 'Откоси',
+		  'Откосы' => 'Вiдкоси',
 		  'Доставка' => 'Доставка',
 		  'Бесплатно' => 'Безкоштовно',
-		  'Вам будет начисленно' => 'Вам будет нараховано',
+		  'Вам будет начисленно' => 'Вам буде нараховано',
 		  'Общая стоимость' => 'Загальна вартість',
 		  'Введите промокод' => 'Введіть промокод',
 		  'Контактный телефон' => 'Контактний телефон',
-		  'Как к вам обращаться?' => 'Як до вас звертатися?',
+		  'Как к вам обращаться?' => 'Як до Вас звертатися?',
 		  'Ваш E-mail' => 'Ваш E-mail',
 		  'Город' => 'Місто',
 		  'Адрес' => 'Адреса',
 		  'Номер квартиры, подьезд, этаж, код от подъезд' => 'Номер квартири, підїзд, поверх, код від підїзду',
 		  'Примечание' => 'Примітки',
-			'' => '',
-		  '' => '',
+			'Продолжить оформление заявки' => 'Продовжити оформлення заявки',
+		  '' => 'Как к вам обращаться?',
 		  '' => '',
 		  '' => '',
 		  '' => '',
@@ -44,7 +44,6 @@
 <style>
   .main-sect {display: none;}
 </style>
-
 
 <section class="cart">
   <div class="breadcrumbs">
@@ -71,10 +70,10 @@
             <div class="cart-order-form">
             	<div class="row">
             		<div class="col-md-6">
-            			<input type="tel" name="telephone" class="form-controll" placeholder="Контактный телефон">
+            			<input type="tel" name="telephone" class="form-controll" placeholder="<?php echo $lib['Контактный телефон']; ?>">
             		</div>
             		<div class="col-md-6">
-            			<input type="text" name="firstname" class="form-controll" placeholder="Как к вам обращаться?">
+            			<input type="text" name="firstname" class="form-controll" placeholder="<?php echo $lib['Как к вам обращаться?']; ?>">
             		</div>
             	</div>
               <div class="row">
@@ -84,20 +83,20 @@
               </div>
               <div class="row">
               	<div class="col-md-6">
-              		<input type="text" name="city" class="form-controll" placeholder="Город">
+              		<input type="text" name="city" class="form-controll" placeholder="<?php echo $lib['Город']; ?>">
               	</div>
               	<div class="col-md-6">
-              		<input type="text" name="address_1" class="form-controll" placeholder="Адрес">
+              		<input type="text" name="address_1" class="form-controll" placeholder="<?php echo $lib['Адрес']; ?>">
               	</div>
               </div>
               <div class="row">
               	<div class="col-md-12">
-              		<input type="text" name="address_detail" class="form-controll" placeholder="Номер квартиры, этаж, подьезд, этаж, код от подъезд">
+              		<input type="text" name="address_detail" class="form-controll" placeholder="<?php echo $lib['Номер квартиры, подьезд, этаж, код от подъезд']; ?>">
               	</div>
               </div>
               <div class="row">
               	<div class="col-md-12">
-              		<textarea name="note" class="form-controll" placeholder="Примечание"></textarea>
+              		<textarea name="note" class="form-controll" placeholder="<?php echo $lib['Примечание']; ?>"></textarea>
               	</div>
               </div>
 							
@@ -122,7 +121,8 @@
               <a href="#" class="close" onclick="cart.remove('1');">×</a>
               <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
               <div class="img">
-                <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>">
+								
+						    <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>">
               </div>
               <?php if ( count($product['option']) > 0 ) { ?>
               <table class="cart-item-table">
@@ -168,8 +168,12 @@
               <p><?php echo $lib['Доставка']; ?>: <span><?php echo $lib['Бесплатно']; ?></span></p>
               <p class="big"><?php echo $lib['Вам будет начисленно']; ?>: <span>0 балов</span></p>
 							<p style="width: calc(100% - 15px);"><?php echo $lib['Общая стоимость']; ?>: <span><?php echo $totals[0]['text'] ?></span></p>
-                <div class="total-btn">
-                <input type="button" class="btn btn-primary" data-loading-text="<?php if (isset($text_loading)) echo $text_loading;else echo 'loading ...' ?>" id="button-register" value="<?php echo $heading_title;?>">
+              
+							<div class="total-btn">
+                <input type="button" class="btn btn-primary" style="width: 364px;"
+								 value="<?php echo $lib['Продолжить оформление заявки'];?>" onClick="location.href='<?php echo $_SERVER["HTTP_REFERER"]; ?>'">
+              
+							  <input type="button" class="btn btn-primary" data-loading-text="<?php if (isset($text_loading)) echo $text_loading;else echo 'loading ...' ?>" id="button-register" value="<?php echo $heading_title;?>">
               </div>
             </div>
           </div>

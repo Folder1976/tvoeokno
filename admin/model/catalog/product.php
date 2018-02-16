@@ -147,7 +147,9 @@ class ModelCatalogProduct extends Model {
 						$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_description4 SET
 										 attribute4_id = '" . (int)$attribute4_id . "',
 										language_id = '" . $language_id  . "',
-										 text = '" . $this->db->escape($text['text']) . "'");
+										 text = '" . $this->db->escape($text['text']) . "',
+										 text1 = '" . $this->db->escape($text['text1']) . "'
+										 ");
 				
 					}
 			}
@@ -325,7 +327,9 @@ class ModelCatalogProduct extends Model {
 						$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_description4 SET
 										 attribute4_id = '" . (int)$attribute4_id . "',
 										language_id = '" . $language_id  . "',
-										 text = '" . $this->db->escape($text['text']) . "'");
+										 text = '" . $this->db->escape($text['text']) . "',
+										 text1 = '" . $this->db->escape($text['text1']) . "'
+										 ");
 				
 					}
 			}
@@ -677,7 +681,8 @@ class ModelCatalogProduct extends Model {
 			$product_attribute_description_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "attribute_description4 WHERE attribute4_id = '" . (int)$product_attribute['attribute4_id'] . "'");
 
 			foreach ($product_attribute_description_query->rows as $product_attribute_description) {
-				$product_attribute_description_data[$product_attribute_description['language_id']] = array('text' => $product_attribute_description['text']);
+				$product_attribute_description_data[$product_attribute_description['language_id']] = array('text' => $product_attribute_description['text'],
+																										   'text1' => $product_attribute_description['text1']);
 			}
 
 			$product_attribute_data[$product_attribute['attribute4_id']] = array(

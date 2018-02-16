@@ -249,8 +249,6 @@ $(document).on('click','a', function(){
 });
 
 //--></script>
-	<link href="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/css/nanogallery.css" rel="stylesheet" type="text/css">
-				<script type="text/javascript" src="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/jquery.nanogallery.js"></script>
 			
 			
 <script type="text/javascript"><!--
@@ -287,10 +285,6 @@ $('#button-comment').on('click', function() {
 	});
 });    
 
-		$(document).ready(function () {
-			$("#nanoGallery3").nanoGallery({
-				itemsBaseURL:'/image'
-			});
-		});	
+	
 </script>
 <?php echo $footer; ?> 

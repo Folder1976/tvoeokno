@@ -257,6 +257,15 @@ class ControllerBlogBlogCategory extends Controller {
 			$data['blog_category_store'] = array(0);
 		}			
 		
+		$data['show_date'] = 0;
+		if (isset($this->request->post['show_date'])) {
+			$data['show_date'] = 1;
+		} elseif (isset($blog_category_info)) {
+			$data['show_date'] = (int)$blog_category_info['show_date'];
+		} else{
+			$data['show_date'] = 1;
+		}
+				
 		if (isset($this->request->post['keyword'])) {
 			$data['keyword'] = $this->request->post['keyword'];
 		} elseif (isset($blog_category_info)) {
