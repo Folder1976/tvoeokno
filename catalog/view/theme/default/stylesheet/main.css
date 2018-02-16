@@ -436,7 +436,8 @@ button {
     .main-nav-dropdown-item {
       display: inline-block;
       padding: 5px 10px;
-      min-width: 200px; }
+      min-width: 25%;
+      vertical-align: top; }
       .main-nav-dropdown-item a {
         color: #104B6D;
         border-bottom: 2px solid transparent;
