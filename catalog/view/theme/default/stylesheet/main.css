@@ -380,10 +380,12 @@ button {
 .main-nav-list {
   text-align: center;
   font-size: 0;
-  padding: 16px 0; }
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-around; }
   .main-nav-list > li {
     display: inline-block;
-    margin: -12px 38px 0;
+    margin: -12px 5px 0;
     padding-bottom: 10px;
   }
   .main-nav-list img {
@@ -394,7 +396,8 @@ button {
     color: #fff;
     font-family: "FiraSans-Medium", sans-serif; }
   .main-nav-list .title {
-    display: block; }
+    display: block;
+    white-space: nowrap; }
 .main-nav-list > li > a {
   padding: 8px 12px;
   border-radius: 5px;

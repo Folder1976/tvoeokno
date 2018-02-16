@@ -882,7 +882,8 @@
         display: none
     }
     .main-nav-list {
-        padding: 0
+        padding: 0;
+        display: block;
     }
     .main-nav-list li {
         display: block;
