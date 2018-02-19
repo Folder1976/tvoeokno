@@ -4960,7 +4960,11 @@ textarea {
     margin: 20px auto;
     display: block;
 }*/
-
+.news-single img {
+    max-height: 400px;
+    margin: 20px auto;
+    display: block;
+}
 .container {
     padding-left: 70px;
 }
