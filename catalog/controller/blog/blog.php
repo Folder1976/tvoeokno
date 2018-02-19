@@ -470,17 +470,12 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 
 		foreach ($results as $result) {
 			
-			$date = date($this->language->get('date_format_short'), strtotime($result['date_added']));
-			if(!$result['show_date']) $date = '';
-			if(date('Y-m-d',strtotime('2000-01-01')) > date('Y-m-d',strtotime($result['date_added']))) $date = '';
-
-			
         		$data['comments'][] = array(
         			'name'     => $result['name'],
 					'email'     => $result['email'],
 					'adress'     => $result['adress'],
 					'comment'       => strip_tags($result['comment']),
-        			'date_added' => $date
+        			
         		);
       		}	
 		

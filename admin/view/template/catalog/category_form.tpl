@@ -13,7 +13,7 @@
       </ul>
     </div>
     <div class="container-fluid">
-      <b style="color:red">!Памятка </b><b>коды: </b> <i>[G]имя галереи[G]</i>
+      <b style="color:red">!Памятка </b><b>коды: </b> <i>[G]имя галереи[G]</i> <i>[B]имя галереи[B] (только верх описание)</i>
     </div>    
   </div>
   <div class="container-fluid">

@@ -23,6 +23,7 @@ $_['library_autoload'] = array(
 	'openbay'
 );
 
+
 $registry = new Registry();
 $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);
@@ -38,6 +39,7 @@ if ($query->num_rows) {
 // Actions
 $_['action_pre_action'] = array(
 	'startup/session',
+	'startup/simple_redirect_master',
 	'startup/startup',
 	'startup/error',
 	'startup/event',

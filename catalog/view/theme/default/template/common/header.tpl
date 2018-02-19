@@ -371,7 +371,7 @@
             <a href="/<?php echo $group_list[18]['list'][75]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][75]['name']; ?></span><img src="/catalog/view/theme/default/image/51.png" alt=""></a>
           </li>
           <li>
-            <a href="/<?php echo $group_list[18]['list'][76]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][76]['name']; ?></span><img src="/catalog/view/theme/default/image/52.png" alt=""></a>
+            <a href="/<?php echo $group_list[18]['list'][76]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][76]['name']; ?></span><img src="/catalog/view/theme/default/image/t52.png" alt=""></a>
           </li>
           <li>
             <a href="/<?php echo $group_list[18]['list'][77]['href'.$lang_key]; ?>"><span><?php echo $group_list[18]['list'][77]['name']; ?></span><img src="/catalog/view/theme/default/image/53.png" alt=""></a>

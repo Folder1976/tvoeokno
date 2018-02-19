@@ -958,7 +958,7 @@ button {
     background: #fff;
     margin-bottom: 11px; }
     .news-single img {
-      width: 100%;
+      /*width: 100%;*/
       vertical-align: middle;
       border-bottom: 1px solid #ccc; }
     .news-single h2 {
@@ -4961,7 +4961,7 @@ textarea {
     display: block;
 }*/
 .news-single img {
-    max-height: 400px;
+    max-height: 200px;
     margin: 20px auto;
     display: block;
 }

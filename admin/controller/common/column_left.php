@@ -261,6 +261,14 @@ class ControllerCommonColumnLeft extends Controller {
 				); 
 			}
 			
+			if ($this->user->hasPermission('access', 'extension/module/simple_redirect_master')) { 
+				$extension[] = array( 
+				'name'	=> "Таблица редиректов", 
+				'href' => $this->url->link('extension/module/simple_redirect_master', 'token=' . $this->session->data['token'], true), 
+				'children' => array() 
+				); 
+			}
+			
 			if ($extension) {					
 				$data['menus'][] = array(
 					'id'       => 'menu-extension',

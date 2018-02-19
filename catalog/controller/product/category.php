@@ -405,6 +405,9 @@ class ControllerProductCategory extends Controller {
 			$banner_name1 = '';
 			$banner_id1 = 0;
 			
+			$ban_name1 = '';
+			$ban_id1 = 0;
+			
 			$short_banner_name = '';
 			$short_banner_id = 0;
 			
@@ -426,6 +429,11 @@ class ControllerProductCategory extends Controller {
 				if(strpos($data['description1'], '[G]'.$row['name'].'[G]') !== false){
 					$banner_name1 = $row['name'];
 					$banner_id1 = $row['banner_id'];
+				}
+					
+				if(strpos($data['description'], '[B]'.$row['name'].'[B]') !== false){
+					$ban_name1 = $row['name'];
+					$ban_id1 = $row['banner_id'];
 				}
 				
 				if(strpos($data['short_description'], '[G]'.$row['name'].'[G]') !== false){
@@ -449,7 +457,8 @@ class ControllerProductCategory extends Controller {
 				}
 				
 			}
-		
+
+	
 			if($banner_id > 0){
 				$banners = $this->model_design_banner->getBanner($banner_id);
 				
@@ -462,10 +471,64 @@ class ControllerProductCategory extends Controller {
 				$data['description'] = str_replace('[G]'.$banner_name.'[G]', $html, $data['description']);
 			}
 			
+			
+			if($ban_id1 > 0){
+				$banners = $this->model_design_banner->getBanner($ban_id1);
+				
+				$html = '<div class="main-slider owl-carousel" style="width:100%;text-align:center;">';
+					foreach($banners as $banner){
+						
+						$html .= '<a href="'.$banner['link'].'" target="_blank">
+								<div class="item1" ><div class="container-fluid1"></div>
+									<img src="/image/'.$banner['image'].'">
+								</div></a>';
+						//$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
+					}
+				$html .= '</div>
+				<style>
+				
+				@media (max-width: 2000px){
+						.main-slider {
+							height: 432px;
+						}
+						}
+				
+				@media (max-width: 1600px){
+						.main-slider {
+							margin-top: 5px;
+						}
+						}
+				@media (max-width: 1400px){
+						.main-slider {
+							height: 370px;
+						}
+						}
+				@media (max-width: 1200px){
+						.main-slider {
+							height: 300px;
+						}
+						}
+				@media (max-width: 950px){
+						.main-slider {
+							height: 250px;
+						}
+						}
+				@media (max-width: 450px){
+						.main-slider {
+							height: 200px;
+						}
+						}
+				</style>
+				
+				';
+				
+				$data['description'] = str_replace('[B]'.$ban_name1.'[B]', $html, $data['description']);
+			}
+			
 			if($banner_id1 > 0){
 				$banners = $this->model_design_banner->getBanner($banner_id1);
 				
-				$html = '<div id="nanoGallery31">';
+				$html = '<div id="nanoGallery31" style="">';
 					foreach($banners as $banner){
 						$html .= '<a href="'.$banner['image'].'" data-ngthumb="'.$banner['image'].'" data-ngdesc="'.$banner['title'].'">'.$banner['title'].'</a>';
 					}
