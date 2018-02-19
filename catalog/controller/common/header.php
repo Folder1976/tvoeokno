@@ -150,6 +150,9 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 		
+		//$this->load->model('catalog/information');
+		//$data['contact'] = $this->model_catalog_information->getInformation(3);
+		
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
