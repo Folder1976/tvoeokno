@@ -191,36 +191,60 @@
     </script>
     <link href="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/css/nanogallery.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/jquery.nanogallery.js"></script>
+    <style>
+      .ff{
+        border-radius: 20px;
+      }
+    </style>
     <script>
+      //http://nanogallery.brisbois.fr/
+    var myColorScheme = {
+        navigationbar: {
+            background: '#fff',
+            border: '0px dotted #555',
+            color: '#ccc',
+            colorHover: '#fff'
+        },
+        thumbnail: {
+            background: 'none',
+            border: '0px solid #000',
+            labelBackground: 'transparent',
+            labelOpacity: '0.1',
+            titleColor: '#fff',
+            descriptionColor: '#eee'
+        }
+    };
+      
     $(document).ready(function () {
       
 			$("#nanoGallery3").nanoGallery({
-				itemsBaseURL:'/image'
+				itemsBaseURL:'/image',
+        colorScheme: myColorScheme,
 			});
-		});	
-  	$(document).ready(function () {
-			$("#nanoGallery31").nanoGallery({
-				itemsBaseURL:'/image'
+	
+  		$("#nanoGallery31").nanoGallery({
+				itemsBaseURL:'/image',
+        colorScheme: myColorScheme,
 			});
-		});	
-  	$(document).ready(function () {
-			$("#nanoGallery32").nanoGallery({
-				itemsBaseURL:'/image'
+	
+  		$("#nanoGallery32").nanoGallery({
+				itemsBaseURL:'/image',
+        colorScheme: myColorScheme,
 			});
-		});	
-  	$(document).ready(function () {
-			$("#nanoGallery33").nanoGallery({
-				itemsBaseURL:'/image'
+	
+  		$("#nanoGallery33").nanoGallery({
+				itemsBaseURL:'/image',
+        colorScheme: myColorScheme,
 			});
-		});	
-  	$(document).ready(function () {
-			$("#nanoGallery34").nanoGallery({
-				itemsBaseURL:'/image'
+	
+  		$("#nanoGallery34").nanoGallery({
+				itemsBaseURL:'/image',
+        colorScheme: myColorScheme,
 			});
-		});	
-  	$(document).ready(function () {
-			$("#nanoGallery35").nanoGallery({
-				itemsBaseURL:'/image'
+	
+  		$("#nanoGallery35").nanoGallery({
+				itemsBaseURL:'/image',
+        colorScheme: myColorScheme,
 			});
 		});	
     </script>
