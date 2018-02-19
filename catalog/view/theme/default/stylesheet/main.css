@@ -4937,7 +4937,7 @@ textarea {
 }
 
 /******/
-.main_description p,
+/*.main_description p,
 .main_description ul,
 .main_description ol,
  {
@@ -4954,4 +4954,12 @@ textarea {
 
 .main_description img {
     margin: 5px;
+}
+.news-single img {
+    max-width: 200px;
+    margin: 20px auto;
+    display: block;
+}*/
+.container {
+    padding-left: 50px;
 }
