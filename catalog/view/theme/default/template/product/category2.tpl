@@ -28,7 +28,7 @@
       <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
         
         <?php if ($thumb || $description) { ?>
-        <div class="container">
+        <div class="">
           <div class="row">
             <?php if ($thumb) { ?>
             <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
