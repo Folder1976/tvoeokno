@@ -4936,3 +4936,22 @@ textarea {
   background-color: rgba(0,0,0,.5);
 }
 
+/******/
+.main_description p,
+.main_description ul,
+.main_description ol,
+ {
+  margin-bottom: 10px;
+}
+.main_description h2,
+.main_description h3,
+.main_description h4,
+.main_description h5,
+.main_description h6 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.main_description img {
+    margin: 5px;
+}
