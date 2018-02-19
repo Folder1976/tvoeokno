@@ -4900,3 +4900,39 @@ textarea {
 }
 
 .open-sub-menu { display: none; }
+
+/***** Zoom foto **********/
+.fb-zoom-foto {
+  position: relative;
+}
+.fb-zoom-foto .img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+.fb-zoom-foto .prev-foto,
+.fb-zoom-foto .next-foto {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,.2);
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  color: #EF4424;
+  font-size: 30px;
+}
+.fb-zoom-foto .prev-foto {
+  left: 0;
+  border-radius: 0 10px 0 0;
+}
+.fb-zoom-foto .next-foto {
+  right: 0;
+  border-radius: 10px 0 0 0;
+}
+.fb-zoom-foto .prev-foto:hover,
+.fb-zoom-foto .next-foto:hover {
+  background-color: rgba(0,0,0,.5);
+}
+

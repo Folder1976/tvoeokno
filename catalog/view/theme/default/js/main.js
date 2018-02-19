@@ -141,8 +141,29 @@ jQuery(document).ready(function($) {
   $('.prices-single-img img').on('click', function(){
     var s = $(this).attr('src');
     var c = $('#fb-modal');
-    c.html('<img src="'+s+'">');
+    zoomIndex = $(this).data('img-index') ? $(this).data('img-index') : 0;
+    c.html('<div id="fb-zoom-foto" class="fb-zoom-foto"><img src="'+s+'" class="img"><div class="prev-foto"><i class="fas fa-arrow-left"></i></div><div class="next-foto"><i class="fas fa-arrow-right"></i></div></div>');
     fb_open(c);
+  });
+  $('body').on('click', '#fb-zoom-foto .prev-foto', function(){
+    if ( zoomIndex == 0 ) {
+      zoomIndex = $('#productGallery .js-set-main_image').length - 1;
+    } else {
+      zoomIndex = zoomIndex - 1;
+    }
+    var d = $('#productGallery .js-set-main_image')[zoomIndex];
+    var s = $(d).data('image') ? $(d).data('image') : $('#productGallery .js-set-main_image')[zoomIndex].getAttribute('src');
+    $('#fb-zoom-foto .img').attr('src', s);
+  });
+  $('body').on('click', '#fb-zoom-foto .next-foto', function(){
+    if ( zoomIndex >= $('#productGallery .js-set-main_image').length - 1 ) {
+      zoomIndex = 0;
+    } else {
+      zoomIndex = zoomIndex + 1;
+    }
+    var d = $('#productGallery .js-set-main_image')[zoomIndex];
+    var s = $(d).data('image') ? $(d).data('image') : $('#productGallery .js-set-main_image')[zoomIndex].getAttribute('src');
+    $('#fb-zoom-foto .img').attr('src', s);
   });
 
 });
