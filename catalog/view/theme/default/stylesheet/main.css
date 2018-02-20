@@ -4968,3 +4968,12 @@ textarea {
 .container {
     padding-left: 70px;
 }
+
+@media (max-width: 450px){
+        .container {
+          padding-left: 10px;
+        }
+        .tech-table td {
+          padding: 16px 2px;
+        }
+        }
