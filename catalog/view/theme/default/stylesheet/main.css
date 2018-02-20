@@ -334,15 +334,15 @@ button {
     .header-callback-single {
       display: inline-block;
       margin: 0 24px;
-      text-align: center; }
-      .header-callback-single:hover .compare {
-        /*background: url(/catalog/view/theme/default/image/compare1.png) no-repeat center; */
-        background: url(/catalog/view/theme/default/image/52.png) no-repeat center; 
+      text-align: center;
       }
-      .header-callback-single:hover .star {
-        background: url(/catalog/view/theme/default/image/star1.png) no-repeat center; }
+      .header-callback-single:hover .compare,
+      .header-callback-single:hover .star,
       .header-callback-single:hover .busket {
-        background: url(/catalog/view/theme/default/image/busket1.png) no-repeat center; }
+        -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.4);
+                box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.4);
+
+      }
       .header-callback-single p {
         font-size: 12px;
         letter-spacing: 0.6px;
@@ -353,10 +353,11 @@ button {
         height: 38px;
         margin: 0 auto;
         display: block;
-        transition: 0.3s ease-in-out; }
+        transition: 0.3s ease-in-out; 
+      border-radius: 50%; }
       .header-callback-single .compare {
         /*background: url(/catalog/view/theme/default/image/compare.png) no-repeat center;*/
-        background: url(/catalog/view/theme/default/image/52.png) no-repeat center;
+        background: url(/catalog/view/theme/default/image/calc.png) no-repeat center;
         border-radius: 100%; }
       .header-callback-single .star {
         background: url(/catalog/view/theme/default/image/star.png) no-repeat center; }
