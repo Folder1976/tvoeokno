@@ -66,9 +66,9 @@
             
              
             <div class="col-md-3">
-              <a href="<?php echo $group_list[12]['href']; ?>" class="top-link"><?php echo $group_list[12]['name']; ?></a>
-              <a href="<?php echo $group_list[7]['href']; ?>" class="top-link"><?php echo $group_list[7]['name']; ?></a>
-              <a href="<?php echo $group_list[11]['href']; ?>" class="top-link"><?php echo $group_list[11]['name']; ?></a>
+              <?php if(isset($group_list[12])){ ?><a href="<?php echo $group_list[12]['href']; ?>" class="top-link"><?php echo $group_list[12]['name']; ?></a><?php } ?>
+              <?php if(isset($group_list[7])){ ?><a href="<?php echo $group_list[7]['href']; ?>" class="top-link"><?php echo $group_list[7]['name']; ?></a><?php } ?>
+              <?php if(isset($group_list[11])){ ?><a href="<?php echo $group_list[11]['href']; ?>" class="top-link"><?php echo $group_list[11]['name']; ?></a><?php } ?>
             </div>
           </div>
         </div>
