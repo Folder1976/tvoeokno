@@ -307,7 +307,7 @@ echo $header; ?>
           </div>
           <?php } ?>
           <div class="news-btn">
-            <a href="/<?php echo $blogs[54]['keyword']; ?>" class="red-btn"><?php echo $lib['все акции']; ?></a>
+            <a href="/<?php echo $blogs[54]['keyword']; ?>" class="red-btn"><?php echo $lib['новости']; ?></a>
           </div>
         </div>
       </div>
