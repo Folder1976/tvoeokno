@@ -81,10 +81,10 @@
                     <a href="<?php echo $row['href'.$lang_key]; ?>" class="top-link"><?php echo $row['name']; ?></a>
                <?php } ?>
                <?php if ( isset($logged) && $logged ) { ?>
-                <a href="<?php echo $account; ?>" class="top-link"><?php echo $text_account; ?></a>
+                <a href="/<?php echo $account; ?>" class="top-link"><?php echo $text_account; ?></a>
                 <!-- <a href="<?php echo $logout; ?>" class="top-link"><?php echo $text_logout; ?></a> -->
                <?php } else { ?>
-                <a href="<?php echo $register; ?>" class="top-link"><?php echo $text_register; ?></a>
+                <a href="/<?php echo $register; ?>" class="top-link"><?php echo $text_register; ?></a>
                 <!-- <a href="<?php echo $login; ?>" class="top-link"><?php echo $text_login; ?></a> -->
                <?php } ?>
               <a href="/<?php echo $group_list[18]['list'][75]['href'.$lang_key]; ?>" class="top-link"><?php echo $group_list[18]['list'][75]['name']; ?></a>
@@ -206,6 +206,7 @@
             colorHover: '#fff'
         },
         thumbnail: {
+            
             background: 'none',
             border: '0px solid #000',
             labelBackground: 'transparent',

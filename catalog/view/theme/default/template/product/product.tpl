@@ -193,7 +193,7 @@ echo $header; ?>
                       <?php } ?>
                       <?php } ?>
                     </select>
-                    <a href="/характеристики_стеклопакетов"><?php echo $lib['характеристики стеклопакетов']; ?></a>
+                    <a href="/<?php echo $harakterustuku_steklopaketov['keyword']; ?>"><?php echo $harakterustuku_steklopaketov['title']; ?></a>
                   </div>
                   <?php } ?>
 
@@ -208,7 +208,7 @@ echo $header; ?>
                       <?php } ?>
                       <?php } ?>
                     </select>
-                    <a href="/характеристики_фурнитуры"><?php echo $lib['характеристики фурнитуры']; ?></a>
+                    <a href="/<?php echo $harakterustuku_furnituri['keyword']; ?>"><?php echo $harakterustuku_furnituri['title']; ?></a>
                   </div>
                   <?php } ?>
 
@@ -232,7 +232,7 @@ echo $header; ?>
                 <?php } ?>
                 <?php } ?>
               </select>
-              <a href="/посмотреть_цвета_подоконников"><?php echo $lib['посмотреть цвета подоконников']; ?></a>
+              <a href="/<?php echo $posmotret_cveta_podoconnikov['keyword']; ?>"><?php echo $posmotret_cveta_podoconnikov['title']; ?></a>
             </div>
             <?php } ?>
 

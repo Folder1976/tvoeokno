@@ -31,7 +31,12 @@ class ControllerProductProduct extends Controller {
 		);
 
 		$this->load->model('catalog/category');
+		$this->load->model('blog/blog');
 
+		$data['harakterustuku_steklopaketov'] = $this->model_blog_blog->getBlog(88);
+		$data['harakterustuku_furnituri'] = $this->model_blog_blog->getBlog(89);
+		$data['posmotret_cveta_podoconnikov'] = $this->model_blog_blog->getBlog(90);
+		
 		if (isset($this->request->get['path'])) {
 			$path = '';
 

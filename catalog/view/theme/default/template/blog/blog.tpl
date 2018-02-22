@@ -11,7 +11,7 @@
 	 echo $header; ?>
 
 <?php
-$page_href = array_pop($breadcrumbs)['href'];
+$page_href = str_replace('uk/','',array_pop($breadcrumbs)['href']);
 
 // Класс для section в зависимости от страницы
 switch ($page_href) {
