@@ -3,6 +3,25 @@ class ModelCatalogProduct extends Model {
 	public function updateViewed($product_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}
+	
+	public function getProductOptionImage($product_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option_image WHERE product_id = '" . (int)$product_id . "'");
+
+		$return = array();
+		if($query->num_rows){
+			
+			foreach($query->rows as $row){
+				
+				$return[$row['option_id']] = $row;
+					
+			}
+			
+			
+		}
+		
+		return $return;
+	}
+	
 	public function getProductTables($product_id){
 		
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_table WHERE product_id = '" . (int)$product_id . "' GROUP BY sort_order");

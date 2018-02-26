@@ -182,8 +182,21 @@ class ControllerProductProduct extends Controller {
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 
 		if ($product_info) {
+			
+			$this->load->model('tool/image');
+			
 			$url = '';
 
+			$data['product_option_image'] = $this->model_catalog_product->getProductOptionImage($product_id);
+			
+			foreach ($data['product_option_image'] as $index => $result) {
+				$data['product_option_image'][$index] = array(
+					'image' => '/image/'.$result['image'],
+					'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
+					'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'))
+				);
+			}
+			
 			if (isset($this->request->get['path'])) {
 				$url .= '&path=' . $this->request->get['path'];
 			}
@@ -307,7 +320,7 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 				$data['stock'] = $this->language->get('text_instock');
 			}
 
-			$this->load->model('tool/image');
+			
 
 			if ($product_info['image']) {
 				$data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height'));

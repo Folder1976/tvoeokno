@@ -192,6 +192,24 @@ class ModelCatalogProduct extends Model {
 		return $product_id;
 	}
 
+	public function getProductOptionImage($product_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_option_image WHERE product_id = '" . (int)$product_id . "'");
+
+		$return = array();
+		if($query->num_rows){
+			
+			foreach($query->rows as $row){
+				
+				$return[$row['option_id']] = $row;
+					
+			}
+			
+			
+		}
+		
+		return $return;
+	}
+	
 	public function editProduct($product_id, $data) {
 		
 		
@@ -311,6 +329,42 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "product_option_image` WHERE product_id = " . (int)$product_id);
+
+		if (isset($data['product_option_image'])) {
+			foreach ($data['product_option_image'] as $option_group_id => $rows) {
+				
+				foreach ($rows as $image => $row) {
+					
+					if((int)$row['option_id'] > 0){
+						$this->db->query("INSERT INTO `" . DB_PREFIX . "product_option_image`
+								 SET
+								 `product_id` = " . (int)$product_id . ",
+								 `option_group_id` = " . (int)$option_group_id . ",
+								 `option_id` = " . (int)$row['option_id'] . ",
+								 `image` = '" . $this->db->escape($image). "',
+								 `width` = " . (float)(isset($row['width']) ? $row['width'] : 0) . ",
+								 `xpos` = " . (float)(isset($row['xpos']) ? $row['xpos'] : 0) . ",
+								 `ypos` = " . (float)(isset($row['ypos']) ? $row['ypos'] : 0) . ",
+								 `width1` = " . (float)(isset($row['width1']) ? $row['width1'] : 0) . ",
+								 `xpos1` = " . (float)(isset($row['xpos1']) ? $row['xpos1'] : 0) . ",
+								 `ypos1` = " . (float)(isset($row['ypos1']) ? $row['ypos1'] : 0) . ",
+								 `width2` = " . (float)(isset($row['width2']) ? $row['width2'] : 0) . ",
+								 `xpos2` = " . (float)(isset($row['xpos2']) ? $row['xpos2'] : 0) . ",
+								 `ypos2` = " . (float)(isset($row['ypos2']) ? $row['ypos2'] : 0) . ",
+								 `width3` = " . (float)(isset($row['width3']) ? $row['width3'] : 0) . ",
+								 `xpos3` = " . (float)(isset($row['xpos3']) ? $row['xpos3'] : 0) . ",
+								 `ypos3` = " . (float)(isset($row['ypos3']) ? $row['ypos3'] : 0) . "
+								 ON DUPLICATE KEY UPDATE `product_id` = " . (int)$product_id . "
+								 "
+								);
+					}
+				}
+			}
+		}
+		
+		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute_description4 WHERE attribute4_id IN (SELECT attribute4_id FROM " . DB_PREFIX . "attribute4 WHERE product_id = '" . (int)$product_id . "')");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute4 WHERE product_id = '" . (int)$product_id . "'");
 
@@ -722,7 +776,7 @@ class ModelCatalogProduct extends Model {
 				);
 			}
 
-			$product_option_data[] = array(
+			$product_option_data[$product_option['option_id']] = array(
 				'product_option_id'    => $product_option['product_option_id'],
 				'product_option_value' => $product_option_value_data,
 				'option_id'            => $product_option['option_id'],
@@ -737,9 +791,22 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function getProductOptionValue($product_id, $product_option_value_id) {
-		$query = $this->db->query("SELECT pov.option_value_id, ovd.name, pov.quantity, pov.subtract, pov.price, pov.price_prefix, pov.points, pov.points_prefix, pov.weight, pov.weight_prefix FROM " . DB_PREFIX . "product_option_value pov LEFT JOIN " . DB_PREFIX . "option_value ov ON (pov.option_value_id = ov.option_value_id) LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE pov.product_id = '" . (int)$product_id . "' AND pov.product_option_value_id = '" . (int)$product_option_value_id . "' AND ovd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT pov.option_value_id, ovd.name, pov.quantity, pov.subtract, pov.price, pov.price_prefix, pov.points, pov.points_prefix, pov.weight, pov.weight_prefix FROM " . DB_PREFIX . "product_option_value pov LEFT JOIN " . DB_PREFIX . "option_value ov ON (pov.option_value_id = ov.option_value_id)
+								  LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE pov.product_id = '" . (int)$product_id . "' AND pov.product_option_value_id = '" . (int)$product_option_value_id . "' AND ovd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
-		return $query->row;
+		$return = array();
+		if($query->num_rows){
+			
+			foreach($query->rows as $row){
+				
+				$return[$row['option_value_id']] = $row;
+					
+			}
+			
+			
+		}
+		
+		return $return;
 	}
 
 	public function getProductImages($product_id) {

@@ -4,6 +4,8 @@
     <div class="container-fluid">
       <div class="pull-right">
 		<?php if (isset($product_page)) { ?><a class="btn btn-info" href="<?php echo $product_page; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_view; ?>"><i class="fa fa-eye"></i></a><?php } ?>
+		 <button id="key_reload" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-info"><i class="fa fa-save"></i><i class="fa fa-save"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+       
         <button type="submit" form="form-product" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
         <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
       <h1><?php echo $heading_title; ?></h1>
@@ -14,6 +16,13 @@
       </ul>
     </div>
   </div>
+	
+	  <script>
+    $(document).on('click', '#key_reload', function(){
+      $('#reload').val('reload');
+      $('#form-product').submit();
+    });
+  </script>
   <div class="container-fluid">
     <?php if ($error_warning) { ?>
     <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
@@ -26,6 +35,7 @@
       </div>
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-product" class="form-horizontal">
+				<input type="hidden" name="reload" id="reload" value="false">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
@@ -1034,12 +1044,37 @@
                   <thead>
                     <tr>
                       <td class="text-left"><?php echo $entry_image; ?></td>
+											 <td class="text-left">Цвет</td>
+                     
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr>
                       <td class="text-left"><a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" /></td>
+											
+											 <?php $image_row = -1; $option_row = 17; ?>
+                       <td class="text-left">
+												
+												<select name="product_option_image[<?php echo $option_row; ?>][<?php echo $image; ?>][option_id]" class="form-control">
+                          <option value=""></option>
+                           <?php $product_option_image_value = array(
+                                                                    'width' => 100,
+                                                                    'height' => 100,
+                                                                    'xpos' => 0,
+                                                                    'ypos' => 0,
+                                                                    );?>
+                          
+                          <?php foreach ($product_options[$option_row]["product_option_value"] as $row) { ?>
+                          <?php if (isset($product_option_image[$row['option_value_id']]['image']) AND $product_option_image[$row['option_value_id']]['image'] == $image) { ?>
+                            <?php $product_option_image_value = $product_option_image[$row['option_value_id']]; ?>
+                            <option value="<?php echo $row['option_value_id']; ?>" selected="selected"><?php echo $option_values[$option_row][$row['option_value_id']]['name']; ?></option>
+                          <?php } else { ?>
+                            <option value="<?php echo $row['option_value_id']; ?>"><?php echo $option_values[$option_row][$row['option_value_id']]['name']; ?></option>
+                          <?php } ?>
+                          <?php } ?>
+                        </select></td>
+											
                   </tr>
                   </tbody>
                 </table>
@@ -1049,6 +1084,8 @@
                   <thead>
                     <tr>
                       <td class="text-left"><?php echo $entry_additional_image; ?></td>
+											 <td class="text-left">Цвет</td>
+                     
                       <td class="text-right"><?php echo $entry_sort_order; ?></td>
                       <td></td>
                     </tr>
@@ -1058,6 +1095,26 @@
                     <?php foreach ($product_images as $product_image) { ?>
                     <tr id="image-row<?php echo $image_row; ?>">
                       <td class="text-left"><a href="" id="thumb-image<?php echo $image_row; ?>" data-toggle="image" class="img-thumbnail"><img src="<?php echo $product_image['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a><input type="hidden" name="product_image[<?php echo $image_row; ?>][image]" value="<?php echo $product_image['image']; ?>" id="input-image<?php echo $image_row; ?>" /></td>
+											<td class="text-left">
+									
+												<select name="product_option_image[<?php echo $option_row; ?>][<?php echo $product_image['image']; ?>][option_id]" class="form-control">
+                          <option value=""></option>
+                           <?php $product_option_image_value = array(
+                                                                    'width' => 100,
+                                                                    'height' => 100,
+                                                                    'xpos' => 0,
+                                                                    'ypos' => 0,
+                                                                    );?>
+                          
+                          <?php foreach ($product_options[$option_row]["product_option_value"] as $row) { ?>
+                          <?php if (isset($product_option_image[$row['option_value_id']]['image']) AND $product_option_image[$row['option_value_id']]['image'] == $product_image['image']) { ?>
+                            <?php $product_option_image_value = $product_option_image[$row['option_value_id']]; ?>
+                            <option value="<?php echo $row['option_value_id']; ?>" selected="selected"><?php echo $option_values[$option_row][$row['option_value_id']]['name']; ?></option>
+                          <?php } else { ?>
+                            <option value="<?php echo $row['option_value_id']; ?>"><?php echo $option_values[$option_row][$row['option_value_id']]['name']; ?></option>
+                          <?php } ?>
+                          <?php } ?>
+                        </select></td>
                       <td class="text-right"><input type="text" name="product_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>
                       <td class="text-left"><button type="button" onclick="$('#image-row<?php echo $image_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                     </tr>

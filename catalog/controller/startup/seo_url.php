@@ -30,7 +30,7 @@ class ControllerStartupSeoUrl extends Controller {
 			}
 		}
 				
-	
+
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
 
@@ -150,7 +150,8 @@ class ControllerStartupSeoUrl extends Controller {
 					
 				}
 			}
-				
+	
+	
 			if (!isset($this->request->get['route'])) {
 				if (isset($this->request->get['product_id'])) {
 					$this->request->get['route'] = 'product/product';

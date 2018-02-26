@@ -80,6 +80,9 @@ echo $header; ?>
               <div class="color">
                 <div class="info-select">
                   <?php
+                  
+                    $image_var = array();
+                  
                     foreach ($options as $option) {
                       if ( $option['option_id'] == 17 ) {  // цвет ?>
                       <select class="select product_sill_color_option" name="option[<?php echo $option['product_option_id']; ?>]">
@@ -87,17 +90,62 @@ echo $header; ?>
                       
                             <?php foreach ($option['product_option_value'] as $option_value) { ?>
                               <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?></option>
+                              
+                              <?php if(isset($product_option_image[$option_value['option_value_id']])){ ?>
+                                <?php $image_var[$option_value['product_option_value_id']] = array(
+                                                  'image'=>$product_option_image[$option_value['option_value_id']]['image'],
+                                                  'popup'=>$product_option_image[$option_value['option_value_id']]['popup'],
+                                                  'thumb'=>$product_option_image[$option_value['option_value_id']]['thumb'],
+                                                 );
+                                }else{
+                                      $image_var[$option_value['product_option_value_id']] = array(
+                                                  'image'=>'',
+                                                  'popup'=>'',
+                                                  'thumb'=>'',
+                                                 );
+                                } ?>
+                              
                             <?php } ?>
                       
                       </select>
                     <?php } ?>
                     <?php } ?>
                 </div>
+                <script>
+                  var image_var = {
+                  <?php foreach($image_var as $index => $row){ 
+                    echo ''.$index.':"'.$row['popup'].'",'."\n\r";
+                  } ?>
+                  };
+                  
+                  $(document).on('change','.product_sill_color_option', function(){
+                      
+                     if(image_var[$(this).val()] != ""){
+                        $('.prices-single-img img').attr('src',image_var[$(this).val()]);
+                        $('.prices-single-img img').data('image', image_var[$(this).val()]);
+                        console.log($('.prices-single-img img').data('image') );
+                     }
+                  });
+                </script>
                 
                 <div class="img prices-single-img">
                   <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
                 </div>
-                
+                  <ul id="productGallery" class="owl-carousel prices-single-thumb">
+                    <li>
+                      <a href="javascript:void(0)">
+                        <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" data-img-index="0" />
+                      </a>
+                    </li>
+                    <?php $img_index = 0; ?>
+                    <?php foreach ($images as $image) { ?>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <img src="<?php echo $image['thumb']; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $image['popup']; ?>"  data-img-index="<?php echo ++$img_index; ?>" />
+                      </a>
+                    </li>
+                    <?php } ?>
+                  </ul>
               </div>
             </div>
             <div class="col-md-6">

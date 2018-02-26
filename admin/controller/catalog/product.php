@@ -62,7 +62,13 @@ class ControllerCatalogProduct extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
+
+			if(isset($this->request->post['reload']) AND $this->request->post['reload'] == 'reload'){
+				$url .= '&product_id=' . $product_id;
+				$this->response->redirect($this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . $url, true));
+			}else{
+				$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
+			}
 		}
 
 		$this->getForm();
@@ -76,6 +82,9 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('catalog/product');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			
+			$product_id = $this->request->get['product_id'];
+			
 			$this->model_catalog_product->editProduct($this->request->get['product_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -118,7 +127,12 @@ class ControllerCatalogProduct extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
+			if(isset($this->request->post['reload']) AND $this->request->post['reload'] == 'reload'){
+				$url .= '&product_id=' . $product_id;
+				$this->response->redirect($this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . $url, true));
+			}else{
+				$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
+			}
 		}
 
 		$this->getForm();
@@ -1056,6 +1070,14 @@ class ControllerCatalogProduct extends Controller {
 			$data['weight'] = '';
 		}
 
+		if (isset($this->request->post['product_option_image'])) {
+			$data['product_option_image'] = $this->request->post['product_option_image'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$data['product_option_image'] = $this->model_catalog_product->getProductOptionImage($this->request->get['product_id']);
+		} else {
+			$data['product_option_image'] = array();
+		}
+		
 		$this->load->model('localisation/weight_class');
 
 		$data['weight_classes'] = $this->model_localisation_weight_class->getWeightClasses();
@@ -1267,7 +1289,7 @@ class ControllerCatalogProduct extends Controller {
 				}
 			}
 
-			$data['product_options'][] = array(
+			$data['product_options'][$product_option['option_id']] = array(
 				'product_option_id'    => $product_option['product_option_id'],
 				'product_option_value' => $product_option_value_data,
 				'option_id'            => $product_option['option_id'],
