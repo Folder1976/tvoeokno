@@ -66,6 +66,7 @@ jQuery(document).ready(function($) {
 
   // форма "перезвонить мне"
   $('.js-form-call-me').submit(function(e){
+
     var c = $('#fb-modal');
     c.html('<h2></h2>');
 

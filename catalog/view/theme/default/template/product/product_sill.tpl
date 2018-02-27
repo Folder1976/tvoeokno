@@ -72,7 +72,7 @@ echo $header; ?>
       <h2 class="main-title"><?php echo $heading_title; ?></h2>
 
       <div class="container">
-        <form action="/" class="product-card-form js-form-call-me" id="product">
+        <div action="/" class="product-card-form" id="product">
           <input name="formname" value="product_sill" type="hidden">
           <input name="product_id" value="<?php echo $product_id; ?>" type="hidden">
           <div class="row">
@@ -247,7 +247,7 @@ echo $header; ?>
               <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="link-price green-btn btn btn-primary btn-lg btn-block"><?php echo $lib['Узнать стоимость']; ?></button>
               <!--button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button-->
             </div>
-        </form>
+        </div>
       </div>
     </section>
 
