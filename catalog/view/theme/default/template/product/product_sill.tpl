@@ -129,9 +129,9 @@ echo $header; ?>
                 </script>
                 
                 <div class="img prices-single-img">
-                  <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
+                  <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>">
                 </div>
-                  <ul id="productGallery" class="owl-carousel prices-single-thumb">
+                  <ul id="productGallery" class="owl-carousel prices-single-thumb" style="padding: 10px 20px 0;">
                     <li>
                       <a href="javascript:void(0)">
                         <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" data-img-index="0" />
@@ -444,16 +444,32 @@ $('#button-review').on('click', function() {
 	});
 });
 
+// $(document).ready(function() {
+// 	$('.prices-single-thumb').on('click', '.js-set-main_image', function(){
+//     var s = $(this).data('image');
+//     $('.prices-single-img img').attr('src', s);
+
+//     $('.prices-single-thumb li').removeClass('active');
+//     $(this).parent().parent().addClass('active');
+//   });
+// });
+
+
 $(document).ready(function() {
-	$('.prices-single-thumb').on('click', '.js-set-main_image', function(){
+  $('.prices-single-thumb').on('click', '.js-set-main_image', function(){
     var s = $(this).data('image');
+    var i = $(this).data('img-index');
     $('.prices-single-img img').attr('src', s);
+    $('.prices-single-img img').data('img-index', i);
 
     $('.prices-single-thumb li').removeClass('active');
     $(this).parent().parent().addClass('active');
   });
 });
 
+
+  // зум фото на странице товара
+  var zoomIndex = 0;
 
 //--></script>
 <?php echo $footer; ?>

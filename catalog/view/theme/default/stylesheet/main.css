@@ -3959,10 +3959,10 @@ textarea {
     text-align: left; }
   .product-card .color .img {
     padding: 10px 20px 0;
-    width: 60%;
-    height: 100%;
+    /*width: 60%;*/
+    /*height: 100%;*/
     border-right: 1px solid #D5D5D5;
-    float: left; }
+    /*float: left;*/ }
   .product-card .color-checkboxes {
     width: 39%;
     float: left;
@@ -4978,3 +4978,7 @@ textarea {
           padding: 16px 2px;
         }
         }
+
+#productGallery .owl-nav { display: none; }
+
+
