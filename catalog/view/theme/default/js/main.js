@@ -282,9 +282,19 @@ jQuery(document).ready(function($) {
     owl4.trigger('next.owl.carousel');
   });
 
-  var owl5 = $('#productGallery');
+  var owl5 = $('.window-product #productGallery');
   owl5.owlCarousel({
     items: 2,
+    loop: false,
+    autoplay: false,
+    smartSpeed: 400,
+    nav: true,
+    navText: ['<span></span>','<span></span>'],
+  });
+
+  var owl6 = $('.window-simple #productGallery, .window-sill #productGallery');
+  owl6.owlCarousel({
+    items: 3,
     loop: false,
     autoplay: false,
     smartSpeed: 400,

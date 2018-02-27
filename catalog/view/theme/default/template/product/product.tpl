@@ -43,7 +43,7 @@ echo $header; ?>
 </style>
 
 <div class="wrap">
-    <section class="product-card">
+    <section class="product-card window-product">
       <div class="breadcrumbs">
         <div class="container">
           <ul class="breadcrumbs-list">

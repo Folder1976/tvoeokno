@@ -444,16 +444,6 @@ $('#button-review').on('click', function() {
 	});
 });
 
-// $(document).ready(function() {
-// 	$('.prices-single-thumb').on('click', '.js-set-main_image', function(){
-//     var s = $(this).data('image');
-//     $('.prices-single-img img').attr('src', s);
-
-//     $('.prices-single-thumb li').removeClass('active');
-//     $(this).parent().parent().addClass('active');
-//   });
-// });
-
 
 $(document).ready(function() {
   $('.prices-single-thumb').on('click', '.js-set-main_image', function(){
