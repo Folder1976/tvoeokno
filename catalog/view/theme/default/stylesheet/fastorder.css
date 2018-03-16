@@ -1,1 +1,142 @@
-.modal-fastorder{z-index:9999;zoom:90%}.form-group .btn-fastorder{margin-bottom:5px}.button-gruop .btn-fastorder{border-radius:0;margin-bottom:0;padding:6px}.modal-fastorder button,.modal-fastorder-success button{text-shadow:1px 1px 2px #000,0 0 1em #000}.modal-fastorder h1,.modal-fastorder-success h4{text-shadow:0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15)}.modal-fastorder #tt{margin:0;height:0}.modal-fastorder ul{margin-bottom:0}.button-fastorder>span{margin:0 11px 0 5px;font-weight:700}.button-fastorder{z-index:9998;position:fixed;transform:rotate(90deg);font-size:20px;color:#fff;right:-111px;background-color:#D2504D;padding:6px;border-radius:3px;border:1px solid #B8504E}.button-fastorder:hover{background-color:#C9302C}
+.modal-fastorder {
+    z-index: 9999;
+    zoom: 90%
+}
+
+.form-group .btn-fastorder {
+    margin-bottom: 5px
+}
+
+.button-gruop .btn-fastorder {
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 6px
+}
+
+.modal-fastorder button,
+.modal-fastorder-success button {
+    text-shadow: 1px 1px 2px #000, 0 0 1em #000
+}
+
+.modal-fastorder h1,
+.modal-fastorder-success h4 {
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15)
+}
+
+.modal-fastorder #tt {
+    margin: 0;
+    height: 0
+}
+
+.modal-fastorder ul {
+    margin-bottom: 0
+}
+
+.button-fastorder>span {
+    margin: 0 11px 0 5px;
+    font-weight: 700
+}
+
+.button-fastorder {
+    z-index: 9998;
+    position: fixed;
+    transform: rotate(90deg);
+    font-size: 20px;
+    color: #fff;
+    right: -111px;
+    background-color: #D2504D;
+    padding: 6px;
+    border-radius: 3px;
+    border: 1px solid #B8504E
+}
+
+.button-fastorder:hover {
+    background-color: #C9302C
+}
+
+
+
+
+/*Changes 14.03*/
+
+.favorites-single .button-gruop .btn-block {
+    border-radius: 22px;!important;
+    max-width: 268px;!important;
+    width: 100%;!important;
+    margin: 0 auto 10px;
+    display: inline-block;
+}
+.add-order-fav .button-gruop {
+    text-align: right;
+}
+
+.add-order-fav .button-gruop .btn-fastorder {
+    max-width: 264px;
+    width: 100%;
+    border-radius: 22px;
+    display: inline-block;
+}
+.btn.btn-primary {
+    max-width: 264px;
+    width: 100%;
+
+}
+
+
+.modal-content fieldset {
+    border: none;
+}
+.input-group-sm img {
+    display: block;
+    margin: 0 auto;
+}
+.fb-modal h2 {
+    margin-bottom: 10px;
+}
+.input-group-sm>.form-control {
+    font-size: 14px;
+    height: 36px;
+    border-radius: 6px;
+}
+.modal-fastorder button {
+    text-shadow: none;
+}
+.input-group-sm>.form-control::-webkit-input-placeholder{color:#757575}
+.input-group-sm>.form-control::-moz-placeholder{color:#757575}
+.input-group-sm>.form-control:-ms-input-placeholder{color:#757575}
+.input-group-sm>.form-control:-ms-input-placeholder{color:#757575}
+
+.fb-modal textarea::-webkit-input-placeholder{color:#757575}
+.fb-modal textarea::-moz-placeholder{color:#757575}
+.fb-modal textarea:-ms-input-placeholder{color:#757575}
+.fb-modal textarea:-ms-input-placeholder{color:#757575}
+
+
+
+.kakto {
+    text-align: right;
+    padding: 15px 0 13px;
+}
+
+.breadcrumbs-list li:last-child a, .breadcrumbs-list li:last-child a:focus, .breadcrumbs-list li:last-child a:visited {
+    pointer-events: none;
+    cursor: default;
+    color: #888;
+}
+
+.add-order-fav .link-price {
+    float: none!important;
+}
+@media (max-width: 991px) {
+    .add-order-fav .button-gruop {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .add-order-fav .link-price {
+        margin: 0 auto;
+        display: block;
+
+    }
+}
+

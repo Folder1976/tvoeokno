@@ -835,6 +835,9 @@
     .add-order2 .window-sill-count {
         margin-top: 20px
     }
+    .favorites-single .button-gruop .btn-block{
+        font-size: 15px;
+    }
 }
 @media (max-width: 767px) {
     .header-top {
@@ -1586,7 +1589,8 @@
         margin: 0 auto
     }
     .news-page .all-news-single {
-        padding-right: 0
+        padding-right: 0;
+            width: 100%!important;
     }
     .news-page .all-news-content {
         width: 100%;
@@ -1604,6 +1608,15 @@
     .modal-discount .image,
     .modal-send-letter-director .image {
         display: none;
+    }
+    .news-single{
+        width: 100%!important;
+    }
+    .all-news-single{
+        width: 100%!important;
+    }
+    .new-flex>.all-news-single{
+        width: 100%!important;
     }
 }
 @media (max-width: 445px) {
