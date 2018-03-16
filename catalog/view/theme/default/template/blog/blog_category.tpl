@@ -14,7 +14,7 @@
 							  'nashi-raboty' => 'uk/nashi-raboty',
                 'okna-po-serii-doma' => 'uk/okna-po-serii-doma',
                 'ustanovka-okon-v-kievskoj-oblasti' => 'uk/ustanovka-okon-v-kievskoj-oblasti',
-                '' => '',
+                'АКЦИЯ ДЕЙСТВИТЕЛЬНА ДО' => 'АКЦІЯ ДІЙСНА ДО',
                 );
   $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
    $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = 'ua';}
@@ -22,16 +22,38 @@
     //<?php echo $lib['русская фраза']; ? >
 		
 echo $header; ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12&appId=222003978541510&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <section class="news-page">
-<div class="breadcrumbs">
-  <div class="container">
-    <ul class="breadcrumbs-list">
-      <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-      <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-      <?php } ?>
-    </ul>
-  </div>
-</div>
+
+
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="breadcrumbs-list">
+              <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+              <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+              <?php } ?>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <div class="kakto">
+              <div class="fb-like" data-href="http://tvoeokno.ua/<?php echo $_GET['_route_']; ?>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 <div class="container">
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
@@ -82,6 +104,9 @@ echo $header; ?>
 								<div class="all-news-content">
 							<?php }else{ ?>
 								<div class="all-news-content" style="width: 100%;">
+							<?php } ?>
+							<?php if($blog['date_action'] !=''){ ?>
+								<span class="action_date"><?php echo $lib['АКЦИЯ ДЕЙСТВИТЕЛЬНА ДО']; ?> <span class="date"><?php echo $blog['date_action']; ?></span></span>
 							<?php } ?>
                 <h3><a href="<?php echo $blog['href']; ?>"><?php echo $blog['title']; ?></a></h3>
                 <p><?php echo $blog['short_description']; ?></p>

@@ -22,9 +22,9 @@ class ModelBlogBlogCategory extends Model {
 			language_id = '" . (int)$language_id . "', 
 			name = '" . $this->db->escape($value['name']) . "',
 			page_title = '" . $this->db->escape($value['page_title']) . "', 
-			meta_keywords = '" . $this->db->escape($value['meta_keywords']) . "', 
-			meta_description = '" . $this->db->escape($value['meta_description']) . "', 
-			description = '" . $this->db->escape($value['description']) . "'");
+			meta_keywords = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_keywords'],ENT_QUOTES))) . "', 
+			meta_description = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES))) . "', 
+				description = '" . $this->db->escape($value['description']) . "'");
 		}
 		
 		if (isset($data['blog_category_store'])) {
@@ -50,6 +50,15 @@ class ModelBlogBlogCategory extends Model {
 						
 		if (isset($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
+				
+				if($keyword == ''){
+					if($language_id == 1){
+						$keyword = $this->translitArtkl($data['blog_category_description'][$language_id]['name']);
+					}else{
+						$keyword = 'uk/'.$this->translitArtkl($data['blog_category_description'][$language_id]['name']);
+					}
+				}
+				
 				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'blog_category_id=" . (int)$blog_category_id . "',
 								 language_id = '" . (int)$language_id . "',
@@ -87,8 +96,8 @@ class ModelBlogBlogCategory extends Model {
 			language_id = '" . (int)$language_id . "', 
 			name = '" . $this->db->escape($value['name']) . "', 
 			page_title = '" . $this->db->escape($value['page_title']) . "', 
-			meta_keywords = '" . $this->db->escape($value['meta_keywords']) . "', 
-			meta_description = '" . $this->db->escape($value['meta_description']) . "', 
+			meta_keywords = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_keywords'],ENT_QUOTES))) . "', 
+			meta_description = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES))) . "', 
 			description = '" . $this->db->escape($value['description']) . "'");
 		}
 		
@@ -121,6 +130,16 @@ class ModelBlogBlogCategory extends Model {
 		
 		if (isset($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
+				
+				if($keyword == ''){
+					if($language_id == 1){
+						$keyword = $this->translitArtkl($data['blog_category_description'][$language_id]['name']);
+					}else{
+						$keyword = 'uk/'.$this->translitArtkl($data['blog_category_description'][$language_id]['name']);
+					}
+				}
+	
+				
 				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'blog_category_id=" . (int)$blog_category_id . "',
 								 language_id = '" . (int)$language_id . "',

@@ -35,7 +35,12 @@ class ModelCatalogCategory extends Model {
 							 tab_description3 = '" . $this->db->escape($value['tab_description3']) . "',
 					
 					
-							 meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+							 meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "',
+							meta_description = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES))) . "',
+							 meta_keyword = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_keyword'],ENT_QUOTES))) . "'");
+	
+		
+		
 		}
 
 		// MySQL Hierarchical Data Closure Table Pattern
@@ -73,10 +78,22 @@ class ModelCatalogCategory extends Model {
 	
 		if (isset($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+				
+				if($keyword == ''){
+					if($language_id == 1){
+						$keyword = $this->translitArtkl($data['category_description'][$language_id]['title']);
+					}else{
+						$keyword = 'uk/'.$this->translitArtkl($data['category_description'][$language_id]['title']);
+					}
+				}
+				
+				
+				if($keyword != ''){
+					$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'category_id=" . (int)$category_id . "',
 								 language_id = '" . (int)$language_id . "',
 								 keyword = '" . $this->db->escape($keyword) . "'");
+				}
 			}
 		}
 
@@ -125,8 +142,11 @@ class ModelCatalogCategory extends Model {
 					
 							 meta_title = '" . $this->db->escape($value['meta_title']) . "',
 							 meta_h1 = '" . $this->db->escape($value['meta_h1']) . "',
-							 meta_description = '" . $this->db->escape($value['meta_description']) . "',
-							 meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+							 meta_description = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES))) . "',
+							 meta_keyword = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_keyword'],ENT_QUOTES))) . "'");
+			
+			
+			//echo $this->db->escape(strip_tags(htmlspecialchars_decode(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES)));
 		}
 
 		// MySQL Hierarchical Data Closure Table Pattern
@@ -208,6 +228,16 @@ class ModelCatalogCategory extends Model {
 
 		if (isset($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
+				
+				
+				if($keyword == ''){
+					if($language_id == 1){
+						$keyword = $this->translitArtkl($data['category_description'][$language_id]['title']);
+					}else{
+						$keyword = 'uk/'.$this->translitArtkl($data['category_description'][$language_id]['title']);
+					}
+				}
+				
 				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'category_id=" . (int)$category_id . "',
 								 language_id = '" . (int)$language_id . "',
@@ -215,7 +245,15 @@ class ModelCatalogCategory extends Model {
 			}
 		}
 		$this->cache->delete('category');
+		//die();
 	}
+
+		public function translitArtkl($str) {
+			$rus = array('и','і','є','Є','ї','\"','\'','.',' ','А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+			$lat = array('u','i','e','E','i','','','','-','A', 'B', 'V', 'G', 'D', 'E', 'E', 'Gh', 'Z', 'I', 'Y', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'F', 'H', 'C', 'Ch', 'Sh', 'Sch', 'Y', 'Y', 'Y', 'E', 'Yu', 'Ya', 'a', 'b', 'v', 'g', 'd', 'e', 'e', 'gh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh', 'sch', 'y', 'y', 'y', 'e', 'yu', 'ya');
+		return str_replace($rus, $lat, $str);
+	}
+
 
 	public function deleteCategory($category_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category_path WHERE category_id = '" . (int)$category_id . "'");

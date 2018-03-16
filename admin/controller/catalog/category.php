@@ -22,7 +22,7 @@ class ControllerCatalogCategory extends Controller {
 		$this->load->model('catalog/category');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_catalog_category->addCategory($this->request->post);
+			$category_id = $this->model_catalog_category->addCategory($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -40,7 +40,13 @@ class ControllerCatalogCategory extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, true));
+			
+			if(isset($this->request->post['reload']) AND $this->request->post['reload'] == 'reload'){
+				$url .= '&category_id=' . $category_id;
+				$this->response->redirect($this->url->link('catalog/category/edit', 'token=' . $this->session->data['token'] . $url, true));
+			}else{
+				$this->response->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, true));
+			}
 		}
 
 		$this->getForm();
@@ -54,6 +60,7 @@ class ControllerCatalogCategory extends Controller {
 		$this->load->model('catalog/category');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			$category_id = $this->request->get['category_id'];
 			$this->model_catalog_category->editCategory($this->request->get['category_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -72,7 +79,12 @@ class ControllerCatalogCategory extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, true));
+			if(isset($this->request->post['reload']) AND $this->request->post['reload'] == 'reload'){
+				$url .= '&category_id=' . $category_id;
+				$this->response->redirect($this->url->link('catalog/category/edit', 'token=' . $this->session->data['token'] . $url, true));
+			}else{
+				$this->response->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, true));
+			}
 		}
 
 		$this->getForm();

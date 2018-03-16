@@ -35,7 +35,7 @@ class ModelBlogBlog extends Model {
 			}
 		}
         
-        $sql .= " ORDER BY i.date_added DESC LIMIT " . (int)$start . "," . (int)$limit;
+        $sql .= " ORDER BY i.sort_order DESC, i.date_added DESC LIMIT " . (int)$start . "," . (int)$limit;
 		//$sql .= " ORDER BY i.sort_order, i.date_added DESC LIMIT " . (int)$start . "," . (int)$limit;
 	
 	    $query = $this->db->query($sql);
@@ -85,7 +85,7 @@ class ModelBlogBlog extends Model {
 								  WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND
 								  n2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND
 								  n2c.blog_category_id = '" . (int)$blog_category_id . "' AND
-								  n.status = '1' AND n.sort_order <> '-1' ORDER BY n.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
+								  n.status = '1' AND n.sort_order <> '-1' ORDER BY n.sort_order DESC, n.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
 		
 		return $query->rows;
 	}
@@ -98,6 +98,11 @@ class ModelBlogBlog extends Model {
 								  WHERE n.status = '1' AND n2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND n2c.blog_category_id = '" . (int)$blog_category_id . "'");
 		
 		return $query->row['total'];
+	}
+	
+	public function getBlogCategoryId($blog_id = 0) {
+		$query = $this->db->query("SELECT blog_category_id FROM " . DB_PREFIX . "blog_to_category WHERE blog_id = '".$blog_id."' LIMIT 1");
+		return $query->row['blog_category_id'];
 	}
 	
 	public function getTotalBlogsPerCategory($data = array()) {

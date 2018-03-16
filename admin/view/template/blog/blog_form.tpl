@@ -12,6 +12,15 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
+        
+    <button id="key_reload" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-info"><i class="fa fa-save"></i><i class="fa fa-save"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <script>
+			$(document).on('click', '#key_reload', function(){
+				$('#reload').val('reload');
+				$('#form-information').submit();
+			});
+		</script>
+        
         <button type="submit" form="form-information" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
         <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
       <h1><?php echo $heading_title; ?></h1>
@@ -37,6 +46,7 @@
       </div>
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-information" class="form-horizontal">
+        <input type="hidden" name="reload" id="reload" value="false">
           <ul class="nav nav-tabs">
             
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
@@ -182,6 +192,13 @@
                       </label>
                     </div>
                 <input name="date_added" id="datepicker" data-date-format="yyyy-mm-dd" value="<?php echo date('Y-m-d', strtotime($date_added)); ?>" placeholder="<?php echo date('Y-m-d'); ?>" class="form-control" />
+              </div>
+              </div>
+             
+           <div class="form-group">
+                <label class="col-sm-2 control-label">Дата окончания акции<br>[0000-00-00]</label>
+                 <div class="col-sm-10">
+                <input name="date_action" id="datepicker1" data-date-format="yyyy-mm-dd" value="<?php echo $date_action; ?>" placeholder="<?php echo date('Y-m-d'); ?>" class="form-control" />
               </div>
               </div>
              

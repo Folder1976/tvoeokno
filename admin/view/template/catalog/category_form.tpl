@@ -3,6 +3,8 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
+   
+   <button id="key_reload" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-info"><i class="fa fa-save"></i><i class="fa fa-save"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" form="form-category" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
         <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
       <h1><?php echo $heading_title; ?></h1>
@@ -16,6 +18,16 @@
       <b style="color:red">!Памятка </b><b>коды: </b> <i>[G]имя галереи[G]</i> <i>[B]имя галереи[B] (только верх описание)</i>
     </div>    
   </div>
+	
+	
+	   <script>
+			$(document).on('click', '#key_reload', function(){
+				$('#reload').val('reload');
+				$('#form-category').submit();
+			});
+		</script>
+	
+	
   <div class="container-fluid">
     <?php if ($error_warning) { ?>
     <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
@@ -28,6 +40,7 @@
       </div>
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-category" class="form-horizontal">
+        <input type="hidden" name="reload" id="reload" value="false">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-data" data-toggle="tab"><?php echo $tab_data; ?></a></li>
@@ -132,6 +145,8 @@
                 }else{
                   $alias = translitArtkl($name);
                 }
+								
+								//if($language['language_id'] == 2) $alias = 'uk/'.$alias;
               ?>
               <input type="text" name="keyword[<?php echo $language['language_id'] ;?>]" value="<?php echo $alias; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
             </div>

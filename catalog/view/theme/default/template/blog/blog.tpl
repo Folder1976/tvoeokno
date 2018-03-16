@@ -11,7 +11,11 @@
 	 echo $header; ?>
 
 <?php
-$page_href = str_replace('uk/','',array_pop($breadcrumbs)['href']);
+$last = str_replace('uk/','',array_pop($breadcrumbs));
+
+$page_href = $last['href'];
+
+$breadcrumbs[] = $last;
 
 // Класс для section в зависимости от страницы
 switch ($page_href) {
@@ -39,16 +43,38 @@ switch ($page_href) {
 }
 ?>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12&appId=222003978541510&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <section class="<?php echo $section_class; ?>">
-  <div class="breadcrumbs">
-    <div class="container">
-      <ul class="breadcrumbs-list">
-        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-        <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-        <?php } ?>
-      </ul>
+
+
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="breadcrumbs-list">
+              <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+              <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+              <?php } ?>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <div class="kakto">
+              <div class="fb-like" data-href="http://tvoeokno.ua/<?php echo $_GET['_route_']; ?>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+
   <div class="container">
   <div class="row"><?php echo $column_left; ?>
     <?php if ($column_left && $column_right) { ?>
@@ -215,7 +241,12 @@ switch ($page_href) {
 </div>
 </section>
 
-<?php echo $content_bottom; ?>
+<?php
+	if(isset($_GET['_route_']) AND strpos($_GET['_route_'], 'service-master') !== false){
+			echo $content_bottom;
+	}
+	//echo $content_bottom;
+?>
 
 <script type="text/javascript"><!--
 

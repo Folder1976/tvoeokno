@@ -23,7 +23,6 @@ $_['library_autoload'] = array(
 	'openbay'
 );
 
-
 $registry = new Registry();
 $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);

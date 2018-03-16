@@ -25,13 +25,14 @@ class ControllerCommonLanguage extends Controller {
 		}
 
 		if (!isset($this->request->get['route'])) {
-			$data['redirect'] = $this->url->link('common/home');
+			$data['redirect'] = '/';//$this->url->link('common/home');
 		} else {
 			$url_data = $this->request->get;
 
 			$route = $url_data['route'];
 
 			unset($url_data['route']);
+			unset($url_data['_route_']);
 
 			$url = '';
 

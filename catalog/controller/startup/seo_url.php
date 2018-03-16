@@ -201,7 +201,7 @@ class ControllerStartupSeoUrl extends Controller {
 				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id') || ($data['route'] == 'blog/blog' && $key == 'blog_id')) {
 					
 					$sql = "SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'
-											  AND language_id = '" . (int)$this->config->get('config_language_id') . "'
+											  AND language_id = '" . (int)$this->config->get('config_language_id') . "' LIMIT 1
 											  ";
 
 					$query = $this->db->query($sql);
@@ -215,7 +215,7 @@ class ControllerStartupSeoUrl extends Controller {
 					$blog_categories = explode('_', $value);
 					foreach ($blog_categories as $category) {
 						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'blog_category_id=" . (int)$category . "'
-														AND language_id = '" . (int)$this->config->get('config_language_id') . "'
+														AND language_id = '" . (int)$this->config->get('config_language_id') . "' LIMIT 1
 														");
 						if ($query->num_rows) {
 							$url .= '/' . $query->row['keyword'];
@@ -229,7 +229,7 @@ class ControllerStartupSeoUrl extends Controller {
 				
 				} elseif (isset($data['route']) && $data['route'] ==   'blog/home') {
 					$blog_home = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'blog/home'
-												  AND language_id = '" . (int)$this->config->get('config_language_id') . "'
+												  AND language_id = '" . (int)$this->config->get('config_language_id') . "' LIMIT 1
 												  ");
 					if ($blog_home->num_rows) {
 						$url .= '/' . $blog_home->row['keyword'];
@@ -240,10 +240,14 @@ class ControllerStartupSeoUrl extends Controller {
 				} elseif ($key == 'path') {
 					$categories = explode('_', $value);
 
+					
+					
 					foreach ($categories as $category) {
-						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'
-												  AND language_id = '" . (int)$this->config->get('config_language_id') . "'
-												  ");
+						
+						$sql = "SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'
+												  AND language_id = '" . (int)$this->config->get('config_language_id') . "' LIMIT 1
+												  ";
+						$query = $this->db->query($sql);
 
 						if ($query->num_rows && $query->row['keyword']) {
 							$url .= '/' . $query->row['keyword'];

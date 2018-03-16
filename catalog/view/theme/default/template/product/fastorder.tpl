@@ -11,6 +11,7 @@
 
     data['product_name']    = '<?php echo $product_name;?>';
     data['price']           = '<?php echo $price;?>';
+    data['image']           = '<?php echo $image;?>';
     data['product_id']      = '<?php echo $product_id;?>';
     data['product_link']    = '<?php echo $product_link;?>';
 

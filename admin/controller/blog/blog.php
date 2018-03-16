@@ -20,7 +20,7 @@ class ControllerBlogBlog extends Controller {
 		$this->load->model('blog/blog');
 				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_blog_blog->addBlog($this->request->post);
+			$blog_id = $this->model_blog_blog->addBlog($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -38,7 +38,12 @@ class ControllerBlogBlog extends Controller {
 				$url .= '&order=' . $this->request->get['order'];
 			}
 			
-			$this->response->redirect($this->url->link('blog/blog', 'token=' . $this->session->data['token'] . $url, 'SSL')); 
+			if(isset($this->request->post['reload']) AND $this->request->post['reload'] == 'reload'){
+				$url .= '&blog_id=' . $blog_id;
+				$this->response->redirect($this->url->link('blog/blog/update', 'token=' . $this->session->data['token'] . $url, true));
+			}else{
+				$this->response->redirect($this->url->link('blog/blog', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			}
 		}
 
 		$this->getForm();
@@ -52,6 +57,8 @@ class ControllerBlogBlog extends Controller {
 		$this->load->model('blog/blog');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			
+			$blog_id = $this->request->get['blog_id'];
 			$this->model_blog_blog->editBlog($this->request->get['blog_id'], $this->request->post);
 			
 			if (isset($this->request->post['selected'])) {
@@ -86,7 +93,12 @@ class ControllerBlogBlog extends Controller {
 				$url .= '&order=' . $this->request->get['order'];
 			}
 			
-			$this->response->redirect($this->url->link('blog/blog', 'token=' . $this->session->data['token'] . $url, 'SSL')); 
+			if(isset($this->request->post['reload']) AND $this->request->post['reload'] == 'reload'){
+				$url .= '&blog_id=' . $blog_id;
+				$this->response->redirect($this->url->link('blog/blog/update', 'token=' . $this->session->data['token'] . $url, true));
+			}else{
+				$this->response->redirect($this->url->link('blog/blog', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			}
 		}
 
 		$this->getForm();
@@ -201,6 +213,7 @@ class ControllerBlogBlog extends Controller {
 			$data['blogs'][] = array(
 				'blog_id' => $result['blog_id'],
 				'title'      => $result['title'],
+				'date_action'      => $result['date_action'],
 				'date_added'      => $result['date_added'],
 				'comment_total' => $this->model_blog_blog->getTotalCommentsByBlogId($result['blog_id']),
 				'sort_order' => $result['sort_order'],
@@ -450,6 +463,14 @@ class ControllerBlogBlog extends Controller {
 			$data['date_added'] = $blog_info['date_added'];
 		} else {
 			$data['date_added'] = date('Y-m-d H:i:s');
+		}
+		
+		if (isset($this->request->post['date_action'])) {
+			$data['date_action'] = $this->request->post['date_action'];
+		} elseif (isset($blog_info)) {
+			$data['date_action'] = $blog_info['date_action'];
+		} else {
+			$data['date_action'] = '';
 		}
 		
 		if (isset($this->request->post['allow_comment'])) {

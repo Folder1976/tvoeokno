@@ -26,7 +26,12 @@ class ModelCatalogProduct extends Model {
 							 umova = '" . $this->db->escape($value['umova']) . "',
 							 alt = '" . $this->db->escape($value['alt']) . "',
 							 title = '" . $this->db->escape($value['title']) . "',
-							 description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+							 description = '" . $this->db->escape($value['description']) . "',
+							 tag = '" . $this->db->escape($value['tag']) . "',
+							 meta_title = '" . $this->db->escape($value['meta_title']) . "',
+							 meta_h1 = '" . $this->db->escape($value['meta_h1']) . "',
+							 meta_description = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES))) . "',
+							 meta_keyword = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_keyword'],ENT_QUOTES))) . "'");
 		}
 
 		if (isset($data['product_store'])) {
@@ -135,9 +140,11 @@ class ModelCatalogProduct extends Model {
 		}
 
 		if (isset($data['product_attribute4'])) {
-			foreach ($data['product_attribute4'] as $attribute4) {
+			foreach ($data['product_attribute4'] as $group_id => $rows) {
+				foreach ($rows as $attribute4) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "attribute4 SET
 								 product_id = '" . (int)$product_id . "',
+								 group_id = '" . (int)$group_id . "',
 								 price = '" . (float)$attribute4['price']  . "',
 								 sort_order = '" . (int)$attribute4['sort_order'] . "'");
 				
@@ -152,6 +159,7 @@ class ModelCatalogProduct extends Model {
 										 ");
 				
 					}
+				}
 			}
 		}
 
@@ -179,17 +187,34 @@ class ModelCatalogProduct extends Model {
 
 		if (isset($data['keyword']) AND is_array($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
+				
+				if($keyword == ''){
+					if($language_id == 1){
+						$keyword = $this->translitArtkl($data['product_description'][$language_id]['name']);
+					}else{
+						$keyword = 'uk/'.$this->translitArtkl($data['product_description'][$language_id]['name']);
+					}
+				}
+				
+				if($keyword != ''){
+					$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'product_id=" . (int)$product_id . "',
 								 language_id = '" . (int)$language_id . "',
 								 keyword = '" . $this->db->escape($keyword) . "'
 								 ON DUPLICATE KEY UPDATE language_id = '" . (int)$language_id . "'");
+				}
 			}
 		}
 		
 		$this->cache->delete('product');
 
 		return $product_id;
+	}
+
+	public function translitArtkl($str) {
+			$rus = array('и','і','є','Є','ї','\"','\'','.',' ','А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+			$lat = array('u','i','e','E','i','','','','-','A', 'B', 'V', 'G', 'D', 'E', 'E', 'Gh', 'Z', 'I', 'Y', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'F', 'H', 'C', 'Ch', 'Sh', 'Sch', 'Y', 'Y', 'Y', 'E', 'Yu', 'Ya', 'a', 'b', 'v', 'g', 'd', 'e', 'e', 'gh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh', 'sch', 'y', 'y', 'y', 'e', 'yu', 'ya');
+		return str_replace($rus, $lat, $str);
 	}
 
 	public function getProductOptionImage($product_id) {
@@ -241,7 +266,12 @@ class ModelCatalogProduct extends Model {
 							 umova = '" . $this->db->escape($value['umova']) . "',
 							 alt = '" . $this->db->escape($value['alt']) . "',
 							 title = '" . $this->db->escape($value['title']) . "',
-							 description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_h1 = '" . $this->db->escape($value['meta_h1']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+							 description = '" . $this->db->escape($value['description']) . "',
+							 tag = '" . $this->db->escape($value['tag']) . "',
+							 meta_title = '" . $this->db->escape($value['meta_title']) . "',
+							 meta_h1 = '" . $this->db->escape($value['meta_h1']) . "',
+							 meta_description = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES))) . "',
+							 meta_keyword = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_keyword'],ENT_QUOTES))) . "'");
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_store WHERE product_id = '" . (int)$product_id . "'");
@@ -369,23 +399,34 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "attribute4 WHERE product_id = '" . (int)$product_id . "'");
 
 		if (isset($data['product_attribute4'])) {
-			foreach ($data['product_attribute4'] as $attribute4) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "attribute4 SET
-								 product_id = '" . (int)$product_id . "',
-								 price = '" . (float)$attribute4['price']  . "',
-								 sort_order = '" . (int)$attribute4['sort_order'] . "'");
-				
-					$attribute4_id = $this->db->getLastId();
-				
-					foreach ($attribute4['product_attribute4_description'] as $language_id => $text) {
-						$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_description4 SET
-										 attribute4_id = '" . (int)$attribute4_id . "',
-										language_id = '" . $language_id  . "',
-										 text = '" . $this->db->escape($text['text']) . "',
-										 text1 = '" . $this->db->escape($text['text1']) . "'
-										 ");
-				
+			
+			foreach ($data['product_attribute4'] as $group_id => $rows) {
+				foreach ($rows as $attribute4) {
+					
+					if(isset($attribute4['price'])){
+					
+						$this->db->query("INSERT INTO " . DB_PREFIX . "attribute4 SET
+										 product_id = '" . (int)$product_id . "',
+										 group_id = '" . (int)$group_id . "',
+										 price = '" . (float)$attribute4['price']  . "',
+										 sort_order = '" . (int)$attribute4['sort_order'] . "'");
+						
+						$attribute4_id = $this->db->getLastId();
+						
+						//echo '<pre>'; print_r(var_dump( $attribute4  ));
+						
+							
+							foreach ($attribute4['product_attribute4_description'] as $language_id => $text) {
+								$this->db->query("INSERT INTO " . DB_PREFIX . "attribute_description4 SET
+												 attribute4_id = '" . (int)$attribute4_id . "',
+												language_id = '" . $language_id  . "',
+												 text = '" . $this->db->escape($text['text']) . "',
+												 text1 = '" . $this->db->escape($text['text1']) . "'
+												 ");
+						
+							}
 					}
+				}
 			}
 		}
 
@@ -462,6 +503,17 @@ class ModelCatalogProduct extends Model {
 
 		if (isset($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
+				
+				
+				if($keyword == ''){
+					if($language_id == 1){
+						$keyword = $this->translitArtkl($data['product_description'][$language_id]['name']);
+					}else{
+						$keyword = 'uk/'.$this->translitArtkl($data['product_description'][$language_id]['name']);
+					}
+				}
+				
+				
 				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'product_id=" . (int)$product_id . "',
 								 language_id = '" . (int)$language_id . "',
@@ -739,9 +791,10 @@ class ModelCatalogProduct extends Model {
 																										   'text1' => $product_attribute_description['text1']);
 			}
 
-			$product_attribute_data[$product_attribute['attribute4_id']] = array(
+			$product_attribute_data[$product_attribute['group_id']][$product_attribute['attribute4_id']] = array(
 				'attribute4_id'                  => $product_attribute['attribute4_id'],
 				'price'                  => $product_attribute['price'],
+				'group_id'                  => $product_attribute['group_id'],
 				'sort_order'                  => $product_attribute['sort_order'],
 				'enable'                  => $product_attribute['enable'],
 				'product_attribute4_description' => $product_attribute_description_data

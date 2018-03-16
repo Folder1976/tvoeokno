@@ -37,7 +37,7 @@ class ModelCatalogProduct extends Model {
 														WHERE product_id = '" . (int)$product_id . "' ORDER BY sort_order");
 
 		foreach ($product_attribute_query->rows as $product_attribute) {
-			$product_attribute_data[$product_attribute['attribute4_id']] = $product_attribute;
+			$product_attribute_data[$product_attribute['group_id']][$product_attribute['attribute4_id']] = $product_attribute;
 			
 		}
 

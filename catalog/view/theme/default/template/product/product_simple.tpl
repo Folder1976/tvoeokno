@@ -6,7 +6,7 @@
                 'Цена от' => 'Ціна від',
                 'При заказе с установкой' => 'При замовленні з установкою',
                 'Внести свои данные для расчета' => 'Внести свої дані для розрахунку',
-                'Размер окна' => 'Розмір вікна',
+                'Размер' => 'Розмір',
                 'Высота' => 'Висота',
                 'Ширина' => 'Ширина',
                 'Длина' => 'Довжина',
@@ -37,6 +37,9 @@
                 'Ширина подоконника' => 'Ширина підвіконня',
                 'ед.из.' => 'од.вим.',
                 'Цена' => 'Ціна',
+                                'Описание' => 'Опис',
+                'Технические характеристики' => 'Технічні характеристики',
+                'Отзывы' => 'Відгуки',
                 '' => '',
                 '' => '',
                 '' => '',
@@ -50,18 +53,34 @@ echo $header; ?>
 <style>
 .main-sect { display: none; }
 </style>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12&appId=222003978541510&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="wrap">
     <section class="product-card window-sill window-simple">
       <div class="breadcrumbs">
-        <div class="container">
-          <ul class="breadcrumbs-list">
-            <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-            <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-            <?php } ?>
-          </ul>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="breadcrumbs-list">
+              <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+              <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+              <?php } ?>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <div class="kakto">
+              <div class="fb-like" data-href="http://tvoeokno.ua/<?php echo $_GET['_route_']; ?>" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
       <div class="container">
         <div class="row">
@@ -71,15 +90,42 @@ echo $header; ?>
 
       <h2 class="main-title"><?php echo $heading_title; ?></h2>
 
-      <div class="container">
-        <div id="product">
+       <div class="container">
+        <div action="/" class="product-card-form" id="product">
           <input name="formname" value="product_sill" type="hidden">
           <input name="product_id" value="<?php echo $product_id; ?>" type="hidden">
           <div class="row">
             <div class="col-md-6">
               <div class="color">
-                <div class="info-select">
+
+                
+                <div class="img prices-single-img">
+                  <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>">
+                </div>
+                  <ul id="productGallery" class="owl-carousel prices-single-thumb" style="padding: 10px 20px 0;">
+                    <li>
+                      <a href="javascript:void(0)">
+                        <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" data-img-index="0" />
+                      </a>
+                    </li>
+                    <?php $img_index = 0; ?>
+                    <?php foreach ($images as $image) { ?>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <img src="<?php echo $image['thumb']; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $image['popup']; ?>"  data-img-index="<?php echo ++$img_index; ?>" />
+                      </a>
+                    </li>
+                    <?php } ?>
+                  </ul>
+              </div>
+            </div>
+            <div class="col-md-6 product-card">
+            <div class="color1">
+                  <div class="info-select">
                   <?php
+                  
+                    $image_var = array();
+                  
                     foreach ($options as $option) {
                       if ( $option['option_id'] == 17 ) {  // цвет ?>
                       <select class="select product_sill_color_option" name="option[<?php echo $option['product_option_id']; ?>]">
@@ -87,37 +133,68 @@ echo $header; ?>
                       
                             <?php foreach ($option['product_option_value'] as $option_value) { ?>
                               <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?></option>
+                              
+                              <?php if(isset($product_option_image[$option_value['option_value_id']])){ ?>
+                                <?php $image_var[$option_value['product_option_value_id']] = array(
+                                                  'image'=>$product_option_image[$option_value['option_value_id']]['image'],
+                                                  'popup'=>$product_option_image[$option_value['option_value_id']]['popup'],
+                                                  'thumb'=>$product_option_image[$option_value['option_value_id']]['thumb'],
+                                                 );
+                                }else{
+                                      $image_var[$option_value['product_option_value_id']] = array(
+                                                  'image'=>'',
+                                                  'popup'=>'',
+                                                  'thumb'=>'',
+                                                 );
+                                } ?>
+                              
                             <?php } ?>
                       
                       </select>
                     <?php } ?>
                     <?php } ?>
                 </div>
-                
-                <div class="img prices-single-img">
-                  <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" />
-                </div>
-                <ul id="productGallery" class="owl-carousel prices-single-thumb" style="padding: 10px 20px 0;">
-                  <li>
-                    <a href="javascript:void(0)">
-                      <img src="<?php echo $popup; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $popup; ?>" data-img-index="0" />
-                    </a>
-                  </li>
-                  <?php $img_index = 0; ?>
-                  <?php foreach ($images as $image) { ?>
-                  <li>
-                    <a href="javascript:void(0)">
-                      <img src="<?php echo $image['thumb']; ?>" alt="<?php echo $heading_title; ?>" class="js-set-main_image" data-image="<?php echo $image['popup']; ?>"  data-img-index="<?php echo ++$img_index; ?>" />
-                    </a>
-                  </li>
-                  <?php } ?>
-                </ul>
-                
-              </div>
             </div>
-            <div class="col-md-6">
+                <script>
+                  var image_var = {
+                  <?php foreach($image_var as $index => $row){ 
+                    echo ''.$index.':"'.$row['popup'].'",'."\n\r";
+                  } ?>
+                  };
+                  
+                  $(document).on('change','.product_sill_color_option', function(){
+                      
+                     if(image_var[$(this).val()] != ""){
+                        $('.prices-single-img img').attr('src',image_var[$(this).val()]);
+                        $('.prices-single-img img').data('image', image_var[$(this).val()]);
+                        console.log($('.prices-single-img img').data('image') );
+                     }
+                  });
+                </script>
             
-            <?php if(isset($addons) AND count($addons)){ ?>
+            <?php if(isset($addons[1]) AND count($addons[1])){ ?>
+              <div class="window-sill-info">
+                <div class="window-sill-info-left" style="width: 100%">
+                  <div class="sizes">
+                    <p><?php echo $lib['Дополнительно'];?></p>
+                      <table class="prices-single-table">
+                
+                       <?php foreach ($addons[1] as $option) { ?>
+                    
+                        <tr>
+                          <td align="left"><?php echo $option['text']; ?></td>
+                          <td align="center"><?php echo $option['text1']; ?></td>
+                          <td align="right"><?php echo $option['price']; ?> грн</td>
+                        </tr>
+
+                    <?php } ?>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            <?php } ?>
+              
+            <?php if(isset($addons[2]) AND count($addons[2])){ ?>
               <div class="window-sill-info">
                 <div class="window-sill-info-left" style="width: 100%">
                   <div class="sizes">
@@ -129,7 +206,7 @@ echo $header; ?>
                           <th style="text-align:right;padding-right: 7px;"><?php echo $lib['Цена']; ?></th>
                         </tr>
 
-                    <?php foreach ($addons as $option) { ?>
+                    <?php foreach ($addons[2] as $option) { ?>
                     
                         <tr>
                           <td align="left"><?php echo $option['text']; ?></td>
@@ -148,6 +225,40 @@ echo $header; ?>
               <div class="window-sill-info">
               
                 <div class="window-sill-info-left">
+                  
+                  <?php
+                  $is_sizes = false;
+                  foreach ($options as $option) {
+                      if ( $option['option_id'] == 16 OR $option['option_id'] == 14) {
+                        $is_sizes = true; break;
+                      }
+                  } ?>
+                  
+                  <?php if($is_sizes){ ?>
+                  <div class="sizes">
+                    <p><?php echo $lib['Размер'];?></p>
+
+                    <?php foreach ($options as $option) {
+                      if ( $option['option_id'] == 16 ) {  // Глубина ?>
+                        <div class="sizes-group" id="input-option<?php echo $option['product_option_id']; ?>">
+                          <label for="width"><?php echo $option['name']; ?></label>
+                          <input id="width" name="option[<?php echo $option['product_option_id']; ?>]" type="text" class="form-controll" value="0">
+                        </div>
+                      <?php } ?>
+                    <?php } ?>
+
+                    <?php foreach ($options as $option) {
+                      if ( $option['option_id'] == 14 ) {  // Ширина ?>
+                        <div class="sizes-group" id="input-option<?php echo $option['product_option_id']; ?>">
+                          <label for="width"><?php echo $option['name']; ?></label>
+                          <input id="width" name="option[<?php echo $option['product_option_id']; ?>]" type="text" class="form-controll" value="0">
+                        </div>
+                      <?php } ?>
+                    <?php } ?>
+                  </div>
+
+                  <?php } ?>
+                  
                     <?php foreach ($options as $option) { ?>
                       <div class="stub" id="input-option<?php echo $option['product_option_id']; ?>">
                       <?php if ( $option['option_id'] == 18 ) {  // тип подоконника ?>
@@ -185,15 +296,133 @@ echo $header; ?>
             </div>
           </div>
           <div class="add-order-fav window-sill-order">
-              <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
-              <!--a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a-->
-              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="link-price green-btn btn btn-primary btn-lg btn-block"><?php echo $lib['Узнать стоимость']; ?></button>
-              <!--button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button-->
+            
+
+            
+
+              <div class="row">
+                  <div class="col-md-6" style="margin-top: 10px;">
+                      <?php if ($review_status) { ?>
+                      <?php for ($i = 1; $i <= 5; $i++) { ?>
+                      <?php if ($rating < $i) { ?>
+                      <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+                      <?php } else { ?>
+                      <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+                      <?php } ?>
+                      <?php } ?>
+                      <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a><!-- / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $text_write; ?></a-->
+                      &nbsp;&nbsp;&nbsp;
+                      <?php } ?>
+                      <a href="#" class="link favorite-link" onclick="wishlist.add('<?php echo $product_id; ?>');return false;"><?php echo $button_wishlist; ?></a>
+                      <!--a href="#" class="link brand-link" onclick="compare.add('<?php echo $product_id; ?>');return false;"><?php echo $button_compare; ?></a-->
+                  </div>
+                  <div class="col-md-3">
+                      <!-- Button fastorder -->
+                      <div class="button-gruop">
+                          <?php echo $fastorder; ?>
+                      </div>
+                      <!-- END :  button fastorder -->
+                  </div>
+                  <div class="col-md-3">
+                      <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="link-price green-btn btn btn-primary btn-lg btn-block"><?php echo $lib['Узнать стоимость']; ?></button>
+                      <!--button type="submit" class="link-price green-btn"><?php echo $lib['Узнать стоимость']; ?></button-->
+                  </div>
+              </div>
+   
+
+
+
             </div>
         </div>
       </div>
     </section>
 
+    
+<section class="tech window-sill-tech">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="char">
+            <h3 class="product-card-title"><?php echo $lib['Технические характеристики']; ?></h3>
+            <table class="tech-table">
+              <tbody>
+                <?php foreach($attribute_groups as $attribute_group){ ?>
+                <?php foreach($attribute_group['attribute'] as $attribute){ ?>
+                <tr>
+                  <td><?php echo $attribute['name']; ?></td>
+                  <td><?php echo $attribute['text']; ?></td>
+                </tr>
+                <?php } ?>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="desc">
+            <h3 class="product-card-title"><?php echo $lib['Описание']; ?></h3>
+            <?php echo $description; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <div class="container">
+    <div>
+      <?php if ($review_status) { ?><br>
+          <h3 class="product-card-title"><?php echo $lib['Отзывы']; ?></h3>
+            <div class="tab-pane" id="tab-review">
+              <form class="form-horizontal" id="form-review">
+                <div id="review"></div>
+                <h2><?php echo $text_write; ?></h2>
+                <?php if ($review_guest) { ?>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
+                    <input type="text" name="name" value="" id="input-name" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
+                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+                    <div class="help-block"><?php echo $text_note; ?></div>
+                  </div>
+                </div>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label"><?php echo $entry_rating; ?></label>
+                    &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
+                    <input type="radio" name="rating" value="1" />
+                    &nbsp;
+                    <input type="radio" name="rating" value="2" />
+                    &nbsp;
+                    <input type="radio" name="rating" value="3" />
+                    &nbsp;
+                    <input type="radio" name="rating" value="4" />
+                    &nbsp;
+                    <input type="radio" name="rating" value="5" />
+                    &nbsp;<?php echo $entry_good; ?></div>
+                </div>
+                <?php echo $captcha; ?>
+                <div class="buttons clearfix">
+                  <div class="pull-right">
+                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
+                  </div>
+                </div>
+                <?php } else { ?>
+                <?php echo $text_login; ?>
+                <?php } ?>
+              </form>
+            </div>
+            <?php } ?>
+     </div>
+    </div>
+  </section>   
+  <br><br><br>   
+     
      
 <?php echo $content_bottom; ?>
 <?php echo $column_right; ?>
@@ -387,6 +616,7 @@ $('#button-review').on('click', function() {
 	});
 });
 
+
 $(document).ready(function() {
   $('.prices-single-thumb').on('click', '.js-set-main_image', function(){
     var s = $(this).data('image');
@@ -402,8 +632,6 @@ $(document).ready(function() {
 
   // зум фото на странице товара
   var zoomIndex = 0;
-
-
 
 //--></script>
 <?php echo $footer; ?>

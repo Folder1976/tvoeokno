@@ -439,12 +439,12 @@ button {
       padding: 5px 10px;
       min-width: 25%;
       vertical-align: top; }
-      .main-nav-dropdown-item a {
+      .main-nav-dropdown-item > a {
         color: #104B6D;
         border-bottom: 2px solid transparent;
         width: 100%;
       }
-        .main-nav-dropdown-item a:hover {
+        .main-nav-dropdown-item > a:hover {
           color: #EF4424;
           text-decoration: none;
           border-bottom: 2px solid #BA2626;
@@ -3396,6 +3396,8 @@ textarea {
   .favorites-single img {
     max-width: 100%; }
   .favorites-single .name {
+    height: 70px;
+    overflow: hidden;
     font-size: 18px;
     letter-spacing: 0.9px;
     color: #114A6D;
@@ -3998,7 +4000,7 @@ textarea {
     width: 255px;
     float: left; }
   .window-sill-info-right {
-    padding-left: 30px;
+    /*padding-left: 30px;*/
     float: left; }
     .window-sill-info-right .price p {
       font-size: 18px;
@@ -4855,6 +4857,18 @@ textarea {
 }
 /*********************/
 
+.prices-single-img img {
+  width: 100%;
+}
+
+.product-card-data .window-sill-count {
+  margin-top: 0;
+}
+
+
+#input-option274 {
+  min-height: 182px;
+}
 
 /********** PRODUCT **********/
 .description ul {
@@ -4961,15 +4975,45 @@ textarea {
     margin: 20px auto;
     display: block;
 }*/
-.news-single img {
-    max-height: 200px;
-    margin: 20px auto;
-    display: block;
+.all-news{
+    display: flex!important;
+    justify-content: space-between!important;
+    flex-wrap: wrap!important;
 }
-.container {
-    padding-left: 70px;
+.all-news-single{
+box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.14)!important;
+border:none!important;
+    width: 47.5%!important;
+    max-width: 100%!important;
+    padding-right: 0!important;
+      padding: 0 10px 50px 10px!important;
+    position: relative;
+    
 }
-
+.all-news-single img{
+    width: 100%!important;
+    text-align: center!important;
+    float: none!important;
+    max-width: 100%!important;
+}
+.all-news-content{
+    padding-left: 0!important;
+    float: none!important;
+    width: 100%!important;
+}
+.all-news-single p{
+    overflow: hidden!important;
+    text-overflow: ellipsis!important;
+    display: -webkit-box!important;
+    -webkit-line-clamp: 3!important;
+    -webkit-box-orient: vertical!important;
+}
+.all-news-single .bottom{
+    width: 90%!important;
+    position: absolute!important;
+    top: 91%!important;
+    
+}
 @media (max-width: 450px){
         .container {
           padding-left: 10px;

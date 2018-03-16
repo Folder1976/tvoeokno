@@ -11,7 +11,9 @@ class ModelBlogBlog extends Model {
 		author = '" . $this->db->escape($data['author']) . "',
 		show_date = '" . (int)$data['show_date'] . "',
 		allow_comment = '" . (int)$data['allow_comment'] . "', 
-		date_added = '" . $this->db->escape($data['date_added']) . "'");
+		date_added = '" . $this->db->escape($data['date_added']) . "',
+		date_action = '" . $this->db->escape($data['date_action']) . "'
+		");
 
 		$blog_id = $this->db->getLastId(); 
 			
@@ -24,8 +26,8 @@ class ModelBlogBlog extends Model {
 		img_title = '" . $this->db->escape($value['img_title']) . "',
 		page_title = '" . $this->db->escape($value['page_title']) . "', 
 		short_description = '" . $this->db->escape($value['short_description']) . "', 
-		meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', 
-		meta_description = '" . $this->db->escape($value['meta_description']) . "', 
+		meta_keyword = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_keyword'],ENT_QUOTES))) . "', 
+		meta_description = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES))) . "', 
 		description = '" . $this->db->escape($value['description']) . "',
 		tags = '" . $this->db->escape($value['tags']) . "'
 		")
@@ -81,6 +83,15 @@ class ModelBlogBlog extends Model {
 		
 		if (isset($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
+				
+				if($keyword == ''){
+					if($language_id == 1){
+						$keyword = $this->translitArtkl($data['blog_description'][$language_id]['title']);
+					}else{
+						$keyword = 'uk/'.$this->translitArtkl($data['blog_description'][$language_id]['title']);
+					}
+				}
+				
 				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'blog_id=" . (int)$blog_id . "',
 								 language_id = '" . (int)$language_id . "',
@@ -90,6 +101,14 @@ class ModelBlogBlog extends Model {
 		
 		$this->cache->delete('blog');
 	}
+	
+		public function translitArtkl($str) {
+			$rus = array('и','і','є','Є','ї','\"','\'','.',' ','А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
+			$lat = array('u','i','e','E','i','','','','-','A', 'B', 'V', 'G', 'D', 'E', 'E', 'Gh', 'Z', 'I', 'Y', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'F', 'H', 'C', 'Ch', 'Sh', 'Sch', 'Y', 'Y', 'Y', 'E', 'Yu', 'Ya', 'a', 'b', 'v', 'g', 'd', 'e', 'e', 'gh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'c', 'ch', 'sh', 'sch', 'y', 'y', 'y', 'e', 'yu', 'ya');
+		return str_replace($rus, $lat, $str);
+	}
+
+
 	
 	public function editBlog($blog_id, $data) {
 		
@@ -102,7 +121,8 @@ class ModelBlogBlog extends Model {
 		author = '" . $this->db->escape($data['author']) . "',
 		show_date = '" . (int)$data['show_date'] . "',
 		status = '" . (int)$data['status'] . "',
-		date_added = '" . $data['date_added'] . "'
+		date_added = '" . $data['date_added'] . "',
+		date_action = '" . $data['date_action'] . "'
 		WHERE blog_id = '" . (int)$blog_id . "'");
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "blog_description WHERE blog_id = '" . (int)$blog_id . "'");
@@ -116,8 +136,8 @@ class ModelBlogBlog extends Model {
 		title = '" . $this->db->escape($value['title']) . "',
 		page_title = '" . $this->db->escape($value['page_title']) . "',
 		short_description = '" . $this->db->escape($value['short_description']) . "', 
-		meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', 
-		meta_description = '" . $this->db->escape($value['meta_description']) . "', 
+		meta_keyword = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_keyword'],ENT_QUOTES))) . "', 
+		meta_description = '" . $this->db->escape(strip_tags(htmlspecialchars_decode($value['meta_description'],ENT_QUOTES))) . "', 
 		description = '" . $this->db->escape($value['description']) . "',
 		tags = '" . $this->db->escape($value['tags']) . "'
 		");
@@ -185,6 +205,15 @@ class ModelBlogBlog extends Model {
 
 		if (isset($data['keyword'])) {
 			foreach ($data['keyword'] as $language_id => $keyword) {
+				
+				if($keyword == ''){
+					if($language_id == 1){
+						$keyword = $this->translitArtkl($data['blog_description'][$language_id]['title']);
+					}else{
+						$keyword = 'uk/'.$this->translitArtkl($data['blog_description'][$language_id]['title']);
+					}
+				}
+				
 				$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET
 								 query = 'blog_id=" . (int)$blog_id . "',
 								 language_id = '" . (int)$language_id . "',
@@ -244,6 +273,7 @@ class ModelBlogBlog extends Model {
 			$sort_data = array(
 				'id.title',
 				'i.date_added',
+				'i.date_action',
 				'i.sort_order'
 			);		
 		
@@ -369,7 +399,8 @@ class ModelBlogBlog extends Model {
 	
 	
 	public function getCommentsByBlogId($blog_id, $start = 0, $limit = 40) {
-		$query = $this->db->query("SELECT nc.blog_comment_id, nc.blog_id, nc.name, nc.email, nc.comment, nc.status, n.blog_id, nd.title, n.image, nc.date_added FROM " . DB_PREFIX . "blog_comment nc LEFT JOIN " . DB_PREFIX . "blog n ON (nc.blog_id = n.blog_id) LEFT JOIN " . DB_PREFIX . "blog_description nd ON (n.blog_id = nd.blog_id) WHERE n.blog_id = '" . (int)$blog_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY nc.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
+		$query = $this->db->query("SELECT nc.blog_comment_id, nc.blog_id, nc.name, nc.email, nc.comment, nc.status, n.blog_id, nd.title, n.image,
+								  nc.date_added, nc.date_action FROM " . DB_PREFIX . "blog_comment nc LEFT JOIN " . DB_PREFIX . "blog n ON (nc.blog_id = n.blog_id) LEFT JOIN " . DB_PREFIX . "blog_description nd ON (n.blog_id = nd.blog_id) WHERE n.blog_id = '" . (int)$blog_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY nc.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
 		
 		return $query->rows;
 	}

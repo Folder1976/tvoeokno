@@ -40,7 +40,11 @@
  $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = UA_URL;}
   //Пример
   //<?php echo $lib['русская фраза']; ? >
-  ?><footer class="footer">
+  ?>
+      
+
+  
+  <footer class="footer">
       <div class="footer-top">
         <div class="container">
           <div class="row">
@@ -190,6 +194,7 @@
     }
     </script>
     <link href="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/css/nanogallery.css" rel="stylesheet" type="text/css">
+    <link href="/catalog/view/theme/default/stylesheet/fastorder.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/catalog/view/theme/default/js/nanoGALLERY-5.10.3/jquery.nanogallery.js"></script>
     <style>
       .ff{
@@ -259,7 +264,6 @@
 </div>
 	
 
-<script>
 console.log('start');
   $(document).ready(function(){    
     setTimeout(function(){
@@ -271,6 +275,26 @@ console.log('start');
 
 </script>
 <?php } ?>
+<!-- Theme created by Welford Media for OpenCart 2.0 www.welfordmedia.co.uk -->
+ <script>
+      function showForm(data){
+        $.ajax({
+          url: 'index.php?route=product/fastorder/getForm',
+          type: 'post',
+          data: {product_name: data['product_name'], image: data['image'], price: data['price'] ,product_id: data['product_id'], product_link: data['product_link']},
 
+          beforeSend: function() {
+          },
+          complete: function() {
+          },
+          success: function(result) {
+            $('#fastorder-form-container'+data['product_id']).html(result);
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+          }
+        });
+    };
+    </script>
   </body>
 </html>

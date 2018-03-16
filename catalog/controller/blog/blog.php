@@ -35,22 +35,23 @@ class ControllerBlogBlog extends Controller {
 				
 		$this->load->model('blog/blog_category');
 
-		if (isset($this->request->get['blogpath'])) {
-			$path = '';
+		if (isset($this->request->get['blog_id'])) {
+			$blog_id = $this->request->get['blog_id'];
+		} else {
+			$blog_id = 0;
+		}
+		$data['language_id'] = (int)$this->config->get('config_language_id');
+		$blog_info = $this->model_blog_blog->getBlog($blog_id);
+   
+		
+		if ($blog_info) {
+			
+			$blog_category_id = $this->model_blog_blog->getBlogCategoryId($blog_id);
+			while ($blog_category_id > 0) {
+				
 
-			$parts = explode('_', (string)$this->request->get['blogpath']);
-
-			$blog_category_id = (int)array_pop($parts);
-
-			foreach ($parts as $path_id) {
-				if (!$path) {
-					$path = $path_id;
-				} else {
-					$path .= '_' . $path_id;
-				}
-
-				$category_info = $this->model_blog_blog_category->getBlogCategory($path_id);
-
+				$category_info = $this->model_blog_blog_category->getBlogCategory($blog_category_id);
+				$blog_category_id = $category_info['parent_id'];
 				
 				
 				if ($category_info) {
@@ -61,27 +62,10 @@ class ControllerBlogBlog extends Controller {
 				}
 			}
 
-			// Set the last category breadcrumb
-			$category_info = $this->model_blog_blog_category->getBlogCategory($blog_category_id);
-
-			if ($category_info) {
-				$url = '';
-
-				$data['breadcrumbs'][] = array(
-					'text' => $category_info['name'],
-					'href' => $category_info['keyword']//$this->url->link('blog/category', 'blogpath=' . $this->request->get['blogpath'] . $url)
-				);
-			}
+				
 		}		
 		
-		if (isset($this->request->get['blog_id'])) {
-			$blog_id = $this->request->get['blog_id'];
-		} else {
-			$blog_id = 0;
-		}
-$data['language_id'] = (int)$this->config->get('config_language_id');
-		$blog_info = $this->model_blog_blog->getBlog($blog_id);
-   		
+		
 		if ($blog_info) {
 			$url = '';
 			
@@ -89,9 +73,10 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 				$url .= '&blogpath=' . $this->request->get['blogpath'];
 			}
 			
+			
 			$data['breadcrumbs'][] = array(
-			'text'      => $blog_info['title'],
-			'href' => $blog_info['keyword']//$this->url->link('blog/blog', $url . '&blog_id=' . $this->request->get['blog_id'])
+					'text'      => $blog_info['title'],
+					'href' => $blog_info['keyword']//$this->url->link('blog/blog', $url . '&blog_id=' . $this->request->get['blog_id'])
 			);
 			
 			$data['new_read_counter_value'] = $blog_info['count_read']+1;

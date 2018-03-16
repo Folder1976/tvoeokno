@@ -24,6 +24,8 @@ class ControllerCommonHeader extends Controller {
 			$this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
 		}
 
+		
+		$data['config_copy'] = $this->config->get('config_copy');
 		$data['title'] = $this->document->getTitle();
 
 		$data['base'] = $server;
@@ -134,8 +136,21 @@ class ControllerCommonHeader extends Controller {
 						'filter_sub_category' => true
 					);
 
+							$children_data1 = array();
+
+							$children1 = $this->model_catalog_category->getCategories($child['category_id']);
+			
+							foreach ($children1 as $child1) {
+								
+								$children_data1[] = array(
+									'name'  => $child1['name'],
+									'href'  => $this->url->link('product/category', 'path=' . $child1['category_id'])
+								);
+							}
+				
 					$children_data[] = array(
-						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+						'name'  => $child['name'],
+						'children' => $children_data1,
 						'href'  => $this->url->link('product/category', 'path=' . $child['category_id'])
 					);
 				}
@@ -149,7 +164,8 @@ class ControllerCommonHeader extends Controller {
 				);
 			}
 		}
-		
+
+	
 		//$this->load->model('catalog/information');
 		//$data['contact'] = $this->model_catalog_information->getInformation(3);
 		

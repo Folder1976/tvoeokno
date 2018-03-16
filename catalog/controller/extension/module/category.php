@@ -40,10 +40,27 @@ class ControllerExtensionModuleCategory extends Controller {
 				foreach($children as $child) {
 					$filter_data = array('filter_category_id' => $child['category_id'], 'filter_sub_category' => true);
 
+						
+						$children_data1 = array();
+						$children1 = $this->model_catalog_category->getCategories($child['category_id']);
+		
+						foreach($children1 as $child1) {
+							$filter_data1 = array('filter_category_id' => $child1['category_id'], 'filter_sub_category' => true);
+		
+							$children_data1[] = array(
+								'category_id' => $child1['category_id'],
+								'name' => $child1['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+								'href' => $this->url->link('product/category', 'path=' . $child1['category_id'])
+							);
+						}
+					
+					
+					
 					$children_data[] = array(
 						'category_id' => $child['category_id'],
 						'name' => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-						'href' => $this->url->link('product/category', 'path=' . $child['category_id'])
+						'href' => $this->url->link('product/category', 'path=' . $child['category_id']),
+						'children'    => $children_data1
 					);
 				}
 			}

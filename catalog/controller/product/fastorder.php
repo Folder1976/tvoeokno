@@ -70,6 +70,13 @@ class ControllerProductFastorder extends Controller {
 
         // Need before rewrite module (hack)
         $data['product_name'] = $data['name'];
+      
+        if ($data['image']) {
+            $data['image'] = $this->model_tool_image->resize($data['image'], $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+        } else {
+            $data['image'] = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_related_width'), $this->config->get($this->config->get('config_theme') . '_image_related_height'));
+        }
+
 
         // Get the product link
         // if (isset($this->request->server['REQUEST_SCHEME'])) {
@@ -157,6 +164,7 @@ class ControllerProductFastorder extends Controller {
         $data['product_name'] = $this->request->post['product_name'];
         $data['price'] = $this->request->post['price'];
         $data['product_id'] = $this->request->post['product_id'];
+        $data['image'] = $this->request->post['image'];
 
         $data['product_link'] = $this->request->post['product_link'];
 
@@ -268,6 +276,7 @@ class ControllerProductFastorder extends Controller {
         $mail_tmpl_data = array (
             'product_link'                  => $this->request->post['product_link'],
             'subject'                       => $subject,
+            'image'           => $data['image'],
             'text_fastorder_name'           => $data['text_fastorder_name'],
             'text_fastorder_mail_msg_data'  => $data['text_fastorder_mail_msg_data'],
             'name'                          => $json['name'],

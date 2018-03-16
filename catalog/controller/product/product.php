@@ -4,7 +4,8 @@ class ControllerProductProduct extends Controller {
 
 	public function index() {
 		$this->load->language('product/product');
-		
+
+
 		//==============================================
 		$this->load->model('catalog/attribute2');
 		$this->load->model('catalog/attribute_group2');
@@ -37,6 +38,8 @@ class ControllerProductProduct extends Controller {
 		$data['harakterustuku_furnituri'] = $this->model_blog_blog->getBlog(89);
 		$data['posmotret_cveta_podoconnikov'] = $this->model_blog_blog->getBlog(90);
 		
+		$url = '';
+		
 		if (isset($this->request->get['path'])) {
 			$path = '';
 
@@ -65,7 +68,7 @@ class ControllerProductProduct extends Controller {
 			$category_info = $this->model_catalog_category->getCategory($category_id);
 
 			if ($category_info) {
-				$url = '';
+				
 
 				if (isset($this->request->get['sort'])) {
 					$url .= '&sort=' . $this->request->get['sort'];
@@ -90,6 +93,43 @@ class ControllerProductProduct extends Controller {
 			}
 		}
 
+		
+		if (isset($this->request->get['product_id'])) {
+			$product_id = (int)$this->request->get['product_id'];
+		} else {
+			$product_id = 0;
+		}
+
+		$this->load->model('catalog/product');
+
+		$product_info = $this->model_catalog_product->getProduct($product_id);
+
+		if($product_info){
+			
+			$data['breadcrumbs1'] = array();
+	
+			$data['breadcrumbs1'][] = array(
+				'text' => $this->language->get('text_home'),
+				'href' => $this->url->link('common/home')
+			);
+			
+			$categories = $this->model_catalog_category->getCategoriPath((int)$product_info['category_id']);
+			
+			foreach($categories as $row){
+				$category_info = $this->model_catalog_category->getCategory($row['path_id']);
+				
+				if ($category_info) {
+						$data['breadcrumbs1'][] = array(
+							'text' => $category_info['name'],
+							'href' => $this->url->link('product/category', 'path=' . $row['path_id'] . $url)
+						);
+					
+				}
+			}
+			
+			$data['breadcrumbs'] = $data['breadcrumbs1'];
+		}
+		
 		$this->load->model('catalog/manufacturer');
 
 		if (isset($this->request->get['manufacturer_id'])) {
@@ -171,15 +211,6 @@ class ControllerProductProduct extends Controller {
 			);
 		}
 
-		if (isset($this->request->get['product_id'])) {
-			$product_id = (int)$this->request->get['product_id'];
-		} else {
-			$product_id = 0;
-		}
-
-		$this->load->model('catalog/product');
-
-		$product_info = $this->model_catalog_product->getProduct($product_id);
 
 		if ($product_info) {
 			
@@ -343,11 +374,16 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 
 			$results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
 
+		
+			
 			foreach ($results as $result) {
 				$data['images'][] = array(
 					'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
-					'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'))
+					//'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'))
+					'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'))
 				);
+				
+				//echo '<pre>'; print_r(var_dump( $this->config->get($this->config->get('config_theme') . '_image_additional_width')  ));
 			}
 
 			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
@@ -436,14 +472,16 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 
 			$data['reviews'] = sprintf($this->language->get('text_reviews'), (int)$product_info['reviews']);
 			$data['rating'] = (int)$product_info['rating'];
+			$data['captcha'] = $this->load->controller('captcha/basic_captcha');
 
 			// Captcha
+			/*
 			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
 				$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'));
 			} else {
 				$data['captcha'] = '';
 			}
-
+*/
 			$data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);
 
 			$data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
@@ -647,11 +685,12 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 		$this->response->setOutput($this->load->view('product/review', $data));
 	}
 
-	public function write() {
+public function write() {
 		$this->load->language('product/product');
 
 		$json = array();
 
+		
 		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
 			if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 25)) {
 				$json['error'] = $this->language->get('error_name');
@@ -665,13 +704,18 @@ $data['language_id'] = (int)$this->config->get('config_language_id');
 				$json['error'] = $this->language->get('error_rating');
 			}
 
-			// Captcha
-			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
-				$captcha = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha') . '/validate');
-
-				if ($captcha) {
-					$json['error'] = $captcha;
-				}
+			if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
+				$json['error'] = $this->language->get('error_captcha');
+			}
+			
+			if(!isset($json['error'])){
+				unset($this->session->data['captcha']);
+			}
+				
+			$this->request->post['status'] = 0;
+			if(isset($this->session->data['user_id']) AND $this->session->data['user_id'] > 0){
+				unset($json['error']);
+				$this->request->post['status'] = 1;
 			}
 
 			if (!isset($json['error'])) {

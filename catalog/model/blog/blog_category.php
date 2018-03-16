@@ -88,4 +88,5 @@ class ModelBlogBlogCategory extends Model {
 			return 0;
 		}
 	}
+
 }

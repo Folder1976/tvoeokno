@@ -46,12 +46,16 @@
 
             <?php foreach ($blogs as $blog) { ?>
             <div class="all-news-single">
-					   <?php if(strpos($blog['image'], 'no_image') === false){?>
+							<?php if(strpos($blog['image'], 'no_image') === false){?>
 								<img src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['alt']; ?>" title="<?php echo $blog['title']; ?>">
 								<div class="all-news-content">
 							<?php }else{ ?>
 								<div class="all-news-content" style="width: 100%;">
 							<?php } ?>
+								<?php if($blog['date_action'] !=''){ ?>
+								<span class="action_date"><?php echo $lib['АКЦИЯ ДЕЙСТВИТЕЛЬНА ДО']; ?> <span class="date"><?php echo $blog['date_action']; ?></span></span>
+							<?php } ?>
+           
                 <h3><a href="<?php echo $blog['href']; ?>"><?php echo $blog['title']; ?></a></h3>
                 <p><?php echo $blog['short_description']; ?></p>
                 <div class="bottom">

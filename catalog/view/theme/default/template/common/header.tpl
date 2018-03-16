@@ -33,12 +33,9 @@
                 );
    $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
    $lang_key = $language_id;$dir = '';if($language_id == 2){$dir = UA_URL;}
-  
-  
-
    //Пример
   //<?php echo $lib['русская фраза']; ? >
-  ?><!DOCTYPE html>
+?><!DOCTYPE html>
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
   <head>
     <meta charset="utf-8">
@@ -52,12 +49,10 @@
 
     <script src="/catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/vendor.css">
-    <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-  <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-  <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link href="/catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+  <script src="/catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <link href="/catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
-
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css">
     <link rel="stylesheet" href="/catalog/view/theme/default/libs/fancybox/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/catalog/view/theme/default/libs/owl-carousel/owl.carousel.min.css">
@@ -66,6 +61,7 @@
     <link rel="stylesheet" href="/catalog/view/theme/default/libs/slider/nouislider.min.css">
     <link rel="stylesheet" href="/catalog/view/theme/default/libs/nice-select/nice-select.css">
     <link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/main.css">
+    <link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/menu.css">
     <link rel="stylesheet" href="/catalog/view/theme/default/stylesheet/media.css">
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -83,7 +79,11 @@
   </script-->
 
   </head>
-  <body class="<?php echo $class; ?>"> <!-- oncopy="return false;" oncontextmenu="return false;" onselectstart="return false"-->
+  <?php if($config_copy){ ?>
+    <body class="<?php echo $class; ?>" oncopy="return false;" oncontextmenu="return false;" onselectstart="return false">
+  <?php }else{ ?>
+    <body class="<?php echo $class; ?>"> <!-- oncopy="return false;" oncontextmenu="return false;" onselectstart="return false"-->
+  <?php } ?>
     <header class="header">
       <div class="header-top">
         <div class="container-fluid">
@@ -199,7 +199,14 @@
               <div class="main-nav-dropdown">
                 <ul>
                 <?php foreach($group_list[10]['list'] as $row){ ?>
-                    <li class="main-nav-dropdown-item"><a href="<?php echo $row['href'.$lang_key]; ?>"><?php echo $row['name']; ?></a></li>
+                    <li class="main-nav-dropdown-item">
+                        <a href="<?php echo $row['href'.$lang_key]; ?>"><?php echo $row['name']; ?></a>
+                        <!--ul class="main-nav-dropdown-item__second-menu">
+                            <li class="main-nav-dropdown-item__second-menu-item"><a href="">Пункт второго уровня 1</a></li>
+                            <li class="main-nav-dropdown-item__second-menu-item"><a href="">Пункт второго уровня 2</a></li>
+                            <li class="main-nav-dropdown-item__second-menu-item"><a href="">Пункт второго уровня 3</a></li>
+                        </ul-->
+                    </li>
                 <?php } ?>
                 </ul>
               </div>
@@ -220,14 +227,20 @@
                 <div class="main-nav-dropdown">
                   <ul>
                     <?php foreach ($category['children'] as $k => $child) { ?>
-                      <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                      <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
+                        
+                        <?php if(isset($child['children']) AND count($child['children'])){ ?>
+                        
+                          <ul class="main-nav-dropdown-item__second-menu">
+                              <?php foreach ($child['children'] as $k => $child1) { ?>
+                                <li class="main-nav-dropdown-item__second-menu-item"><a href="<?php echo $child1['href']; ?>"><?php echo $child1['name']; ?></a></li>
+                              <?php } ?>
+                          </ul>
+  
+                        <?php } ?>
+
+                      </li>
                     <?php } ?>
-                    
-                    <?php
-                    //foreach ($manufacturers as $key => $manuf) {
-                     // echo '<li class="main-nav-dropdown-item"><a href="'.$manuf['keyword'].'">Окна '.$manuf['name'].'</a></li>';
-                    //}
-                    ?>
                   </ul>
                 </div>
               </li>
@@ -246,7 +259,21 @@
                 <div class="main-nav-dropdown">
                   <ul>
                     <?php foreach ($category['children'] as $k => $child) { ?>
-                      <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                      <li class="main-nav-dropdown-item"><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
+                      
+                      
+                        <?php if(isset($child['children']) AND count($child['children'])){ ?>
+                        
+                          <ul class="main-nav-dropdown-item__second-menu">
+                              <?php foreach ($child['children'] as $k => $child1) { ?>
+                                <li class="main-nav-dropdown-item__second-menu-item"><a href="<?php echo $child1['href']; ?>"><?php echo $child1['name']; ?></a></li>
+                              <?php } ?>
+                          </ul>
+  
+                        <?php } ?>
+                        
+                      
+                      </li>
                     <?php } ?>
                   </ul>
                 </div>

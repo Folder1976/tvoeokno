@@ -1240,6 +1240,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_maintenance'] = $this->config->get('config_maintenance');
 		}
 
+		if (isset($this->request->post['config_copy'])) {
+			$data['config_copy'] = $this->request->post['config_copy'];
+		} else {
+			$data['config_copy'] = $this->config->get('config_copy');
+		}
+
 		if (isset($this->request->post['config_password'])) {
 			$data['config_password'] = $this->request->post['config_password'];
 		} else {

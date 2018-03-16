@@ -170,6 +170,7 @@ class ControllerBlogCategory extends Controller {
 				'count_read' => $result['count_read'],
         		'title' => $result['title'],
 				'author' => $result['author'],
+				'date_action'      => $result['date_action'],
 				'comment_total' => $this->model_blog_blog->getTotalCommentsByBlogId($result['blog_id']),
         		'date_added_full' => $date,
         		'description' => html_entity_decode($result['description']),

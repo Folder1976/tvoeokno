@@ -4,8 +4,15 @@
     <div class="container-fluid">
       <div class="pull-right">
 		<?php if (isset($product_page)) { ?><a class="btn btn-info" href="<?php echo $product_page; ?>" target="_blank" data-toggle="tooltip" title="<?php echo $button_view; ?>"><i class="fa fa-eye"></i></a><?php } ?>
-		 <button id="key_reload" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-info"><i class="fa fa-save"></i><i class="fa fa-save"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
-       
+		 
+		<button id="key_reload" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-info"><i class="fa fa-save"></i><i class="fa fa-save"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <script>
+			$(document).on('click', '#key_reload', function(){
+				$('#reload').val('reload');
+				$('#form-product').submit();
+			});
+		</script>
+			
         <button type="submit" form="form-product" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
         <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
       <h1><?php echo $heading_title; ?></h1>
@@ -17,12 +24,7 @@
     </div>
   </div>
 	
-	  <script>
-    $(document).on('click', '#key_reload', function(){
-      $('#reload').val('reload');
-      $('#form-product').submit();
-    });
-  </script>
+	 
   <div class="container-fluid">
     <?php if ($error_warning) { ?>
     <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
@@ -43,6 +45,7 @@
             <li><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
             <li><a href="#tab-table" data-toggle="tab">Таблица брендов</a></li>
             <li><a href="#tab-attribute4" data-toggle="tab">Дополнительно</a></li>
+            <li><a href="#tab-attribute42" data-toggle="tab">Таблица цен</a></li>
             <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
             <li><a href="#tab-recurring" data-toggle="tab"><?php echo $tab_recurring; ?></a></li>
             <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li>
@@ -646,34 +649,87 @@
                   </thead>
                   <tbody>
                     <?php $attribute4_row = 0; ?>
-                    <?php foreach ($product_attribute4s as $product_attribute4) { ?>
+										<?php if(isset($product_attribute4s[1])){ ?>
+                    <?php foreach ($product_attribute4s[1] as $product_attribute4) { ?>
                     <tr id="attribute4-row<?php echo $attribute4_row; ?>">
                     
 										  <td class="text-left"><?php foreach ($languages as $language) { ?>
                         <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
-                          <textarea name="product_attribute4[<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text'] : ''; ?></textarea>
+                          <textarea name="product_attribute4[1][<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text'] : ''; ?></textarea>
                         </div>
 										<?php } ?></td>
                     
 										  <td class="text-left"><?php foreach ($languages as $language) { ?>
                         <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
-                          <textarea name="product_attribute4[<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text1]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text1'] : ''; ?></textarea>
+                          <textarea name="product_attribute4[1][<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text1]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text1'] : ''; ?></textarea>
                         </div>
 										<?php } ?></td>
                     
 										
-										  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[<?php echo $attribute4_row; ?>][price]" value="<?php echo $product_attribute4['price']; ?>" placeholder="0.00" class="form-control" />
-                        <input type="hidden" name="product_attribute4[<?php echo $attribute4_row; ?>][attribute4_id]" value="<?php echo $product_attribute4['attribute4_id']; ?>" /></td>
-											<td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[<?php echo $attribute4_row; ?>][sort_order]" value="<?php echo $product_attribute4['sort_order']; ?>" placeholder="0.00" class="form-control" /></td>
+										  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[1][<?php echo $attribute4_row; ?>][price]" value="<?php echo $product_attribute4['price']; ?>" placeholder="0.00" class="form-control" />
+                        <input type="hidden" name="product_attribute4[1][<?php echo $attribute4_row; ?>][attribute4_id]" value="<?php echo $product_attribute4['attribute4_id']; ?>" /></td>
+											<td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[1][<?php echo $attribute4_row; ?>][sort_order]" value="<?php echo $product_attribute4['sort_order']; ?>" placeholder="0.00" class="form-control" /></td>
                       <td class="text-left"><button type="button" onclick="$('#attribute4-row<?php echo $attribute4_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                     </tr>
                     <?php $attribute4_row++; ?>
+                    <?php } ?>
                     <?php } ?>
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colspan="4"></td>
                       <td class="text-left"><button type="button" onclick="addAttribute4();" data-toggle="tooltip" title="<?php echo $button_attribute4_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+						
+            <div class="tab-pane" id="tab-attribute42">
+              <div class="table-responsive">
+                <table id="attribute42" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td class="text-left">Наименование</td>
+                      <td class="text-left">Единица измерения</td>
+                      <td class="text-left">Цена</td>
+                      <td class="text-left">Сортировка</td>
+                      <td></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $attribute42_row = 0; ?>
+										<?php if(isset($product_attribute4s[2])){ ?>
+                    <?php foreach ($product_attribute4s[2] as $product_attribute4) { ?>
+                    <tr id="attribute4-row<?php echo $attribute4_row; ?>">
+                    
+										  <td class="text-left"><?php foreach ($languages as $language) { ?>
+                        <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+                          <textarea name="product_attribute4[2][<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text'] : ''; ?></textarea>
+                        </div>
+										<?php } ?></td>
+                    
+										  <td class="text-left"><?php foreach ($languages as $language) { ?>
+                        <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
+                          <textarea name="product_attribute4[2][<?php echo $attribute4_row; ?>][product_attribute4_description][<?php echo $language['language_id']; ?>][text1]" rows="1" placeholder="<?php echo $entry_text; ?>" class="form-control"><?php echo isset($product_attribute4['product_attribute4_description'][$language['language_id']]) ? $product_attribute4['product_attribute4_description'][$language['language_id']]['text1'] : ''; ?></textarea>
+                        </div>
+										<?php } ?></td>
+                    
+										
+										  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[2][<?php echo $attribute4_row; ?>][price]" value="<?php echo $product_attribute4['price']; ?>" placeholder="0.00" class="form-control" />
+                        <input type="hidden" name="product_attribute4[2][<?php echo $attribute4_row; ?>][attribute4_id]" value="<?php echo $product_attribute4['attribute4_id']; ?>" /></td>
+											<td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[2][<?php echo $attribute4_row; ?>][sort_order]" value="<?php echo $product_attribute4['sort_order']; ?>" placeholder="0.00" class="form-control" /></td>
+                      <td class="text-left"><button type="button" onclick="$('#attribute42-row<?php echo $attribute4_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                    </tr>
+                    <?php $attribute4_row++; ?>
+                    <?php } ?>
+										<?php } ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4"></td>
+                      <td class="text-left"><button type="button" onclick="addAttribute42();" data-toggle="tooltip" title="<?php echo $button_attribute4_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
                     </tr>
                   </tfoot>
                 </table>
@@ -1379,24 +1435,53 @@ function addAttribute4() {
 	html  = '<tr id="attribute4-row' + attribute4_row + '">';
 	html += '  <td class="text-left">';
 	<?php foreach ($languages as $language) { ?>
-	html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><textarea name="product_attribute4[' + attribute4_row + '][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="Наименование товара или услуги" class="form-control"></textarea></div>';
+	html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><textarea name="product_attribute4[1][' + attribute4_row + '][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="Наименование товара или услуги" class="form-control"></textarea></div>';
     <?php } ?>
 	html += '  </td>';
 	
 	html += '  <td class="text-left">';
 	<?php foreach ($languages as $language) { ?>
-	html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><textarea name="product_attribute4[' + attribute4_row + '][product_attribute4_description][<?php echo $language['language_id']; ?>][text1]" rows="1" class="form-control">м.п.</textarea></div>';
+	html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><textarea name="product_attribute4[1][' + attribute4_row + '][product_attribute4_description][<?php echo $language['language_id']; ?>][text1]" rows="1" class="form-control">м.п.</textarea></div>';
     <?php } ?>
 	html += '  </td>';
 	
-	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[' + attribute4_row + '][price]" value="" placeholder="0.00" class="form-control" /><input type="hidden" name="product_attribute4[' + attribute4_row + '][attribute4_id]" value="" /></td>';
-	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[' + attribute4_row + '][sort_order]" value="" placeholder="0" class="form-control" /></td>';
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[1][' + attribute4_row + '][price]" value="0" placeholder="0.00" class="form-control" /><input type="hidden" name="product_attribute4[' + attribute4_row + '][attribute4_id]" value="" /></td>';
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[1][' + attribute4_row + '][sort_order]" value="0" placeholder="0" class="form-control" /></td>';
 
 	
 	html += '  <td class="text-left"><button type="button" onclick="$(\'#attribute4-row' + attribute4_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
     html += '</tr>';
 
 	$('#attribute4 tbody').append(html);
+
+
+	attribute4_row++;
+}
+
+var attribute42_row = <?php echo $attribute42_row; ?>;
+
+function addAttribute42() {
+	html  = '<tr id="attribute42-row' + attribute42_row + '">';
+	html += '  <td class="text-left">';
+	<?php foreach ($languages as $language) { ?>
+	html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><textarea name="product_attribute4[2][' + attribute4_row + '][product_attribute4_description][<?php echo $language['language_id']; ?>][text]" rows="1" placeholder="Наименование товара или услуги" class="form-control"></textarea></div>';
+    <?php } ?>
+	html += '  </td>';
+	
+	html += '  <td class="text-left">';
+	<?php foreach ($languages as $language) { ?>
+	html += '<div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span><textarea name="product_attribute4[2][' + attribute4_row + '][product_attribute4_description][<?php echo $language['language_id']; ?>][text1]" rows="1" class="form-control">м.п.</textarea></div>';
+    <?php } ?>
+	html += '  </td>';
+	
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[2][' + attribute4_row + '][price]" value="0" placeholder="0.00" class="form-control" /><input type="hidden" name="product_attribute4[' + attribute4_row + '][attribute4_id]" value="" /></td>';
+	html += '  <td class="text-left" style="width: 20%;"><input type="text" name="product_attribute4[2][' + attribute4_row + '][sort_order]" value="0" placeholder="0" class="form-control" /></td>';
+
+	
+	html += '  <td class="text-left"><button type="button" onclick="$(\'#attribute4-row' + attribute4_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+    html += '</tr>';
+
+	$('#attribute42 tbody').append(html);
 
 
 	attribute4_row++;

@@ -112,6 +112,7 @@ class ControllerBlogHome extends Controller {
 			'count_read' => $result['count_read'],
 			'comment_total' => $this->model_blog_blog->getTotalCommentsByBlogId($result['blog_id']),
 			'blog_id' => $result['blog_id'],
+			'date_action'      => $result['date_action'],
 			'title'      => $result['title'],
 			'img_title'      => $result['img_title'],
 			'alt'      => $result['alt'],

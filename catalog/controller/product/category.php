@@ -87,6 +87,32 @@ class ControllerProductCategory extends Controller {
 			$category_id = 0;
 		}
 
+		
+		$data['breadcrumbs1'] = array();
+
+		$data['breadcrumbs1'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home')
+		);
+		
+		$categories = $this->model_catalog_category->getCategoriPath($category_id);
+
+		
+		foreach($categories as $row){
+			$category_info = $this->model_catalog_category->getCategory($row['path_id']);
+			
+			if ($category_info) {
+				if($row['path_id'] != $category_id){
+					$data['breadcrumbs1'][] = array(
+						'text' => $category_info['name'],
+						'href' => $this->url->link('product/category', 'path=' . $row['path_id'] . $url)
+					);
+				}
+			}
+		}
+		
+		$data['breadcrumbs'] = $data['breadcrumbs1'];
+		
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 
 		if ($category_info) {
@@ -221,6 +247,7 @@ class ControllerProductCategory extends Controller {
 			$data['categorys'] = array();
 
 			$filter_data = array(
+				'filter_sub_category'=>true,
 				'filter_category_id' => $category_id,
 				'filter_filter'      => $filter,
 				'sort'               => $sort,
@@ -230,6 +257,7 @@ class ControllerProductCategory extends Controller {
 			);
 
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
@@ -278,6 +306,7 @@ class ControllerProductCategory extends Controller {
 								$price = $this->currency->format($this->tax->calculate($option_value['price'], $result['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
 							} else {
 								$price = false;
+	
 							}
 	
 							$product_option_value_data[] = array(
@@ -302,6 +331,8 @@ class ControllerProductCategory extends Controller {
 					);
 				}
 				
+				if(!$price AND $tax) $price = $tax;
+				
 				$data['products'][$result['product_id']] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
@@ -315,11 +346,16 @@ class ControllerProductCategory extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
+					'reviews'		=> sprintf($this->language->get('text_reviews'), $result['reviews']),
 					'fastorder'     => $this->load->controller('product/fastorder', $product_info = $this->model_catalog_product->getProduct( isset($result['product_id']) ? $result['product_id'] :'' )), // FastOrder
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 				);
 			}
 
+			
+			
+			
+			
 			foreach($data['categorys'] as $_category_id => $row){
 				
 				$data['categorys'][$_category_id] = $this->model_catalog_category->getCategory($_category_id);
@@ -641,6 +677,7 @@ class ControllerProductCategory extends Controller {
 			$pagination->page = $page;
 			$pagination->limit = $limit;
 			$pagination->url = $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');
+
 
 			$data['pagination'] = $pagination->render();
 

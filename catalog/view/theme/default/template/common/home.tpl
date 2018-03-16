@@ -36,7 +36,8 @@
                 'Трехстворчатое окно' => '3-секцiйне вікно',
                 'Балконный блок' => 'Балконний блок',
                 'Остекление лоджии' => 'Скління лоджії',
-                'Адрес' => 'Адреса'
+                'Адрес' => 'Адреса',
+                'АКЦИЯ ДЕЙСТВИТЕЛЬНА ДО' => 'АКЦІЯ ДІЙСНА ДО',
                 );
  $lib = array();foreach($lands as $ru => $ua){if((int)$language_id == 1){$lib[$ru] = $ru;}else{$lib[$ru] = $ua;}}
     //Пример
@@ -130,6 +131,18 @@ echo $header; ?>
       </script>
   <?php } ?>
   
+    <section class="company-info">
+    <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="company-info-block">
+          <?php echo htmlspecialchars_decode($footer_hi_text['description'], ENT_QUOTES);?>
+          </div>
+        <div class="border"></div>
+      </div>
+    </div>
+  </section>
+
+  
   <section class="brands">
     <div class="container">
       <h2 class="main-title"><?php echo $lib['Проверенные бренды']; ?></h2>
@@ -201,7 +214,7 @@ echo $header; ?>
                 <div class="prices-single-right">
                   <div class="complectation">
                     <h3>Комплектация к окну</h3>
-                    <?php foreach($category_info['addons'] as $row){ ?>
+                    <?php foreach($category_info['addons'][1] as $row){ ?>
                       <p><?php echo $row['text'] ;?> - <?php echo $row['price'] ;?> грн</p>
                     <?php } ?>
                   </div>
@@ -238,25 +251,34 @@ echo $header; ?>
         <a href="#tab-news" class="right" data-toggle="tab"><?php echo $lib['новости']; ?></a>
       </div>
       <div class="row news-tab active" id="tab-actions">
-        <div class="col-md-7">
-          <div class="news-single">
-            <img src="/image/<?php echo $blogs[50]['blogs'][0]['image']; ?>" alt="">
-            <div class="news-single-content">
-              <h2><?php
-                if ( empty($blogs[50]['blogs'][0]['description']) ) {
-                  echo $blogs[50]['blogs'][0]['title'];
-                } else {
-                  echo '<a href="/'.$blogs[50]['blogs'][0]['keyword'].'">'.$blogs[50]['blogs'][0]['title'].'</a>';
-                } ?></h2>
-              <p><?php echo $blogs[50]['blogs'][0]['short_description']; ?></p>
-              <span class="time"><?php echo $blogs[50]['blogs'][0]['date_added']; ?></span>
+        <div class="col-md-12 new-flex">
+        
+          <?php $blogs_action = array_slice($blogs[50]['blogs'], 0, 3); ?>
+          <?php foreach ($blogs_action as $blog) { ?>
+            <div class="all-news-single">
+							<?php if(strpos($blog['image'], 'no_image') === false){?>
+								<img src="/image/<?php echo $blog['image']; ?>" alt="<?php echo $blog['alt']; ?>" title="<?php echo $blog['title']; ?>">
+								<div class="all-news-content">
+							<?php }else{ ?>
+								<div class="all-news-content" style="width: 100%;">
+							<?php } ?>
+							<?php if($blog['date_action'] !=''){ ?>
+								<span class="action_date"><?php echo $lib['АКЦИЯ ДЕЙСТВИТЕЛЬНА ДО']; ?> <span class="date"><?php echo $blog['date_action']; ?></span></span>
+							<?php } ?>
+                <h3><a href="<?php echo $blog['keyword']; ?>"><?php echo $blog['title']; ?></a></h3>
+                <p><?php echo $blog['short_description']; ?></p>
+                <div class="bottom">
+                  <p class="data"><?php echo date('Y-m-d', strtotime($blog['date_added']));  ?></p>
+                  <a href="<?php echo $blog['keyword']; ?>" class="more"><?php echo $text_read_more; ?></a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <?php $blogs_action = array_slice($blogs[50]['blogs'], 1, 3); ?>
+          <?php } ?>
+        
+          <?php $blogs_action = array_slice($blogs[50]['blogs'], 0, 3); ?>
           <?php foreach ($blogs_action as $key => $post) { ?>
-          <div class="news-single">
+          <!--div class="news-single">
+          	 <img src="/image/<?php echo $post['image']; ?>" alt="">
             <div class="news-single-content">
               <h2><?php
                 if ( empty($post['description']) ) {
@@ -267,33 +289,45 @@ echo $header; ?>
               <p><?php echo $post['short_description']; ?></p>
               <span class="time"><?php echo $post['date_added']; ?></span>
             </div>
-          </div>
+          </div-->
           <?php } ?>
+        </div>
+        <div class="col-md-2">
+     
           <div class="news-btn">
             <a href="/<?php echo $blogs[50]['keyword']; ?>" class="red-btn"><?php echo $lib['все акции']; ?></a>
           </div>
         </div>
       </div>
       <div class="row news-tab" id="tab-news">
-        <div class="col-md-7">
-          <div class="news-single">
-            <img src="/image/<?php echo $blogs[54]['blogs'][0]['image']; ?>" alt="">
-            <div class="news-single-content">
-              <h2><?php
-                if ( empty($blogs[54]['blogs'][0]['description']) ) {
-                  echo $blogs[54]['blogs'][0]['title'];
-                } else {
-                  echo '<a href="/'.$blogs[54]['blogs'][0]['keyword'].'">'.$blogs[54]['blogs'][0]['title'].'</a>';
-                } ?></h2>
-              <p><?php echo $blogs[54]['blogs'][0]['short_description']; ?></p>
-              <span class="time"><?php echo $blogs[54]['blogs'][0]['date_added']; ?></span>
+        <div class="col-md-12 new-flex">
+
+            <?php $blogs_action = array_slice($blogs[54]['blogs'], 0, 3); ?>
+            
+          <?php foreach ($blogs_action as $blog) { ?>
+            <div class="all-news-single">
+							<?php if(strpos($blog['image'], 'no_image') === false){?>
+								<img src="/image/<?php echo $blog['image']; ?>" alt="<?php echo $blog['alt']; ?>" title="<?php echo $blog['title']; ?>">
+								<div class="all-news-content">
+							<?php }else{ ?>
+								<div class="all-news-content" style="width: 100%;">
+							<?php } ?>
+							<?php if($blog['date_action'] !=''){ ?>
+								<span class="action_date"><?php echo $lib['АКЦИЯ ДЕЙСТВИТЕЛЬНА ДО']; ?> <span class="date"><?php echo $blog['date_action']; ?></span></span>
+							<?php } ?>
+                <h3><a href="<?php echo $blog['keyword']; ?>"><?php echo $blog['title']; ?></a></h3>
+                <p><?php echo $blog['short_description']; ?></p>
+                <div class="bottom">
+                  <p class="data"><?php echo date('Y-m-d', strtotime($blog['date_added']));  ?></p>
+                  <a href="<?php echo $blog['keyword']; ?>" class="more"><?php echo $text_read_more; ?></a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <?php $blogs_action = array_slice($blogs[54]['blogs'], 1, 3); ?>
+          <?php } ?>
+            
           <?php foreach ($blogs_action as $key => $post) { ?>
-          <div class="news-single">
+          <!--div class="news-single">
+          	 <img src="/image/<?php echo $blogs[54]['blogs'][0]['image']; ?>" alt="">
             <div class="news-single-content">
               <h2><?php
                 if ( empty($post['description']) ) {
@@ -304,8 +338,11 @@ echo $header; ?>
               <p><?php echo $post['short_description']; ?></p>
               <span class="time"><?php echo $post['date_added']; ?></span>
             </div>
-          </div>
+          </div-->
           <?php } ?>
+        </div>
+        <div class="col-md-2">
+        
           <div class="news-btn">
             <a href="/<?php echo $blogs[54]['keyword']; ?>" class="red-btn"><?php echo $lib['новости']; ?></a>
           </div>
@@ -460,16 +497,6 @@ echo $header; ?>
         </div>
         <button type="submit" class="blue-btn"><?php echo $lib['Отправить'];?></button>
       </form>
-    </div>
-  </section>
-  <section class="company-info">
-    <div class="container">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="company-info-block">
-          <?php echo htmlspecialchars_decode($footer_hi_text['description'], ENT_QUOTES);?>
-          </div>
-        <div class="border"></div>
-      </div>
     </div>
   </section>
 
